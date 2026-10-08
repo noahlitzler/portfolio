@@ -1,0 +1,25 @@
+﻿:root {
+  /* Couleurs de base */
+  --ebene: #0E0B0A;
+  --brun-salle: #17120F;
+  --creme: #F2EEE5;
+
+  /* Un accent par projet */
+  --bleu: #3155FF;
+  --vert-acide: #C8FF00;
+  --orange: #FF6A00;
+
+  /* Annotations */
+  --rose: #FF2D8D;
+  --jaune: #FFD400;
+
+  /* Polices */
+  --font-titre: "Author", system-ui, sans-serif;
+  --font-label: "Oswald", "Arial Narrow", sans-serif;
+  --font-main: "Caveat", cursive;
+  --font-timecode: "Courier Prime", monospace;
+
+  /* Tailles minimales (retours soutenance) */
+  --taille-texte: 1rem;
+  --taille-label: 0.875rem;
+}
