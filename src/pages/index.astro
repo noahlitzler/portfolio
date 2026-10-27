@@ -1,6 +1,31 @@
 ---
 import Base from "../layouts/Base.astro";
 import Bandeau from "../components/Bandeau.astro";
+
+
+
+const parcours = [
+  { date: "2025 - en cours", titre: "BUT Métiers du Multimédia et de l’Internet", lignes: ["IUT Nord Franche-Comté, Montbéliard", "Parcours création numérique"] },
+  { date: "2022 - 2025", titre: "Baccalauréat Général", lignes: ["Spécialité Mathématiques & NSI", "Lycée Jean Jacques Henner, Altkirch"] },
+];
+const experiences = [
+  { date: "Aujourd’hui", titre: "Étudiant en BUT MMI", lignes: ["IUT Nord Franche-Comté"] },
+  { date: "Mai 2026", titre: "Projet SAÉ - Application", lignes: ["Conception d’une application complète (Astro, Tailwind, PocketBase)"] },
+  { date: "Février 2026", titre: "Projet SAÉ - Site événementiel", lignes: ["Conception d’un site web complet (Astro, Tailwind, PocketBase)"] },
+  { date: "2026", titre: "Projet personnel", lignes: ["Exploration en motion design et direction artistique"] },
+];
+const outils = [
+  { nom: "Figma", usage: "Maquettes & UI", couleur: "linear-gradient(var(--rose), var(--vert-acide), var(--bleu))", texte: "var(--ebene)" },
+  { nom: "VS Code", usage: "Intégration", couleur: "#0078D4", texte: "var(--creme)" },
+  { nom: "Affinity", usage: "Print & illustration", couleur: "var(--vert-acide)", texte: "var(--ebene)" },
+  { nom: "Blender", usage: "3D", couleur: "var(--orange)", texte: "var(--ebene)" },
+  { nom: "Framer", usage: "Prototypes web", couleur: "var(--bleu)", texte: "var(--creme)" },
+  { nom: "Notion", usage: "Organisation", couleur: "var(--ebene)", texte: "var(--creme)" },
+];
+const competences = [
+  "Design graphique", "Direction artistique", "UI/UX (web)", "Montage vidéo", "Motion design", "3D (bases)",
+  "Création de contenu", "Storytelling", "Travail en équipe", "Gestion de projet", "Esprit d’analyse", "Curiosité",
+];
 ---
 <Base titre="Directeur artistique et UI/UX" description="Noah Litzler, étudiant en BUT MMI à Montbéliard. Direction artistique, UI/UX et création numérique. En recherche de stage." timecode="00:00:00:00" progression={6} suivant="affiche">
   <section class="hero">
@@ -20,6 +45,79 @@ import Bandeau from "../components/Bandeau.astro";
     <p class="stage">Actuellement en recherche de stage</p>
   </section>
   <Bandeau />
+  <section class="presentation" aria-labelledby="titre-presentation">
+    <div class="texte">
+      <p class="hey">Hey, moi c’est</p>
+      <h2 id="titre-presentation">Noah <span>Litzler</span></h2>
+      <p class="resume">Étudiant en BUT MMI à Montbéliard, parcours création numérique. Je conçois des identités visuelles et des interfaces, de l’idée jusqu’à l’écran. Je cherche un stage en agence créative ou en studio de design.</p>
+    </div>
+    {/* portrait */}
+  </section>
+
+  <div class="clap">
+    <div class="bande" aria-hidden="true"></div>
+    <p class="meta"><span>Prod. <strong>Noah Litzler</strong></span><span>Scènes <strong>01 - 04</strong></span><span>Prise <strong>1</strong></span></p>
+  </div>
+
+  <div class="scenes">
+    <section class="scene" style="--accent: var(--bleu)" aria-labelledby="t-parcours">
+      <p class="tag">Scène 01</p>
+      <h2 id="t-parcours">Mon parcours</h2>
+      <ol class="frise" style="--point: var(--bleu)">
+        {parcours.map((e) => (
+          <li>
+            <span class="date">{e.date}</span>
+            <div>
+              <strong>{e.titre}</strong>
+              {e.lignes.map((l) => <span class="ligne">{l}</span>)}
+            </div>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section class="scene" style="--accent: var(--vert-acide)" aria-labelledby="t-experiences">
+      <p class="tag">Scène 02</p>
+      <h2 id="t-experiences">Mes expériences</h2>
+      <ol class="frise" style="--point: var(--vert-acide)">
+        {experiences.map((e) => (
+          <li>
+            <span class="date">{e.date}</span>
+            <div>
+              <strong>{e.titre}</strong>
+              {e.lignes.map((l) => <span class="ligne">{l}</span>)}
+            </div>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section class="scene" style="--accent: var(--orange)" aria-labelledby="t-outils">
+      <p class="tag">Scène 03</p>
+      <h2 id="t-outils">Mes outils</h2>
+      <ul class="billets">
+        {outils.map((o, i) => (
+          <li class="billet-outil" style={"--stub: " + o.couleur + "; --tstub: " + o.texte}>
+            <span class="stub" aria-hidden="true">N° {String(i + 1).padStart(2, "0")}</span>
+            <div>
+              <span class="adm">Admission</span>
+              <strong>{o.nom}</strong>
+              <span class="usage">{o.usage}</span>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="scene" style="--accent: var(--rose)" aria-labelledby="t-competences">
+      <p class="tag">Scène 04</p>
+      <h2 id="t-competences">Mes compétences</h2>
+      <ul class="competences">
+        {competences.map((c) => <li>{c}</li>)}
+      </ul>
+    </section>
+  </div>
+
   <section class="programme" aria-labelledby="titre-programme">
     <p class="etiquette">Au programme</p>
     <h2 id="titre-programme">Séances à l’affiche</h2>
@@ -185,5 +283,200 @@ import Bandeau from "../components/Bandeau.astro";
     font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
+  }
+  .presentation {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 3rem;
+    padding: clamp(4rem, 8vw, 7rem) clamp(1rem, 4vw, 4rem);
+  }
+  .hey {
+    margin: 0;
+    font-weight: 500;
+    font-size: clamp(1.5rem, 2vw, 1.75rem);
+    color: var(--bleu);
+  }
+  .presentation h2 {
+    margin: 0.5rem 0 1.5rem;
+    font-family: var(--font-titre);
+    font-weight: 700;
+    font-size: clamp(3rem, 7vw, 6rem);
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+  }
+  .presentation h2 span { display: block; }
+  .resume {
+    max-width: 34rem;
+    margin: 0;
+    font-weight: 500;
+    font-size: 1.125rem;
+    line-height: 1.6;
+  }
+  .clap { padding: 0 clamp(1rem, 4vw, 4rem); }
+  .bande {
+    height: 2.5rem;
+    border: 2px solid var(--creme);
+    border-radius: 0.25rem;
+    background: repeating-linear-gradient(-55deg, var(--creme) 0 1.25rem, var(--ebene) 1.25rem 2.5rem);
+  }
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1rem;
+    margin: 0.75rem 0 0;
+    font-family: var(--font-label);
+    font-size: var(--taille-label);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: color-mix(in srgb, var(--creme) 70%, transparent);
+  }
+  .meta strong { color: var(--creme); }
+  .scenes {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 4rem clamp(2rem, 6vw, 6rem);
+    padding: clamp(3rem, 6vw, 5rem) clamp(1rem, 4vw, 4rem);
+  }
+  .tag {
+    display: inline-block;
+    margin: 0;
+    padding: 0.3rem 0.75rem;
+    background: var(--creme);
+    color: var(--ebene);
+    border-left: 4px solid var(--accent);
+    font-family: var(--font-label);
+    font-weight: 700;
+    font-size: var(--taille-label);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .scene h2 {
+    margin: 1rem 0 2rem;
+    font-family: var(--font-titre);
+    font-weight: 700;
+    font-size: clamp(1.5rem, 2.4vw, 2rem);
+    letter-spacing: -0.02em;
+  }
+  .frise { margin: 0; padding: 0; list-style: none; }
+  .frise li {
+    position: relative;
+    display: grid;
+    grid-template-columns: 7rem 1fr;
+    gap: 0 2.5rem;
+    padding-bottom: 2rem;
+  }
+  .frise li::before {
+    content: "";
+    position: absolute;
+    left: calc(7rem + 1.25rem - 0.4rem);
+    top: 0.35rem;
+    width: 0.8rem;
+    height: 0.8rem;
+    border-radius: 50%;
+    background: var(--point);
+  }
+  .frise li::after {
+    content: "";
+    position: absolute;
+    left: calc(7rem + 1.25rem - 1px);
+    top: 1.3rem;
+    bottom: -0.3rem;
+    width: 2px;
+    background: color-mix(in srgb, var(--creme) 15%, transparent);
+  }
+  .frise li:last-child::after { display: none; }
+  .date, .ligne {
+    display: block;
+    line-height: 1.5;
+    color: color-mix(in srgb, var(--creme) 70%, transparent);
+  }
+  .frise strong {
+    display: block;
+    font-weight: 700;
+    color: var(--creme);
+  }
+  .billets {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .billet-outil {
+    display: flex;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    background: var(--creme);
+    color: var(--ebene);
+  }
+  .stub {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    background: var(--stub);
+    color: var(--tstub);
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-family: var(--font-label);
+    font-weight: 700;
+    font-size: var(--taille-label);
+    letter-spacing: 0.12em;
+  }
+  .billet-outil > div {
+    display: flex;
+    flex-direction: column;
+    padding: 0.75rem 1rem;
+    border-left: 2px dashed color-mix(in srgb, var(--ebene) 30%, transparent);
+  }
+  .adm, .usage {
+    font-family: var(--font-label);
+    font-size: var(--taille-label);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .adm { opacity: 0.7; }
+  .billet-outil strong {
+    font-family: var(--font-label);
+    font-weight: 700;
+    font-size: 1.375rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .competences {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(6, auto);
+    grid-auto-flow: column;
+    gap: 1rem 2rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .competences li {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    font-size: 1.0625rem;
+  }
+  .competences li::before {
+    content: "";
+    flex-shrink: 0;
+    width: 0.6rem;
+    height: 0.6rem;
+    background: var(--rose);
+    transform: rotate(45deg);
+  }
+  @media (max-width: 60rem) {
+    .presentation, .scenes { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 40rem) {
+    .frise li { grid-template-columns: 5rem 1fr; gap: 0 2rem; }
+    .frise li::before { left: calc(5rem + 1rem - 0.4rem); }
+    .frise li::after { left: calc(5rem + 1rem - 1px); }
+    .competences { grid-template-columns: 1fr; grid-template-rows: none; grid-auto-flow: row; }
   }
 </style>
