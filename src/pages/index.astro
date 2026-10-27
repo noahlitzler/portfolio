@@ -20,6 +20,15 @@ import Bandeau from "../components/Bandeau.astro";
     <p class="stage">Actuellement en recherche de stage</p>
   </section>
   <Bandeau />
+  <section class="programme" aria-labelledby="titre-programme">
+    <p class="etiquette">Au programme</p>
+    <h2 id="titre-programme">Séances à l’affiche</h2>
+    <p class="intro">Vivez l’essentiel, Sull et La Cimade : trois projets, trois genres, de l’affiche à l’identité en passant par l’interface.</p>
+    <a class="billet" href="/projets">
+      <span class="admission">Admission</span>
+      <span class="action">Entrer dans la salle</span>
+    </a>
+  </section>
 </Base>
 
 <style>
@@ -130,6 +139,51 @@ import Bandeau from "../components/Bandeau.astro";
     font-weight: 500;
     font-size: clamp(1rem, 1.8vw, 1.375rem);
     letter-spacing: 0.35em;
+    text-transform: uppercase;
+  }
+  .programme {
+    padding: clamp(4rem, 9vw, 8rem) clamp(1rem, 4vw, 4rem);
+  }
+  .programme .etiquette {
+    display: inline-block;
+  }
+  .programme h2 {
+    margin: 1.5rem 0;
+    font-family: var(--font-titre);
+    font-weight: 700;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+  }
+  .intro {
+    max-width: 40rem;
+    margin: 0;
+    line-height: 1.6;
+    color: color-mix(in srgb, var(--creme) 80%, transparent);
+  }
+  .billet {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 2rem;
+    padding: 1rem 1.5rem;
+    background: var(--creme);
+    color: var(--ebene);
+    border-left: 0.9rem solid var(--rose);
+    text-decoration: none;
+  }
+  .billet:hover { background: var(--jaune); }
+  .admission {
+    font-family: var(--font-label);
+    font-size: var(--taille-label);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
+  .action {
+    font-family: var(--font-label);
+    font-weight: 700;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
   }
 </style>
