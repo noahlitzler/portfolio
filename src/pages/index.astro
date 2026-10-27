@@ -1,6 +1,8 @@
 ---
 import Base from "../layouts/Base.astro";
 import Bandeau from "../components/Bandeau.astro";
+import { Image } from "astro:assets";
+import portrait from "../assets/accueil/portrait-halftone.png";
 
 
 
@@ -51,7 +53,10 @@ const competences = [
       <h2 id="titre-presentation">Noah <span>Litzler</span></h2>
       <p class="resume">Étudiant en BUT MMI à Montbéliard, parcours création numérique. Je conçois des identités visuelles et des interfaces, de l’idée jusqu’à l’écran. Je cherche un stage en agence créative ou en studio de design.</p>
     </div>
-    {/* portrait */}
+    <figure class="portrait">
+      <Image src={portrait} alt="Portrait de Noah Litzler" widths={[480, 720, 960]} sizes="(max-width: 60rem) 90vw, 40vw" format="webp" quality={80} />
+      <figcaption><span>Dans le rôle du directeur artistique</span><strong>Noah Litzler</strong></figcaption>
+    </figure>
   </section>
 
   <div class="clap">
@@ -479,4 +484,32 @@ const competences = [
     .frise li::after { left: calc(5rem + 1rem - 1px); }
     .competences { grid-template-columns: 1fr; grid-template-rows: none; grid-auto-flow: row; }
   }
+  .portrait {
+    position: relative;
+    justify-self: center;
+    width: min(100%, 36rem);
+    margin: 0;
+  }
+  .portrait img {
+    width: 100%;
+    height: auto;
+    border: 2px solid var(--creme);
+    border-radius: 1.25rem;
+  }
+  .portrait figcaption {
+    position: absolute;
+    left: -1rem;
+    bottom: -1.25rem;
+    display: flex;
+    flex-direction: column;
+    padding: 0.6rem 1rem;
+    background: var(--creme);
+    color: var(--ebene);
+    transform: rotate(-2deg);
+    font-family: var(--font-label);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .portrait figcaption span { font-size: var(--taille-label); }
+  .portrait figcaption strong { font-size: 1.25rem; }
 </style>
