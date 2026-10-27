@@ -1,7 +1,135 @@
 ---
 import Base from "../layouts/Base.astro";
+import Bandeau from "../components/Bandeau.astro";
 ---
-<Base timecode="00:00:00:00" progression={6} suivant="affiche" titre="Directeur artistique et UI/UX" description="Noah Litzler, étudiant en BUT MMI à Montbéliard. Direction artistique, UI/UX et création numérique. En recherche de stage.">
-  <h1>Noah Litzler</h1>
-  <p>Je transforme une idée en univers visuel.</p>
+<Base titre="Directeur artistique et UI/UX" description="Noah Litzler, étudiant en BUT MMI à Montbéliard. Direction artistique, UI/UX et création numérique. En recherche de stage." timecode="00:00:00:00" progression={6} suivant="affiche">
+  <section class="hero">
+    <div class="haut">
+      <p class="surtitre">Direction artistique - UI/UX - Création numérique</p>
+      <p class="etiquette">Séance 2026</p>
+    </div>
+    <p class="accroche">Je transforme une idée en univers visuel.</p>
+    <h1 class="nom" data-texte="Noah Litzler"><span class="face">Noah Litzler</span></h1>
+    <p class="generique">
+      <span>Un film de</span> <strong>Noah Litzler</strong>
+      <span>Avec la participation de</span> <strong>Figma, Affinity et VS Code</strong><br />
+      <span>Une production</span> <strong>BUT MMI - IUT Nord Franche-Comté</strong>
+      <span>Tourné à</span> <strong>Montbéliard</strong>
+      <span>Monté en</span> <strong>Astro</strong>
+    </p>
+    <p class="stage">Actuellement en recherche de stage</p>
+  </section>
+  <Bandeau />
 </Base>
+
+<style>
+  .hero {
+    position: relative;
+    overflow: hidden;
+    padding: clamp(2rem, 5vw, 4rem) clamp(1rem, 4vw, 4rem) clamp(3rem, 7vw, 6rem);
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle, color-mix(in srgb, var(--creme) 14%, transparent) 1.2px, transparent 1.6px) 0 0 / 14px 14px;
+    mask-image: radial-gradient(ellipse at 50% 55%, #000 15%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero > * { position: relative; }
+  .haut {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .surtitre {
+    margin: 0;
+    font-family: var(--font-label);
+    font-size: clamp(1rem, 1.8vw, 1.5rem);
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: color-mix(in srgb, var(--creme) 80%, transparent);
+  }
+  .etiquette {
+    margin: 0;
+    padding: 0.4rem 0.9rem;
+    background: var(--creme);
+    color: var(--ebene);
+    border-left: 4px solid var(--rose);
+    font-family: var(--font-label);
+    font-weight: 700;
+    font-size: var(--taille-label);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transform: rotate(2deg);
+  }
+  .accroche {
+    margin: 2rem 0 0;
+    font-size: clamp(1.125rem, 2vw, 1.5rem);
+  }
+  .nom {
+    --trame: 0.075em;
+    --decalage: 0.035em;
+    position: relative;
+    isolation: isolate;
+    margin: clamp(2rem, 5vw, 4rem) 0;
+    text-align: center;
+    font-family: var(--font-titre);
+    font-weight: 700;
+    font-size: clamp(3.25rem, 12.5vw, 13rem);
+    line-height: 1;
+    letter-spacing: -0.04em;
+  }
+  .face {
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    background:
+      radial-gradient(circle, var(--ebene) 30%, transparent 32%) 0 0 / var(--trame) var(--trame),
+      var(--creme);
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+  .nom::before,
+  .nom::after {
+    content: attr(data-texte);
+    content: attr(data-texte) / "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+  }
+  .nom::before {
+    color: var(--bleu);
+    transform: translate(calc(var(--decalage) * -1), calc(var(--decalage) * -1));
+  }
+  .nom::after {
+    color: var(--rose);
+    transform: translate(var(--decalage), var(--decalage));
+  }
+  .generique {
+    max-width: 60rem;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 1.9;
+    font-family: var(--font-label);
+    font-size: var(--taille-label);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: color-mix(in srgb, var(--creme) 70%, transparent);
+  }
+  .generique strong {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--creme);
+  }
+  .stage {
+    margin: 2rem 0 0;
+    text-align: center;
+    font-family: var(--font-label);
+    font-weight: 500;
+    font-size: clamp(1rem, 1.8vw, 1.375rem);
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+  }
+</style>
