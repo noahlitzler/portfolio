@@ -1,0 +1,187 @@
+---
+const { timecode, progression } = Astro.props;
+const chemin = Astro.url.pathname.replace(/\/$/, "");
+const chapitres = [
+  { n: "01", href: "/projets", texte: "Projets" },
+  { n: "02", href: "/a-propos", texte: "À propos" },
+  { n: "03", href: "/contact", texte: "Contact" },
+];
+const actif = (href) => chemin === href || chemin.startsWith(href + "/");
+---
+<header class="entete" style={`--p:${progression}%`}>
+  <a class="marque" href="/">Noah Litzler</a>
+
+  <nav class="principale" aria-label="Navigation principale">
+    <ul>
+      {chapitres.map((c) => (
+        <li>
+          <a href={c.href} aria-current={actif(c.href) ? "page" : undefined}>
+            <span class="num">CH.{c.n}</span>
+            <span class="nom">{c.texte}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+
+  <div class="droite">
+    <p class="timecode" aria-hidden="true">
+      <svg width="10" height="12" viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z" fill="currentColor" /></svg>
+      {timecode}
+    </p>
+    <details class="chapitres">
+      <summary>
+        <svg width="16" height="12" viewBox="0 0 16 12" aria-hidden="true"><path d="M0 1h16M0 6h16M0 11h16" stroke="currentColor" stroke-width="2" /></svg>
+        <span>Chapitres</span>
+      </summary>
+      <ul>
+        <li><a href="/">Accueil</a></li>
+        {chapitres.map((c) => <li><a href={c.href}>{c.texte}</a></li>)}
+      </ul>
+    </details>
+  </div>
+
+  <div class="progression" aria-hidden="true"></div>
+</header>
+
+<style>
+  .entete {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem clamp(1rem, 4vw, 4rem);
+    border-bottom: 1px solid color-mix(in srgb, var(--creme) 15%, transparent);
+  }
+  .marque {
+    justify-self: start;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: var(--font-label);
+    font-weight: 700;
+    font-size: 1.25rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+  .marque::before {
+    content: "";
+    width: 0.75rem;
+    height: 0.75rem;
+    background: var(--rose);
+  }
+  .principale ul {
+    display: flex;
+    gap: clamp(1.5rem, 4vw, 3.5rem);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .principale a {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    padding-bottom: 0.35rem;
+    border-bottom: 2px solid transparent;
+    font-family: var(--font-label);
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+  .num {
+    font-size: var(--taille-label);
+    color: color-mix(in srgb, var(--creme) 60%, transparent);
+  }
+  .principale a:hover .nom { color: var(--jaune); }
+  .principale a[aria-current="page"] {
+    color: var(--rose);
+    border-bottom-color: var(--rose);
+  }
+  .principale a[aria-current="page"] .num { color: var(--rose); }
+  .droite {
+    justify-self: end;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  .timecode {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0;
+    font-family: var(--font-timecode);
+    font-weight: 700;
+    font-size: var(--taille-label);
+    letter-spacing: 0.12em;
+  }
+  .timecode svg { color: var(--rose); }
+  .chapitres { position: relative; }
+  summary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.6rem 1rem;
+    border: 1px solid var(--creme);
+    font-family: var(--font-label);
+    font-weight: 500;
+    font-size: var(--taille-label);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    list-style: none;
+    cursor: pointer;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::marker { content: ""; }
+  .chapitres[open] summary {
+    background: var(--creme);
+    color: var(--ebene);
+  }
+  .chapitres ul {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 0.5rem);
+    z-index: 50;
+    min-width: 14rem;
+    margin: 0;
+    padding: 0.5rem;
+    list-style: none;
+    background: var(--brun-salle);
+    border: 1px solid color-mix(in srgb, var(--creme) 25%, transparent);
+  }
+  .chapitres li a {
+    display: block;
+    padding: 0.6rem 0.75rem;
+    font-family: var(--font-label);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+  .chapitres li a:hover {
+    background: var(--creme);
+    color: var(--ebene);
+  }
+  .progression {
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: var(--p);
+    height: 2px;
+    background: var(--rose);
+  }
+  .progression::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: -4px;
+    width: 2px;
+    height: 6px;
+    background: var(--rose);
+  }
+  @media (max-width: 56rem) {
+    .entete { grid-template-columns: 1fr auto; }
+    .principale, .timecode { display: none; }
+  }
+</style>

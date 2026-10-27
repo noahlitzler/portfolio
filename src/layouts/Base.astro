@@ -7,8 +7,9 @@ import "@fontsource/courier-prime/latin-700.css";
 import "../styles/fonts.css";
 import "../styles/tokens.css";
 import "../styles/global.css";
+import Entete from "../components/Entete.astro";
 
-const { titre, description } = Astro.props;
+const { titre, description, timecode = "00:00:00:00", progression = 0 } = Astro.props;
 ---
 <!doctype html>
 <html lang="fr">
@@ -21,6 +22,7 @@ const { titre, description } = Astro.props;
   </head>
   <body>
     <a class="lien-evitement" href="#contenu">Aller au contenu</a>
+    <Entete timecode={timecode} progression={progression} />
     <main id="contenu">
       <slot />
     </main>
