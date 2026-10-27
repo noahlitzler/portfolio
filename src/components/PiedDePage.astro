@@ -1,0 +1,69 @@
+---
+const { precedent, suivant } = Astro.props;
+const cibles = {
+  accueil: { href: "/", texte: "Accueil" },
+  affiche: { href: "/projets", texte: "À l’affiche" },
+  apropos: { href: "/a-propos", texte: "À propos" },
+  contact: { href: "/contact", texte: "Contact" },
+  film: { href: "/", texte: "Revoir le film" },
+};
+const prec = precedent ? cibles[precedent] : null;
+const suiv = suivant ? cibles[suivant] : null;
+---
+<footer class="pied">
+  <div class="gauche">
+    {prec && (
+      <a class="lien" href={prec.href}>
+        <svg width="14" height="12" viewBox="0 0 14 12" aria-hidden="true"><path d="M7 0 0 6l7 6zM14 0 7 6l7 6z" fill="currentColor" /></svg>
+        {prec.texte}
+      </a>
+    )}
+  </div>
+  <p class="copyright">© 2026 Noah Litzler - Montbéliard, France</p>
+  <div class="droite">
+    {suiv && (
+      <a class="lien" href={suiv.href}>
+        {suiv.texte}
+        <svg class="suiv" width="14" height="12" viewBox="0 0 14 12" aria-hidden="true"><path d="M7 0 0 6l7 6zM14 0 7 6l7 6z" fill="currentColor" /></svg>
+      </a>
+    )}
+  </div>
+</footer>
+
+<style>
+  .pied {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 1rem;
+    padding: 3rem clamp(1rem, 4vw, 4rem);
+    border-top: 1px solid color-mix(in srgb, var(--creme) 15%, transparent);
+  }
+  .droite { justify-self: end; }
+  .copyright {
+    margin: 0;
+    font-family: var(--font-label);
+    font-size: var(--taille-label);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: color-mix(in srgb, var(--creme) 60%, transparent);
+  }
+  .lien {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding-bottom: 0.35rem;
+    border-bottom: 2px solid color-mix(in srgb, var(--creme) 40%, transparent);
+    font-family: var(--font-label);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+  .lien:hover { color: var(--jaune); }
+  .suiv { transform: scaleX(-1); }
+  @media (max-width: 40rem) {
+    .pied { grid-template-columns: 1fr; justify-items: center; text-align: center; }
+    .droite { justify-self: center; }
+  }
+</style>

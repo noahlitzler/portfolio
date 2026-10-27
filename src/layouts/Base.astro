@@ -8,8 +8,9 @@ import "../styles/fonts.css";
 import "../styles/tokens.css";
 import "../styles/global.css";
 import Entete from "../components/Entete.astro";
+import PiedDePage from "../components/PiedDePage.astro";
 
-const { titre, description, timecode = "00:00:00:00", progression = 0 } = Astro.props;
+const { titre, description, timecode = "00:00:00:00", progression = 0, precedent, suivant } = Astro.props;
 ---
 <!doctype html>
 <html lang="fr">
@@ -26,5 +27,6 @@ const { titre, description, timecode = "00:00:00:00", progression = 0 } = Astro.
     <main id="contenu">
       <slot />
     </main>
+    <PiedDePage precedent={precedent} suivant={suivant} />
   </body>
 </html>

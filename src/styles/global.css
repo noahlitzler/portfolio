@@ -37,3 +37,5 @@ a { color: inherit; }
     scroll-behavior: auto !important;
   }
 }
+body { min-height: 100dvh; display: flex; flex-direction: column; }
+main { flex: 1; }
