@@ -29,6 +29,20 @@ Pour chaque outil : à quelle étape, pour quoi faire, et ce que j'ai modifié, 
 - **Code fourni puis relu et compris :** tokens.css, fonts.css, global.css, Base.astro, les 4 pages vides.
 - **Ce que j'ai modifié :** [à compléter]
 
+### Réalisation - pages et composants
+
+- **Pour quoi faire :** écrire le code des composants et des pages à partir de ma maquette Figma finale, sous forme de commandes PowerShell à coller dans le terminal, puis m'aider à corriger les erreurs de build.
+- **Code fourni puis relu et compris :**
+  - src/components/Entete.astro : header avec chapitres, timecode, barre de progression et bouton CHAPITRES (balise details) ;
+  - src/components/PiedDePage.astro : footer précédent / suivant ;
+  - src/components/Bandeau.astro : bandeau défilant à perforations ;
+  - src/layouts/Base.astro : branchement du header et du footer ;
+  - src/pages/index.astro : hero avec nom en demi-teinte, présentation, claquette, quatre scènes, section "Séances à l'affiche", portrait optimisé en WebP ;
+  - src/pages/contact.astro et src/pages/merci.astro : formulaire (Netlify Forms), cartes de contact, crédits de fin ;
+  - src/styles/global.css : deux règles ajoutées pour coller le footer en bas de page.
+- **Ce qui vient de moi :** la maquette complète que le code reproduit (structure, textes, couleurs, effets) et le choix des contenus affichés.
+- **Comment j'ai vérifié :** chaque bloc testé avec bun run build (nombre de titres, de billets, fichiers générés) puis dans le navigateur. Les erreurs rencontrées sont dans le journal, semaine 8.
+- **Ce que j'ai modifié :** [à compléter : ce que j'ai changé moi-même dans ces fichiers, par exemple tailles, couleurs, textes, valeurs d'effets]
 ## ChatGPT (OpenAI)
 
 - **Étape :** projet La Cimade, bannières.

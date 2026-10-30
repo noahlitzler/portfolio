@@ -58,3 +58,12 @@ Une entrée par semaine : ce que j'ai fait, ce qui a coincé, ce que j'ai décid
 * Retard de 2 semaines sur le calendrier indicatif (intégration prévue d'octobre à mi-novembre).
 * Décidé : mise en ligne d'abord (domaine + hébergement), puis menu chapitres, puis contenus des 3 projets.
 
+
+## Semaine 8 - 26 au 30 octobre - Intégration
+
+* Fait : header (chapitres, timecode fixe par page, barre de progression, bouton CHAPITRES), footer précédent / suivant, accueil complet (hero en demi-teinte, bandeau défilant, présentation avec portrait en WebP, quatre scènes, séances à l'affiche), page Contact avec formulaire (Netlify Forms) et page de remerciement.
+* Fait : QUALITE.md créé, avec les 4 parties (accessibilité, sobriété, SEO, juridique).
+* Mesuré : poids du build 749 Ko avant, 312 Ko après passage des polices en sous-ensemble latin (51 fichiers contre 19). Portrait : 680 Ko en PNG, 96 à 295 Ko en WebP selon la largeur.
+* Coincé : un bloc de commandes lancé deux fois a dupliqué des données dans index.astro (erreur "parcours déjà déclaré"). Réglé avec une commande de réparation, vérifiée par le build (6 titres h2, 6 billets d'outils). Lighthouse a échoué une première fois à cause d'un argument PowerShell mal découpé, corrigé en mettant les arguments entre guillemets.
+* Décidé : prendre les 7 écrans desktop exportés de Figma comme référence unique du code.
+* Reste à faire : pages Projets et séances, À propos, mentions légales, SEO, déploiement final.
