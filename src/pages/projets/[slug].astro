@@ -1,0 +1,421 @@
+---
+import "@fontsource/montserrat/latin-700.css";
+import Base from "../../layouts/Base.astro";
+import Bandeau from "../../components/Bandeau.astro";
+import Visuel from "../../components/Visuel.astro";
+import { projets } from "../../data/projets.js";
+
+export function getStaticPaths() {
+  return projets.map((p, i) => ({
+    params: { slug: p.slug },
+    props: { projet: p, prochain: projets[(i + 1) % projets.length] },
+  }));
+}
+
+const { projet: p, prochain: s } = Astro.props;
+const enCours = p.statut.startsWith("En cours");
+const texteBandeau = [p.titre, "Séance " + p.numero, p.categorie].concat(enCours ? [p.statut] : []).join(" - ");
+
+const lin = (v) => { v /= 255; return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4; };
+const lum = (hex) => { const n = parseInt(hex.slice(1), 16); return 0.2126 * lin(n >> 16) + 0.7152 * lin((n >> 8) & 255) + 0.0722 * lin(n & 255); };
+const texteSur = (hex) => (lum(hex) > 0.17 ? "var(--ebene)" : "var(--creme)");
+const ratioDe = (f) => (f.includes("mockups") ? "16 / 9" : f.includes("banniere") ? "16 / 7" : "2 / 3");
+---
+<Base titre={p.titre} description={p.resume} timecode={p.timecode} progression={p.progression} precedent="affiche" suivant="apropos">
+  <div class="page" style={"--accent: " + p.accent}>
+
+    <section class="hero">
+      <div class="gauche">
+        <div class="fil">
+          <a class="retour" href="/projets">
+            <svg width="14" height="12" viewBox="0 0 14 12" aria-hidden="true"><path d="M7 0 0 6l7 6zM14 0 7 6l7 6z" fill="currentColor" /></svg>
+            Projets
+          </a>
+          <span class="cat">{p.categorie}</span>
+        </div>
+        <p class="seance">Séance {p.numero} · {p.categorie}</p>
+        <h1 class="titre">{p.titre}</h1>
+        <p class="resume">{p.resume}</p>
+        <p class="credits">
+          {p.credits.map(([r, v]) => (<><span>{r}</span> <strong>{v}</strong>{" "}</>))}
+        </p>
+        <p class="statut">{p.statut}</p>
+      </div>
+      <div class="droite" style={"--n: " + p.visuels.length}>
+        {p.visuels.map((v) => (
+          <div class="vis">
+            <Visuel fichier={v.f} alt={v.alt} ratio={ratioDe(v.f)} widths={[480, 720, 960]} sizes="(max-width: 62rem) 90vw, 30vw" />
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <Bandeau texte={texteBandeau} />
+
+    {p.pitch && (
+      <section class="chapitre" aria-labelledby="t-pitch">
+        <p class="label">Le pitch</p>
+        <h2 id="t-pitch" class="grand">{p.pitch.texte} <span class="accroche">{p.pitch.accroche}</span></h2>
+        <div class="deux">
+          <div><h3 class="label">La commande</h3><p>{p.commande}</p></div>
+          <div><h3 class="label">Mon rôle</h3><p>{p.role}</p></div>
+        </div>
+      </section>
+    )}
+
+    {p.makingOf && (
+      <section class="chapitre" aria-labelledby="t-making">
+        <p class="label">Le making-of</p>
+        <h2 id="t-making" class="grand">{p.makingOf.titre}</h2>
+        <ol class="plans">
+          {p.makingOf.plans.map((pl, i) => (
+            <li class="plan">
+              <p class="plan-tete"><span>Plan {String(i + 1).padStart(2, "0")}</span><span class="tc">{pl.timecode}</span></p>
+              <div class="plan-media">
+                {pl.image && <Visuel fichier={pl.image.f} alt={pl.image.alt} ratio="16 / 7" widths={[720, 1200, 1600]} sizes="(max-width: 62rem) 95vw, 85vw" />}
+                {pl.axes && (
+                  <div class="axes">
+                    {pl.axes.map((a) => (
+                      <div class:list={["axe", { actif: a.actif }]}>
+                        <p class="axe-titre">{a.titre}</p>
+                        <ul>{a.mots.map((m) => <li>{m}</li>)}</ul>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+              <p class="plan-legende">{pl.legende}</p>
+            </li>
+          ))}
+        </ol>
+      </section>
+    )}
+
+    {p.fiche && (
+      <section class="chapitre" aria-labelledby="t-fiche">
+        <p class="label">Fiche technique</p>
+        <h2 id="t-fiche" class="grand">{p.fiche.titre}</h2>
+        <ul class="nuancier">
+          {p.fiche.couleurs.map((c) => (
+            <li class="teinte" style={"background: " + c.hex + "; color: " + texteSur(c.hex)}>
+              <strong>{c.nom}</strong>
+              <span>{c.hex}</span>
+              {c.sens && <span>{c.sens}</span>}
+            </li>
+          ))}
+        </ul>
+        <div class="specimen">
+          <p class="nom-police" style={"font-family: '" + p.fiche.police.nom + "', var(--font-label)"}>{p.fiche.police.nom}</p>
+          <div>
+            <ul class="graisses">
+              {p.fiche.police.lignes.map(([g, d]) => <li><strong>{g}</strong> - {d}</li>)}
+            </ul>
+            <p class="note-police">{p.fiche.police.note}</p>
+          </div>
+        </div>
+      </section>
+    )}
+
+    {p.resultat && (
+      <section class="chapitre" aria-labelledby="t-resultat">
+        <p class="label">Résultat</p>
+        <h2 id="t-resultat" class="grand">{p.resultat.titre}</h2>
+        <div class="galerie">
+          {p.resultat.images.map((im) => (
+            <div class="im"><Visuel fichier={im.f} alt={im.alt} ratio={ratioDe(im.f)} widths={[480, 720, 960]} sizes="(max-width: 62rem) 90vw, 30vw" /></div>
+          ))}
+        </div>
+        <p class="legende-res">{p.resultat.legende}</p>
+        {p.resultat.note && <p class="legende-res">{p.resultat.note}</p>}
+      </section>
+    )}
+
+    {p.coupee && (
+      <section class="chapitre" aria-labelledby="t-coupee">
+        <p class="label">Scène coupée</p>
+        <h2 id="t-coupee" class="grand">{p.coupee.titre}</h2>
+        <ul class="corrections">
+          {p.coupee.correctifs.map(([avant, apres]) => (
+            <li><s>{avant}</s><span class="sr-only"> corrigé en </span><span class="apres">{apres}</span></li>
+          ))}
+        </ul>
+        <p class="texte-coupe">{p.coupee.texte}</p>
+      </section>
+    )}
+
+    <section class="prochaine" style={"--accent: " + s.accent} aria-labelledby="t-prochaine">
+      <div>
+        <p class="surtitre">Prochaine séance »</p>
+        <h2 id="t-prochaine">{s.titre}</h2>
+        <p class="suite">{s.suite}</p>
+        <a class="entrer" href={"/projets/" + s.slug} aria-label={"Entrer dans la salle : " + s.titre}>Entrer dans la salle</a>
+      </div>
+      <div class="mini">
+        <Visuel fichier={s.affiche.f} alt={s.affiche.alt} ratio="2 / 3" widths={[240, 480]} sizes="(max-width: 62rem) 40vw, 20vw" />
+      </div>
+    </section>
+
+  </div>
+</Base>
+
+<style>
+  .page { --accent-texte: color-mix(in srgb, var(--accent) 60%, var(--creme)); }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+  .hero {
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: 3rem;
+    padding: clamp(2rem, 4vw, 3rem) clamp(1rem, 4vw, 4rem) clamp(3rem, 6vw, 5rem);
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 0 35%;
+    background: radial-gradient(circle, color-mix(in srgb, var(--accent) 55%, transparent) 2px, transparent 2.6px) 0 0 / 18px 18px;
+    mask-image: radial-gradient(ellipse at 70% 40%, #000 10%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero > * { position: relative; }
+  .gauche { display: flex; flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+  .fil { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; }
+  .retour {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding-bottom: 0.35rem;
+    border-bottom: 2px solid color-mix(in srgb, var(--creme) 40%, transparent);
+    font-family: var(--font-label);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+  .retour:hover { color: var(--jaune); }
+  .cat {
+    padding: 0.3rem 0.75rem;
+    background: var(--creme);
+    color: var(--ebene);
+    border-left: 4px solid var(--rose);
+    font-family: var(--font-label);
+    font-weight: 700;
+    font-size: var(--taille-label);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    transform: rotate(1.5deg);
+  }
+  .seance {
+    margin: 0;
+    padding: 0.6rem 1rem;
+    background: var(--creme);
+    color: var(--ebene);
+    font-family: var(--font-label);
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .titre {
+    margin: 0;
+    font-family: var(--font-titre);
+    font-weight: 700;
+    font-size: clamp(4rem, 11vw, 10rem);
+    line-height: 0.95;
+    letter-spacing: -0.05em;
+    text-shadow: 0.05em 0.05em 0 var(--accent);
+  }
+  .resume {
+    max-width: 36rem;
+    margin: 0;
+    font-size: clamp(1.125rem, 1.6vw, 1.375rem);
+    line-height: 1.6;
+    color: color-mix(in srgb, var(--creme) 85%, transparent);
+  }
+  .credits {
+    max-width: 40rem;
+    margin: 0;
+    line-height: 1.9;
+    font-family: var(--font-label);
+    font-size: var(--taille-label);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: color-mix(in srgb, var(--creme) 70%, transparent);
+  }
+  .credits strong { font-size: 1rem; color: var(--creme); }
+  .statut {
+    margin: 0;
+    font-family: var(--font-label);
+    font-weight: 700;
+    font-size: var(--taille-label);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent-texte);
+  }
+  .droite { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 1.5rem; }
+  .vis {
+    flex: 1 1 calc(100% / var(--n) - 1.5rem);
+    max-width: 28rem;
+    box-shadow: 0 1.5rem 3rem rgb(0 0 0 / 0.5);
+  }
+  .vis:nth-child(odd) { transform: rotate(2deg); }
+  .vis:nth-child(even) { transform: rotate(-1.5deg); }
+
+  .chapitre { padding: clamp(3rem, 6vw, 5rem) clamp(1rem, 4vw, 4rem) 0; }
+  .label {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin: 0 0 1rem;
+    font-family: var(--font-label);
+    font-weight: 700;
+    font-size: var(--taille-label);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+  .label::before { content: ""; width: 0.55rem; height: 0.55rem; background: var(--rose); }
+  .grand {
+    max-width: 60rem;
+    margin: 0;
+    font-family: var(--font-titre);
+    font-weight: 700;
+    font-size: clamp(1.75rem, 3.4vw, 3rem);
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+  }
+  .accroche { color: var(--accent-texte); }
+  .deux {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    margin-top: 2.5rem;
+  }
+  .deux p { margin: 0; line-height: 1.7; color: color-mix(in srgb, var(--creme) 80%, transparent); }
+
+  .plans { display: grid; gap: 3rem; margin: 2rem 0 0; padding: 0; list-style: none; }
+  .plan-tete {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0.6rem 1rem;
+    background: var(--brun-salle);
+    font-family: var(--font-label);
+    font-size: var(--taille-label);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: color-mix(in srgb, var(--creme) 70%, transparent);
+  }
+  .tc { font-family: var(--font-timecode); font-weight: 700; letter-spacing: 0.12em; }
+  .plan-media { background: var(--brun-salle); }
+  .plan-media :global(img) { width: 100%; aspect-ratio: 16 / 7; object-fit: cover; }
+  .plan-legende {
+    margin: 0;
+    padding: 1rem;
+    background: color-mix(in srgb, var(--ebene) 70%, black);
+    text-align: center;
+    color: var(--jaune);
+  }
+  .axes { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; padding: clamp(1.5rem, 4vw, 3rem); }
+  .axe-titre { margin: 0 0 1.25rem; font-weight: 700; font-size: 1.5rem; color: color-mix(in srgb, var(--creme) 55%, transparent); }
+  .axe ul { margin: 0; padding: 0; list-style: none; }
+  .axe li {
+    margin-bottom: 0.4rem;
+    font-family: var(--font-label);
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: color-mix(in srgb, var(--creme) 55%, transparent);
+  }
+  .axe.actif .axe-titre { color: var(--creme); }
+  .axe.actif li { color: var(--accent-texte); }
+
+  .nuancier { display: flex; flex-wrap: wrap; margin: 2rem 0 0; padding: 0; list-style: none; }
+  .teinte {
+    flex: 1 1 10rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: 11rem;
+    padding: 1rem;
+  }
+  .teinte strong { font-family: var(--font-label); font-size: 1rem; letter-spacing: 0.08em; text-transform: uppercase; }
+  .teinte span { font-family: var(--font-label); font-size: var(--taille-label); letter-spacing: 0.1em; }
+  .specimen { display: flex; flex-wrap: wrap; align-items: center; gap: 2rem 4rem; margin-top: 3rem; }
+  .nom-police { margin: 0; font-weight: 700; font-size: clamp(3.5rem, 9vw, 8rem); line-height: 1; }
+  .graisses { margin: 0 0 0.75rem; padding: 0; list-style: none; line-height: 1.7; }
+  .note-police { margin: 0; color: color-mix(in srgb, var(--creme) 70%, transparent); }
+
+  .galerie {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  .legende-res { margin: 1.5rem 0 0; color: color-mix(in srgb, var(--creme) 70%, transparent); }
+
+  .corrections { display: grid; gap: 1rem; margin: 2rem 0; padding: 0; list-style: none; }
+  .corrections li { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.5rem 2rem; }
+  s {
+    font-family: var(--font-label);
+    font-weight: 700;
+    font-size: clamp(2rem, 5vw, 4rem);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    text-decoration-thickness: 0.08em;
+    color: color-mix(in srgb, var(--creme) 55%, transparent);
+  }
+  .apres {
+    display: inline-block;
+    font-family: var(--font-main);
+    font-size: clamp(2rem, 4vw, 3.25rem);
+    color: var(--rose);
+    transform: rotate(-2deg);
+  }
+  .texte-coupe { max-width: 44rem; margin: 0; line-height: 1.7; color: color-mix(in srgb, var(--creme) 80%, transparent); }
+
+  .prochaine {
+    --accent-texte: color-mix(in srgb, var(--accent) 60%, var(--creme));
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 2rem;
+    margin-top: clamp(4rem, 8vw, 7rem);
+    padding: clamp(3rem, 6vw, 5rem) clamp(1rem, 4vw, 4rem);
+    background: var(--brun-salle);
+  }
+  .surtitre {
+    margin: 0 0 1rem;
+    font-family: var(--font-label);
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent-texte);
+  }
+  .prochaine h2 {
+    margin: 0;
+    font-family: var(--font-titre);
+    font-weight: 700;
+    font-size: clamp(3rem, 8vw, 7rem);
+    line-height: 1;
+    letter-spacing: -0.04em;
+  }
+  .suite { max-width: 34rem; margin: 1.5rem 0 2rem; color: color-mix(in srgb, var(--creme) 80%, transparent); }
+  .entrer {
+    display: inline-block;
+    padding: 1rem 1.75rem;
+    background: var(--creme);
+    color: var(--ebene);
+    font-family: var(--font-label);
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+  .entrer:hover { background: var(--jaune); }
+  .mini { width: clamp(8rem, 18vw, 16rem); transform: rotate(3deg); box-shadow: 0 1.5rem 3rem rgb(0 0 0 / 0.5); }
+
+  @media (max-width: 62rem) {
+    .hero, .deux, .axes, .prochaine { grid-template-columns: 1fr; }
+    .mini { justify-self: start; }
+  }
+</style>

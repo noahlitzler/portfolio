@@ -7,6 +7,7 @@
       "dependencies": {
         "@fontsource/caveat": "^5.3.0",
         "@fontsource/courier-prime": "^5.3.0",
+        "@fontsource/montserrat": "^5.3.0",
         "@fontsource/oswald": "^5.3.0",
         "astro": "^7.3.8",
       },
@@ -86,6 +87,8 @@
     "@fontsource/caveat": ["@fontsource/caveat@5.3.0", "", {}, "sha512-eHTfzQxFSW9ABERRLNruHoNJmKed2J7pqTUc5lp4a4POMgXGKpxmWj3d9Hz10kmAg6iuTTLe6UagbA4bnsmfQw=="],
 
     "@fontsource/courier-prime": ["@fontsource/courier-prime@5.3.0", "", {}, "sha512-KIi1k4VG1Wv+/CGpb1AUpLkUuOAQA6zmvthqxOZGN0AV8BEgQgbK7qAtquv14zsBJAY1bb5BHIEbWVFLgENh0w=="],
+
+    "@fontsource/montserrat": ["@fontsource/montserrat@5.3.0", "", {}, "sha512-iQPDtZOnmM5ih4JBGaMSXisRap0ixb9bAUw2hDtY7EjVfaqiiNlKtVuJl9XclxUwtwMMHNcWXfQR6zI9x05+Tg=="],
 
     "@fontsource/oswald": ["@fontsource/oswald@5.3.0", "", {}, "sha512-16r2aHActe0pH+9FLdk/74/YxXM7HpGak05kAzx3RvSToiJwGvyhv6GvckPz+YuZmvL1nxWbEop2jAXRcXYPRg=="],
 
