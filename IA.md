@@ -16,7 +16,7 @@ Pour chaque outil : à quelle étape, pour quoi faire, et ce que j'ai modifié, 
   - les tirets longs, remplacés partout par "-" ;
   - le logo de la Cimade, trop déformé, refait jusqu'à rester fidèle à l'original.
 - **Ce qui vient de moi :** le concept "portfolio = film", le choix des projets, la note de positionnement, le moodboard, l'arbitrage final sur chaque écran.
-- [à compléter : ce que j'ai refait moi-même dans Figma]
+- **Ce que j'ai refait moi-même dans Figma :** Modification de la naviguation demandée par le prof, mise en place de mon Nom et Prénom au lieu de Portfolio à l'accueil, passage en revue des nombreux textes qui étaient trop petits ou peu visible directement. Ajout du troisième projet étant donné qu'il a été terminer après la soutenance maquette.
 
 ### Soutenance maquette
 
@@ -27,7 +27,7 @@ Pour chaque outil : à quelle étape, pour quoi faire, et ce que j'ai modifié, 
 
 - **Pour quoi faire :** m'expliquer la création du projet Astro avec Bun, corriger un repo imbriqué, proposer un plan de commits, rédiger un brouillon du README, du journal et de cette déclaration.
 - **Code fourni puis relu et compris :** tokens.css, fonts.css, global.css, Base.astro, les 4 pages vides.
-- **Ce que j'ai modifié :** [à compléter]
+- **Ce que j'ai modifié :** J'ai relu chaque fichier, testé le rendu dans le navigateur, et les valeurs (palette, polices, tailles minimales) viennent de mes décisions de maquette.
 
 ### Réalisation - pages et composants
 
@@ -42,11 +42,11 @@ Pour chaque outil : à quelle étape, pour quoi faire, et ce que j'ai modifié, 
   - src/styles/global.css : deux règles ajoutées pour coller le footer en bas de page.
 - **Ce qui vient de moi :** la maquette complète que le code reproduit (structure, textes, couleurs, effets) et le choix des contenus affichés.
 - **Comment j'ai vérifié :** chaque bloc testé avec bun run build (nombre de titres, de billets, fichiers générés) puis dans le navigateur. Les erreurs rencontrées sont dans le journal, semaine 8.
-- **Ce que j'ai modifié :** [à compléter : ce que j'ai changé moi-même dans ces fichiers, par exemple tailles, couleurs, textes, valeurs d'effets]
+- **Ce que j'ai modifié :** J'ai fourni moi-même les données réelles (mon URL LinkedIn, mon CV, le portrait exporté de Figma), vérifié chaque page dans le navigateur, et réparé avec une commande l'erreur de double collage dans index.astro.
 ## ChatGPT (OpenAI)
 
 - **Étape :** projet La Cimade, bannières.
 - **Pour quoi faire :** générer les photos utilisées dans les bannières.
-- **Ce que j'ai modifié :** [à compléter : recadrage, retouches, sélection]
+- **Ce que j'ai modifié :** La séléction du typ d'affiche, le sens que je veux voulais donné à l'affiche ainsi que le nombre de personnes et la disposition.
 
 Règle : je dois pouvoir expliquer chaque ligne du code du site. Quand une IA m'aide sur du code, je le note ici avec le fichier concerné.

@@ -2,29 +2,29 @@
 
 Une entrée par semaine : ce que j'ai fait, ce qui a coincé, ce que j'ai décidé.
 
-## Semaine 1 - \[dates] - Positionnement
+## Semaine 1 - 7 au 11 septembre - Positionnement
 
 * Fait : note de positionnement (1 page). Cible : agences créatives, studios de design, agences digitales et startups, pour un poste de directeur artistique ou UX/UI designer.
 * Message en 30 secondes : je transforme une idée en univers visuel et en expérience numérique cohérente.
 * Ce qui me distingue : le portfolio est lui-même une création, avec une identité forte (culture graphique, cinéma, numérique, design éditorial).
 * Décidé : 3 études de cas. Vivez l'essentiel (affiches), Sull (UX/UI, en binôme avec Clément Bertrand), La Cimade (logo).
-* Coincé : \[à compléter]
+* Coincé : Etablir un plan d'action cohérent au vu de temps disponible et des besoins de ma maquette pour avoir le rendu le plus personnel en codant.
 
-## Semaine 2 - \[dates] - Recherche graphique
+## Semaine 2 - 14 au 18 septembre - Recherche graphique
 
 * Fait : moodboard final, présenté dans une télé vintage. Concept : "mon portfolio est un film".
 * Fait : deux pistes écartées, sous forme d'anti-moodboards : une trop cyberpunk, une trop minimaliste.
-* Pourquoi écartées : \[à compléter]
+* Pourquoi écartées : Car elle ne me correspondait plus trop, c'était du vu et revu, le côté minimaliste était trop simple et fade tandis que le côté cyberpunk me faisant partir dans tout les sens.
 * Décidé : palette (ébène, crème, un accent par projet : bleu, vert acide, orange ; rose pour les annotations, jaune pour les sous-titres) et typos (Author, Oswald, Caveat).
 
-## Semaine 3 - \[dates] - Maquette Figma
+## Semaine 3 - 21 au 25 septembre - Maquette Figma
 
 * Fait : écrans desktop (1728 px) et mobile (440 px) : accueil, projets, 3 fiches projets, à propos, contact.
 * Coincé : les pages projets faisaient trop "IA" et "cheap" à côté du reste. Version "scénario" testée, trop longue et peu claire.
 * Décidé : format "fiche film" pour les projets (pitch, making-of, fiche technique, résultat, scène coupée).
 * Fait : refonte de l'affiche Cimade, logo moins déformé.
 
-## Semaine 4 - \[dates] - Vérifications et soutenance
+## Semaine 4 - 28 septembre au 2 octobre - Vérifications et soutenance
 
 * Fait : vérification du prototype (liens, textes qui débordent, mobile). Plus aucune bordure arrondie, tirets courts partout.
 * Fait : diapo de soutenance, technologies prévues (Astro, CSS natif, JS, GitHub + hébergement), niveau technique visé : 2.
@@ -45,7 +45,7 @@ Une entrée par semaine : ce que j'ai fait, ce qui a coincé, ce que j'ai décid
   * références Miami Vice / Spider-Verse retirées de l'accueil ;
   * textes agrandis.
 * Fait : repo GitHub, init Astro (template vide), variables CSS, polices auto-hébergées.
-* Décidé : Bun à la place de npm, parce que \[à compléter].
+* Décidé : Bun à la place de npm, parce que il est plus rapide, plus léger et intègre nativement un gestionnaire de paquets.
 * Coincé : projet Astro créé dans un sous-dossier du repo, avec deux dépôts git imbriqués. Réglé en remontant le projet à la racine.
 
 ## Semaine 6 - 12 au 16 octobre - Pause
