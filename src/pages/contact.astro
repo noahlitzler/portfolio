@@ -400,4 +400,7 @@ const fin = [
     .fin dl { grid-template-columns: 1fr; }
     .fin dt, .fin dd { text-align: center; }
   }
+.colonnes > *, .cotes > * { min-width: 0; }
+.cotes { min-width:0; grid-template-columns:minmax(0,1fr); }
+@media(max-width:24rem){.corps{padding:.75rem .5rem}.action{font-size:.75rem;margin-right:.5rem}}
 </style>

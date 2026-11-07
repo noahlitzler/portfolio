@@ -41,3 +41,7 @@ Contrôle local du 7 novembre 2026. Le site n’a pas été publié. Cette grill
 - À renseigner avec Noah avant ouverture au public : hébergeur et coordonnées légales, identification de l’éditeur selon son statut, destinataires et conservation des messages, fondement du traitement et éventuels transferts.
 
 Sources consultées : [configuration Netlify Forms](https://docs.netlify.com/manage/forms/setup/), [notifications Netlify](https://docs.netlify.com/manage/forms/notifications/), [information des personnes - CNIL](https://www.cnil.fr/fr/exemples-de-formulaire-de-collecte-de-donnees-caractere-personnel).
+
+## Complément de contrôle final
+
+La validation native a été exercée sans envoi : champs nom/email/message vides signalés comme obligatoires ; une adresse invalide produit typeMismatch=true. Le contrôle à 320 px a aussi révélé une contrainte de largeur des cartes de contact et du spécimen Montserrat : colonnes rétractables et taille minimale corrigées, puis nouvelle vérification navigateur.
