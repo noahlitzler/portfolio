@@ -1,0 +1,48 @@
+---
+import Base from "../layouts/Base.astro";
+---
+<Base titre="Séance réservée" description="Merci pour ton message, je te réponds personnellement." timecode="00:10:30:00" progression={96}>
+  <section class="merci">
+    <p class="tag">Séance réservée</p>
+    <h1>Merci !</h1>
+    <p class="texte">Ton message est bien arrivé au guichet. Je te réponds personnellement.</p>
+    <a class="retour" href="/">Revoir le film</a>
+  </section>
+</Base>
+
+<style>
+  .merci { padding: clamp(4rem, 9vw, 8rem) clamp(1rem, 4vw, 4rem); }
+  .tag {
+    display: inline-block;
+    margin: 0;
+    padding: 0.3rem 0.75rem;
+    background: var(--creme);
+    color: var(--ebene);
+    border-left: 4px solid var(--rose);
+    font-family: var(--font-label);
+    font-weight: 700;
+    font-size: var(--taille-label);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  h1 {
+    margin: 1.5rem 0;
+    font-family: var(--font-titre);
+    font-weight: 700;
+    font-size: clamp(3.5rem, 9vw, 8rem);
+    line-height: 1;
+    letter-spacing: -0.04em;
+  }
+  .texte { max-width: 36rem; margin: 0 0 2rem; font-size: 1.125rem; }
+  .retour {
+    display: inline-block;
+    padding-bottom: 0.35rem;
+    border-bottom: 2px solid var(--creme);
+    font-family: var(--font-label);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+  .retour:hover { color: var(--jaune); }
+</style>

@@ -1,6 +1,403 @@
 ---
 import Base from "../layouts/Base.astro";
+import Bandeau from "../components/Bandeau.astro";
+
+const types = ["Stage", "Projet", "Collaboration", "Autre"];
+const cartes = [
+  { stub: "N° 01", couleur: "var(--rose)", texte: "var(--ebene)", genre: "Email", valeur: "noah.litzler@gmail.com", action: "Écrire", href: "mailto:noah.litzler@gmail.com" },
+  { stub: "N° 02", couleur: "var(--bleu)", texte: "var(--creme)", genre: "LinkedIn", valeur: "Noah Litzler", action: "Voir le profil", href: "https://www.linkedin.com/in/noah-litzler-a36529385/" },
+  { stub: "N° 03", couleur: "var(--vert-acide)", texte: "var(--ebene)", genre: "Instagram", valeur: "@noahlitzler", action: "Suivre", href: "https://www.instagram.com/noahlitzler/" },
+];
+const fin = [
+  ["Réalisation", "Noah Litzler"],
+  ["Direction artistique", "Noah Litzler"],
+  ["Typographie", "Author, Oswald, Caveat, Courier Prime"],
+  ["Tourné dans", "Figma"],
+  ["Monté en", "Astro"],
+  ["Musique pendant le montage", "Michael Jackson"],
+  ["Lieu de tournage", "Montbéliard, 2026"],
+];
 ---
-<Base timecode="00:10:05:02" progression={94} precedent="apropos" suivant="film" titre="Contact" description="Contacter Noah Litzler pour un stage, une collaboration ou un projet.">
-  <h1>Contact</h1>
+<Base titre="Contact" description="Contacter Noah Litzler pour un stage, un projet ou une collaboration en direction artistique et UI/UX." timecode="00:10:05:02" progression={94} precedent="apropos" suivant="film">
+  <Bandeau />
+
+  <section class="contact">
+    <p class="tag">Billetterie</p>
+    <h1>Contact</h1>
+    <p class="intro">Une idée de film, un stage, une collaboration ? Réserve ta séance au guichet.</p>
+
+    <div class="colonnes">
+      <div class="billet-form">
+        <div class="souche" aria-hidden="true">Admission - N° 0001</div>
+        <form name="contact" method="POST" action="/merci" data-netlify="true" netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="contact" />
+          <p hidden><label>Ne pas remplir <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
+          <p class="cinema">Cinéma Noah Litzler - Guichet</p>
+          <div class="titre-ligne">
+            <h2>Réserver une séance</h2>
+            <span class="annee">Séance 2026</span>
+          </div>
+          <div class="champs">
+            <label class="champ"><span>Nom du spectateur</span><input type="text" name="nom" placeholder="Ton nom" autocomplete="name" required /></label>
+            <label class="champ"><span>Email</span><input type="email" name="email" placeholder="ton@email.com" autocomplete="email" required /></label>
+          </div>
+          <fieldset>
+            <legend>Type de séance</legend>
+            <div class="puces">
+              {types.map((t, i) => (
+                <label class="puce"><input type="radio" name="type" value={t} checked={i === 0} /><span>{t}</span></label>
+              ))}
+            </div>
+          </fieldset>
+          <label class="champ"><span>Message</span><textarea name="message" rows="5" placeholder="Raconte-moi ton idée en quelques lignes." required></textarea></label>
+          <div class="envoi">
+            <p class="note">Réponse personnelle, pas de robot au guichet. Ton nom et ton email servent uniquement à te répondre.</p>
+            <button type="submit"><span class="adm">Admission</span><span>Réserver une séance</span></button>
+          </div>
+        </form>
+      </div>
+
+      <aside class="cotes">
+        <div>
+          <p class="surtitre">Dossier de presse</p>
+          <a class="carte" href="/cv-noah-litzler.pdf" download style="--c: var(--jaune); --t: var(--ebene)">
+            <span class="stub" aria-hidden="true">CV</span>
+            <span class="corps"><span class="genre">CV - PDF</span><strong>CV Noah Litzler</strong></span>
+            <span class="action">Télécharger
+              <svg width="10" height="12" viewBox="0 0 10 12" aria-hidden="true"><path d="M5 0v8M1 5l4 4 4-4M0 11.5h10" fill="none" stroke="currentColor" stroke-width="2" /></svg>
+            </span>
+          </a>
+        </div>
+        <div>
+          <p class="surtitre">Guichet direct</p>
+          <h2>Écrire directement ?</h2>
+          {cartes.map((c) => (
+            <a class="carte" href={c.href} style={"--c: " + c.couleur + "; --t: " + c.texte}>
+              <span class="stub" aria-hidden="true">{c.stub}</span>
+              <span class="corps"><span class="genre">{c.genre}</span><strong>{c.valeur}</strong></span>
+              <span class="action">{c.action}</span>
+            </a>
+          ))}
+          <p class="base">Basé à Montbéliard, France</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="fin" aria-labelledby="titre-fin">
+    <h2 id="titre-fin">Fin</h2>
+    <dl>
+      {fin.map(([role, nom]) => (
+        <>
+          <dt>{role}</dt>
+          <dd>{nom}</dd>
+        </>
+      ))}
+    </dl>
+  </section>
 </Base>
+
+<style>
+  .contact { padding: clamp(3rem, 6vw, 5rem) clamp(1rem, 4vw, 4rem) 0; }
+  .tag {
+    display: inline-block;
+    margin: 0;
+    padding: 0.3rem 0.75rem;
+    background: var(--creme);
+    color: var(--ebene);
+    border-left: 4px solid var(--rose);
+    font-family: var(--font-label);
+    font-weight: 700;
+    font-size: var(--taille-label);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    transform: rotate(-1.5deg);
+  }
+  h1 {
+    margin: 1.5rem 0;
+    font-family: var(--font-titre);
+    font-weight: 700;
+    font-size: clamp(3.5rem, 9vw, 8rem);
+    line-height: 1;
+    letter-spacing: -0.04em;
+  }
+  .intro {
+    max-width: 40rem;
+    margin: 0;
+    font-size: 1.125rem;
+    color: color-mix(in srgb, var(--creme) 80%, transparent);
+  }
+  .colonnes {
+    display: grid;
+    grid-template-columns: minmax(0, 1.9fr) minmax(0, 1fr);
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: start;
+    margin-top: clamp(3rem, 6vw, 5rem);
+  }
+  .billet-form {
+    display: grid;
+    grid-template-columns: 6rem 1fr;
+    margin: 0.7rem;
+    background: var(--creme);
+    color: var(--ebene);
+    border-radius: 0.25rem;
+    transform: rotate(0.6deg);
+    box-shadow: -0.7rem -0.5rem 0 var(--bleu), 0.7rem 0.6rem 0 var(--rose);
+  }
+  .souche {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+      radial-gradient(circle, color-mix(in srgb, var(--ebene) 35%, transparent) 30%, transparent 32%) 0 0 / 0.7rem 0.7rem,
+      var(--rose);
+    border-left: 2px dashed color-mix(in srgb, var(--ebene) 50%, transparent);
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-family: var(--font-label);
+    font-weight: 700;
+    font-size: var(--taille-label);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+  }
+  form {
+    display: grid;
+    gap: 1.5rem;
+    padding: 2rem clamp(1.25rem, 3vw, 2.5rem);
+  }
+  .cinema {
+    margin: 0;
+    font-family: var(--font-label);
+    font-size: var(--taille-label);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .titre-ligne {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 0.5rem 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 3px solid var(--ebene);
+  }
+  .titre-ligne h2 {
+    margin: 0;
+    font-family: var(--font-titre);
+    font-weight: 700;
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    letter-spacing: -0.03em;
+  }
+  .annee {
+    font-family: var(--font-label);
+    font-size: var(--taille-label);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .champs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem 2rem;
+  }
+  .champ { display: flex; flex-direction: column; gap: 0.4rem; }
+  .champ > span, legend {
+    font-family: var(--font-label);
+    font-weight: 700;
+    font-size: var(--taille-label);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .champ input, .champ textarea {
+    padding: 0.6rem 0;
+    border: 0;
+    border-bottom: 2px solid var(--ebene);
+    background: transparent;
+    color: var(--ebene);
+    font: inherit;
+    font-size: 1rem;
+  }
+  .champ textarea {
+    padding: 0.75rem;
+    border: 2px solid var(--ebene);
+    resize: vertical;
+  }
+  .champ input::placeholder, .champ textarea::placeholder {
+    color: color-mix(in srgb, var(--ebene) 60%, transparent);
+  }
+  .champ input:focus-visible, .champ textarea:focus-visible {
+    outline: 3px solid var(--rose);
+    outline-offset: 2px;
+  }
+  fieldset { margin: 0; padding: 0; border: 0; }
+  legend { padding: 0; margin-bottom: 0.75rem; }
+  .puces { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+  .puce { position: relative; }
+  .puce input { position: absolute; inset: 0; opacity: 0; }
+  .puce span {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border: 2px solid var(--ebene);
+    font-family: var(--font-label);
+    font-weight: 700;
+    font-size: var(--taille-label);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+  .puce input:checked + span { background: var(--ebene); color: var(--creme); }
+  .puce input:focus-visible + span { outline: 3px solid var(--rose); outline-offset: 2px; }
+  .envoi {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem 2rem;
+  }
+  .note { max-width: 22rem; margin: 0; font-size: 1rem; }
+  button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.9rem;
+    padding: 0.9rem 1.5rem 0.9rem 1rem;
+    background: var(--ebene);
+    color: var(--creme);
+    border: 0;
+    border-left: 1rem solid var(--rose);
+    font-family: var(--font-label);
+    font-weight: 700;
+    font-size: 1.0625rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+  button:hover { background: color-mix(in srgb, var(--ebene) 80%, var(--rose)); }
+  button:focus-visible { outline: 3px solid var(--rose); outline-offset: 3px; }
+  .adm {
+    font-size: var(--taille-label);
+    font-weight: 500;
+    opacity: 0.7;
+  }
+  .cotes { display: grid; gap: 3rem; }
+  .surtitre {
+    margin: 0 0 1rem;
+    font-family: var(--font-label);
+    font-size: var(--taille-label);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: color-mix(in srgb, var(--creme) 70%, transparent);
+  }
+  .cotes h2 {
+    margin: 0 0 1.25rem;
+    font-family: var(--font-titre);
+    font-weight: 700;
+    font-size: clamp(1.5rem, 2.4vw, 2rem);
+    letter-spacing: -0.02em;
+  }
+  .carte {
+    display: flex;
+    align-items: stretch;
+    margin-bottom: 1rem;
+    overflow: hidden;
+    background: var(--creme);
+    color: var(--ebene);
+    border-radius: 0.4rem;
+    text-decoration: none;
+  }
+  .carte:hover { background: var(--jaune); }
+  .stub {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    background: var(--c);
+    color: var(--t);
+    border-left: 2px dashed color-mix(in srgb, var(--ebene) 40%, transparent);
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-family: var(--font-label);
+    font-weight: 700;
+    font-size: var(--taille-label);
+    letter-spacing: 0.15em;
+  }
+  .corps {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    min-width: 0;
+    padding: 0.9rem 1rem;
+  }
+  .genre {
+    font-family: var(--font-label);
+    font-size: var(--taille-label);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
+  .corps strong { overflow-wrap: anywhere; font-size: 1rem; }
+  .action {
+    display: inline-flex;
+    align-items: center;
+    align-self: center;
+    gap: 0.5rem;
+    margin-right: 1rem;
+    padding-bottom: 0.25rem;
+    border-bottom: 2px solid var(--ebene);
+    font-family: var(--font-label);
+    font-weight: 700;
+    font-size: var(--taille-label);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .base {
+    margin: 1.25rem 0 0;
+    font-family: var(--font-label);
+    font-size: var(--taille-label);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: color-mix(in srgb, var(--creme) 70%, transparent);
+  }
+  .fin {
+    padding: clamp(5rem, 10vw, 9rem) clamp(1rem, 4vw, 4rem);
+    text-align: center;
+  }
+  .fin h2 {
+    margin: 0;
+    font-family: var(--font-label);
+    font-weight: 700;
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    letter-spacing: 0.6em;
+    text-transform: uppercase;
+  }
+  .fin dl {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.9rem 2rem;
+    max-width: 52rem;
+    margin: 2.5rem auto 0;
+  }
+  .fin dt, .fin dd {
+    margin: 0;
+    font-family: var(--font-label);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .fin dt { text-align: right; color: color-mix(in srgb, var(--creme) 70%, transparent); }
+  .fin dd { text-align: left; font-weight: 700; }
+  @media (max-width: 62rem) {
+    .colonnes { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 40rem) {
+    .billet-form { grid-template-columns: 1fr; transform: none; }
+    .souche {
+      writing-mode: horizontal-tb;
+      transform: none;
+      padding: 0.6rem;
+      border-left: 0;
+      border-bottom: 2px dashed color-mix(in srgb, var(--ebene) 50%, transparent);
+    }
+    .champs { grid-template-columns: 1fr; }
+    .fin dl { grid-template-columns: 1fr; }
+    .fin dt, .fin dd { text-align: center; }
+  }
+</style>
