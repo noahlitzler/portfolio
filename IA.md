@@ -50,3 +50,14 @@ Pour chaque outil : à quelle étape, pour quoi faire, et ce que j'ai modifié, 
 - **Ce que j'ai modifié :** La séléction du typ d'affiche, le sens que je veux voulais donné à l'affiche ainsi que le nombre de personnes et la disposition.
 
 Règle : je dois pouvoir expliquer chaque ligne du code du site. Quand une IA m'aide sur du code, je le note ici avec le fichier concerné.
+
+## Codex / OpenAI - intégration du 7 novembre 2026
+
+- Étape : réalisation et contrôle local, à partir de la maquette Figma et du projet Astro existant.
+- Travail fourni par l’outil : récupération des exports Figma ; composant Affiche ; intégration des visuels des études de cas ; storyboard À propos ; menu de chapitres avec dialog natif et JavaScript ; adaptation mobile ; remplacement de SULL par Derrière le prompt ; métadonnées et pages annexes.
+- Fichiers concernés : src/components/Affiche.astro, Entete.astro, Visuel.astro, PiedDePage.astro ; src/data/projets.js ; src/pages/index.astro, projets.astro, projets/[slug].astro, a-propos.astro, contact.astro, 404.astro, mentions-legales.astro ; Base.astro, styles globaux et tokens ; robots.txt.ts, sitemap.xml.ts et astro.config.mjs.
+- Vérifications effectuées par l’outil : compilation Astro, liens et images locaux, titres et descriptions, rendu navigateur sur ordinateur et mobile, ouverture du menu, fermeture par Échap et retour du focus. Aucun message de formulaire envoyé.
+- Correction de l’outil après contrôle : proportions du symbole La Cimade, menu mobile, recadrage des images de making-of, débordement des affiches à 320 px, suppression des exports inutilisés.
+- Origine des nouveaux textes : maquette, code initial, site et README local de Derrière le prompt. L’outil n’a pas attribué de tâches individuelles détaillées dans le binôme faute de preuve.
+- À relire par Noah : chaque changement de code et de texte ; répartition exacte du travail sur la SAÉ 303 ; politique des données et informations légales. La relecture personnelle n’a pas encore eu lieu : cette entrée ne prétend pas le contraire.
+- À compléter par Noah après relecture : ce que j’ai compris, modifié, corrigé ou rejeté parmi les propositions de Codex.

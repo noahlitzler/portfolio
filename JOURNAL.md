@@ -67,3 +67,24 @@ Une entrée par semaine : ce que j'ai fait, ce qui a coincé, ce que j'ai décid
 * Coincé : un bloc de commandes lancé deux fois a dupliqué des données dans index.astro (erreur "parcours déjà déclaré"). Réglé avec une commande de réparation, vérifiée par le build (6 titres h2, 6 billets d'outils). Lighthouse a échoué une première fois à cause d'un argument PowerShell mal découpé, corrigé en mettant les arguments entre guillemets.
 * Décidé : prendre les 7 écrans desktop exportés de Figma comme référence unique du code.
 * Reste à faire : pages Projets et séances, À propos, mentions légales, SEO, déploiement final.
+
+## 7 novembre 2026 - séance d’intégration assistée par Codex
+
+- Sauvegarde ZIP de l’état de départ et commit local des modifications déjà présentes.
+- Conservation d’Astro, du CSS natif, des variables et des polices existantes.
+- Récupération des visuels Figma et optimisation WebP par Astro.
+- Intégration du storyboard À propos et du menu des chapitres, avec présentation mobile spécifique.
+- Présentation de trois projets : Vivez l’essentiel, La Cimade et Derrière le prompt, en troisième position.
+- Nouvelle affiche typographique pour Derrière le prompt et lien vers le projet en ligne.
+- Améliorations : navigation clavier du menu, page 404, métadonnées de partage, génération conditionnelle des URL canoniques et du sitemap.
+- Contrôles locaux consignés dans QUALITE.md. Aucun push, aucune publication.
+- Limites : domaine du portfolio non fourni ; réception Netlify non testée ; informations légales et répartition du travail en binôme à confirmer.
+- À faire par Noah : relire et comprendre le code, valider les textes et visuels, puis autoriser le push et la publication.
+
+### Présence professionnelle - proposition à valider
+
+LinkedIn sert à présenter mon profil, mon stage recherché et mes études de cas aux agences et studios.
+Instagram est adapté à mon parcours création numérique : il permet de montrer affiches, identités et recherches visuelles.
+Les deux profils sont liés depuis le contact et le menu mobile.
+Je dois harmoniser leur bio, leur portrait et leurs liens avec le portfolio, puis publier des extraits des trois projets.
+Ces mises à jour n’ont pas été effectuées par Codex ; cette justification est une proposition à relire, pas une attestation d’action.
