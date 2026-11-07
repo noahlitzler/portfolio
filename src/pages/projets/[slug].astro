@@ -3,6 +3,7 @@ import "@fontsource/montserrat/latin-700.css";
 import Base from "../../layouts/Base.astro";
 import Bandeau from "../../components/Bandeau.astro";
 import Visuel from "../../components/Visuel.astro";
+import Affiche from "../../components/Affiche.astro";
 import { projets } from "../../data/projets.js";
 
 export function getStaticPaths() {
@@ -40,8 +41,10 @@ const ratioDe = (f) => (f.includes("mockups") ? "16 / 9" : f.includes("banniere"
           {p.credits.map(([r, v]) => (<><span>{r}</span> <strong>{v}</strong>{" "}</>))}
         </p>
         <p class="statut">{p.statut}</p>
+        {p.url && <a class="entrer" href={p.url} target="_blank" rel="noopener noreferrer">Explorer le site ↗</a>}
       </div>
       <div class="droite" style={"--n: " + p.visuels.length}>
+        {p.url && <a class="projet-preview" href={p.url} aria-label="Ouvrir Derrière le prompt"><Affiche projet={p} simple /></a>}
         {p.visuels.map((v) => (
           <div class="vis">
             <Visuel fichier={v.f} alt={v.alt} ratio={ratioDe(v.f)} widths={[480, 720, 960]} sizes="(max-width: 62rem) 90vw, 30vw" />
@@ -73,6 +76,7 @@ const ratioDe = (f) => (f.includes("mockups") ? "16 / 9" : f.includes("banniere"
               <p class="plan-tete"><span>Plan {String(i + 1).padStart(2, "0")}</span><span class="tc">{pl.timecode}</span></p>
               <div class="plan-media">
                 {pl.image && <Visuel fichier={pl.image.f} alt={pl.image.alt} ratio="16 / 7" widths={[720, 1200, 1600]} sizes="(max-width: 62rem) 95vw, 85vw" />}
+                {pl.texte && <div class="plan-texte"><h3>{pl.titre}</h3><p>{pl.texte}</p></div>}
                 {pl.axes && (
                   <div class="axes">
                     {pl.axes.map((a) => (
@@ -126,6 +130,7 @@ const ratioDe = (f) => (f.includes("mockups") ? "16 / 9" : f.includes("banniere"
           ))}
         </div>
         <p class="legende-res">{p.resultat.legende}</p>
+        {p.url && <a class="entrer lien-projet" href={p.url} target="_blank" rel="noopener noreferrer">Découvrir les quatre visualisations ↗</a>}
         {p.resultat.note && <p class="legende-res">{p.resultat.note}</p>}
       </section>
     )}
@@ -151,7 +156,7 @@ const ratioDe = (f) => (f.includes("mockups") ? "16 / 9" : f.includes("banniere"
         <a class="entrer" href={"/projets/" + s.slug} aria-label={"Entrer dans la salle : " + s.titre}>Entrer dans la salle</a>
       </div>
       <div class="mini">
-        <Visuel fichier={s.affiche.f} alt={s.affiche.alt} ratio="2 / 3" widths={[240, 480]} sizes="(max-width: 62rem) 40vw, 20vw" />
+        <Affiche projet={s} simple />
       </div>
     </section>
 
@@ -159,6 +164,11 @@ const ratioDe = (f) => (f.includes("mockups") ? "16 / 9" : f.includes("banniere"
 </Base>
 
 <style>
+  .plan-texte { padding:clamp(2rem,5vw,5rem); min-height:18rem; }
+  .plan-texte h3 {font:700 clamp(2rem,5vw,5rem) var(--font-titre);margin:0 0 1rem;color:var(--accent-texte)}
+  .plan-texte p {max-width:45rem;font-size:1.25rem;line-height:1.7}
+  .projet-preview {width:min(100%,25rem);display:block;transform:rotate(3deg);box-shadow:0 2rem 4rem #0008}
+  .lien-projet {margin-top:2rem}
   .page { --accent-texte: color-mix(in srgb, var(--accent) 60%, var(--creme)); }
   .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
@@ -168,7 +178,7 @@ const ratioDe = (f) => (f.includes("mockups") ? "16 / 9" : f.includes("banniere"
     display: grid;
     grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
     gap: 3rem;
-    padding: clamp(2rem, 4vw, 3rem) clamp(1rem, 4vw, 4rem) clamp(3rem, 6vw, 5rem);
+    padding: clamp(2rem, 4vw, 3rem) var(--gouttiere) clamp(3rem, 6vw, 5rem);
   }
   .hero::before {
     content: "";
@@ -258,10 +268,11 @@ const ratioDe = (f) => (f.includes("mockups") ? "16 / 9" : f.includes("banniere"
     max-width: 28rem;
     box-shadow: 0 1.5rem 3rem rgb(0 0 0 / 0.5);
   }
+  .vis:only-child { max-width: 34rem; }
   .vis:nth-child(odd) { transform: rotate(2deg); }
   .vis:nth-child(even) { transform: rotate(-1.5deg); }
 
-  .chapitre { padding: clamp(3rem, 6vw, 5rem) clamp(1rem, 4vw, 4rem) 0; }
+  .chapitre { padding: clamp(3rem, 6vw, 5rem) var(--gouttiere) 0; }
   .label {
     display: flex;
     align-items: center;
@@ -380,7 +391,7 @@ const ratioDe = (f) => (f.includes("mockups") ? "16 / 9" : f.includes("banniere"
     align-items: center;
     gap: 2rem;
     margin-top: clamp(4rem, 8vw, 7rem);
-    padding: clamp(3rem, 6vw, 5rem) clamp(1rem, 4vw, 4rem);
+    padding: clamp(3rem, 6vw, 5rem) var(--gouttiere);
     background: var(--brun-salle);
   }
   .surtitre {

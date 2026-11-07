@@ -1,6 +1,8 @@
 ---
 import Base from "../layouts/Base.astro";
 import Bandeau from "../components/Bandeau.astro";
+import Affiche from "../components/Affiche.astro";
+import {projets} from "../data/projets.js";
 import { Image } from "astro:assets";
 import portrait from "../assets/accueil/portrait-halftone.png";
 
@@ -124,13 +126,14 @@ const competences = [
   </div>
 
   <section class="programme" aria-labelledby="titre-programme">
-    <p class="etiquette">Au programme</p>
+    <div class="programme-texte"><p class="etiquette">Au programme</p>
     <h2 id="titre-programme">Séances à l’affiche</h2>
-    <p class="intro">Vivez l’essentiel, Sull et La Cimade : trois projets, trois genres, de l’affiche à l’identité en passant par l’interface.</p>
+    <p class="intro">Vivez l’essentiel, La Cimade et Derrière le prompt : trois projets, trois genres, de l’affiche à l’identité en passant par les données.</p>
     <a class="billet" href="/projets">
       <span class="admission">Admission</span>
       <span class="action">Entrer dans la salle</span>
-    </a>
+    </a></div>
+    <div class="programme-affiches" aria-hidden="true">{projets.slice().reverse().map(p=><div class="programme-affiche"><Affiche projet={p} simple /></div>)}</div>
   </section>
 </Base>
 
@@ -244,6 +247,12 @@ const competences = [
     letter-spacing: 0.35em;
     text-transform: uppercase;
   }
+  .programme {display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:3rem;background:var(--brun-salle)}
+  .programme-affiches {position:relative;height:27rem;isolation:isolate;}
+  .programme-affiche {position:absolute;width:15rem;top:1rem;left:20%;transform:rotate(-10deg);box-shadow:0 1rem 2rem #0009}
+  .programme-affiche:nth-child(2){left:35%;transform:rotate(-4deg);top:0}
+  .programme-affiche:nth-child(3){left:50%;transform:rotate(5deg)}
+  @media(max-width:60rem){.programme{grid-template-columns:1fr}.programme-affiches{height:23rem}.programme-affiche{width:12rem;left:8%}.programme-affiche:nth-child(2){left:25%}.programme-affiche:nth-child(3){left:42%}}
   .programme {
     padding: clamp(4rem, 9vw, 8rem) clamp(1rem, 4vw, 4rem);
   }

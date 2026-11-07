@@ -29,22 +29,28 @@ const actif = (href) => chemin === href || chemin.startsWith(href + "/");
       <svg width="10" height="12" viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z" fill="currentColor" /></svg>
       {timecode}
     </p>
-    <details class="chapitres">
-      <summary>
-        <svg width="16" height="12" viewBox="0 0 16 12" aria-hidden="true"><path d="M0 1h16M0 6h16M0 11h16" stroke="currentColor" stroke-width="2" /></svg>
-        <span>Chapitres</span>
-      </summary>
-      <ul>
-        <li><a href="/">Accueil</a></li>
-        {chapitres.map((c) => <li><a href={c.href}>{c.texte}</a></li>)}
-      </ul>
-    </details>
+    <button class="ouvrir-chapitres" type="button" aria-haspopup="dialog" aria-controls="menu-chapitres">☰ <span>Chapitres</span></button>
   </div>
 
   <div class="progression" aria-hidden="true"></div>
 </header>
+<dialog id="menu-chapitres" aria-labelledby="titre-chapitres">
+  <div class="menu-tete"><div><p>Menu du film</p><h2 id="titre-chapitres">Sélection des chapitres</h2></div><p>Noah Litzler - 2026 - 4 chapitres</p></div>
+  <nav aria-label="Sélection des chapitres"><ol class="menu-scenes">{[{n:'01',href:'/',texte:'Accueil',tc:'00:00:00:00'},...chapitres.map((c,i)=>({...c,n:String(i+2).padStart(2,'0'),tc:['00:03:12:08','00:07:40:16','00:10:05:02'][i]}))].map(c=><li><a href={c.href} aria-current={chemin===c.href || (c.href==='/' && chemin==='')?'page':undefined}><span class={'vignette scene-'+c.n} aria-hidden="true"><span>{c.n}</span></span><span class="menu-meta"><span>CH.{c.n}</span><span>{c.tc}</span></span><strong>{c.texte}</strong></a></li>)}</ol></nav>
+  <div class="menu-bas"><button class="fermer-chapitres" type="button" autofocus>◀ Retour au film</button><p>choisis ta scène !</p></div>
+</dialog>
+<script>
+const menu = document.querySelector<HTMLDialogElement>('#menu-chapitres');
+const ouvrir = document.querySelector<HTMLButtonElement>('.ouvrir-chapitres');
+ouvrir?.addEventListener('click', () => menu?.showModal());
+document.querySelector('.fermer-chapitres')?.addEventListener('click', () => menu?.close());
+menu?.addEventListener('click', (event) => {if(event.target === menu){const r=menu.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)menu.close();}});
+menu?.addEventListener('close', () => ouvrir?.focus());
+</script>
 
 <style>
+.ouvrir-chapitres,.fermer-chapitres{display:inline-flex;align-items:center;gap:.6rem;border:1.5px solid var(--creme);padding:.65rem 1rem;background:transparent;color:var(--creme);font:500 .875rem var(--font-label);letter-spacing:.1em;text-transform:uppercase;cursor:pointer}.ouvrir-chapitres:hover,.fermer-chapitres:hover{background:var(--creme);color:var(--ebene)}dialog{width:min(calc(100% - 2rem),81.125rem);max-height:calc(100dvh - 2rem);padding:clamp(1.5rem,3.3vw,3.56rem);border:1px solid #f2eee540;background:var(--brun-salle);color:var(--creme)}dialog::backdrop{background:#0e0b0ae6;backdrop-filter:blur(5px)}html:has(dialog[open]){overflow:hidden}.menu-tete{display:flex;align-items:center;justify-content:space-between;gap:2rem}.menu-tete p{font:.875rem var(--font-label);letter-spacing:.12em;text-transform:uppercase;margin:0 0 .5rem}.menu-tete>p{color:#f2eee580}.menu-tete h2{font:700 clamp(1.6rem,3vw,3rem)/1.1 var(--font-titre);text-transform:uppercase;margin:0}.menu-scenes{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:2rem;list-style:none;padding:0;margin:2.5rem 0}.menu-scenes a{text-decoration:none;display:block}.vignette{display:grid;place-items:center;aspect-ratio:16/9;background:var(--ebene);border:1px solid #f2eee533;transition:transform .2s}.vignette>span{font:700 clamp(2.5rem,5vw,5rem) var(--font-titre);opacity:.8}.scene-01{background:url('/figma/4112f.png') center 22%/cover}.scene-01>span{opacity:0}.scene-02{background:url('/figma/13dee.png') center 38%/cover}.scene-02>span{opacity:0}.scene-03{background:var(--bleu)}.scene-04{background:var(--rose);color:var(--ebene)}.menu-scenes a:hover .vignette,.menu-scenes a:focus-visible .vignette{transform:translateY(-4px);border-color:var(--rose)}.menu-meta{display:flex;justify-content:space-between;gap:.3rem;font:.75rem var(--font-timecode);margin:1rem 0;color:#f2eee5aa}.menu-scenes strong{font:700 1.75rem var(--font-titre);text-transform:uppercase}.menu-scenes a[aria-current=page] strong{color:var(--rose)}.menu-bas{display:flex;align-items:center;justify-content:space-between;gap:1rem}.menu-bas p{font:700 2rem var(--font-main);color:var(--rose);transform:rotate(-3deg);margin:0}@media(max-width:45rem){.menu-scenes{grid-template-columns:repeat(2,minmax(0,1fr));gap:1.5rem 1rem}.menu-tete>p{display:none}.menu-meta{font-size:.65rem}.menu-scenes strong{font-size:1.4rem}.menu-bas p{font-size:1.5rem}}
+
   .entete {
     position: relative;
     display: grid;

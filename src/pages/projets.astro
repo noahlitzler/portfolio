@@ -1,6 +1,6 @@
 ---
 import Base from "../layouts/Base.astro";
-import Visuel from "../components/Visuel.astro";
+import Affiche from "../components/Affiche.astro";
 import { projets } from "../data/projets.js";
 ---
 <Base titre="Projets" description="Trois séances à l’affiche : production graphique, UX / UI design et branding. Choisis un projet pour découvrir son making-of." timecode="00:03:12:08" progression={32} precedent="accueil" suivant="apropos">
@@ -13,17 +13,7 @@ import { projets } from "../data/projets.js";
       {projets.map((p) => (
         <li>
           <article class="salle" style={"--accent: " + p.accent}>
-            <div class="affiche">
-              <div class="art">
-                <Visuel fichier={p.affiche.f} alt={p.affiche.alt} widths={[480, 720, 960]} sizes="(max-width: 62rem) 90vw, 30vw" />
-              </div>
-              <p class="haut"><span>{p.presente}</span><span>{p.numero} / 03</span></p>
-              <div class="bas">
-                <p class="a-l-affiche" aria-hidden="true">À l’affiche</p>
-                <p class="legende">{p.legende}</p>
-                <p class="seance-nom">{p.seance}</p>
-              </div>
-            </div>
+            <a class="affiche" href={'/projets/'+p.slug} aria-label={'Découvrir '+p.titre}><Affiche projet={p} /></a>
             <div class="pied-carte">
               <p class="num">{p.numero} / 03</p>
               <h2>{p.categorie}</h2>
@@ -40,7 +30,7 @@ import { projets } from "../data/projets.js";
 </Base>
 
 <style>
-  .projets { padding: clamp(3rem, 6vw, 5rem) clamp(1rem, 4vw, 4rem); }
+  .projets { padding: clamp(3rem, 8.1vw, 8.75rem) var(--gouttiere) 3rem; }
   .etiquette {
     display: inline-block;
     margin: 0;
@@ -79,13 +69,14 @@ import { projets } from "../data/projets.js";
   }
   .salle { position: relative; }
   .affiche {
+    display: block;
     position: relative;
     aspect-ratio: 2 / 3;
     overflow: hidden;
     background: color-mix(in srgb, var(--accent) 25%, var(--ebene));
     transition: transform 0.3s ease;
   }
-  .salle:hover .affiche, .salle:focus-within .affiche { transform: translateY(-0.5rem); }
+  .salle:hover .affiche, .salle:focus-within .affiche { transform: translateY(-0.5rem) rotate(-1deg); box-shadow: -6px -6px var(--bleu), 6px 6px var(--rose); }
   .art { position: absolute; inset: 0; }
   .art :global(img), .art :global(.vide) {
     width: 100%;
