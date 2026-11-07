@@ -19,7 +19,7 @@ const suiv = suivant ? cibles[suivant] : null;
       </a>
     )}
   </div>
-  <p class="copyright">© 2026 Noah Litzler - Montbéliard, France</p>
+  <div class="credits-footer"><p class="copyright">© 2026 Noah Litzler - Montbéliard, France</p><a class="mentions" href="/mentions-legales">Mentions légales et confidentialité</a></div>
   <div class="droite">
     {suiv && (
       <a class="lien" href={suiv.href}>
@@ -31,6 +31,8 @@ const suiv = suivant ? cibles[suivant] : null;
 </footer>
 
 <style>
+.credits-footer{text-align:center}.mentions{display:inline-block;margin-top:.6rem;font-size:.875rem;color:#f2eee5bb;text-underline-offset:.25em}
+
   .pied {
     display: grid;
     grid-template-columns: 1fr auto 1fr;

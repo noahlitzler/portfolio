@@ -43,7 +43,7 @@ const ratioDe = (f) => (f.includes("mockups") ? "16 / 9" : f.includes("banniere"
         <p class="statut">{p.statut}</p>
         {p.url && <a class="entrer" href={p.url} target="_blank" rel="noopener noreferrer">Explorer le site ↗</a>}
       </div>
-      <div class="droite" style={"--n: " + p.visuels.length}>
+      <div class:list={["droite", p.slug]} style={"--n: " + p.visuels.length}>
         {p.url && <a class="projet-preview" href={p.url} aria-label="Ouvrir Derrière le prompt"><Affiche projet={p} simple /></a>}
         {p.visuels.map((v) => (
           <div class="vis">
@@ -318,7 +318,7 @@ const ratioDe = (f) => (f.includes("mockups") ? "16 / 9" : f.includes("banniere"
   }
   .tc { font-family: var(--font-timecode); font-weight: 700; letter-spacing: 0.12em; }
   .plan-media { background: var(--brun-salle); }
-  .plan-media :global(img) { width: 100%; aspect-ratio: 16 / 7; object-fit: cover; }
+  .plan-media :global(img) { width: 100%; aspect-ratio: 1512 / 520; object-fit: contain; }
   .plan-legende {
     margin: 0;
     padding: 1rem;
@@ -429,4 +429,5 @@ const ratioDe = (f) => (f.includes("mockups") ? "16 / 9" : f.includes("banniere"
     .hero, .deux, .axes, .prochaine { grid-template-columns: 1fr; }
     .mini { justify-self: start; }
   }
+@media(min-width:62.01rem){.vivez-l-essentiel{position:relative;min-height:38rem}.vivez-l-essentiel .vis{position:absolute;width:65%;max-width:30rem;top:2rem;left:0}.vivez-l-essentiel .vis:nth-child(1){z-index:3;transform:rotate(3deg)}.vivez-l-essentiel .vis:nth-child(2){z-index:2;left:20%;top:4rem;transform:rotate(-4deg)}.vivez-l-essentiel .vis:nth-child(3){z-index:1;left:35%;top:6rem;transform:rotate(8deg)}}
 </style>

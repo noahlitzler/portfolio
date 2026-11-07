@@ -165,12 +165,12 @@ export const projets = [
     credits: [["Un projet de", "Noah Litzler et Clément Bertrand"], ["Cadre", "SAÉ 303 - BUT MMI"], ["Format", "Expérience web interactive"], ["Année", "2026"]],
     affiche: { type: "prompt", alt: "Derrière le prompt : l’énergie invisible" }, visuels: [],
     pitch: { texte: "Une réponse s’affiche en quelques secondes. Mais derrière l’écran,", accroche: "l’invisible existe." },
-    commande: "Rendre des données sur l’intelligence artificielle compréhensibles dans une expérience de datavisualisation. Le parcours aborde la requête, les modèles, la consommation d’énergie et les infrastructures.",
-    role: "J’ai réalisé ce projet en binôme avec Clément Bertrand. Notre résultat associe un récit visuel et quatre visualisations interactives. La répartition détaillée de nos contributions sera précisée après ma relecture.",
+    commande: "Répondre au défi ADEME « L’impact environnemental de l’IA générative » (Open Data University) en rendant les données compréhensibles dans une expérience de datavisualisation. Le parcours aborde la requête, les modèles, la consommation d’énergie et les infrastructures.",
+    role: "J’ai réalisé ce projet en binôme avec Clément Bertrand. Notre résultat associe un récit visuel et quatre visualisations interactives.",
     makingOf: { titre: "Des données à une histoire à explorer.", plans: [
       {timecode: "00:01:12:04", titre: "Comprendre", legende: "Distinguer estimations et mesures : les chiffres donnent des ordres de grandeur, pas l’empreinte exacte de chaque prompt.", texte: "Le site explique ses sources et les limites des comparaisons dans une page méthode accessible pendant toute l’expérience."},
       {timecode: "00:02:12:04", titre: "Scénariser", legende: "Quatre chapitres pour passer d’une action quotidienne à ses infrastructures.", texte: "La requête → comparer les modèles → mesurer l’énergie → les infrastructures. Le défilement relie chaque étape ; les chapitres permettent aussi un accès direct."},
-      {timecode: "00:03:12:04", titre: "Explorer", legende: "Laisser le visiteur explorer les graphiques et consulter la méthode.", texte: "Une navigation persistante, des visualisations et une conclusion donnent plusieurs niveaux de lecture au sujet."}
+      {timecode: "00:03:12:04", titre: "Explorer", legende: "Laisser le visiteur explorer les graphiques et consulter la méthode.", texte: "Le site utilise Astro, des données JSON préfiltrées et des visualisations issues de notre notebook Observable. Les sélecteurs, les changements d’échelle et les cartes permettent une lecture active."}
     ]},
     resultat: {titre: "Une expérience en ligne, quatre visualisations.", images: [], legende: "Le site complet est accessible via le lien ci-dessous, avec ses interactions et sa page méthode."},
     coupee: {titre: "Le regard critique fait partie du projet.", correctifs: [["Un chiffre isolé", "un chiffre contextualisé"]], texte: "Présenter les incertitudes avec les données et conserver un accès clair aux sources : la mise en scène doit aider à comprendre les ordres de grandeur."}

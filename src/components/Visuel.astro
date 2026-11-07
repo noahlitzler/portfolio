@@ -7,7 +7,7 @@ const src = images["/src/assets/projets/" + fichier];
 const svg = fichier === "cimade-logo.svg";
 if (!src && !svg) throw new Error("Visuel manquant : " + fichier);
 ---
-{svg ? (<img src="/figma/fb8ae.svg" alt={alt} loading="lazy" class="logo-cimade" />) : src ? (
+{svg ? (<img src="/figma/fb8ae.svg" alt={alt} loading="lazy" class="logo-cimade" width="492" height="202" />) : src ? (
   <Image src={src} alt={alt} widths={widths} sizes={sizes} format="webp" quality={80} />
 ) : (
   <div class="vide" role="img" aria-label={"Visuel à venir : " + alt} style={ratio ? "aspect-ratio: " + ratio : undefined}>
@@ -16,7 +16,7 @@ if (!src && !svg) throw new Error("Visuel manquant : " + fichier);
 )}
 
 <style>
-  .logo-cimade { padding: 3rem 1rem; background: white; aspect-ratio: 3 / 2; object-fit: contain; }
+  .logo-cimade { padding: 3rem 1rem; background: white; height:auto; object-fit: contain; }
   img { display: block; width: 100%; height: auto; }
   .vide {
     display: grid;

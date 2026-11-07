@@ -10,6 +10,7 @@ import "../styles/global.css";
 import Entete from "../components/Entete.astro";
 import PiedDePage from "../components/PiedDePage.astro";
 
+const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : undefined;
 const { titre, description, timecode = "00:00:00:00", progression = 0, precedent, suivant } = Astro.props;
 ---
 <!doctype html>
@@ -19,6 +20,14 @@ const { titre, description, timecode = "00:00:00:00", progression = 0, precedent
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    {canonical && <link rel="canonical" href={canonical} />}
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:site_name" content="Noah Litzler - Portfolio" />
+    <meta property="og:title" content={titre + ' - Noah Litzler'} />
+    <meta property="og:description" content={description} />
+    {canonical && <meta property="og:url" content={canonical} />}
+    <meta name="twitter:card" content="summary" />
     <title>{titre} - Noah Litzler</title>
   </head>
   <body>
