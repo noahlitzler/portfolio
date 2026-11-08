@@ -72,3 +72,14 @@ Règle : je dois pouvoir expliquer chaque ligne du code du site. Quand une IA m'
 - Contrôles : build ; galerie avec précédent/suivant, Échap et retour du focus ; curseur aux deux extrémités au clavier ; activation puis coupure du son ; huit pages contrôlées à 320 px sans débordement après chargement des polices. Aucune erreur console observée pendant ce parcours. Le navigateur de vérification demande les mouvements réduits : mode statique observé, animations complètes non jugées visuellement dans ce mode.
 - Corrections : correspondance des étiquettes du comparateur ; progression supérieure liée au scroll ; générique lisible sans JavaScript ; respect du mouvement réduit.
 - Relecture personnelle de Noah encore à faire : comprendre les écouteurs d’événements, IntersectionObserver, les dialogues, requestAnimationFrame et les réglages d’accessibilité ; préciser ensuite ses corrections ou rejets.
+
+
+## Codex / OpenAI - refonte éditoriale du 8 novembre 2026
+
+- Autorisation : Noah a validé la composition d’accueil et de séquence projet, puis demandé son intégration complète avec sauvegarde et commits locaux.
+- Sauvegarde préalable : ZIP des sources (y compris les modifications non commitées et package-lock.json) et bundle Git ; commit 5f91ed1 de la version précédente.
+- Travail de l’outil : nouvelle composition de l’accueil, programmation en grands plans, trois univers de projets, composant HeroProjet, navigation unique par dialog, pied de page et déplacement des données de parcours vers la page À propos. Le profil reprend les contenus existants, sans expérience ajoutée.
+- Fichiers principaux : Entete.astro, FilmProgramme.astro, HeroProjet.astro, Profil.astro, PiedDePage.astro, index.astro, projets.astro, projets/[slug].astro, profil.js et editorial.css ; retrait du lecteur inférieur dans Cinema.astro et simplification du calcul de progression dans cinema.ts.
+- Corrections après inspection : marges des titres, placement des textes de l’accueil, proportions des affiches et suppression des anciens styles du lecteur. Les CSS ont été mises en forme pour faciliter la relecture.
+- Contrôles : build, références locales, huit routes à 320 px, navigation menu/Échap, bande-annonce, galerie et comparateur. Les médias existants sont utilisés ; aucune dépendance ajoutée.
+- À relire personnellement : chaque nouveau composant, les trois ambiances de projets, le contenu du profil, les choix graphiques et les animations dans un navigateur sans réduction des mouvements. Aucune relecture personnelle n’est attestée à la place de Noah.

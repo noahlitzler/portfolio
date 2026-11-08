@@ -58,3 +58,19 @@ La validation native a été exercée sans envoi : champs nom/email/message vide
 - Le lecteur indique un repère calculé selon la position de lecture, et non une mesure du temps passé. Les scènes sont de vrais liens internes.
 - Les transitions natives restent une amélioration progressive ; pas de remplacement du routeur ni de modification du traitement Netlify du formulaire. Aucun envoi de formulaire réalisé.
 - Le logo officiel du comparateur est attribué à La Cimade ; les vérifications de droits et mentions avant publication demeurent à valider.
+
+
+## Contrôle de la refonte éditoriale - version actuelle
+
+Cette section remplace les descriptions antérieures du lecteur inférieur, maintenant retiré.
+
+- Build Astro : réussi, 12 sorties de pages dont deux redirections, plus robots.txt et sitemap.
+- Analyse du HTML : 10 pages de contenu, 207 références locales href/src contrôlées sans fichier absent, 39 balises image dotées d’alternatives. L’image vide du dialogue de galerie est un emplacement initial, rempli à l’ouverture ; elle n’est pas un média manquant visible.
+- Huit routes contrôlées à 320 px après chargement des polices : accueil, projets, trois études de cas, à propos, contact et merci. Largeur du contenu égale à la largeur disponible (305 px avec scrollbar), sans dépassement.
+- Contrôle visuel ordinateur et mobile : correction des marges de titres, des chevauchements et de la proportion des affiches.
+- Navigation : un seul menu principal dans un dialogue ; Échap et restitution du focus vérifiés. Les coordonnées et réglages restent dans le menu et le footer. Aucun second menu fixe.
+- Bande-annonce : passage à La Cimade par le bouton suivant observé ; Échap restitue le focus au bouton d’ouverture.
+- Galerie : image suivante et retour du focus vérifiés ; comparaison à 100 % au clavier observée. Aucune erreur console observée pendant ce parcours.
+- Préférence système de mouvement réduit active dans le navigateur de contrôle : les contenus restent visibles. La qualité subjective du mouvement complet reste à apprécier dans le navigateur habituel de Noah.
+- Poids du build : 6 391 766 octets, comprenant toutes les routes, le CV et les différentes tailles d’images. Ce total n’est pas le poids initial d’une visite.
+- Les étapes externes restent en attente : relecture de Noah, domaine et réception réelle du formulaire, compléments juridiques et droits des références. Aucun message envoyé et aucune publication.

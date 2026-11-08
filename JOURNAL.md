@@ -101,3 +101,14 @@ Ces mises à jour n’ont pas été effectuées par Codex ; cette justification 
 - Son de projecteur synthétisé, volontaire, désactivé au changement de page et quand l’onglet est masqué.
 - Contrôles de mouvement et prise en compte du réglage système ; vérification responsive à 320 px.
 - Commits locaux ; aucun push ni déploiement. package-lock.json apparu après l’installation npm de Noah est conservé, sans être ajouté aux commits de cette intervention.
+
+
+### 8 novembre - refonte après validation de la direction artistique
+
+- Décision : une seule navigation globale, par Chapitres ; suppression de la barre inférieure signalée comme redondante.
+- Accueil : composition avec nom monumental et détail d’illustration, puis programmation en trois grands plans.
+- Projets : illustration claire pour Vivez l’essentiel, rouge pour La Cimade, bleu nuit pour Derrière le prompt ; sections des études de cas structurées en actes.
+- À propos : storyboard conservé et parcours détaillé déplacé depuis l’accueil pour alléger l’entrée.
+- Galerie, comparaison et bande-annonce conservées ; réglages du son et des effets rangés dans le menu.
+- Contrôles : compilation réussie ; références locales présentes ; huit routes sans dépassement horizontal à 320 px ; interactions principales exercées sans envoi de formulaire.
+- Sauvegardes avant modification et commits locaux. Aucun push ni déploiement.
