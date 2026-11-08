@@ -19,6 +19,7 @@ function stop(){clearInterval(timer);timer=undefined;if(pause){pause.textContent
 function show(index:number){current=(index+slides.length)%slides.length;slides.forEach((slide,i)=>slide.hidden=i!==current);const counter=document.querySelector('.annonce-position');if(counter)counter.textContent=String(current+1).padStart(2,'0')+' / '+String(slides.length).padStart(2,'0')}
 function play(){stop();if(pause){pause.textContent='Pause';pause.setAttribute('aria-pressed','true')}timer=setInterval(()=>{if(current===slides.length-1)stop();else show(current+1)},4200)}
 document.querySelectorAll<HTMLElement>('[data-annonce-open]').forEach(button=>button.addEventListener('click',()=>{opener=button;show(0);annonce?.showModal();if(!matchMedia('(prefers-reduced-motion: reduce)').matches)play();else stop()}));
+document.querySelector('.annonce-ecran')?.addEventListener('focusin',stop);
 document.querySelector('[data-annonce-close]')?.addEventListener('click',()=>annonce?.close());
 document.querySelector('[data-annonce-prev]')?.addEventListener('click',()=>{stop();show(current-1)});
 document.querySelector('[data-annonce-next]')?.addEventListener('click',()=>{stop();show(current+1)});

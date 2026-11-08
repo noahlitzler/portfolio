@@ -31,7 +31,7 @@ const ratioDe = (f) => (f.includes("mockups") ? "16 / 9" : f.includes("banniere"
 
     {p.pitch && (
       <section class="chapitre" aria-labelledby="t-pitch">
-        <p class="label">Le pitch</p>
+        <p class="label">Acte I · Le pitch</p>
         <h2 id="t-pitch" class="grand">{p.pitch.texte} <span class="accroche">{p.pitch.accroche}</span></h2>
         <div class="deux">
           <div><h3 class="label">La commande</h3><p>{p.commande}</p></div>
@@ -42,7 +42,7 @@ const ratioDe = (f) => (f.includes("mockups") ? "16 / 9" : f.includes("banniere"
 
     {p.makingOf && (
       <section class="chapitre" aria-labelledby="t-making">
-        <p class="label">Le making-of</p>
+        <p class="label">Acte II · Le making-of</p>
         <h2 id="t-making" class="grand">{p.makingOf.titre}</h2>
         <ol class="plans">
           {p.makingOf.plans.map((pl, i) => (
@@ -71,7 +71,7 @@ const ratioDe = (f) => (f.includes("mockups") ? "16 / 9" : f.includes("banniere"
 
     {p.fiche && (
       <section class="chapitre" aria-labelledby="t-fiche">
-        <p class="label">Fiche technique</p>
+        <p class="label">Acte III · Fiche technique</p>
         <h2 id="t-fiche" class="grand">{p.fiche.titre}</h2>
         <ul class="nuancier">
           {p.fiche.couleurs.map((c) => (
@@ -96,7 +96,7 @@ const ratioDe = (f) => (f.includes("mockups") ? "16 / 9" : f.includes("banniere"
 
     {p.resultat && (
       <section class="chapitre" aria-labelledby="t-resultat">
-        <p class="label">Résultat</p>
+        <p class="label">Acte IV · Résultat</p>
         <h2 id="t-resultat" class="grand">{p.resultat.titre}</h2>
         {p.slug === "la-cimade" && <Comparateur />}
         <div class="galerie">
@@ -112,7 +112,7 @@ const ratioDe = (f) => (f.includes("mockups") ? "16 / 9" : f.includes("banniere"
 
     {p.coupee && (
       <section class="chapitre" aria-labelledby="t-coupee">
-        <p class="label">Scène coupée</p>
+        <p class="label">Acte V · Scène coupée</p>
         <h2 id="t-coupee" class="grand">{p.coupee.titre}</h2>
         <ul class="corrections">
           {p.coupee.correctifs.map(([avant, apres]) => (
