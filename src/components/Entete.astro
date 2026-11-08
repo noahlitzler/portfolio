@@ -27,7 +27,7 @@ const actif = (href) => chemin === href || chemin.startsWith(href + "/");
   <div class="droite">
     <p class="timecode" aria-hidden="true">
       <svg width="10" height="12" viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z" fill="currentColor" /></svg>
-      {timecode}
+      <span data-timecode>{timecode}</span>
     </p>
     <button class="ouvrir-chapitres" type="button" aria-haspopup="dialog" aria-controls="menu-chapitres">☰ <span>Chapitres</span></button>
   </div>

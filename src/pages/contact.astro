@@ -84,16 +84,19 @@ const fin = [
     </div>
   </section>
 
-  <section class="fin" aria-labelledby="titre-fin">
+  <section class="fin generique-final" aria-labelledby="titre-fin">
     <h2 id="titre-fin">Fin</h2>
-    <dl>
+    <p class="generique-note">Les crédits de cette séance. À lire à ton rythme.</p>
+    <button class="bouton-cinema" type="button" data-credits aria-pressed="false">Lire le générique</button>
+    <div class="fenetre-generique"><div class="piste-generique"><dl>
       {fin.map(([role, nom]) => (
         <>
           <dt>{role}</dt>
           <dd>{nom}</dd>
         </>
       ))}
-    </dl>
+    </dl></div></div>
+    <div class="generique-actions"><a href="mailto:noah.litzler@gmail.com">Écrire à Noah ↗</a><a href="/projets">Revoir les séances ↗</a></div>
   </section>
 </Base>
 

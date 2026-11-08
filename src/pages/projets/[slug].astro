@@ -3,6 +3,7 @@ import "@fontsource/montserrat/latin-700.css";
 import Base from "../../layouts/Base.astro";
 import Bandeau from "../../components/Bandeau.astro";
 import Visuel from "../../components/Visuel.astro";
+import Comparateur from "../../components/Comparateur.astro";
 import Affiche from "../../components/Affiche.astro";
 import { projets } from "../../data/projets.js";
 
@@ -75,7 +76,7 @@ const ratioDe = (f) => (f.includes("mockups") ? "16 / 9" : f.includes("banniere"
             <li class="plan">
               <p class="plan-tete"><span>Plan {String(i + 1).padStart(2, "0")}</span><span class="tc">{pl.timecode}</span></p>
               <div class="plan-media">
-                {pl.image && <Visuel fichier={pl.image.f} alt={pl.image.alt} ratio="16 / 7" widths={[720, 1200, 1600]} sizes="(max-width: 62rem) 95vw, 85vw" />}
+                {pl.image && <Visuel zoom fichier={pl.image.f} alt={pl.image.alt} ratio="16 / 7" widths={[720, 1200, 1600]} sizes="(max-width: 62rem) 95vw, 85vw" />}
                 {pl.texte && <div class="plan-texte"><h3>{pl.titre}</h3><p>{pl.texte}</p></div>}
                 {pl.axes && (
                   <div class="axes">
@@ -124,9 +125,10 @@ const ratioDe = (f) => (f.includes("mockups") ? "16 / 9" : f.includes("banniere"
       <section class="chapitre" aria-labelledby="t-resultat">
         <p class="label">Résultat</p>
         <h2 id="t-resultat" class="grand">{p.resultat.titre}</h2>
+        {p.slug === "la-cimade" && <Comparateur />}
         <div class="galerie">
           {p.resultat.images.map((im) => (
-            <div class="im"><Visuel fichier={im.f} alt={im.alt} ratio={ratioDe(im.f)} widths={[480, 720, 960]} sizes="(max-width: 62rem) 90vw, 30vw" /></div>
+            <div class="im"><Visuel zoom fichier={im.f} alt={im.alt} ratio={ratioDe(im.f)} widths={[480, 720, 960]} sizes="(max-width: 62rem) 90vw, 30vw" /></div>
           ))}
         </div>
         <p class="legende-res">{p.resultat.legende}</p>
@@ -144,7 +146,7 @@ const ratioDe = (f) => (f.includes("mockups") ? "16 / 9" : f.includes("banniere"
             <li><s>{avant}</s><span class="sr-only"> corrigé en </span><span class="apres">{apres}</span></li>
           ))}
         </ul>
-        <p class="texte-coupe">{p.coupee.texte}</p>
+        <details class="pistes-coupees"><summary>Ouvrir les notes de montage</summary><p>{p.coupee.texte}</p></details>
       </section>
     )}
 

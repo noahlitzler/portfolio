@@ -1,34 +1,11 @@
 ---
-import { Image } from "astro:assets";
-
-const { fichier, alt, widths = [480, 960, 1440], sizes = "(max-width: 62rem) 92vw, 60vw", ratio } = Astro.props;
-const images = import.meta.glob("/src/assets/projets/*.{png,jpg,jpeg,webp}", { eager: true, import: "default" });
-const src = images["/src/assets/projets/" + fichier];
-const svg = fichier === "cimade-logo.svg";
-if (!src && !svg) throw new Error("Visuel manquant : " + fichier);
+import { Image, getImage } from 'astro:assets';
+const { fichier, alt, widths = [480,960,1440], sizes = '(max-width: 62rem) 92vw, 60vw', zoom = false } = Astro.props;
+const images = import.meta.glob('/src/assets/projets/*.{png,jpg,jpeg,webp}', {eager:true,import:'default'});
+const src = images['/src/assets/projets/'+fichier];
+const svg = fichier === 'cimade-logo.svg';
+if (!src && !svg) throw new Error('Visuel manquant : '+fichier);
+const full = src && zoom ? await getImage({src,width:Math.min(src.width,1600),format:'webp',quality:88}) : null;
 ---
-{svg ? (<img src="/figma/fb8ae.svg" alt={alt} loading="lazy" class="logo-cimade" width="492" height="202" />) : src ? (
-  <Image src={src} alt={alt} widths={widths} sizes={sizes} format="webp" quality={80} />
-) : (
-  <div class="vide" role="img" aria-label={"Visuel à venir : " + alt} style={ratio ? "aspect-ratio: " + ratio : undefined}>
-    <span>Visuel à venir</span>
-  </div>
-)}
-
-<style>
-  .logo-cimade { padding: 3rem 1rem; background: white; height:auto; object-fit: contain; }
-  img { display: block; width: 100%; height: auto; }
-  .vide {
-    display: grid;
-    place-items: center;
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    background: color-mix(in srgb, var(--accent, var(--rose)) 25%, var(--brun-salle));
-    border: 2px dashed color-mix(in srgb, var(--creme) 40%, transparent);
-    color: color-mix(in srgb, var(--creme) 70%, transparent);
-    font-family: var(--font-label);
-    font-size: var(--taille-label);
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-  }
-</style>
+{svg ? <img src="/figma/fb8ae.svg" alt={alt} loading="lazy" class="logo-cimade" width="492" height="202" /> : zoom && full ? <a class="agrandir-visuel" href={full.src} data-gallery data-caption={alt} aria-label={'Agrandir : '+alt}><Image src={src} alt={alt} widths={widths} sizes={sizes} format="webp" quality={80} /></a> : <Image src={src} alt={alt} widths={widths} sizes={sizes} format="webp" quality={80} />}
+<style>.logo-cimade{padding:3rem 1rem;background:white;height:auto;object-fit:contain}img{display:block;width:100%;height:auto}</style>
