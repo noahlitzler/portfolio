@@ -1,12 +1,6 @@
 ---
 import '../styles/cinema.css';
 ---
-<aside class="lecteur-cinema" aria-label="Lecteur de la séance" hidden>
- <div class="lecture-info"><span class="voyant" aria-hidden="true"></span><span class="lecture-label">À l’affiche</span><span class="lecture-compteur" aria-hidden="true"></span></div>
- <nav class="lecture-chapitres" aria-label="Scènes de cette page"></nav>
- <div class="lecture-options"><button type="button" data-motion aria-pressed="false">Effets : actifs</button><button type="button" data-sound aria-pressed="false">Son : coupé</button><span class="lecture-horloge" title="Repère de lecture estimé" aria-hidden="true">00:00:00:00</span></div>
- <div class="lecture-piste" aria-hidden="true"><span></span></div>
-</aside>
 <dialog class="projection" aria-labelledby="projection-titre">
  <header><p id="projection-titre">Salle de projection</p><button type="button" data-gallery-close autofocus>Fermer ✕</button></header>
  <figure><img class="projection-image" alt="" /><figcaption aria-live="polite"></figcaption></figure>

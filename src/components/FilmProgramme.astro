@@ -1,0 +1,14 @@
+---
+import {Image} from 'astro:assets';import Affiche from './Affiche.astro';
+const {projet:p}=Astro.props;
+const illustrations=import.meta.glob('/src/assets/projets/*.{png,jpg,jpeg,webp}',{eager:true,import:'default'});
+const photo=illustrations['/src/assets/projets/'+p.affiche.f];
+const genres={'vivez-l-essentiel':['L’image','Une ville. Trois monuments. Un même regard.'],'la-cimade':['La marque','Faire du lien humain un signe reconnaissable.'],'derriere-le-prompt':['Les données','Donner à voir ce que l’écran rend invisible.']};const [genre,phrase]=genres[p.slug];
+---
+<article class:list={['film-programme',p.slug]}>
+ <a class="film-image" href={'/projets/'+p.slug} aria-label={'Découvrir '+p.titre} style={'view-transition-name: affiche-'+p.slug}>
+  {photo?<Image src={photo} alt={p.affiche.alt} widths={[480,800,1200]} sizes="(max-width: 48rem) 90vw, 48vw" format="webp" />:p.slug==='la-cimade'?<div class="marque-programme"><img src="/figma/fb8ae.svg" alt="Proposition d’identité La Cimade" loading="lazy" width="492" height="202" /></div>:<div class="prompt-programme"><Affiche projet={p} simple /></div>}
+  <span class="film-ouvrir" aria-hidden="true">↗</span>
+ </a>
+ <div class="film-fiche"><p class="sur-titre">Séance {p.numero} <span>/ {p.categorie}</span></p><span class="film-genre" aria-hidden="true">{genre}</span><h2><a href={'/projets/'+p.slug}>{p.titre}</a></h2><p class="film-phrase">{phrase}</p><p class="film-disciplines">{p.mots}</p><a class="lien-editorial" href={'/projets/'+p.slug}>Entrer dans la séance <span aria-hidden="true">↗</span></a></div>
+</article>

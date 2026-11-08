@@ -11,20 +11,15 @@ if(location.pathname === '/' && !stored('cinema-intro')){
  setTimeout(()=>document.documentElement.classList.remove('premiere-seance'),1400);
 }
 // Révélations progressives : les contenus restent visibles sans JS ou en mouvement réduit.
-const reveals = [...document.querySelectorAll<HTMLElement>('main .chapitre, main .scene, main .plan, main .presentation, main .programme, main .prochaine')];
+const reveals = [...document.querySelectorAll<HTMLElement>('main .chapitre, main .scene, main .plan, main .presentation, main .programme, main .prochaine, main .film-programme, main .auteur-home, main .profil-detail')];
 const observer = new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('dans-le-plan');observer.unobserve(entry.target)}}),{threshold:0.08});
 reveals.forEach(el=>{if(el.getBoundingClientRect().top>innerHeight){el.classList.add('attente-plan');observer.observe(el)}});
 const motion = document.querySelector<HTMLButtonElement>('[data-motion]');
 function syncMotion(){document.documentElement.classList.toggle('effets-reduits',effectsOff);if(motion){motion.setAttribute('aria-pressed',String(effectsOff));motion.textContent = effectsOff || reduced.matches ? 'Effets : réduits':'Effets : actifs';}if(effectsOff || reduced.matches)reveals.forEach(el=>el.classList.add('dans-le-plan'));}
 motion?.addEventListener('click',()=>{effectsOff=!effectsOff;remember('cinema-effects',effectsOff?'off':'on');syncMotion()});reduced.addEventListener('change',syncMotion);syncMotion();
-// Chaque repère est un véritable lien ; le temps est une estimation de lecture.
-const sections=[...document.querySelectorAll<HTMLElement>('main section')].filter(el=>!el.querySelector('section') && el.querySelector('h1,h2'));
-const nav=document.querySelector('.lecture-chapitres');
-sections.forEach((el,i)=>{if(!el.id)el.id='scene-'+(i+1);const a=document.createElement('a');a.href='#'+el.id;const label=el.querySelector('.label,h1,h2')?.textContent?.trim()||'Scène '+(i+1);a.textContent=String(i+1).padStart(2,'0');a.title=label;a.setAttribute('aria-label',label);nav?.append(a)});
-const duration=Math.max(45,Math.round((main?.innerText.split(/\s+/).length||180)/180*60));
-const hud=document.querySelector<HTMLElement>('.lecteur-cinema');if(hud && sections.length)hud.hidden=false;
+// La progression du document est indiquée par un seul filet sous le menu.
 let scheduled=false;
-function updateReader(){scheduled=false;const max=Math.max(1,document.documentElement.scrollHeight-innerHeight);const progress=Math.max(0,Math.min(1,scrollY/max));document.documentElement.style.setProperty('--lecture',String(progress));let index=0;sections.forEach((el,i)=>{if(el.getBoundingClientRect().top<innerHeight*.45)index=i});const current=sections[index];const label=current?.querySelector('.label,h1,h2')?.textContent?.trim()||'À l’affiche';const text=document.querySelector('.lecture-label');if(text)text.textContent=label;const counter=document.querySelector('.lecture-compteur');if(counter)counter.textContent=String(index+1).padStart(2,'0')+' / '+String(sections.length).padStart(2,'0');nav?.querySelectorAll('a').forEach((a,i)=>{if(i===index)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current')});const frames=Math.round(progress*duration*24);const tc=[Math.floor(frames/86400),Math.floor(frames/1440)%60,Math.floor(frames/24)%60,frames%24].map(n=>String(n).padStart(2,'0')).join(':');document.querySelectorAll('[data-timecode],.lecture-horloge').forEach(el=>el.textContent=tc);}
+function updateReader(){scheduled=false;const max=Math.max(1,document.documentElement.scrollHeight-innerHeight);document.documentElement.style.setProperty('--lecture',String(Math.max(0,Math.min(1,scrollY/max))));}
 addEventListener('scroll',()=>{if(!scheduled){scheduled=true;requestAnimationFrame(updateReader)}},{passive:true});addEventListener('resize',updateReader);addEventListener('load',updateReader);updateReader();
 // Galerie au clavier, regroupée par section, avec lien image natif en secours.
 const gallery=document.querySelector<HTMLDialogElement>('.projection');
