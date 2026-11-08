@@ -15,3 +15,5 @@ body{padding-bottom:4.5rem}.entete{position:sticky!important;top:0;z-index:40;ba
 @media(prefers-reduced-motion:reduce){::view-transition-group(*),::view-transition-old(root),::view-transition-new(root){animation:none!important}.attente-plan{opacity:1;transform:none;transition:none}.premiere-seance *{animation:none!important}.generique-final .fenetre-generique{height:auto;mask-image:none}.generique-final .piste-generique{animation:none;padding:0}.generique-final [data-credits]{display:none}}
 
 .effets-reduits::view-transition-old(root),.effets-reduits::view-transition-new(root){animation:none!important}.generique-final .fin dl{margin-top:0}.comparateur input:focus-visible{outline-offset:4px}@media(hover:none){.agrandir-visuel::after{opacity:1}}
+
+.entete .progression{width:calc(var(--lecture,0)*100%)!important}html:not(.cinema-ready) .fenetre-generique{height:auto;overflow:visible;mask-image:none}html:not(.cinema-ready) .piste-generique{animation:none;padding:0}html:not(.cinema-ready) [data-credits]{display:none}.comparaison-labels>span{max-width:48%}.generique-final dl{margin-top:0}

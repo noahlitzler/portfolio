@@ -57,3 +57,12 @@ Maquette : https://www.figma.com/design/jAvCe2R0eTMmsTBlGz5A2E/PORTFOLIO---NOAH-
 6. Compléter les mesures de QUALITE.md et la relecture personnelle de IA.md.
 
 Les commits du 7 novembre sont locaux. Ne pas pousser avant validation de Noah.
+
+
+## La séance cinéma
+
+Le composant Cinema.astro installe le lecteur et la galerie sur chaque page. Le script cinema.ts comporte des sections commentées : ouverture (sessionStorage), révélations (IntersectionObserver), repères de lecture (scroll + requestAnimationFrame), galerie (dialog natif), comparateur (range), générique (état CSS) et son volontaire (Web Audio).
+
+Les animations sont dans cinema.css ; prefers-reduced-motion et le bouton Effets permettent une lecture calme. La préférence Effets est conservée pour la session. Le son commence toujours coupé et ne se relance pas automatiquement après navigation. Les raccords d’affiches utilisent des noms de transition propres à chaque projet avec les View Transitions natives entre documents. Aucune bibliothèque ajoutée.
+
+Pour essayer : ouvrir un projet, utiliser les numéros en bas, agrandir un visuel, tester les flèches puis Échap ; sur La Cimade, déplacer le curseur ; sur Contact, lancer ou mettre en pause le générique si le système autorise les animations. L’envoi du formulaire reste à tester sur l’hébergement après validation.

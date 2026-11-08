@@ -1,4 +1,5 @@
 // Une seule initialisation par document ; navigation native Astro conservée.
+document.documentElement.classList.add('cinema-ready');
 const main = document.querySelector('main');
 const reduced = matchMedia('(prefers-reduced-motion: reduce)');
 const stored = (key: string) => {try{return sessionStorage.getItem(key)}catch{return null}};

@@ -61,3 +61,14 @@ Règle : je dois pouvoir expliquer chaque ligne du code du site. Quand une IA m'
 - Origine des nouveaux textes : maquette, code initial, site et README local de Derrière le prompt. L’outil n’a pas attribué de tâches individuelles détaillées dans le binôme faute de preuve.
 - À relire par Noah : chaque changement de code et de texte ; répartition exacte du travail sur la SAÉ 303 ; politique des données et informations légales. La relecture personnelle n’a pas encore eu lieu : cette entrée ne prétend pas le contraire.
 - À compléter par Noah après relecture : ce que j’ai compris, modifié, corrigé ou rejeté parmi les propositions de Codex.
+
+
+## Codex / OpenAI - expérience cinéma du 8 novembre 2026
+
+- Demande : mettre en œuvre les six évolutions approuvées par Noah, en conservant des commits locaux et sans publication.
+- Code produit : Cinema.astro, scripts/cinema.ts et styles/cinema.css ; comparateur, galerie, ouverture, raccords de navigation, lecteur de scènes, révélations au défilement, ambiance sonore synthétisée sur activation volontaire, générique et billet de remerciement.
+- Méthode : Astro statique conservé ; CSS natif et JavaScript/TypeScript du navigateur ; aucune bibliothèque d’animation ni dépendance ajoutée. Les View Transitions sont progressives : les navigateurs qui ne les prennent pas en charge gardent les liens normaux.
+- Référence du comparateur : logo officiel téléchargé depuis https://www.lacimade.org/wp-content/themes/cimade/_img/lacimade-couleur.svg le 8 novembre 2026, attribué dans la page ; proposition personnelle issue de la maquette. Son original synthétisé avec Web Audio, sans extrait de film ni musique protégée.
+- Contrôles : build ; galerie avec précédent/suivant, Échap et retour du focus ; curseur aux deux extrémités au clavier ; activation puis coupure du son ; huit pages contrôlées à 320 px sans débordement après chargement des polices. Aucune erreur console observée pendant ce parcours. Le navigateur de vérification demande les mouvements réduits : mode statique observé, animations complètes non jugées visuellement dans ce mode.
+- Corrections : correspondance des étiquettes du comparateur ; progression supérieure liée au scroll ; générique lisible sans JavaScript ; respect du mouvement réduit.
+- Relecture personnelle de Noah encore à faire : comprendre les écouteurs d’événements, IntersectionObserver, les dialogues, requestAnimationFrame et les réglages d’accessibilité ; préciser ensuite ses corrections ou rejets.

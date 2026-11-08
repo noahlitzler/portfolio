@@ -45,3 +45,16 @@ Sources consultées : [configuration Netlify Forms](https://docs.netlify.com/man
 ## Complément de contrôle final
 
 La validation native a été exercée sans envoi : champs nom/email/message vides signalés comme obligatoires ; une adresse invalide produit typeMismatch=true. Le contrôle à 320 px a aussi révélé une contrainte de largeur des cartes de contact et du spécimen Montserrat : colonnes rétractables et taille minimale corrigées, puis nouvelle vérification navigateur.
+
+
+## Expérience cinéma - contrôles du 8 novembre 2026
+
+- Compilation Astro réussie après intégration. Galerie : affichage des croquis puis des variantes, changement par bouton, fermeture par Échap et restitution du focus observés.
+- Comparateur : touches Home et End donnent respectivement 0 % et 100 % ; labels des deux identités corrigés.
+- Ambiance sonore : état initial coupé, activation par bouton puis coupure observées. Son synthétisé localement, sans téléchargement externe ; appréciation subjective du volume à valider par Noah.
+- Huit routes testées à 320 px après chargement des polices : accueil, projets, les trois études de cas, à propos, contact et merci. Largeur de contenu égale à la largeur disponible, sans débordement détecté ; aucune erreur console observée sur le parcours.
+- Le navigateur de contrôle a prefers-reduced-motion actif : les révélations sont visibles et le générique est statique et entièrement lisible ; le bouton de lecture animé est masqué. Le rendu animé complet et la qualité subjective des raccords restent à valider dans un navigateur sans cette préférence.
+- L’ouverture ne bloque pas les interactions et sa répétition est limitée par sessionStorage, avec repli si le stockage est indisponible. Le contenu reste accessible sans JS ; le générique est alors statique et les liens d’agrandissement ouvrent les images.
+- Le lecteur indique un repère calculé selon la position de lecture, et non une mesure du temps passé. Les scènes sont de vrais liens internes.
+- Les transitions natives restent une amélioration progressive ; pas de remplacement du routeur ni de modification du traitement Netlify du formulaire. Aucun envoi de formulaire réalisé.
+- Le logo officiel du comparateur est attribué à La Cimade ; les vérifications de droits et mentions avant publication demeurent à valider.

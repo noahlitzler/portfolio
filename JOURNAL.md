@@ -88,3 +88,16 @@ Instagram est adapté à mon parcours création numérique : il permet de montre
 Les deux profils sont liés depuis le contact et le menu mobile.
 Je dois harmoniser leur bio, leur portrait et leurs liens avec le portfolio, puis publier des extraits des trois projets.
 Ces mises à jour n’ont pas été effectuées par Codex ; cette justification est une proposition à relire, pas une attestation d’action.
+
+
+## 8 novembre 2026 - expérience cinéma
+
+- Sauvegardes des sources ZIP et de l’historique Git bundle avant les modifications.
+- Ouverture courte sur l’accueil, jouée une fois par session ; la navigation reste disponible.
+- Raccords entre affiches et études de cas avec les transitions natives ; navigation classique en secours.
+- Lecteur fixe : liens de sections, position actuelle, barre et repère de lecture estimé, distinct d’un temps réel passé sur le site.
+- Galerie plein écran au clavier et comparateur de logo avec curseur natif. Les notes de montage réemploient les limites déjà décrites dans les projets.
+- Générique avec lecture/pause et contact séparé ; confirmation présentée comme un billet.
+- Son de projecteur synthétisé, volontaire, désactivé au changement de page et quand l’onglet est masqué.
+- Contrôles de mouvement et prise en compte du réglage système ; vérification responsive à 320 px.
+- Commits locaux ; aucun push ni déploiement. package-lock.json apparu après l’installation npm de Noah est conservé, sans être ajouté aux commits de cette intervention.
