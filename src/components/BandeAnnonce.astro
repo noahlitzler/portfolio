@@ -1,0 +1,29 @@
+---
+import {projets} from '../data/projets.js';
+import Affiche from './Affiche.astro';
+---
+<dialog class="bande-annonce" aria-labelledby="titre-annonce">
+ <header class="annonce-entete"><p id="titre-annonce">La bande-annonce <span>Trois projets. Trois regards.</span></p><button type="button" class="bouton-cinema" data-annonce-close autofocus>Fermer ✕</button></header>
+ <div class="annonce-ecran">{projets.map((p,i)=><section class="annonce-plan" data-annonce-slide hidden={i!==0}>
+  <div class="annonce-texte"><p class="annonce-numero">Séance {p.numero} / 03</p><p class="annonce-genre">{p.categorie}</p><h2>{p.titre}</h2><p class="annonce-resume">{p.resume}</p><a class="annonce-entrer" href={'/projets/'+p.slug}>Entrer dans cette séance ↗</a></div>
+  <div class="annonce-affiche"><Affiche projet={p} simple /></div>
+ </section>)}</div>
+ <footer class="annonce-commandes"><button class="bouton-cinema" type="button" data-annonce-prev aria-label="Séance précédente">←</button><p class="annonce-position" aria-live="polite">01 / 03</p><button class="bouton-cinema" type="button" data-annonce-next aria-label="Séance suivante">→</button><button class="bouton-cinema" type="button" data-annonce-pause aria-pressed="false">Pause</button></footer>
+</dialog>
+<script>
+const annonce=document.querySelector<HTMLDialogElement>('.bande-annonce');
+const slides=[...document.querySelectorAll<HTMLElement>('[data-annonce-slide]')];
+const pause=document.querySelector<HTMLButtonElement>('[data-annonce-pause]');
+let current=0;let timer:ReturnType<typeof setInterval>|undefined;let opener:HTMLElement|null=null;
+function stop(){clearInterval(timer);timer=undefined;if(pause){pause.textContent='Lecture';pause.setAttribute('aria-pressed','false')}}
+function show(index:number){current=(index+slides.length)%slides.length;slides.forEach((slide,i)=>slide.hidden=i!==current);const counter=document.querySelector('.annonce-position');if(counter)counter.textContent=String(current+1).padStart(2,'0')+' / '+String(slides.length).padStart(2,'0')}
+function play(){stop();if(pause){pause.textContent='Pause';pause.setAttribute('aria-pressed','true')}timer=setInterval(()=>{if(current===slides.length-1)stop();else show(current+1)},4200)}
+document.querySelectorAll<HTMLElement>('[data-annonce-open]').forEach(button=>button.addEventListener('click',()=>{opener=button;show(0);annonce?.showModal();if(!matchMedia('(prefers-reduced-motion: reduce)').matches)play();else stop()}));
+document.querySelector('[data-annonce-close]')?.addEventListener('click',()=>annonce?.close());
+document.querySelector('[data-annonce-prev]')?.addEventListener('click',()=>{stop();show(current-1)});
+document.querySelector('[data-annonce-next]')?.addEventListener('click',()=>{stop();show(current+1)});
+pause?.addEventListener('click',()=>timer?stop():play());
+annonce?.addEventListener('keydown',event=>{if(event.key==='ArrowRight'){event.preventDefault();stop();show(current+1)}if(event.key==='ArrowLeft'){event.preventDefault();stop();show(current-1)}});
+annonce?.addEventListener('close',()=>{stop();opener?.focus()});
+document.addEventListener('visibilitychange',()=>{if(document.hidden)stop()});
+</script>

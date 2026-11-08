@@ -1,6 +1,7 @@
 ---
 import Base from "../layouts/Base.astro";
 import Bandeau from "../components/Bandeau.astro";
+import BandeAnnonce from "../components/BandeAnnonce.astro";
 import Affiche from "../components/Affiche.astro";
 import {projets} from "../data/projets.js";
 import { Image } from "astro:assets";
@@ -32,23 +33,19 @@ const competences = [
 ];
 ---
 <Base titre="Directeur artistique et UI/UX" description="Noah Litzler, étudiant en BUT MMI à Montbéliard. Direction artistique, UI/UX et création numérique. En recherche de stage." timecode="00:00:00:00" progression={6} suivant="affiche">
-  <section class="hero ouverture-film">
-    <p class="carton-ouverture">Une création de Noah Litzler <span>La séance commence.</span></p>
-    <div class="haut">
-      <p class="surtitre">Direction artistique - UI/UX - Création numérique</p>
-      <p class="etiquette">Séance 2026</p>
+  <section class="hero ouverture-film salle-projection">
+    <div class="salle-entree"><p>Bienvenue dans ma salle.</p><span>Direction artistique · UI/UX · Création numérique</span></div>
+    <div class="ecran-projection">
+      <div class="ecran-meta"><span><i aria-hidden="true"></i> Une création de Noah Litzler</span><span>Séance 2026 / Entrée libre</span></div>
+      <p class="accroche">Je transforme une idée en univers visuel.</p>
+      <h1 class="nom" data-texte="Noah Litzler"><span class="face">Noah Litzler</span></h1>
+      <p class="ecran-positionnement">Étudiant en BUT MMI à Montbéliard.<br/>Je cherche un stage en agence créative ou en studio de design.</p>
+      <div class="ecran-actions"><button type="button" class="lancer-seance" data-annonce-open aria-haspopup="dialog"><span aria-hidden="true">▶</span> Lancer la bande-annonce <small>3 projets à découvrir</small></button><a href="/projets" class="choisir-seance">Choisir ma séance ↗</a></div>
+      <div class="ecran-credits"><span>À l’image <strong>Noah Litzler</strong></span><span>Monté en <strong>Astro</strong></span><span>Lieu de tournage <strong>Montbéliard</strong></span></div>
     </div>
-    <p class="accroche">Je transforme une idée en univers visuel.</p>
-    <h1 class="nom" data-texte="Noah Litzler"><span class="face">Noah Litzler</span></h1>
-    <p class="generique">
-      <span>Un film de</span> <strong>Noah Litzler</strong>
-      <span>Avec la participation de</span> <strong>Figma, Affinity et VS Code</strong><br />
-      <span>Une production</span> <strong>BUT MMI - IUT Nord Franche-Comté</strong>
-      <span>Tourné à</span> <strong>Montbéliard</strong>
-      <span>Monté en</span> <strong>Astro</strong>
-    </p>
-    <p class="stage">Actuellement en recherche de stage</p>
+    <div class="salle-programme"><span>Au programme</span><p>01 / L’image <b>✦</b> 02 / La marque <b>✦</b> 03 / Les données</p><a href="#titre-presentation">La suite du film ↓</a></div>
   </section>
+  <BandeAnnonce />
   <Bandeau />
   <section class="presentation" aria-labelledby="titre-presentation">
     <div class="texte">
