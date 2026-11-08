@@ -13,7 +13,7 @@ import { projets } from "../data/projets.js";
       {projets.map((p) => (
         <li>
           <article class="salle" style={"--accent: " + p.accent}>
-            <a class="affiche" href={'/projets/'+p.slug} aria-label={'Découvrir '+p.titre}><Affiche projet={p} /></a>
+            <a class="affiche" style={"view-transition-name: affiche-"+p.slug} href={'/projets/'+p.slug} aria-label={'Découvrir '+p.titre}><Affiche projet={p} /></a>
             <div class="pied-carte">
               <p class="num">{p.numero} / 03</p>
               <h2>{p.categorie}</h2>

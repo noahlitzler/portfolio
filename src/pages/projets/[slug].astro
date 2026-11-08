@@ -43,7 +43,7 @@ const ratioDe = (f) => (f.includes("mockups") ? "16 / 9" : f.includes("banniere"
         <p class="statut">{p.statut}</p>
         {p.url && <a class="entrer" href={p.url} target="_blank" rel="noopener noreferrer">Explorer le site ↗</a>}
       </div>
-      <div class:list={["droite", p.slug]} style={"--n: " + p.visuels.length}>
+      <div class:list={["droite", p.slug]} style={"--n: " + p.visuels.length + ";view-transition-name: affiche-" + p.slug}>
         {p.url && <a class="projet-preview" href={p.url} aria-label="Ouvrir Derrière le prompt"><Affiche projet={p} simple /></a>}
         {p.visuels.map((v) => (
           <div class="vis">

@@ -7,6 +7,7 @@ import "@fontsource/courier-prime/latin-700.css";
 import "../styles/fonts.css";
 import "../styles/tokens.css";
 import "../styles/global.css";
+import Cinema from "../components/Cinema.astro";
 import Entete from "../components/Entete.astro";
 import PiedDePage from "../components/PiedDePage.astro";
 
@@ -38,5 +39,6 @@ const { noindex = false, titre, description, timecode = "00:00:00:00", progressi
       <slot />
     </main>
     <PiedDePage precedent={precedent} suivant={suivant} />
+    <Cinema />
   </body>
 </html>
