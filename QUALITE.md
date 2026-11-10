@@ -85,3 +85,17 @@ Contrôles du retour : compilation réussie ; 169 références locales sans fich
 
 Ajout SULL du 10 novembre : build réussi, logo chargé dans l’aperçu, lien vérifié vers https://sull.clementbertrandportfolio.store/ ; 171 références locales contrôlées sans fichier absent. SULL est un travail complémentaire ; les trois études de cas restent la sélection principale.
 
+
+
+## Cinq projets réunis — 10 novembre 2026
+
+Cette version remplace la séparation précédente entre trois études principales et les travaux complémentaires.
+
+- Build Astro réussi : 13 sorties de pages dont une redirection /sull vers /projets/sull. Les cinq études sont des pages locales générées par le même gabarit.
+- Contrôle HTML : 12 pages de contenu, 232 références locales sans fichier absent, 50 balises image avec alternative ; aucun média temporaire Figma ni emplacement « visuel à venir ».
+- Cinq cartes dans une liste unique, numérotation 01/05 à 05/05. Aucun libellé « trois projets », « trois séances » ou « Autres séances » dans les sources de l’interface.
+- Pour chaque étude : pitch/commande/rôle, trois plans de making-of, fiche technique, résultat et scène coupée. Chaîne suivante observée : Smooth → Vivez l’essentiel → La Cimade → Derrière le prompt → SULL → Smooth.
+- Contrôle navigateur à 320 px sur les cinq études : largeur du document égale aux 305 px disponibles après scrollbar ; aucun débordement horizontal. Accueil : cinq affiches, sans dépassement à 320 px et à la largeur habituelle du navigateur. Programmation : trois colonnes ordinateur, deux à 768 px, une sur petit écran.
+- Menu mobile ouvert puis fermé avec Échap, focus rendu au bouton Chapitres. Progression observée à 100 % en bas de page. Aucune erreur console relevée sur le parcours.
+- Visuels Smooth locaux vérifiés : logo réel et variantes Billie cerise, menthe et noire issus de Figma ; captures SULL du site fourni. Images optimisées par Astro. Les captures et les rendus sont distincts de l’implémentation de la boutique : Smooth reste présenté comme maquette.
+- Preuves visuelles conservées dans outputs : cinq-projets-programmation.png, cinq-projets-mobile.png, cinq-projets-smooth.png, cinq-projets-accueil.png. Sauvegardes avant intervention : portfolio-avant-cinq-projets.zip et .bundle. Deux commits locaux ; aucun push ni déploiement.

@@ -133,13 +133,12 @@ import { projets } from "../data/projets.js";
     text-transform: uppercase;
   }
   .pied-carte {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: end;
-    gap: 0.4rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
     padding-top: 1.25rem;
   }
-  .pied-carte > * { grid-column: 1; }
   .num {
     justify-self: start;
     margin: 0;
@@ -169,8 +168,7 @@ import { projets } from "../data/projets.js";
     color: color-mix(in srgb, var(--creme) 70%, transparent);
   }
   .voir {
-    grid-column: 2;
-    grid-row: 2 / 5;
+    margin-top: 0.5rem;
     padding-bottom: 0.25rem;
     border-bottom: 2px solid var(--creme);
     font-family: var(--font-label);
