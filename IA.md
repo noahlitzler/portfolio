@@ -83,3 +83,8 @@ Règle : je dois pouvoir expliquer chaque ligne du code du site. Quand une IA m'
 - Corrections après inspection : marges des titres, placement des textes de l’accueil, proportions des affiches et suppression des anciens styles du lecteur. Les CSS ont été mises en forme pour faciliter la relecture.
 - Contrôles : build, références locales, huit routes à 320 px, navigation menu/Échap, bande-annonce, galerie et comparateur. Les médias existants sont utilisés ; aucune dépendance ajoutée.
 - À relire personnellement : chaque nouveau composant, les trois ambiances de projets, le contenu du profil, les choix graphiques et les animations dans un navigateur sans réduction des mouvements. Aucune relecture personnelle n’est attestée à la place de Noah.
+
+
+## Codex - retour à la maquette le 10 novembre 2026
+
+À la demande de Noah, restauration de la présentation de la version 3509daa (accueil, projets, études de cas, storyboard et contact), avec conservation du menu Chapitres de la refonte et d’un filet de progression au défilement. Sauvegardes ZIP et bundle de la version éditoriale avant modification. Retrait des composants et styles ajoutés pour la refonte et l’expérience cinéma ; les réglages de son et d’effets sont retirés du menu. Aucun push ni déploiement.

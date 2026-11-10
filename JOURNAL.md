@@ -112,3 +112,8 @@ Ces mises à jour n’ont pas été effectuées par Codex ; cette justification 
 - Galerie, comparaison et bande-annonce conservées ; réglages du son et des effets rangés dans le menu.
 - Contrôles : compilation réussie ; références locales présentes ; huit routes sans dépassement horizontal à 320 px ; interactions principales exercées sans envoi de formulaire.
 - Sauvegardes avant modification et commits locaux. Aucun push ni déploiement.
+
+
+## 10 novembre 2026 - retour à la maquette
+
+Décision de Noah : reprendre la version plus proche de la maquette, conserver le menu actuel et la barre de progression au scroll. La version éditoriale est sauvegardée et son historique conservé. Les trois projets, dont Derrière le prompt en troisième position, et leurs contenus de la version maquette restent présents.

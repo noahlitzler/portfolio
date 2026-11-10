@@ -3,7 +3,7 @@ const chemin=Astro.url.pathname.replace(/\/$/,'')||'/';
 const liens=[{href:'/',nom:'Le début du film',n:'01'},{href:'/projets',nom:'Les trois séances',n:'02'},{href:'/a-propos',nom:'Hors-champ',n:'03'},{href:'/contact',nom:'Le guichet',n:'04'}];
 const actif=(href)=>href==='/'?chemin==='/':chemin.startsWith(href);
 ---
-<header class:list={['masthead',{'sur-papier':chemin==='/projets/vivez-l-essentiel'}]}>
+<header class="masthead">
  <a class="signature" href="/">Noah Litzler<span>Portfolio / 2026</span></a>
  <span class="localisation">Montbéliard, France <span class="disponible">· En recherche de stage</span></span>
  <button class="ouvrir-chapitres" type="button" aria-haspopup="dialog" aria-controls="menu-chapitres">Chapitres <span aria-hidden="true">＋</span></button>
@@ -11,10 +11,59 @@ const actif=(href)=>href==='/'?chemin==='/':chemin.startsWith(href);
 </header>
 <dialog id="menu-chapitres" class="menu-dvd" aria-labelledby="titre-chapitres">
  <div class="menu-barre"><a class="signature" href="/">Noah Litzler<span>Portfolio / 2026</span></a><button type="button" class="fermer-chapitres" autofocus>Fermer <span aria-hidden="true">✕</span></button></div>
- <div class="menu-corps"><div><p class="sur-titre" id="titre-chapitres">Choisis ton chapitre.</p><nav aria-label="Navigation principale"><ol>{liens.map(l=><li><a href={l.href} aria-current={actif(l.href)?'page':undefined}><span>{l.n}</span>{l.nom}<b aria-hidden="true">↗</b></a></li>)}</ol></nav></div><aside class="menu-note"><span class="monogramme" aria-hidden="true">N.L</span><p>Des idées qui prennent forme.<br/>Des images qui restent.</p><a href="mailto:noah.litzler@gmail.com">noah.litzler@gmail.com ↗</a><div class="reglages-seance"><button type="button" data-motion aria-pressed="false">Effets : actifs</button><button type="button" data-sound aria-pressed="false">Son : coupé</button></div></aside></div>
+ <div class="menu-corps"><div><p class="sur-titre" id="titre-chapitres">Choisis ton chapitre.</p><nav aria-label="Navigation principale"><ol>{liens.map(l=><li><a href={l.href} aria-current={actif(l.href)?'page':undefined}><span>{l.n}</span>{l.nom}<b aria-hidden="true">↗</b></a></li>)}</ol></nav></div><aside class="menu-note"><span class="monogramme" aria-hidden="true">N.L</span><p>Des idées qui prennent forme.<br/>Des images qui restent.</p><a href="mailto:noah.litzler@gmail.com">noah.litzler@gmail.com ↗</a></aside></div>
  <div class="menu-bas"><span>Direction artistique · Design d’interfaces · Création numérique</span><a href="/cv-noah-litzler.pdf" download>Le CV ↗</a></div>
 </dialog>
 <script>
 const menu=document.querySelector<HTMLDialogElement>('#menu-chapitres');const ouvrir=document.querySelector<HTMLButtonElement>('.ouvrir-chapitres');
 ouvrir?.addEventListener('click',()=>menu?.showModal());document.querySelector('.fermer-chapitres')?.addEventListener('click',()=>menu?.close());menu?.addEventListener('close',()=>ouvrir?.focus());
+
+// Un seul filet de progression, calculé depuis le défilement du document.
+const piste=document.querySelector<HTMLElement>('.progression-film');
+let frame=false;
+function progression(){
+ frame=false;
+ const hauteur=document.documentElement.scrollHeight-innerHeight;
+ const position=hauteur>0?Math.max(0,Math.min(1,scrollY/hauteur)):0;
+ if(piste)piste.style.transform='scaleX('+position+')';
+}
+addEventListener('scroll',()=>{if(!frame){frame=true;requestAnimationFrame(progression)}},{passive:true});
+addEventListener('resize',progression);
+addEventListener('load',progression);
+new ResizeObserver(progression).observe(document.body);
+progression();
 </script>
+<style>
+ .masthead{position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;gap:1rem;height:82px;padding:0 clamp(1rem,4.4vw,5rem);background:#0e0b0af5;backdrop-filter:blur(12px);border-bottom:1px solid #f2eee526;color:var(--creme)}
+ .signature{color:inherit;text-decoration:none;font:700 1.2rem/1.1 var(--font-titre);letter-spacing:-.04em}
+ .signature span{display:block;font:500 .625rem var(--font-label);text-transform:uppercase;letter-spacing:.2em;opacity:.55;margin-top:.3rem}
+ .localisation{font:500 .7rem var(--font-label);letter-spacing:.1em;text-transform:uppercase;color:#f2eee588}
+ .ouvrir-chapitres,.fermer-chapitres{display:flex;align-items:center;gap:1rem;font:500 .8rem var(--font-label);letter-spacing:.12em;text-transform:uppercase;background:none;color:inherit;border:0;padding:.8rem 0;cursor:pointer}
+ .ouvrir-chapitres span,.fermer-chapitres span{font:400 1.5rem var(--font-titre)}
+ .progression-film{position:absolute;inset:auto 0 -1px;height:2px;background:var(--rose);transform-origin:left;transform:scaleX(0);pointer-events:none}
+ .menu-dvd{inset:0;width:100%;height:100dvh;max-width:none;max-height:none;padding:0;margin:0;border:0;background:var(--ebene);color:var(--creme);overflow:auto}
+ .menu-dvd::backdrop{background:#0e0b0af2}
+ .menu-barre{height:82px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(1rem,4.4vw,5rem);border-bottom:1px solid #f2eee526}
+ .menu-corps{display:grid;grid-template-columns:1.6fr 1fr;gap:6vw;padding:5rem clamp(1rem,4.4vw,5rem) 3rem}
+ .sur-titre{font:500 .75rem var(--font-label);letter-spacing:.15em;text-transform:uppercase;color:var(--rose)}
+ .menu-corps ol{list-style:none;padding:0;margin:2rem 0}
+ .menu-corps li>a{display:flex;align-items:center;gap:1.5rem;font:700 clamp(2rem,4vw,5rem)/1.2 var(--font-titre);letter-spacing:-.04em;text-decoration:none;padding:1.3rem 0;border-bottom:1px solid #f2eee526}
+ .menu-corps li>a:hover,.menu-corps li>a[aria-current]{color:var(--rose)}
+ .menu-corps li>a>span{font:500 .7rem var(--font-label);letter-spacing:.1em;color:#f2eee577}
+ .menu-corps li>a>b{margin-left:auto;font-weight:400;font-size:.5em}
+ .menu-note{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:2rem;min-width:0}
+ .monogramme{font:700 clamp(6rem,15vw,15rem)/.8 var(--font-titre);letter-spacing:-.08em;color:var(--brun-salle);text-shadow:1px 0 #f2eee533,-1px 0 #f2eee533,0 1px #f2eee533,0 -1px #f2eee533}
+ .menu-note p{font-size:1.2rem;line-height:1.5}
+ .menu-note>a{font-size:1rem;text-underline-offset:.4rem;overflow-wrap:anywhere}
+ .menu-bas{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;padding:1.5rem clamp(1rem,4.4vw,5rem);font:500 .7rem var(--font-label);text-transform:uppercase;letter-spacing:.1em;color:#f2eee577;border-top:1px solid #f2eee526}
+ .menu-bas a{text-decoration:none;color:var(--creme)}
+ :global(html:has(#menu-chapitres[open])){overflow:hidden}
+ @media(max-width:48rem){
+  .masthead,.menu-barre{height:70px;padding-inline:1.25rem}
+  .localisation{display:none}
+  .menu-corps{grid-template-columns:1fr;padding:2rem 1.25rem;gap:2rem}
+  .menu-note{gap:1.2rem}.monogramme{display:none}
+  .menu-corps li>a{font-size:clamp(1.6rem,7vw,2.5rem);gap:1rem}
+  .menu-bas{padding:1.5rem 1.25rem;font-size:.6rem;gap:1rem}
+ }
+</style>

@@ -74,3 +74,11 @@ Cette section remplace les descriptions antérieures du lecteur inférieur, main
 - Préférence système de mouvement réduit active dans le navigateur de contrôle : les contenus restent visibles. La qualité subjective du mouvement complet reste à apprécier dans le navigateur habituel de Noah.
 - Poids du build : 6 391 766 octets, comprenant toutes les routes, le CV et les différentes tailles d’images. Ce total n’est pas le poids initial d’une visite.
 - Les étapes externes restent en attente : relecture de Noah, domaine et réception réelle du formulaire, compléments juridiques et droits des références. Aucun message envoyé et aucune publication.
+
+
+## Version actuelle - 10 novembre 2026
+
+Retour à la base 3509daa proche de la maquette. Les constats concernant la refonte éditoriale décrivent une version désormais archivée. Navigation conservée par un seul menu Chapitres ; progression calculée à partir du défilement, recalculée lors du chargement, du redimensionnement et des changements de hauteur du document. Les fonctionnalités supplémentaires de cinéma et leurs réglages ont été retirés. Les vérifications externes avant publication restent à effectuer.
+
+Contrôles du retour : compilation réussie ; 169 références locales sans fichier absent ; menu ouvert puis fermé avec Échap et retour du focus au bouton ; progression observée de 0 à environ 100 % au défilement jusqu’en bas.
+

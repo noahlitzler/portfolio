@@ -1,4 +1,0 @@
----
-import {parcours,experiences,outils,competences} from '../data/profil.js';
----
-<section class="profil-detail" aria-labelledby="titre-profil"><header><p class="sur-titre">La fiche du réalisateur</p><h2 id="titre-profil">Ce qui nourrit<br/>mes images.</h2></header><div class="profil-grille"><div><h3>Mon parcours</h3>{parcours.map(e=><article><span>{e.date}</span><h4>{e.titre}</h4>{e.lignes.map(l=><p>{l}</p>)}</article>)}</div><div><h3>Mes expériences</h3>{experiences.map(e=><article><span>{e.date}</span><h4>{e.titre}</h4>{e.lignes.map(l=><p>{l}</p>)}</article>)}</div><div><h3>Mes outils</h3><ul>{outils.map(o=><li><strong>{o.nom}</strong><span>{o.usage}</span></li>)}</ul></div><div><h3>Mes compétences</h3><ul>{competences.map(c=><li>{c}</li>)}</ul></div></div></section>

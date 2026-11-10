@@ -7,8 +7,6 @@ import "@fontsource/courier-prime/latin-700.css";
 import "../styles/fonts.css";
 import "../styles/tokens.css";
 import "../styles/global.css";
-import Cinema from "../components/Cinema.astro";
-import "../styles/editorial.css";
 import Entete from "../components/Entete.astro";
 import PiedDePage from "../components/PiedDePage.astro";
 
@@ -33,13 +31,12 @@ const { noindex = false, titre, description, timecode = "00:00:00:00", progressi
     <meta name="twitter:card" content="summary" />
     <title>{titre} - Noah Litzler</title>
   </head>
-  <body class="direction-cinema">
+  <body>
     <a class="lien-evitement" href="#contenu">Aller au contenu</a>
     <Entete timecode={timecode} progression={progression} />
     <main id="contenu">
       <slot />
     </main>
     <PiedDePage precedent={precedent} suivant={suivant} />
-    <Cinema />
   </body>
 </html>

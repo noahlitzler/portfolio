@@ -3,8 +3,6 @@ import "@fontsource/montserrat/latin-700.css";
 import Base from "../../layouts/Base.astro";
 import Bandeau from "../../components/Bandeau.astro";
 import Visuel from "../../components/Visuel.astro";
-import Comparateur from "../../components/Comparateur.astro";
-import HeroProjet from "../../components/HeroProjet.astro";
 import Affiche from "../../components/Affiche.astro";
 import { projets } from "../../data/projets.js";
 
@@ -25,13 +23,41 @@ const texteSur = (hex) => (lum(hex) > 0.17 ? "var(--ebene)" : "var(--creme)");
 const ratioDe = (f) => (f.includes("mockups") ? "16 / 9" : f.includes("banniere") ? "16 / 7" : "2 / 3");
 ---
 <Base titre={p.titre} description={p.resume} timecode={p.timecode} progression={p.progression} precedent="affiche" suivant="apropos">
-  <div class:list={["page", "etude-"+p.slug]} style={"--accent: " + p.accent}>
+  <div class="page" style={"--accent: " + p.accent}>
 
-    <HeroProjet projet={p} />
+    <section class="hero">
+      <div class="gauche">
+        <div class="fil">
+          <a class="retour" href="/projets">
+            <svg width="14" height="12" viewBox="0 0 14 12" aria-hidden="true"><path d="M7 0 0 6l7 6zM14 0 7 6l7 6z" fill="currentColor" /></svg>
+            Projets
+          </a>
+          <span class="cat">{p.categorie}</span>
+        </div>
+        <p class="seance">Séance {p.numero} · {p.categorie}</p>
+        <h1 class="titre">{p.titre}</h1>
+        <p class="resume">{p.resume}</p>
+        <p class="credits">
+          {p.credits.map(([r, v]) => (<><span>{r}</span> <strong>{v}</strong>{" "}</>))}
+        </p>
+        <p class="statut">{p.statut}</p>
+        {p.url && <a class="entrer" href={p.url} target="_blank" rel="noopener noreferrer">Explorer le site ↗</a>}
+      </div>
+      <div class:list={["droite", p.slug]} style={"--n: " + p.visuels.length}>
+        {p.url && <a class="projet-preview" href={p.url} aria-label="Ouvrir Derrière le prompt"><Affiche projet={p} simple /></a>}
+        {p.visuels.map((v) => (
+          <div class="vis">
+            <Visuel fichier={v.f} alt={v.alt} ratio={ratioDe(v.f)} widths={[480, 720, 960]} sizes="(max-width: 62rem) 90vw, 30vw" />
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <Bandeau texte={texteBandeau} />
 
     {p.pitch && (
       <section class="chapitre" aria-labelledby="t-pitch">
-        <p class="label">Acte I · Le pitch</p>
+        <p class="label">Le pitch</p>
         <h2 id="t-pitch" class="grand">{p.pitch.texte} <span class="accroche">{p.pitch.accroche}</span></h2>
         <div class="deux">
           <div><h3 class="label">La commande</h3><p>{p.commande}</p></div>
@@ -42,14 +68,14 @@ const ratioDe = (f) => (f.includes("mockups") ? "16 / 9" : f.includes("banniere"
 
     {p.makingOf && (
       <section class="chapitre" aria-labelledby="t-making">
-        <p class="label">Acte II · Le making-of</p>
+        <p class="label">Le making-of</p>
         <h2 id="t-making" class="grand">{p.makingOf.titre}</h2>
         <ol class="plans">
           {p.makingOf.plans.map((pl, i) => (
             <li class="plan">
               <p class="plan-tete"><span>Plan {String(i + 1).padStart(2, "0")}</span><span class="tc">{pl.timecode}</span></p>
               <div class="plan-media">
-                {pl.image && <Visuel zoom fichier={pl.image.f} alt={pl.image.alt} ratio="16 / 7" widths={[720, 1200, 1600]} sizes="(max-width: 62rem) 95vw, 85vw" />}
+                {pl.image && <Visuel fichier={pl.image.f} alt={pl.image.alt} ratio="16 / 7" widths={[720, 1200, 1600]} sizes="(max-width: 62rem) 95vw, 85vw" />}
                 {pl.texte && <div class="plan-texte"><h3>{pl.titre}</h3><p>{pl.texte}</p></div>}
                 {pl.axes && (
                   <div class="axes">
@@ -71,7 +97,7 @@ const ratioDe = (f) => (f.includes("mockups") ? "16 / 9" : f.includes("banniere"
 
     {p.fiche && (
       <section class="chapitre" aria-labelledby="t-fiche">
-        <p class="label">Acte III · Fiche technique</p>
+        <p class="label">Fiche technique</p>
         <h2 id="t-fiche" class="grand">{p.fiche.titre}</h2>
         <ul class="nuancier">
           {p.fiche.couleurs.map((c) => (
@@ -96,12 +122,11 @@ const ratioDe = (f) => (f.includes("mockups") ? "16 / 9" : f.includes("banniere"
 
     {p.resultat && (
       <section class="chapitre" aria-labelledby="t-resultat">
-        <p class="label">Acte IV · Résultat</p>
+        <p class="label">Résultat</p>
         <h2 id="t-resultat" class="grand">{p.resultat.titre}</h2>
-        {p.slug === "la-cimade" && <Comparateur />}
         <div class="galerie">
           {p.resultat.images.map((im) => (
-            <div class="im"><Visuel zoom fichier={im.f} alt={im.alt} ratio={ratioDe(im.f)} widths={[480, 720, 960]} sizes="(max-width: 62rem) 90vw, 30vw" /></div>
+            <div class="im"><Visuel fichier={im.f} alt={im.alt} ratio={ratioDe(im.f)} widths={[480, 720, 960]} sizes="(max-width: 62rem) 90vw, 30vw" /></div>
           ))}
         </div>
         <p class="legende-res">{p.resultat.legende}</p>
@@ -112,14 +137,14 @@ const ratioDe = (f) => (f.includes("mockups") ? "16 / 9" : f.includes("banniere"
 
     {p.coupee && (
       <section class="chapitre" aria-labelledby="t-coupee">
-        <p class="label">Acte V · Scène coupée</p>
+        <p class="label">Scène coupée</p>
         <h2 id="t-coupee" class="grand">{p.coupee.titre}</h2>
         <ul class="corrections">
           {p.coupee.correctifs.map(([avant, apres]) => (
             <li><s>{avant}</s><span class="sr-only"> corrigé en </span><span class="apres">{apres}</span></li>
           ))}
         </ul>
-        <details class="pistes-coupees"><summary>Ouvrir les notes de montage</summary><p>{p.coupee.texte}</p></details>
+        <p class="texte-coupe">{p.coupee.texte}</p>
       </section>
     )}
 

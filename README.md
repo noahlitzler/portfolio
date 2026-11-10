@@ -59,17 +59,7 @@ Maquette : https://www.figma.com/design/jAvCe2R0eTMmsTBlGz5A2E/PORTFOLIO---NOAH-
 Les commits du 7 novembre sont locaux. Ne pas pousser avant validation de Noah.
 
 
-## La séance cinéma
 
-Le composant Cinema.astro installe la galerie sur chaque page. La barre de lecture inférieure a été retirée lors de la refonte éditoriale. Le script cinema.ts comporte des sections commentées : ouverture (sessionStorage), révélations (IntersectionObserver), repères de lecture (scroll + requestAnimationFrame), galerie (dialog natif), comparateur (range), générique (état CSS) et son volontaire (Web Audio).
+## Version actuelle
 
-Les animations sont dans cinema.css ; prefers-reduced-motion et le bouton Effets permettent une lecture calme. La préférence Effets est conservée pour la session. Le son commence toujours coupé et ne se relance pas automatiquement après navigation. Les raccords d’affiches utilisent des noms de transition propres à chaque projet avec les View Transitions natives entre documents. Aucune bibliothèque ajoutée.
-
-Pour essayer : ouvrir le menu Chapitres, choisir un projet, agrandir un visuel, tester les flèches puis Échap ; sur La Cimade, déplacer le curseur ; sur Contact, lancer ou mettre en pause le générique si le système autorise les animations. L’envoi du formulaire reste à tester sur l’hébergement après validation.
-
-
-## Direction éditoriale actuelle
-
-L’accueil et les études de cas reprennent les compositions validées avec Noah. Entete.astro fournit l’unique menu global. FilmProgramme.astro est partagé entre accueil et programmation. HeroProjet.astro adapte l’ouverture aux trois univers de projets. Les contenus détaillés restent dans projets.js ; le parcours a été conservé dans profil.js et affiché par Profil.astro dans À propos.
-
-editorial.css porte la direction visuelle et les adaptations mobiles ; cinema.css contient les dialogues et les interactions de projection. Aucun outil d’animation supplémentaire installé. Les contenus restent statiques au build Astro. Les sources avant refonte et l’historique ont été sauvegardés ; les changements restent locaux jusqu’à validation.
+Le 10 novembre 2026, retour à la présentation proche de la maquette (base 3509daa), avec le menu Chapitres conservé et le filet de progression au défilement. Les fonctionnalités de refonte éditoriale sont archivées dans les sauvegardes. Aucun push ni déploiement n’a été effectué.
