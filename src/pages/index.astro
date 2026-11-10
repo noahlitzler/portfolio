@@ -1,4 +1,5 @@
 ---
+import AutresSeances from "../components/AutresSeances.astro";
 import Base from "../layouts/Base.astro";
 import Bandeau from "../components/Bandeau.astro";
 import Affiche from "../components/Affiche.astro";
@@ -135,6 +136,7 @@ const competences = [
     </a></div>
     <div class="programme-affiches" aria-hidden="true">{projets.slice().reverse().map(p=><div class="programme-affiche"><Affiche projet={p} simple /></div>)}</div>
   </section>
+  <AutresSeances />
 </Base>
 
 <style>

@@ -63,3 +63,5 @@ Les commits du 7 novembre sont locaux. Ne pas pousser avant validation de Noah.
 ## Version actuelle
 
 Le 10 novembre 2026, retour à la présentation proche de la maquette (base 3509daa), avec le menu Chapitres conservé et le filet de progression au défilement. Les fonctionnalités de refonte éditoriale sont archivées dans les sauvegardes. Aucun push ni déploiement n’a été effectué.
+
+SULL est présenté comme quatrième travail dans AutresSeances.astro, avec ses données dans autres-projets.js. Les trois études de cas détaillées restent la sélection principale ; le cinquième projet n’a pas encore été fourni.

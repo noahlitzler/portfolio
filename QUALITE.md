@@ -82,3 +82,6 @@ Retour à la base 3509daa proche de la maquette. Les constats concernant la refo
 
 Contrôles du retour : compilation réussie ; 169 références locales sans fichier absent ; menu ouvert puis fermé avec Échap et retour du focus au bouton ; progression observée de 0 à environ 100 % au défilement jusqu’en bas.
 
+
+Ajout SULL du 10 novembre : build réussi, logo chargé dans l’aperçu, lien vérifié vers https://sull.clementbertrandportfolio.store/ ; 171 références locales contrôlées sans fichier absent. SULL est un travail complémentaire ; les trois études de cas restent la sélection principale.
+

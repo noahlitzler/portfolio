@@ -88,3 +88,8 @@ Règle : je dois pouvoir expliquer chaque ligne du code du site. Quand une IA m'
 ## Codex - retour à la maquette le 10 novembre 2026
 
 À la demande de Noah, restauration de la présentation de la version 3509daa (accueil, projets, études de cas, storyboard et contact), avec conservation du menu Chapitres de la refonte et d’un filet de progression au défilement. Sauvegardes ZIP et bundle de la version éditoriale avant modification. Retrait des composants et styles ajoutés pour la refonte et l’expérience cinéma ; les réglages de son et d’effets sont retirés du menu. Aucun push ni déploiement.
+
+
+## Codex - ajout de SULL le 10 novembre 2026
+
+Ajout du quatrième projet fourni par Noah dans une section de travaux complémentaires sur l’accueil et la programmation. La description est fondée sur le site fourni et son logo local est repris de /images/sulllogo.svg. Aucune répartition de travail individuel ni étude de cas supplémentaire inventée. Données dans autres-projets.js et composant AutresSeances.astro. Les anciennes routes SULL sont dirigées vers le site SULL, et non plus vers Derrière le prompt. Aucun cinquième projet fictif ajouté. Sauvegarde préalable et commit local, sans publication.

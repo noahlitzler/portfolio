@@ -1,9 +1,10 @@
 ---
+import AutresSeances from "../components/AutresSeances.astro";
 import Base from "../layouts/Base.astro";
 import Affiche from "../components/Affiche.astro";
 import { projets } from "../data/projets.js";
 ---
-<Base titre="Projets" description="Trois séances à l’affiche : production graphique, UX / UI design et branding. Choisis un projet pour découvrir son making-of." timecode="00:03:12:08" progression={32} precedent="accueil" suivant="apropos">
+<Base titre="Projets" description="Trois études de cas en illustration, branding et datavisualisation, ainsi que SULL, plateforme de découverte cinématographique." timecode="00:03:12:08" progression={32} precedent="accueil" suivant="apropos">
   <section class="projets">
     <p class="etiquette">Programmation 2025 - 2026</p>
     <h1>À l’affiche</h1>
@@ -27,6 +28,7 @@ import { projets } from "../data/projets.js";
 
     <p class="astuce">Survole une salle pour l’ouvrir.</p>
   </section>
+  <AutresSeances />
 </Base>
 
 <style>

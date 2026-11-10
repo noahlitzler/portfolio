@@ -117,3 +117,8 @@ Ces mises à jour n’ont pas été effectuées par Codex ; cette justification 
 ## 10 novembre 2026 - retour à la maquette
 
 Décision de Noah : reprendre la version plus proche de la maquette, conserver le menu actuel et la barre de progression au scroll. La version éditoriale est sauvegardée et son historique conservé. Les trois projets, dont Derrière le prompt en troisième position, et leurs contenus de la version maquette restent présents.
+
+
+### 10 novembre - quatrième projet
+
+SULL ajouté comme travail complémentaire, avec accès au site fourni. Les trois études de cas détaillées restent la sélection principale conformément au cahier des charges. Le cinquième projet sera renseigné quand Noah l’aura fourni.
