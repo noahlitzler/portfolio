@@ -1,6 +1,6 @@
 ---
 const chemin=Astro.url.pathname.replace(/\/$/,'')||'/';
-const liens=[{href:'/',nom:'Le début du film',n:'01'},{href:'/projets',nom:'Les trois séances',n:'02'},{href:'/a-propos',nom:'Hors-champ',n:'03'},{href:'/contact',nom:'Le guichet',n:'04'}];
+const liens=[{href:'/',nom:'Le début du film',n:'01'},{href:'/projets',nom:'Les séances',n:'02'},{href:'/a-propos',nom:'Hors-champ',n:'03'},{href:'/contact',nom:'Le guichet',n:'04'}];
 const actif=(href)=>href==='/'?chemin==='/':chemin.startsWith(href);
 ---
 <header class="masthead">

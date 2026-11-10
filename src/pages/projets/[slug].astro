@@ -41,10 +41,10 @@ const ratioDe = (f) => (f.includes("mockups") ? "16 / 9" : f.includes("banniere"
           {p.credits.map(([r, v]) => (<><span>{r}</span> <strong>{v}</strong>{" "}</>))}
         </p>
         <p class="statut">{p.statut}</p>
-        {p.url && <a class="entrer" href={p.url} target="_blank" rel="noopener noreferrer">Explorer le site ↗</a>}
+        {p.url && <a class="entrer" href={p.url} target="_blank" rel="noopener noreferrer">{p.action ?? "Explorer le site"} ↗</a>}
       </div>
       <div class:list={["droite", p.slug]} style={"--n: " + p.visuels.length}>
-        {p.url && <a class="projet-preview" href={p.url} aria-label="Ouvrir Derrière le prompt"><Affiche projet={p} simple /></a>}
+        {p.url && <a class="projet-preview" href={p.url} target="_blank" rel="noopener noreferrer" aria-label={"Ouvrir " + p.titre + " (nouvel onglet)"}><Affiche projet={p} simple /></a>}
         {p.visuels.map((v) => (
           <div class="vis">
             <Visuel fichier={v.f} alt={v.alt} ratio={ratioDe(v.f)} widths={[480, 720, 960]} sizes="(max-width: 62rem) 90vw, 30vw" />
@@ -99,7 +99,7 @@ const ratioDe = (f) => (f.includes("mockups") ? "16 / 9" : f.includes("banniere"
       <section class="chapitre" aria-labelledby="t-fiche">
         <p class="label">Fiche technique</p>
         <h2 id="t-fiche" class="grand">{p.fiche.titre}</h2>
-        <ul class="nuancier">
+        {p.fiche.couleurs && <ul class="nuancier">
           {p.fiche.couleurs.map((c) => (
             <li class="teinte" style={"background: " + c.hex + "; color: " + texteSur(c.hex)}>
               <strong>{c.nom}</strong>
@@ -107,8 +107,8 @@ const ratioDe = (f) => (f.includes("mockups") ? "16 / 9" : f.includes("banniere"
               {c.sens && <span>{c.sens}</span>}
             </li>
           ))}
-        </ul>
-        <div class="specimen">
+        </ul>}
+        {p.fiche.police && <div class="specimen">
           <p class="nom-police" style={"font-family: '" + p.fiche.police.nom + "', var(--font-label)"}>{p.fiche.police.nom}</p>
           <div>
             <ul class="graisses">
@@ -116,7 +116,8 @@ const ratioDe = (f) => (f.includes("mockups") ? "16 / 9" : f.includes("banniere"
             </ul>
             <p class="note-police">{p.fiche.police.note}</p>
           </div>
-        </div>
+        </div>}
+        {p.fiche.elements && <dl class="details-techniques">{p.fiche.elements.map(([titre,texte])=><div><dt>{titre}</dt><dd>{texte}</dd></div>)}</dl>}
       </section>
     )}
 
@@ -126,11 +127,11 @@ const ratioDe = (f) => (f.includes("mockups") ? "16 / 9" : f.includes("banniere"
         <h2 id="t-resultat" class="grand">{p.resultat.titre}</h2>
         <div class="galerie">
           {p.resultat.images.map((im) => (
-            <div class="im"><Visuel fichier={im.f} alt={im.alt} ratio={ratioDe(im.f)} widths={[480, 720, 960]} sizes="(max-width: 62rem) 90vw, 30vw" /></div>
+            <div class="im" style={im.fond ? "background: " + im.fond : undefined}><Visuel fichier={im.f} alt={im.alt} ratio={ratioDe(im.f)} widths={[480, 720, 960]} sizes="(max-width: 62rem) 90vw, 30vw" /></div>
           ))}
         </div>
         <p class="legende-res">{p.resultat.legende}</p>
-        {p.url && <a class="entrer lien-projet" href={p.url} target="_blank" rel="noopener noreferrer">Découvrir les quatre visualisations ↗</a>}
+        {p.url && <a class="entrer lien-projet" href={p.url} target="_blank" rel="noopener noreferrer">{p.action ?? "Explorer le projet"} ↗</a>}
         {p.resultat.note && <p class="legende-res">{p.resultat.note}</p>}
       </section>
     )}
@@ -164,6 +165,7 @@ const ratioDe = (f) => (f.includes("mockups") ? "16 / 9" : f.includes("banniere"
 </Base>
 
 <style>
+  .details-techniques {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2rem;margin:3rem 0 0}.details-techniques dt {font:700 1.1rem var(--font-label);text-transform:uppercase;letter-spacing:.08em;margin-bottom:1rem}.details-techniques dd {margin:0;line-height:1.7;color:color-mix(in srgb,var(--creme) 85%,transparent)}@media(max-width:48rem){.details-techniques{grid-template-columns:1fr}}
   .plan-texte { padding:clamp(2rem,5vw,5rem); min-height:18rem; }
   .plan-texte h3 {font:700 clamp(2rem,5vw,5rem) var(--font-titre);margin:0 0 1rem;color:var(--accent-texte)}
   .plan-texte p {max-width:45rem;font-size:1.25rem;line-height:1.7}

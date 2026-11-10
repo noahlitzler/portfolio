@@ -122,3 +122,8 @@ Décision de Noah : reprendre la version plus proche de la maquette, conserver l
 ### 10 novembre - quatrième projet
 
 SULL ajouté comme travail complémentaire, avec accès au site fourni. Les trois études de cas détaillées restent la sélection principale conformément au cahier des charges. Le cinquième projet sera renseigné quand Noah l’aura fourni.
+
+
+### 10 novembre — une programmation de cinq études de cas
+
+Nouvelle consigne de Noah : retirer la limite « trois projets », réunir tous les travaux et les détailler de la même manière. Cette consigne remplace le regroupement précédent. Smooth (R303, Figma) rejoint SULL et les trois premiers projets. Même ordre sur l’accueil et la programmation, même structure de détail, navigation suivante circulaire sur cinq projets. Sauvegarde préalable : portfolio-avant-cinq-projets.zip et .bundle. Publication réservée à la validation de Noah.

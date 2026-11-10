@@ -1,14 +1,13 @@
 ---
-import AutresSeances from "../components/AutresSeances.astro";
 import Base from "../layouts/Base.astro";
 import Affiche from "../components/Affiche.astro";
 import { projets } from "../data/projets.js";
 ---
-<Base titre="Projets" description="Trois études de cas en illustration, branding et datavisualisation, ainsi que SULL, plateforme de découverte cinématographique." timecode="00:03:12:08" progression={32} precedent="accueil" suivant="apropos">
+<Base titre="Projets" description="Cinq projets, cinq études de cas : illustration, branding, datavisualisation, culture cinéma et design d’expérience." timecode="00:03:12:08" progression={32} precedent="accueil" suivant="apropos">
   <section class="projets">
     <p class="etiquette">Programmation 2025 - 2026</p>
     <h1>À l’affiche</h1>
-    <p class="intro">Trois salles, trois genres : l’image, l’écran et la marque. Choisis ta séance pour découvrir les making-of.</p>
+    <p class="intro">Cinq projets, une même programmation. Choisis ta séance pour découvrir le contexte, les choix et le making-of de chaque réalisation.</p>
 
     <ul class="salles">
       {projets.map((p) => (
@@ -16,8 +15,9 @@ import { projets } from "../data/projets.js";
           <article class="salle" style={"--accent: " + p.accent}>
             <a class="affiche" href={'/projets/'+p.slug} aria-label={'Découvrir '+p.titre}><Affiche projet={p} /></a>
             <div class="pied-carte">
-              <p class="num">{p.numero} / 03</p>
-              <h2>{p.categorie}</h2>
+              <p class="num">{p.numero} / {String(projets.length).padStart(2, "0")}</p>
+              <h2>{p.titre}</h2>
+              <p class="genre">{p.categorie}</p>
               <p class="mots">{p.mots}</p>
               <a class="voir" href={"/projets/" + p.slug} aria-label={"Voir la séance " + p.titre}>Voir la séance</a>
             </div>
@@ -28,7 +28,6 @@ import { projets } from "../data/projets.js";
 
     <p class="astuce">Survole une salle pour l’ouvrir.</p>
   </section>
-  <AutresSeances />
 </Base>
 
 <style>
@@ -160,6 +159,7 @@ import { projets } from "../data/projets.js";
     font-size: 1.5rem;
     letter-spacing: -0.02em;
   }
+  .genre { margin: 0; color: color-mix(in srgb, var(--creme) 80%, transparent); }
   .mots {
     margin: 0;
     font-family: var(--font-label);
@@ -170,7 +170,7 @@ import { projets } from "../data/projets.js";
   }
   .voir {
     grid-column: 2;
-    grid-row: 2 / 4;
+    grid-row: 2 / 5;
     padding-bottom: 0.25rem;
     border-bottom: 2px solid var(--creme);
     font-family: var(--font-label);
@@ -189,7 +189,6 @@ import { projets } from "../data/projets.js";
     color: color-mix(in srgb, var(--creme) 70%, transparent);
   }
   @media (hover: none) { .astuce { display: none; } }
-  @media (max-width: 62rem) {
-    .salles { grid-template-columns: 1fr; max-width: 32rem; }
-  }
+  @media (max-width: 62rem) { .salles { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 40rem) { .salles { grid-template-columns: 1fr; max-width: 32rem; margin-inline: auto; margin-top: 3rem; } }
 </style>

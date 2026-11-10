@@ -1,5 +1,4 @@
 ---
-import AutresSeances from "../components/AutresSeances.astro";
 import Base from "../layouts/Base.astro";
 import Bandeau from "../components/Bandeau.astro";
 import Affiche from "../components/Affiche.astro";
@@ -129,14 +128,13 @@ const competences = [
   <section class="programme" aria-labelledby="titre-programme">
     <div class="programme-texte"><p class="etiquette">Au programme</p>
     <h2 id="titre-programme">Séances à l’affiche</h2>
-    <p class="intro">Vivez l’essentiel, La Cimade et Derrière le prompt : trois projets, trois genres, de l’affiche à l’identité en passant par les données.</p>
+    <p class="intro">Vivez l’essentiel, La Cimade, Derrière le prompt, SULL et Smooth : cinq projets à découvrir, chacun avec son histoire et son making-of.</p>
     <a class="billet" href="/projets">
       <span class="admission">Admission</span>
       <span class="action">Entrer dans la salle</span>
     </a></div>
-    <div class="programme-affiches" aria-hidden="true">{projets.slice().reverse().map(p=><div class="programme-affiche"><Affiche projet={p} simple /></div>)}</div>
+    <div class="programme-affiches" aria-hidden="true">{projets.map(p=><div class="programme-affiche"><Affiche projet={p} simple /></div>)}</div>
   </section>
-  <AutresSeances />
 </Base>
 
 <style>
@@ -249,12 +247,11 @@ const competences = [
     letter-spacing: 0.35em;
     text-transform: uppercase;
   }
-  .programme {display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:3rem;background:var(--brun-salle)}
-  .programme-affiches {position:relative;height:27rem;isolation:isolate;}
-  .programme-affiche {position:absolute;width:15rem;top:1rem;left:20%;transform:rotate(-10deg);box-shadow:0 1rem 2rem #0009}
-  .programme-affiche:nth-child(2){left:35%;transform:rotate(-4deg);top:0}
-  .programme-affiche:nth-child(3){left:50%;transform:rotate(5deg)}
-  @media(max-width:60rem){.programme{grid-template-columns:1fr}.programme-affiches{height:23rem}.programme-affiche{width:12rem;left:8%}.programme-affiche:nth-child(2){left:25%}.programme-affiche:nth-child(3){left:42%}}
+  .programme {display:grid;gap:3rem;background:var(--brun-salle)}
+  .programme-texte {max-width:48rem}
+  .programme-affiches {display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:clamp(.5rem,1.5vw,1.5rem);align-items:center}
+  .programme-affiche {min-width:0;box-shadow:0 .75rem 1.5rem #0005}
+  @media(max-width:40rem){.programme-affiches{grid-template-columns:repeat(3,minmax(0,1fr))}}
   .programme {
     padding: clamp(4rem, 9vw, 8rem) clamp(1rem, 4vw, 4rem);
   }
@@ -523,5 +520,5 @@ const competences = [
   }
   .portrait figcaption span { font-size: var(--taille-label); }
   .portrait figcaption strong { font-size: 1.25rem; }
-@media(max-width:24rem){.programme-affiche{width:10rem}.programme-affiches{height:19rem}}
+
 </style>

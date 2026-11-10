@@ -64,4 +64,4 @@ Les commits du 7 novembre sont locaux. Ne pas pousser avant validation de Noah.
 
 Le 10 novembre 2026, retour à la présentation proche de la maquette (base 3509daa), avec le menu Chapitres conservé et le filet de progression au défilement. Les fonctionnalités de refonte éditoriale sont archivées dans les sauvegardes. Aucun push ni déploiement n’a été effectué.
 
-SULL est présenté comme quatrième travail dans AutresSeances.astro, avec ses données dans autres-projets.js. Les trois études de cas détaillées restent la sélection principale ; le cinquième projet n’a pas encore été fourni.
+À la demande de Noah, les cinq projets sont désormais réunis dans une seule programmation : Vivez l’essentiel, La Cimade, Derrière le prompt, SULL et Smooth. Le fichier src/data/projets.js alimente les cartes, les cinq études de cas, la suite de visite et le sitemap. Chaque étude suit les mêmes rubriques : pitch et rôle, making-of, fiche technique, résultat et scène coupée. La séparation « Autres séances » est supprimée. Smooth est présenté comme maquette Figma et non comme boutique en production.

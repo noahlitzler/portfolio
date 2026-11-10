@@ -93,3 +93,12 @@ Règle : je dois pouvoir expliquer chaque ligne du code du site. Quand une IA m'
 ## Codex - ajout de SULL le 10 novembre 2026
 
 Ajout du quatrième projet fourni par Noah dans une section de travaux complémentaires sur l’accueil et la programmation. La description est fondée sur le site fourni et son logo local est repris de /images/sulllogo.svg. Aucune répartition de travail individuel ni étude de cas supplémentaire inventée. Données dans autres-projets.js et composant AutresSeances.astro. Les anciennes routes SULL sont dirigées vers le site SULL, et non plus vers Derrière le prompt. Aucun cinquième projet fictif ajouté. Sauvegarde préalable et commit local, sans publication.
+
+
+## Codex — cinq projets réunis, 10 novembre 2026
+
+À la demande explicite de Noah, suppression de la hiérarchie trois études principales / travaux complémentaires. Les cinq projets utilisent la même collection et le même gabarit. Ajout des études SULL et Smooth ; complément technique de Derrière le prompt. Numérotation calculée depuis la collection, liens suivants sur les cinq projets, raccourci /sull vers son étude locale.
+
+Sources : SULL en ligne (captures accueil/catalogue du 10 novembre), crédits de l’ancienne présentation conservée dans Git ; Smooth, fichier Figma R303 rnxTTDXSQrr9brFkNyl9Xc, page Smooth 62:1719, écrans Accueil 62:3470, Composer 62:2894, Brandboard 73:2183, Retours testeurs 88:2681, Bilan 103:3930. Vrais visuels des lunettes et logo téléchargés localement depuis Figma. Les textes de Smooth reprennent les éléments et retours documentés, sans présenter le paiement comme une vente réelle. La piste de tests SULL est formulée au futur, sans inventer des résultats de tests.
+
+Techniques conservées : données JavaScript, composants Astro, rendu statique, CSS responsive et optimisation des images Astro. Aucune dépendance ajoutée. Sauvegarde ZIP et bundle avant modification, commits locaux, aucun push ni déploiement. Noah doit relire et valider les formulations avant publication.
