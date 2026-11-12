@@ -9,8 +9,10 @@ if (!src && !svg) throw new Error("Visuel manquant : " + fichier);
 const grand = agrandissable && src ? await getImage({src, width: Math.min(1800,src.width), format:'webp', quality:88}) : null;
 const lien = svg ? '/figma/fb8ae.svg' : grand?.src;
 const Tag = agrandissable ? 'a' : 'span';
+// La photo de cette planche est tournée : présentation paysage, fichier d’origine conservé.
+const horizontal = fichier === 'cimade-croquis.png';
 ---
-<Tag class:list={['visuel', {'sans-zoom': !agrandissable}]} href={agrandissable ? lien : undefined} data-agrandir={agrandissable ? '' : undefined} data-legende={alt} aria-label={agrandissable ? 'Agrandir : '+alt : undefined}>
+<Tag class:list={['visuel', {'sans-zoom': !agrandissable, horizontal}]} href={agrandissable ? lien : undefined} data-agrandir={agrandissable ? '' : undefined} data-rotation={horizontal ? '90' : undefined} style={horizontal ? `aspect-ratio:${src.height}/${src.width};--ratio-source:${src.width/src.height}` : undefined} data-legende={alt} aria-label={agrandissable ? 'Agrandir : '+alt : undefined}>
 {svg ? (<img src="/figma/fb8ae.svg" alt={alt} loading="lazy" class="logo-cimade" width="492" height="202" />) : src ? (
   <Image src={src} alt={alt} widths={widths} sizes={sizes} format="webp" quality={80} />
 ) : (
@@ -21,6 +23,7 @@ const Tag = agrandissable ? 'a' : 'span';
 
 </Tag>
 <style>
+.horizontal{overflow:hidden}.horizontal img{position:absolute;top:50%;left:50%;width:calc(100% * var(--ratio-source));max-width:none;height:auto;transform:translate(-50%,-50%) rotate(90deg)}
 .visuel{display:block;position:relative;color:inherit}.visuel[data-agrandir]{cursor:zoom-in}.visuel[data-agrandir]::after{content:"↗";position:absolute;right:.6rem;bottom:.6rem;display:grid;place-items:center;width:2.3rem;height:2.3rem;background:#0e0b0ae8;color:#f2eee5;border:1px solid #f2eee555;font:1.2rem var(--font-label);opacity:0;transition:opacity .2s;pointer-events:none}.visuel:hover::after,.visuel:focus-visible::after{opacity:1}@media(hover:none){.visuel[data-agrandir]::after{opacity:1}}
   .logo-cimade { padding: 3rem 1rem; background: white; height:auto; object-fit: contain; }
   img { display: block; width: 100%; height: auto; }
