@@ -2,7 +2,7 @@
 
 Portfolio scolaire de BUT MMI, parcours création numérique. Positionnement : design graphique et direction artistique. Stage recherché du 29 mars au 4 juin 2027, dans le Haut-Rhin, à Bâle, à Porrentruy et aux alentours.
 
-## Version actuelle — 12 novembre 2026
+## Version actuelle — 12 novembre 2026, finitions des animations
 
 Le portfolio emprunte au cinéma son vocabulaire et sa présentation : ouverture, affiches, séances, making-of, storyboard et guichet. L’accueil comporte une composition animée de créations et un carrousel de cinq projets. Le storyboard À propos utilise le portrait et les travaux de Noah, sans affiches de films. Un seul menu Chapitres et une barre de progression au défilement assurent la navigation.
 
@@ -24,9 +24,9 @@ Node 22.12 ou supérieur. Lancer npm install puis npm run dev ; compiler avec np
 
 ## Comprendre les composants
 
-- HeroAccueil.astro : composition, lumière et mouvements en CSS ; commande de pause des effets.
-- CarrouselProjets.astro : cinq liens issus des données ; index circulaire, positions CSS, précédent/suivant, repères, clavier et balayage tactile. Rotation toutes les 6,5 secondes uniquement lorsque le carrousel est visible, sans survol et sans pause. Arrêt lors des interactions et en onglet masqué ; démarrage arrêté si le système demande une réduction des mouvements. Sans JavaScript, une liste horizontale reste utilisable.
-- Bandeau.astro : texte et rangées de perforations animés, avec lecture/pause. Les mouvements réduits sont respectés ; le visiteur peut explicitement lancer un bandeau.
+- HeroAccueil.astro : apparition du nom, balayage de lumière, reflets sur les affiches et mouvement de profondeur. Un léger parallaxe suit le pointeur avec requestAnimationFrame. Les effets démarrent automatiquement, sans bouton d’activation.
+- CarrouselProjets.astro : cinq liens issus des données ; index circulaire, positions CSS, précédent/suivant, repères, clavier et balayage tactile. Rotation automatique toutes les 6,5 secondes lorsque le carrousel est visible. Suspension pendant le survol, le focus clavier ou quand l’onglet est masqué, puis reprise automatique. Flèches et repères conservés ; aucune commande Lecture/Pause. Sans JavaScript, une liste horizontale reste utilisable.
+- Bandeau.astro : seul le texte défile en continu ; les deux rangées de points restent fixes. Animation CSS commune à toutes les pages qui utilisent ce composant, sans JavaScript ni bouton.
 - Entete.astro : dialog natif, Échap et retour du focus ; progression calculée avec scrollY et la hauteur du document, actualisée par requestAnimationFrame.
 - projets/[slug].astro : getStaticPaths génère une page par projet et le lien suivant circule sur les cinq projets.
 - Affiche.astro et Visuel.astro : affiches partagées et images optimisées avec Astro Image.

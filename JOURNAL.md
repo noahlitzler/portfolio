@@ -141,3 +141,8 @@ Nouvelle consigne de Noah : retirer la limite « trois projets », réunir tous 
 - Crédits Smooth corrigés : SVG de l’enseignante puis adaptation avec ChatGPT.
 - Domaine confirmé : noahlitzler.fr, nom de domaine uniquement chez Infomaniak ; hébergement à configurer, aucune mise en ligne.
 - Sauvegarde ZIP et bundle, commits locaux, contrôles dans QUALITE.md. Réseaux professionnels et préparation orale restent à poursuivre personnellement.
+
+
+### 12 novembre — affiner les mouvements après essai
+
+Noah apprécie la nouvelle composition et demande des points fixes, seuls les textes des bandes devant défiler. Il souhaite des animations automatiques sans bouton d’activation, et des effets plus travaillés sur le nom et les affiches. Décisions : supprimer les commandes, remplacer le décalage bleu/rose par une apparition et un balayage lumineux, ajouter relief et reflets aux créations. Le travail a repris après une interruption du contrôle automatique liée à une limite d’utilisation. Sauvegarde ZIP et bundle, compilation et contrôle ordinateur, commits locaux. Essai mobile interrompu par le navigateur ; contrôle à reprendre. Aucun push ni déploiement.

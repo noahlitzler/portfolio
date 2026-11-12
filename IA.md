@@ -114,3 +114,8 @@ Techniques conservées : données JavaScript, composants Astro, rendu statique, 
 - Choix abandonné : affiches Miami Vice et Spider-Man dans le storyboard. Les deux fichiers publics et leurs usages ont été retirés. Le storyboard montre le portrait, une illustration personnelle et les références sous forme de texte.
 - Sauvegarde avant intervention : portfolio-avant-ajustements-12-novembre.zip et .bundle. Commits locaux, aucun push ni déploiement. Domaine seul chez Infomaniak ; hébergement et réception du formulaire non configurés pendant cette intervention.
 - À faire personnellement par Noah : relire, expliquer et modifier le code ; corriger ou rejeter les propositions après essai. Noah a indiqué ne pas encore avoir regardé le code ; cette entrée ne prétend pas une maîtrise ou une relecture déjà acquise.
+
+
+## Codex / OpenAI — finitions des animations du 12 novembre
+
+À la demande de Noah : points lumineux fixes, texte continuellement défilant sur tous les bandeaux, suppression des boutons d’activation/réduction, nouveaux effets du nom et des affiches. Bandeau.astro est simplifié en HTML/CSS sans script. HeroAccueil.astro utilise une apparition, un balayage lumineux et des reflets CSS ; le parallaxe suit le pointeur avec requestAnimationFrame. CarrouselProjets.astro démarre sa rotation automatiquement ; les flèches et repères restent disponibles. Aucun média ni dépendance ajoutés. Une fermeture de span du nouveau titre a été corrigée après l’échec de compilation, puis le build a réussi. Contrôles ordinateur réels consignés dans QUALITE.md ; nouvel essai mobile interrompu par l’outil, sans validation inventée. Sauvegarde préalable et commits locaux uniquement. La relecture personnelle de Noah reste à faire.

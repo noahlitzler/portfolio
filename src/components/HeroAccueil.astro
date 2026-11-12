@@ -33,7 +33,6 @@ if(ecran && matchMedia('(pointer:fine)').matches){
   function actualiser(){
     ecran!.style.setProperty('--inclinaison-x',String(-y*5)+'deg');
     ecran!.style.setProperty('--inclinaison-y',String(x*7)+'deg');
-    ecran!.style.setProperty('--lueur-x',String(50+x*20)+'%');
     frame=0;
   }
   ecran.addEventListener('pointermove',event=>{

@@ -15,10 +15,10 @@ Ce fichier décrit la version actuelle, contrôlée localement. Les mesures des 
 | --- | --- | --- |
 | Menu unique au clavier | Ouverture, Échap, observation de document.activeElement | Dialogue fermé ; focus rendu au bouton Chapitres. |
 | Débordement sur mobile | Navigateur, documents à 320 px dans des cadres de contrôle ; lecture des largeurs du document | Accueil, carrousel, storyboard et cinq études : largeur 305 px pour 305 px disponibles après scrollbar. Storyboard également contrôlé à 768 px, sans dépassement. Les cadres servent à tester de vrais viewports CSS ; aucune simple réduction d’image n’est utilisée comme preuve. |
-| Navigation du carrousel | Clics précédent/suivant sur les cinq positions ; flèche droite au clavier | Une carte active, cinq liens conservés, légende correspondante et boucle des cinq projets observées. Navigation manuelle met la lecture en pause. |
-| Lecture automatique | Activation volontaire puis observation ultérieure, carrousel visible et onglet actif | Projet passé de Vivez l’essentiel à Smooth ; commande Pause disponible. Minuteur prévu à 6,5 s ; arrêt si hors écran, survol ou onglet masqué. Le comportement de pause par survol n’a pas fait l’objet d’une mesure isolée. |
-| Mouvement réduit | Préférence active dans le navigateur de contrôle | Ouverture, carrousel et bandeaux initialement arrêtés. Activation explicite des effets observée : 9 s pour les affiches, 14 s pour le projecteur ; remise en pause vérifiée. |
-| Bandeaux et points lumineux | Activation du bouton Lire la bande ; lecture des styles à deux instants | Transformation du texte et position des perforations changent ; durées respectives 55 s et 14 s. Le bouton remet le bandeau en pause. |
+| Navigation du carrousel | Clics précédent/suivant, lecture des données actives et essais précédents des cinq positions | Une carte active et cinq liens conservés. La lecture se suspend pendant le focus et le survol, puis reprend automatiquement. Commande Lecture/Pause retirée à la demande de Noah. |
+| Lecture automatique | Relecture du minuteur actuel et contrôles précédents de rotation | Rotation initialement active ; durée 6,5 s. Arrêt si hors écran, focus, survol ou onglet masqué. Aucun bouton d’activation. Le comportement de reprise après sortie du focus reste à exercer isolément. |
+| Politique des animations | Choix explicite de Noah après essai | Textes des bandeaux et effets de l’accueil automatiques, sans bouton d’activation. Les durées propres à ces effets prévalent sur la réduction globale des animations ; aucune conformité globale d’accessibilité n’est revendiquée. |
+| Bandeaux et points lumineux | Styles calculés relevés à deux instants et inspection du composant partagé | Transformation du texte différente entre les relevés ; durée 55 s. Fond des points à 0% 0% et animation-name:none sur les deux relevés. Aucun bouton dans le bandeau, aucun point mobile entre les répétitions. Même comportement observé sur l’accueil et À propos. |
 | Images du storyboard | Inspection du rendu et des sources | Portrait WebP local de 720 × 900 chargé immédiatement ; illustration personnelle présente ; affiches Miami Vice et Spider-Man retirées des sources et de public. |
 | Images de processus | Inspection des captures et références | Persona SULL d’origine conservé au ratio naturel ; captures réelles des graphiques de Derrière le prompt ajoutées. |
 | Sans JavaScript | Relecture du HTML et du repli CSS | Cinq liens de projets et une piste horizontale prévus ; contrôle navigateur avec JavaScript désactivé encore à faire. |
@@ -33,7 +33,7 @@ Le balayage tactile est implémenté, mais n’a pas été exercé sur un télé
 | Images adaptées | Astro Image pour les projets et le portrait d’accueil ; portrait du storyboard servi en WebP local optimisé | Formats et dimensions contrôlés. |
 | Dépendances | package.json et code client | Aucun ajout de bibliothèque de carrousel ou d’animation ; Astro, CSS natif et scripts de navigateur. |
 | Ressources externes | Relecture des sources | Polices et images locales ; dossiers et projets tiers accessibles par liens, sans iframe intégrée dans le produit. |
-| Poids généré | Somme des fichiers de dist | 4 660 281 octets, toutes pages et tailles d’images comprises. Ce total ne mesure pas le transfert initial d’une visite. |
+| Poids généré | Somme des fichiers de dist | 4 639 135 octets, toutes pages et tailles d’images comprises. Ce total ne mesure pas le transfert initial d’une visite. |
 | Mesures de chargement | À effectuer sur l’hébergement final | Lighthouse / PageSpeed, transfert réseau, LCP et stabilité visuelle restent à mesurer. Aucun score inventé. |
 
 ## Référencement
@@ -58,3 +58,12 @@ Le balayage tactile est implémenté, mais n’a pas été exercé sur un télé
 ## Preuves et sauvegardes
 
 Sauvegardes avant ajustements : portfolio-avant-ajustements-12-novembre.zip et .bundle. Captures dans le dossier outputs de la session : ajustements-accueil-desktop.png, ajustements-storyboard-desktop.png, ajustements-accueil-mobile.png, ajustements-carrousel-mobile.png, ajustements-storyboard-mobile.png. Ces fichiers de session ne constituent pas une publication du portfolio.
+
+
+## Finitions des animations — dernier contrôle du 12 novembre
+
+- Compilation de production réussie après correction de la fermeture d’un span dans le titre ; contrôle des références locales sans erreur.
+- Boutons d’animation retirés du bandeau, de l’ouverture et du carrousel : zéro commande d’activation relevée dans le navigateur. Flèches et cinq sélecteurs de projets conservés ; passage à La Cimade observé.
+- Titre : apparition 1,1 s puis balayage lumineux 12 s ; disparition du décalage bleu/rose du nom. Affiches : profondeur, dérive 11 s, reflets 15 s et parallaxe au pointeur. Durées relevées dans le navigateur, aperçu visuel ordinateur enregistré.
+- Pas de dépassement horizontal constaté à 1280 px. Le nouvel essai à 320 et 768 px a été interrompu par deux délais de réponse de l’outil de navigateur ; les anciens contrôles mobiles restent datés de la version précédente. Aucune nouvelle validation mobile n’est donc attestée pour ces finitions.
+- L’aperçu était servi sur http://127.0.0.1:4331 ; aucun push ni déploiement. Sauvegarde précédente : portfolio-avant-finitions-animations-12nov.zip et .bundle.
