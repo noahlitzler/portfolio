@@ -35,6 +35,7 @@ const ratioDe = (f) => (f.includes("mockups") ? "16 / 9" : f.includes("banniere"
           <span class="cat">{p.categorie}</span>
         </div>
         <p class="seance">Séance {p.numero} · {p.categorie}</p>
+        <p class="contexte">{p.cadre} · {p.date}</p>
         <h1 class="titre">{p.titre}</h1>
         <p class="resume">{p.resume}</p>
         <p class="credits">
@@ -133,6 +134,7 @@ const ratioDe = (f) => (f.includes("mockups") ? "16 / 9" : f.includes("banniere"
         <p class="legende-res">{p.resultat.legende}</p>
         {p.url && <a class="entrer lien-projet" href={p.url} target="_blank" rel="noopener noreferrer">{p.action ?? "Explorer le projet"} ↗</a>}
         {p.resultat.note && <p class="legende-res">{p.resultat.note}</p>}
+        {p.sources && <nav class="sources" aria-label={"Documents du projet " + p.titre}>{p.sources.map(source=><a href={source.url} target="_blank" rel="noopener noreferrer">{source.titre} ↗</a>)}</nav>}
       </section>
     )}
 
@@ -140,11 +142,11 @@ const ratioDe = (f) => (f.includes("mockups") ? "16 / 9" : f.includes("banniere"
       <section class="chapitre" aria-labelledby="t-coupee">
         <p class="label">Scène coupée</p>
         <h2 id="t-coupee" class="grand">{p.coupee.titre}</h2>
-        <ul class="corrections">
+        {p.coupee.correctifs.length > 0 && <ul class="corrections">
           {p.coupee.correctifs.map(([avant, apres]) => (
             <li><s>{avant}</s><span class="sr-only"> corrigé en </span><span class="apres">{apres}</span></li>
           ))}
-        </ul>
+        </ul>}
         <p class="texte-coupe">{p.coupee.texte}</p>
       </section>
     )}
@@ -165,6 +167,8 @@ const ratioDe = (f) => (f.includes("mockups") ? "16 / 9" : f.includes("banniere"
 </Base>
 
 <style>
+  .contexte {margin:0;font:.8rem var(--font-label);text-transform:uppercase;letter-spacing:.08em;color:#f2eee5a6}.sources {display:flex;flex-wrap:wrap;gap:1rem 2rem;margin-top:2rem}.sources a {font:500 .9rem var(--font-label);text-underline-offset:.4rem;max-width:100%;overflow-wrap:anywhere}
+
   .details-techniques {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2rem;margin:3rem 0 0}.details-techniques dt {font:700 1.1rem var(--font-label);text-transform:uppercase;letter-spacing:.08em;margin-bottom:1rem}.details-techniques dd {margin:0;line-height:1.7;color:color-mix(in srgb,var(--creme) 85%,transparent)}@media(max-width:48rem){.details-techniques{grid-template-columns:1fr}}
   .plan-texte { padding:clamp(2rem,5vw,5rem); min-height:18rem; }
   .plan-texte h3 {font:700 clamp(2rem,5vw,5rem) var(--font-titre);margin:0 0 1rem;color:var(--accent-texte)}
@@ -320,7 +324,7 @@ const ratioDe = (f) => (f.includes("mockups") ? "16 / 9" : f.includes("banniere"
   }
   .tc { font-family: var(--font-timecode); font-weight: 700; letter-spacing: 0.12em; }
   .plan-media { background: var(--brun-salle); }
-  .plan-media :global(img) { width: 100%; aspect-ratio: 1512 / 520; object-fit: contain; }
+  .plan-media :global(img) { width: 100%; height: auto; object-fit: contain; }
   .plan-legende {
     margin: 0;
     padding: 1rem;

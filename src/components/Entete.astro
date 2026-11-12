@@ -5,14 +5,14 @@ const actif=(href)=>href==='/'?chemin==='/':chemin.startsWith(href);
 ---
 <header class="masthead">
  <a class="signature" href="/">Noah Litzler<span>Portfolio / 2026</span></a>
- <span class="localisation">Montbéliard, France <span class="disponible">· En recherche de stage</span></span>
+ <span class="localisation"><span class="disponible">Stage · 29 mars — 4 juin 2027</span></span>
  <button class="ouvrir-chapitres" type="button" aria-haspopup="dialog" aria-controls="menu-chapitres">Chapitres <span aria-hidden="true">＋</span></button>
  <span class="progression-film" aria-hidden="true"></span>
 </header>
 <dialog id="menu-chapitres" class="menu-dvd" aria-labelledby="titre-chapitres">
  <div class="menu-barre"><a class="signature" href="/">Noah Litzler<span>Portfolio / 2026</span></a><button type="button" class="fermer-chapitres" autofocus>Fermer <span aria-hidden="true">✕</span></button></div>
  <div class="menu-corps"><div><p class="sur-titre" id="titre-chapitres">Choisis ton chapitre.</p><nav aria-label="Navigation principale"><ol>{liens.map(l=><li><a href={l.href} aria-current={actif(l.href)?'page':undefined}><span>{l.n}</span>{l.nom}<b aria-hidden="true">↗</b></a></li>)}</ol></nav></div><aside class="menu-note"><span class="monogramme" aria-hidden="true">N.L</span><p>Des idées qui prennent forme.<br/>Des images qui restent.</p><a href="mailto:noah.litzler@gmail.com">noah.litzler@gmail.com ↗</a></aside></div>
- <div class="menu-bas"><span>Direction artistique · Design d’interfaces · Création numérique</span><a href="/cv-noah-litzler.pdf" download>Le CV ↗</a></div>
+ <div class="menu-bas"><span>Design graphique · Direction artistique · Création numérique</span><a href="/cv-noah-litzler.pdf" download>Le CV ↗</a></div>
 </dialog>
 <script>
 const menu=document.querySelector<HTMLDialogElement>('#menu-chapitres');const ouvrir=document.querySelector<HTMLButtonElement>('.ouvrir-chapitres');

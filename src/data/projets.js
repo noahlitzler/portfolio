@@ -1,187 +1,493 @@
+// Les cinq études de cas partagent le même gabarit.
 export const projets = [
   {
-    slug: "vivez-l-essentiel",
-    numero: "01",
-    titre: "Vivez l’essentiel",
-    categorie: "Production graphique",
-    mots: "Affiche - Série - Typographie",
-    seance: "Séance 01 - Vivez l’essentiel",
-    presente: "Noah Litzler présente",
-    accent: "var(--bleu)",
-    timecode: "00:04:21:12",
-    progression: 41,
-    statut: "Actuellement à l’affiche",
-    resume: "Trois affiches pour donner envie de découvrir Montbéliard à travers trois monuments : le château, l’Hôtel Peugeot et le temple.",
-    suite: "Séance 01 - Production graphique. Trois affiches pour Pays de Montbéliard Tourisme.",
-    legende: "Campagne d’affichage pour Pays de Montbéliard Tourisme - Conception et illustration Noah Litzler - BUT MMI, IUT Nord Franche-Comté",
-    credits: [
-      ["Un projet de", "Pays de Montbéliard Tourisme"],
-      ["Illustration", "Noah Litzler"],
-      ["Mise en page", "Noah Litzler"],
-      ["Typographie", "Oswald"],
-      ["Logiciel", "Affinity"],
-      ["Format", "3 affiches 40 × 60 cm"],
-      ["Année", "2026"],
-    ],
-    affiche: { f: "vivez-affiche-1.png", alt: "Affiche « Au cœur de l’histoire » : le château des ducs de Wurtemberg illustré en aplats" },
-    visuels: [
-      { f: "vivez-affiche-1.png", alt: "Affiche « Au cœur de l’histoire » : le château des ducs de Wurtemberg" },
-      { f: "vivez-affiche-2.png", alt: "Affiche « L’âme industrielle » : l’Hôtel Peugeot" },
-      { f: "vivez-affiche-3.png", alt: "Affiche « Esprit de lumière » : le temple Saint-Martin" },
-    ],
-    pitch: {
-      texte: "Trois monuments, trois ambiances, une seule campagne :",
-      accroche: "« Vivez l’essentiel, au cœur de Montbéliard ».",
-    },
-    commande: "Pays de Montbéliard Tourisme voulait trois affiches pour faire découvrir la ville par trois monuments : le Château des Ducs de Wurtemberg, l’Hôtel Peugeot et le Temple Saint-Martin, réunis sous une même signature.",
-    role: "Projet individuel. J’ai choisi les monuments, illustré les bâtiments en vectoriel, écrit les accroches, composé les affiches et rédigé la note d’intention.",
-    makingOf: {
-      titre: "Trois décisions, trois plans.",
-      plans: [
-        { timecode: "00:01:12:04", legende: "Trois monuments, trois récits : le patrimoine, l’industrie, la spiritualité.", image: { f: "vivez-plan-1.png", alt: "Les trois monuments illustrés côte à côte : le château, l’Hôtel Peugeot et le temple" } },
-        { timecode: "00:02:12:04", legende: "Le style des affiches de voyage des années 50-60, en aplats et en contre-plongée.", image: { f: "vivez-plan-2.png", alt: "Détail d’une illustration en contre-plongée avec un lampadaire" } },
-        { timecode: "00:03:12:04", legende: "Une même grille pour les trois. Seule la couleur change.", image: { f: "vivez-plan-3.png", alt: "La grille commune aux trois affiches : logos en haut et en bas, titre au centre" } },
+    "slug": "vivez-l-essentiel",
+    "numero": "01",
+    "titre": "Vivez l’essentiel",
+    "categorie": "Production graphique",
+    "mots": "Affiche - Série - Typographie",
+    "seance": "Séance 01 - Vivez l’essentiel",
+    "presente": "Noah Litzler présente",
+    "accent": "var(--bleu)",
+    "timecode": "00:04:21:12",
+    "progression": 41,
+    "statut": "Actuellement à l’affiche",
+    "resume": "Trois affiches pour donner envie de découvrir Montbéliard à travers trois monuments : le château, l’Hôtel Peugeot et le temple.",
+    "suite": "Séance 01 - Production graphique. Trois affiches pour Pays de Montbéliard Tourisme.",
+    "legende": "Vivez l’essentiel - Série d’affiches de tourisme - Exercice scolaire individuel, mai 2026 - Illustration et conception Noah Litzler",
+    "credits": [
+      [
+        "Un projet de",
+        "Noah Litzler"
       ],
-    },
-    fiche: {
-      titre: "Une couleur par monument.",
-      couleurs: [
-        { nom: "Bleu pétrole", hex: "#4A8CA6" },
-        { nom: "Terracotta", hex: "#A04D32" },
-        { nom: "Vert kaki", hex: "#8A9A3A" },
-        { nom: "Vert nuit", hex: "#2A3E30" },
-        { nom: "Crème", hex: "#F3EDE0", clair: true },
+      [
+        "Illustration",
+        "Noah Litzler"
       ],
-      police: {
-        nom: "Oswald",
-        lignes: [["Bold", "le mot principal"], ["Regular", "le complément"], ["Light", "la signature"]],
-        note: "Illustration vectorielle sur Affinity",
+      [
+        "Mise en page",
+        "Noah Litzler"
+      ],
+      [
+        "Typographie",
+        "Oswald"
+      ],
+      [
+        "Logiciel",
+        "Affinity"
+      ],
+      [
+        "Format",
+        "3 affiches 40 × 60 cm"
+      ],
+      [
+        "Cadre",
+        "Projet scolaire"
+      ],
+      [
+        "Date",
+        "Mai 2026"
+      ]
+    ],
+    "affiche": {
+      "f": "vivez-affiche-1.png",
+      "alt": "Affiche « Au cœur de l’histoire » : le château des ducs de Wurtemberg illustré en aplats"
+    },
+    "visuels": [
+      {
+        "f": "vivez-affiche-1.png",
+        "alt": "Affiche « Au cœur de l’histoire » : le château des ducs de Wurtemberg"
       },
-    },
-    resultat: {
-      titre: "Trois affiches 40 × 60 cm, prêtes à imprimer.",
-      images: [
-        { f: "vivez-affiche-1.png", alt: "Affiche « Au cœur de l’histoire »" },
-        { f: "vivez-affiche-2.png", alt: "Affiche « L’âme industrielle »" },
-        { f: "vivez-affiche-3.png", alt: "Affiche « Esprit de lumière »" },
-      ],
-      legende: "Avec traits de coupe, et une note d’intention d’une page.",
-    },
-    coupee: {
-      titre: "Ce que je referais autrement.",
-      correctifs: [["Au coeur", "cœur"], ["L’ame", "l’âme"]],
-      texte: "Soigner la typographie jusqu’au bout : écrire « CŒUR » et non « COEUR », utiliser l’apostrophe courbe. Et pousser la contre-plongée sur le temple, resté vu de face.",
-    },
-  },
-  {
-    slug: "la-cimade",
-    numero: "02",
-    titre: "La Cimade",
-    categorie: "Branding",
-    mots: "Logo - Charte graphique - Association",
-    seance: "Séance 02 - Refonte de logo",
-    presente: "Noah Litzler présente",
-    accent: "var(--orange)",
-    timecode: "00:05:36:09",
-    progression: 52,
-    statut: "Actuellement à l’affiche",
-    resume: "La refonte du logo et de l’identité d’une association qui défend les droits des personnes migrantes et réfugiées.",
-    suite: "Séance 02 - Branding. La refonte du logo et de l’identité de La Cimade.",
-    legende: "Refonte du logo et de la charte graphique de La Cimade - Direction artistique et design graphique Noah Litzler - BUT MMI, IUT Nord Franche-Comté",
-    credits: [
-      ["Un projet de", "Noah Litzler"],
-      ["Pour", "La Cimade"],
-      ["Audit", "Noah Litzler"],
-      ["Concept", "Noah Litzler"],
-      ["Charte", "Noah Litzler"],
-      ["Typographie", "Montserrat"],
-      ["Outils", "Croquis papier et Figma"],
-      ["Année", "2026"],
+      {
+        "f": "vivez-affiche-2.png",
+        "alt": "Affiche « L’âme industrielle » : l’Hôtel Peugeot"
+      },
+      {
+        "f": "vivez-affiche-3.png",
+        "alt": "Affiche « Esprit de lumière » : le temple Saint-Martin"
+      }
     ],
-    affiche: { f: "cimade-affiche.png", alt: "Symbole de La Cimade sur fond rouge", type: "cimade" },
-    visuels: [
-      { f: "cimade-logo.svg", alt: "Logo final La Cimade" },
-      { f: "cimade-banniere-1.png", alt: "Bannière de la nouvelle identité La Cimade" },
-    ],
-    pitch: {
-      texte: "Donner un symbole fort à une association militante, sans trahir son slogan :",
-      accroche: "« L’humanité passe par l’autre ».",
+    "pitch": {
+      "texte": "Trois monuments, trois ambiances, une seule campagne :",
+      "accroche": "« Vivez l’essentiel, au cœur de Montbéliard »."
     },
-    commande: "L’identité de La Cimade reposait sur la typographie : le nom en rouge, une ligne-chemin et le slogan. Lisible et militante, elle manquait d’un symbole fort et s’adaptait mal au numérique.",
-    role: "Projet individuel. J’ai audité le logo existant, comparé Amnesty International, Médecins Sans Frontières et Emmaüs, défini deux axes et un anti-axe, dessiné le logo et rédigé la charte graphique.",
-    makingOf: {
-      titre: "Trois étapes, trois plans.",
-      plans: [
+    "commande": "Exercice scolaire individuel : concevoir une série de trois affiches pour faire découvrir Montbéliard à travers le château des ducs de Wurtemberg, l’Hôtel Peugeot et le temple Saint-Martin. La campagne est pensée pour Pays de Montbéliard Tourisme, sous une même signature.",
+    "role": "Projet individuel. J’ai choisi les monuments, illustré les bâtiments en vectoriel, écrit les accroches, composé les affiches et rédigé la note d’intention.",
+    "makingOf": {
+      "titre": "Trois décisions, trois plans.",
+      "plans": [
         {
-          timecode: "00:01:12:04",
-          legende: "Deux axes, un anti-axe : j’ai retenu le lien humain, et écarté le branding commercial.",
-          axes: [
-            { titre: "Le lien humain", mots: ["Humanité", "Rencontre", "Accueil", "Passage", "Solidarité"], actif: true },
-            { titre: "La voix engagée", mots: ["Droits", "Combat", "Justice", "Mobilisation", "Dignité"], actif: false },
-          ],
+          "timecode": "00:01:12:04",
+          "legende": "Trois monuments, trois récits : le patrimoine, l’industrie, la spiritualité.",
+          "image": {
+            "f": "vivez-plan-1.png",
+            "alt": "Les trois monuments illustrés côte à côte : le château, l’Hôtel Peugeot et le temple"
+          }
         },
-        { timecode: "00:02:12:04", legende: "Chercher à la main : points reliés, cercles, silhouettes. Le cercle s’impose.", image: { f: "cimade-croquis.png", alt: "Planche de croquis au crayon : variations du logo à base de cercles et de silhouettes" } },
-        { timecode: "00:03:12:04", legende: "Du cercle au symbole : segments resserrés, extrémités arrondies, dégradé rouge.", image: { f: "cimade-logos.png", alt: "Variantes du logo La Cimade, du cercle de points jusqu’au symbole final" } },
+        {
+          "timecode": "00:02:12:04",
+          "legende": "Le style des affiches de voyage des années 50-60, en aplats et en contre-plongée.",
+          "image": {
+            "f": "vivez-plan-2.png",
+            "alt": "Détail d’une illustration en contre-plongée avec un lampadaire"
+          }
+        },
+        {
+          "timecode": "00:03:12:04",
+          "legende": "Une même grille pour les trois. Seule la couleur change.",
+          "image": {
+            "f": "vivez-plan-3.png",
+            "alt": "La grille commune aux trois affiches : logos en haut et en bas, titre au centre"
+          }
+        }
+      ]
+    },
+    "fiche": {
+      "titre": "Une couleur par monument.",
+      "couleurs": [
+        {
+          "nom": "Bleu pétrole",
+          "hex": "#4A8CA6"
+        },
+        {
+          "nom": "Terracotta",
+          "hex": "#A04D32"
+        },
+        {
+          "nom": "Vert kaki",
+          "hex": "#8A9A3A"
+        },
+        {
+          "nom": "Vert nuit",
+          "hex": "#2A3E30"
+        },
+        {
+          "nom": "Crème",
+          "hex": "#F3EDE0",
+          "clair": true
+        }
       ],
+      "police": {
+        "nom": "Oswald",
+        "lignes": [
+          [
+            "Bold",
+            "le mot principal"
+          ],
+          [
+            "Regular",
+            "le complément"
+          ],
+          [
+            "Light",
+            "la signature"
+          ]
+        ],
+        "note": "Illustration vectorielle sur Affinity"
+      }
     },
-    fiche: {
-      titre: "Rouge, noir, et un cercle.",
-      couleurs: [
-        { nom: "Rouge engagé", hex: "#D60000", sens: "l’engagement" },
-        { nom: "Bordeaux", hex: "#7A0000", sens: "le dégradé" },
-        { nom: "Noir", hex: "#000000", sens: "la visibilité, la lisibilité" },
-        { nom: "Gris clair", hex: "#F2F2F2", sens: "les fonds", clair: true },
+    "resultat": {
+      "titre": "Trois affiches 40 × 60 cm, prêtes à imprimer.",
+      "images": [
+        {
+          "f": "vivez-affiche-1.png",
+          "alt": "Affiche « Au cœur de l’histoire »"
+        },
+        {
+          "f": "vivez-affiche-2.png",
+          "alt": "Affiche « L’âme industrielle »"
+        },
+        {
+          "f": "vivez-affiche-3.png",
+          "alt": "Affiche « Esprit de lumière »"
+        }
       ],
-      police: {
-        nom: "Montserrat",
-        lignes: [["Bold", "les titres et le nom"], ["Regular", "les textes"]],
-        note: "Croquis papier, puis vectorisation sur Figma.",
-      },
+      "legende": "Avec traits de coupe, et une note d’intention d’une page."
     },
-    resultat: {
-      titre: "Une charte graphique complète.",
-      images: [
-        { f: "cimade-banniere-1.png", alt: "Bannière web « L’humanité passe par l’autre » avec deux femmes souriantes" },
-        { f: "cimade-banniere-2.png", alt: "Bannière « Soutenir et accompagner les personnes migrantes et réfugiées »" },
+    "coupee": {
+      "titre": "Ce que je pousserais plus loin.",
+      "correctifs": [
+        [
+          "Des aplats",
+          "davantage de relief par les ombres"
+        ]
       ],
-      legende: "Logo et variantes, zone de protection, usages interdits, couleurs, typographies, univers graphique, publication Instagram et bannières web.",
-      note: "Photos des bannières générées par IA (ChatGPT).",
+      "texte": "Je pousserais encore le travail graphique avec des jeux d’ombres. L’objectif serait de donner plus de profondeur aux bâtiments et de renforcer le relief des illustrations tout en conservant la cohérence de la série."
     },
-    coupee: {
-      titre: "Ce que je referais autrement.",
-      correctifs: [["Photos IA", "vraies photos de terrain"], ["Logo figé", "testé avec l’asso"]],
-      texte: "Tester le logo auprès de l’association et de son public avant de le figer, et remplacer les visuels générés par IA par de vraies photos de terrain.",
-    },
+    "date": "Mai 2026",
+    "cadre": "Projet scolaire"
   },
   {
-    slug: "derriere-le-prompt", numero: "03", titre: "Derrière le prompt",
-    categorie: "Datavisualisation", mots: "Données - Récit - Interaction",
-    seance: "Séance 03 - L’énergie invisible", presente: "Litzler & Bertrand présentent",
-    accent: "var(--vert-acide)", timecode: "00:06:18:20", progression: 59,
-    action: "Explorer les visualisations", statut: "À explorer en ligne", url: "https://sae303-clement-noah-10.netlify.app/",
-    resume: "Une expérience interactive pour rendre visible ce qui se cache derrière une requête d’IA : de l’énergie, des machines et des territoires.",
-    suite: "Séance 03 - Datavisualisation. Explorer l’énergie invisible de l’intelligence artificielle.",
-    legende: "Derrière le prompt - L’énergie invisible - Projet SAÉ 303 réalisé en binôme par Noah Litzler et Clément Bertrand - BUT MMI",
-    credits: [["Un projet de", "Noah Litzler et Clément Bertrand"], ["Cadre", "SAÉ 303 - BUT MMI"], ["Format", "Expérience web interactive"], ["Année", "2026"]],
-    affiche: { type: "prompt", alt: "Derrière le prompt : l’énergie invisible" }, visuels: [],
-    pitch: { texte: "Une réponse s’affiche en quelques secondes. Mais derrière l’écran,", accroche: "l’invisible existe." },
-    commande: "Répondre au défi ADEME « L’impact environnemental de l’IA générative » (Open Data University) en rendant les données compréhensibles dans une expérience de datavisualisation. Le parcours aborde la requête, les modèles, la consommation d’énergie et les infrastructures.",
-    role: "J’ai réalisé ce projet en binôme avec Clément Bertrand. Notre résultat associe un récit visuel et quatre visualisations interactives.",
-    makingOf: { titre: "Des données à une histoire à explorer.", plans: [
-      {timecode: "00:01:12:04", titre: "Comprendre", legende: "Distinguer estimations et mesures : les chiffres donnent des ordres de grandeur, pas l’empreinte exacte de chaque prompt.", texte: "Le site explique ses sources et les limites des comparaisons dans une page méthode accessible pendant toute l’expérience."},
-      {timecode: "00:02:12:04", titre: "Scénariser", legende: "Quatre chapitres pour passer d’une action quotidienne à ses infrastructures.", texte: "La requête → comparer les modèles → mesurer l’énergie → les infrastructures. Le défilement relie chaque étape ; les chapitres permettent aussi un accès direct."},
-      {timecode: "00:03:12:04", titre: "Explorer", legende: "Laisser le visiteur explorer les graphiques et consulter la méthode.", texte: "Le site utilise Astro, des données JSON préfiltrées et des visualisations issues de notre notebook Observable. Les sélecteurs, les changements d’échelle et les cartes permettent une lecture active."}
-    ]},
-    fiche: {
-      titre: "Astro, Observable et des données ouvertes.",
-      elements: [
-        ["Structure", "Astro organise le récit en quatre temps. Le défilement et les accès directs permettent de parcourir les chapitres."],
-        ["Visualisations", "Les fonctions du notebook Observable reçoivent les données JSON préfiltrées et proposent des sélecteurs, des changements d’échelle et des cartes."],
-        ["Lecture des données", "Les sources, les unités et les limites des estimations restent accessibles dans la page Méthode."],
+    "slug": "la-cimade",
+    "numero": "02",
+    "titre": "La Cimade",
+    "categorie": "Branding",
+    "mots": "Logo - Charte graphique - Association",
+    "seance": "Séance 02 - Refonte de logo",
+    "presente": "Noah Litzler présente",
+    "accent": "var(--orange)",
+    "timecode": "00:05:36:09",
+    "progression": 52,
+    "statut": "Actuellement à l’affiche",
+    "resume": "La refonte du logo et de l’identité d’une association qui défend les droits des personnes migrantes et réfugiées.",
+    "suite": "Séance 02 - Branding. La refonte du logo et de l’identité de La Cimade.",
+    "legende": "Refonte du logo et de la charte graphique de La Cimade - Direction artistique et design graphique Noah Litzler - BUT MMI, IUT Nord Franche-Comté",
+    "credits": [
+      [
+        "Un projet de",
+        "Noah Litzler"
       ],
+      [
+        "Pour",
+        "La Cimade — exercice non officiel"
+      ],
+      [
+        "Audit",
+        "Noah Litzler"
+      ],
+      [
+        "Concept",
+        "Noah Litzler"
+      ],
+      [
+        "Charte",
+        "Noah Litzler"
+      ],
+      [
+        "Typographie",
+        "Montserrat"
+      ],
+      [
+        "Outils",
+        "Croquis papier et Figma"
+      ],
+      [
+        "Cadre",
+        "Projet scolaire"
+      ],
+      [
+        "Date",
+        "Mars 2026"
+      ]
+    ],
+    "affiche": {
+      "f": "cimade-affiche.png",
+      "alt": "Symbole de La Cimade sur fond rouge",
+      "type": "cimade"
     },
-    resultat: {titre: "Une expérience en ligne, quatre visualisations.", images: [], legende: "Le site complet est accessible via le lien ci-dessous, avec ses interactions et sa page méthode."},
-    coupee: {titre: "Le regard critique fait partie du projet.", correctifs: [["Un chiffre isolé", "un chiffre contextualisé"]], texte: "Présenter les incertitudes avec les données et conserver un accès clair aux sources : la mise en scène doit aider à comprendre les ordres de grandeur."}
+    "visuels": [
+      {
+        "f": "cimade-logo.svg",
+        "alt": "Logo final La Cimade"
+      },
+      {
+        "f": "cimade-banniere-1.png",
+        "alt": "Bannière de la nouvelle identité La Cimade"
+      }
+    ],
+    "pitch": {
+      "texte": "Donner un symbole fort à une association militante, sans trahir son slogan :",
+      "accroche": "« L’humanité passe par l’autre »."
+    },
+    "commande": "Exercice scolaire individuel de refonte d’identité, réalisé en mars 2026. Le point de départ : un nom en rouge, une ligne-chemin et un slogan. Mon objectif était de proposer un symbole fort et des déclinaisons adaptées au numérique.",
+    "role": "Projet individuel. J’ai audité le logo existant, comparé Amnesty International, Médecins Sans Frontières et Emmaüs, défini deux axes et un anti-axe, dessiné le logo et rédigé la charte graphique.",
+    "makingOf": {
+      "titre": "Trois étapes, trois plans.",
+      "plans": [
+        {
+          "timecode": "00:01:12:04",
+          "legende": "Deux axes, un anti-axe : j’ai retenu le lien humain, et écarté le branding commercial.",
+          "axes": [
+            {
+              "titre": "Le lien humain",
+              "mots": [
+                "Humanité",
+                "Rencontre",
+                "Accueil",
+                "Passage",
+                "Solidarité"
+              ],
+              "actif": true
+            },
+            {
+              "titre": "La voix engagée",
+              "mots": [
+                "Droits",
+                "Combat",
+                "Justice",
+                "Mobilisation",
+                "Dignité"
+              ],
+              "actif": false
+            }
+          ]
+        },
+        {
+          "timecode": "00:02:12:04",
+          "legende": "Chercher à la main : points reliés, cercles, silhouettes. Le cercle s’impose.",
+          "image": {
+            "f": "cimade-croquis.png",
+            "alt": "Planche de croquis au crayon : variations du logo à base de cercles et de silhouettes"
+          }
+        },
+        {
+          "timecode": "00:03:12:04",
+          "legende": "Du cercle au symbole : segments resserrés, extrémités arrondies, dégradé rouge.",
+          "image": {
+            "f": "cimade-logos.png",
+            "alt": "Variantes du logo La Cimade, du cercle de points jusqu’au symbole final"
+          }
+        }
+      ]
+    },
+    "fiche": {
+      "titre": "Rouge, noir, et un cercle.",
+      "couleurs": [
+        {
+          "nom": "Rouge engagé",
+          "hex": "#D60000",
+          "sens": "l’engagement"
+        },
+        {
+          "nom": "Bordeaux",
+          "hex": "#7A0000",
+          "sens": "le dégradé"
+        },
+        {
+          "nom": "Noir",
+          "hex": "#000000",
+          "sens": "la visibilité, la lisibilité"
+        },
+        {
+          "nom": "Gris clair",
+          "hex": "#F2F2F2",
+          "sens": "les fonds",
+          "clair": true
+        }
+      ],
+      "police": {
+        "nom": "Montserrat",
+        "lignes": [
+          [
+            "Bold",
+            "les titres et le nom"
+          ],
+          [
+            "Regular",
+            "les textes"
+          ]
+        ],
+        "note": "Croquis papier, puis vectorisation sur Figma."
+      }
+    },
+    "resultat": {
+      "titre": "Une charte graphique complète.",
+      "images": [
+        {
+          "f": "cimade-banniere-1.png",
+          "alt": "Bannière web « L’humanité passe par l’autre » avec deux femmes souriantes"
+        },
+        {
+          "f": "cimade-banniere-2.png",
+          "alt": "Bannière « Soutenir et accompagner les personnes migrantes et réfugiées »"
+        }
+      ],
+      "legende": "Logo et variantes, zone de protection, usages interdits, couleurs, typographies, univers graphique, publication Instagram et bannières web.",
+      "note": "Photos des bannières générées par IA (ChatGPT)."
+    },
+    "coupee": {
+      "titre": "Des affiches plus personnelles.",
+      "correctifs": [
+        [
+          "Une place importante à l’IA",
+          "une création graphique plus personnelle"
+        ]
+      ],
+      "texte": "Je présenterais des affiches avec le logo en donnant davantage de place à ma propre création graphique. Je souhaite réduire le recours aux images générées par IA et développer des compositions plus personnelles."
+    },
+    "date": "Mars 2026",
+    "cadre": "Projet scolaire"
+  },
+  {
+    "slug": "derriere-le-prompt",
+    "numero": "03",
+    "titre": "Derrière le prompt",
+    "categorie": "Datavisualisation",
+    "mots": "Données - Récit - Interaction",
+    "seance": "Séance 03 - L’énergie invisible",
+    "presente": "Litzler & Bertrand présentent",
+    "accent": "var(--vert-acide)",
+    "timecode": "00:06:18:20",
+    "progression": 59,
+    "action": "Explorer les visualisations",
+    "statut": "À explorer en ligne",
+    "url": "https://sae303-clement-noah-10.netlify.app/",
+    "resume": "Une expérience interactive pour rendre visible ce qui se cache derrière une requête d’IA : de l’énergie, des machines et des territoires.",
+    "suite": "Séance 03 - Datavisualisation. Explorer l’énergie invisible de l’intelligence artificielle.",
+    "legende": "Derrière le prompt - L’énergie invisible - Projet SAÉ 303 réalisé en binôme par Noah Litzler et Clément Bertrand - BUT MMI",
+    "credits": [
+      [
+        "Un projet de",
+        "Noah Litzler et Clément Bertrand"
+      ],
+      [
+        "Recherches et graphiques",
+        "Noah Litzler"
+      ],
+      [
+        "Rédaction et données",
+        "Clément Bertrand"
+      ],
+      [
+        "Conception et développement",
+        "En binôme"
+      ],
+      [
+        "Format",
+        "Expérience web interactive"
+      ],
+      [
+        "Cadre",
+        "Projet scolaire"
+      ],
+      [
+        "Date",
+        "Octobre 2026"
+      ]
+    ],
+    "affiche": {
+      "type": "prompt",
+      "alt": "Derrière le prompt : l’énergie invisible"
+    },
+    "visuels": [],
+    "pitch": {
+      "texte": "Une réponse s’affiche en quelques secondes. Mais derrière l’écran,",
+      "accroche": "l’invisible existe."
+    },
+    "commande": "Répondre au défi ADEME « L’impact environnemental de l’IA générative » (Open Data University) en rendant les données compréhensibles dans une expérience de datavisualisation. Le parcours aborde la requête, les modèles, la consommation d’énergie et les infrastructures.",
+    "role": "J’ai réalisé les recherches et les graphiques. Clément Bertrand s’est chargé de la rédaction et des données. Nous avons réalisé ensemble les autres parties du projet, dont la conception et le développement du site.",
+    "makingOf": {
+      "titre": "Des données à une histoire à explorer.",
+      "plans": [
+        {
+          "timecode": "00:01:12:04",
+          "titre": "Comprendre",
+          "legende": "Distinguer estimations et mesures : les chiffres donnent des ordres de grandeur, pas l’empreinte exacte de chaque prompt.",
+          "texte": "Le site explique ses sources et les limites des comparaisons dans une page méthode accessible pendant toute l’expérience."
+        },
+        {
+          "timecode": "00:02:12:04",
+          "titre": "Scénariser",
+          "legende": "Quatre chapitres pour passer d’une action quotidienne à ses infrastructures.",
+          "texte": "La requête → comparer les modèles → mesurer l’énergie → les infrastructures. Le défilement relie chaque étape ; les chapitres permettent aussi un accès direct."
+        },
+        {
+          "timecode": "00:03:12:04",
+          "titre": "Explorer",
+          "legende": "Laisser le visiteur explorer les graphiques et consulter la méthode.",
+          "texte": "Le site utilise Astro, des données JSON préfiltrées et des visualisations issues de notre notebook Observable. Les sélecteurs, les changements d’échelle et les cartes permettent une lecture active."
+        }
+      ]
+    },
+    "fiche": {
+      "titre": "Astro, Observable et des données ouvertes.",
+      "elements": [
+        [
+          "Structure",
+          "Astro organise le récit en quatre temps. Le défilement et les accès directs permettent de parcourir les chapitres."
+        ],
+        [
+          "Visualisations",
+          "Les fonctions du notebook Observable reçoivent les données JSON préfiltrées et proposent des sélecteurs, des changements d’échelle et des cartes."
+        ],
+        [
+          "Lecture des données",
+          "Les sources, les unités et les limites des estimations restent accessibles dans la page Méthode."
+        ]
+      ]
+    },
+    "resultat": {
+      "titre": "Une expérience en ligne, quatre visualisations.",
+      "images": [],
+      "legende": "Le site complet est accessible via le lien ci-dessous, avec ses interactions et sa page méthode."
+    },
+    "coupee": {
+      "titre": "Ce que je retiens du projet.",
+      "correctifs": [],
+      "texte": "Nous sommes très satisfaits du résultat obtenu. Le récit et les visualisations permettent d’explorer un sujet complexe à plusieurs échelles. Les limites des estimations restent accessibles dans la méthode pour accompagner cette lecture."
+    },
+    "date": "Octobre 2026",
+    "cadre": "Projet scolaire",
+    "sources": [
+      {
+        "titre": "Notebook d’analyse sur Observable",
+        "url": "https://observablehq.com/@mmi-montbeliard/sae-303-gr-10"
+      },
+      {
+        "titre": "Notre réutilisation publiée sur data.gouv.fr",
+        "url": "https://www.data.gouv.fr/reuses/energie-dune-requete-dia-generative-et-localisation-des-datacenters-en-france"
+      }
+    ]
   },
   {
     "slug": "sull",
@@ -222,8 +528,12 @@ export const projets = [
         "Plateforme web"
       ],
       [
-        "Année",
-        "2026"
+        "Cadre",
+        "Projet scolaire"
+      ],
+      [
+        "Date",
+        "Septembre 2026"
       ]
     ],
     "affiche": {
@@ -246,23 +556,25 @@ export const projets = [
       "plans": [
         {
           "timecode": "00:01:12:04",
-          "titre": "Multiplier les portes d’entrée",
-          "texte": "Films, réalisateurs, mouvements et musiques : la navigation permet de partir d’une œuvre connue ou d’explorer un autre angle de la culture cinéma.",
-          "legende": "L’audit et les personas posent le cadre du parcours ; le storyboard relie les différentes étapes de découverte."
+          "titre": "Partir d’un constat",
+          "texte": "Notre audit de Netflix, Prime Video et Disney+ met en évidence une logique de recommandation centrée sur les contenus populaires. Pour SULL, nous avons retenu une autre entrée : explorer un réalisateur, un mouvement, une époque ou une bande originale, puis faire des liens entre les œuvres.",
+          "legende": "L’audit fait émerger trois besoins : approfondir les recherches, relier les œuvres et échanger entre cinéphiles."
         },
         {
           "timecode": "00:02:12:04",
           "image": {
-            "f": "sull-catalogue.png",
-            "alt": "Catalogue SULL : titre, recherche et choix du tri avant la grille de films"
+            "f": "sull-persona-eleanor.png",
+            "alt": "Planche persona fictive Eleanor Fitzgerald : objectifs de découverte, exploration des filmographies et partage entre cinéphiles"
           },
-          "legende": "Le catalogue regroupe une recherche et un tri. Les cartes associent l’affiche, le titre, le cinéaste et l’année pour situer chaque œuvre."
+          "legende": "Eleanor, Jack et Daniel représentent trois profils fictifs du dossier. Leurs objectifs orientent les entrées du catalogue et la place de la communauté. Le dossier complet est lié dans le résultat."
         },
         {
           "timecode": "00:03:12:04",
-          "titre": "Prolonger la séance",
-          "texte": "Le site propose aussi des bandes originales, des mouvements cinématographiques et un espace communauté. Les mêmes repères de navigation permettent de passer de la découverte d’un film à un contexte plus large.",
-          "legende": "Une identité sombre, des titres expressifs et des informations en chasse fixe font le lien entre les rubriques."
+          "image": {
+            "f": "sull-catalogue.png",
+            "alt": "Catalogue SULL : recherche, tri et grille de films"
+          },
+          "legende": "Le storyboard et l’arborescence relient les films, les cinéastes, les mouvements et les musiques. La version en ligne traduit cette organisation dans un catalogue et une navigation commune."
         }
       ]
     },
@@ -311,15 +623,18 @@ export const projets = [
       "note": "Captures de l’interface SULL. Les images de films appartiennent à leurs ayants droit."
     },
     "coupee": {
-      "titre": "Le prochain plan : éprouver la découverte.",
-      "correctifs": [
-        [
-          "Un parcours supposé clair",
-          "un parcours observé en test"
-        ]
-      ],
-      "texte": "La prochaine étape serait de faire chercher un film et une bande originale à plusieurs personnes, puis d’observer leurs hésitations. Ce test permettrait de vérifier la lisibilité du catalogue et la compréhension des différentes rubriques."
-    }
+      "titre": "Ce que nous retenons.",
+      "correctifs": [],
+      "texte": "Nous sommes très satisfaits de la plateforme obtenue. Elle rassemble nos envies de découverte et de partage autour du cinéma dans un même univers. L’audit, les personas et les maquettes ont servi de fil conducteur à sa conception."
+    },
+    "date": "Septembre 2026",
+    "cadre": "Projet scolaire",
+    "sources": [
+      {
+        "titre": "Consulter le dossier de conception SULL",
+        "url": "https://www.figma.com/design/NDCMAoQign7Iyj2jUdaoXC/SULL-DOSSIER?node-id=38-611"
+      }
+    ]
   },
   {
     "slug": "smooth",
@@ -344,10 +659,6 @@ export const projets = [
         "Noah Litzler"
       ],
       [
-        "Cadre",
-        "R303 - BUT MMI"
-      ],
-      [
         "Format",
         "Maquette interactive"
       ],
@@ -360,8 +671,12 @@ export const projets = [
         "Pop rétro et disquaire"
       ],
       [
-        "Année",
-        "2026"
+        "Cadre",
+        "Projet scolaire"
+      ],
+      [
+        "Date",
+        "Octobre 2026"
       ]
     ],
     "affiche": {
@@ -378,7 +693,7 @@ export const projets = [
       "accroche": "À chacun son mix."
     },
     "commande": "Imaginer une boutique de lunettes personnalisables pour des étudiants passionnés de musique. Le persona Juan, guitariste pop/rock au budget d’environ 100 euros, donne une direction au projet : un choix personnel, accessible et ancré dans un univers de disquaire.",
-    "role": "J’ai conçu l’identité et la maquette Smooth dans le cadre de R303 : brandboard, écrans du parcours et configurateur du modèle Billie. Le fichier Figma documente également les retours de cinq testeurs et les corrections apportées au parcours.",
+    "role": "J’ai réalisé seul ce projet scolaire en octobre 2026 : identité, brandboard, maquette interactive et tests utilisateurs. Les visuels de lunettes partent de fichiers SVG fournis par l’enseignante, puis retravaillés avec ChatGPT. Le fichier Figma rassemble les retours des cinq testeurs et les corrections du parcours.",
     "makingOf": {
       "titre": "Une identité, un parcours, puis des retours.",
       "plans": [
@@ -461,25 +776,19 @@ export const projets = [
         }
       ],
       "legende": "Une même identité traverse la découverte des modèles, la personnalisation et le récapitulatif d’achat. La paire est présentée comme une pochette de disque ; les réglages sont organisés en étapes.",
-      "note": "Projet de marque fictive : les écrans de commande et de paiement sont des maquettes, sans vente réelle."
+      "note": "Marque fictive et maquette, sans vente réelle. Visuels de lunettes : fichiers SVG fournis par l’enseignante, puis retravaillés avec ChatGPT."
     },
     "coupee": {
-      "titre": "Ce que les tests ont fait changer.",
+      "titre": "Pousser encore l’identité rétro.",
       "correctifs": [
         [
-          "Remonter pour revoir la paire",
-          "un aperçu à côté des réglages"
-        ],
-        [
-          "Un sac peu visible",
-          "Mon sac sur toutes les pages"
-        ],
-        [
-          "Un vocabulaire ambigu",
-          "des intitulés plus explicites"
+          "Un univers musical",
+          "une référence rétro encore plus affirmée"
         ]
       ],
-      "texte": "Le bilan Figma mentionne aussi une pochette récapitulative de la paire dans le sac. Ces corrections rendent le parcours plus lisible tout en conservant l’univers musical."
-    }
+      "texte": "J’aurais aimé pousser encore davantage l’identité rétro et la référence à Michael Jackson. Ce lien nourrit déjà le nom et l’univers musical de Smooth ; je voudrais le rendre plus personnel dans les compositions et les détails graphiques."
+    },
+    "date": "Octobre 2026",
+    "cadre": "Projet scolaire"
   }
 ];

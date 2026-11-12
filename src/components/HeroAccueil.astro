@@ -1,0 +1,54 @@
+---
+import Affiche from './Affiche.astro';
+import { projets } from '../data/projets.js';
+const affiches = [projets[0], projets[1], projets[4]];
+---
+<section class="ouverture" aria-labelledby="titre-accueil">
+  <div class="lumiere" aria-hidden="true"></div>
+  <div class="en-tete"><p>Design graphique / Direction artistique</p><span>Une création de Noah Litzler</span></div>
+  <div class="composition">
+    <div class="identite">
+      <p class="avant-titre"><span></span> Imagination. Créativité. Originalité.</p>
+      <h1 id="titre-accueil"><span>Noah</span><span class="nom">Litzler<span class="point">.</span></span></h1>
+      <p class="intention">Je donne une identité aux idées.<br/>Et une histoire aux images.</p>
+      <div class="actions"><a class="entrer" href="#programmation">Découvrir les projets <span aria-hidden="true">↘</span></a><a class="contact" href="/contact">Parlons de ton projet ↗</a></div>
+    </div>
+    <div class="ecran" aria-hidden="true">
+      <div class="orbite"></div><span class="numero">NL / 2026</span>
+      <div class="cadrage"><i></i><i></i><i></i><i></i></div>
+      <div class="collage">{affiches.map((p,i)=><div class:list={['creation','creation-'+i]}><Affiche projet={p} simple /></div>)}</div>
+      <div class="note"><span>Scénario original</span><strong>Une idée.<br/>Tout un univers.</strong><span class="trait" aria-hidden="true">↗</span></div>
+      <p class="legende">Images, identités & expériences</p><button class="pause-effets" type="button" hidden aria-pressed="false">Pause des effets Ⅱ</button>
+    </div>
+  </div>
+  <div class="bas"><p><span class="voyant" aria-hidden="true"></span><strong>En recherche de stage</strong><span>29 mars — 4 juin 2027</span></p><p>Haut-Rhin / Bâle / Porrentruy et alentours</p><a href="#programmation" aria-label="Passer à la programmation"><span aria-hidden="true">↓</span></a></div>
+</section>
+<script>
+const ouverture=document.querySelector<HTMLElement>('.ouverture');
+const bouton=ouverture?.querySelector<HTMLButtonElement>('.pause-effets');
+if(ouverture && bouton){
+  bouton.hidden=false;
+  bouton.addEventListener('click',()=>{
+    const pause=ouverture.dataset.pause!=='true';
+    ouverture.dataset.pause=String(pause);
+    bouton.setAttribute('aria-pressed',String(pause));
+    bouton.textContent=pause?'Reprendre les effets ▶':'Pause des effets Ⅱ';
+  });
+}
+</script>
+<style>
+.pause-effets:not([hidden]){position:absolute;right:0;bottom:-2rem;background:none;color:#f2eee5a6;border:0;border-bottom:1px solid #f2eee54d;min-height:44px;padding:.6rem .3rem;font:500 .65rem var(--font-label);text-transform:uppercase;letter-spacing:.06em;cursor:pointer}.ouverture[data-pause=true] .lumiere,.ouverture[data-pause=true] .orbite::after,.ouverture[data-pause=true] .creation{animation-play-state:paused}@media(prefers-reduced-motion:reduce){.pause-effets:not([hidden]){display:none}}
+
+.ouverture{position:relative;isolation:isolate;overflow:hidden;padding:1.8rem clamp(1.25rem,5vw,6rem) 0;background:radial-gradient(ellipse at 78% 42%,#3155ff21,transparent 48%),#0e0b0a}
+.ouverture::after{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.2;background:url('/figma/6cfb6.png') 0 0/128px}
+.lumiere{position:absolute;inset:-10% -15% -10% 12%;z-index:-1;pointer-events:none;background:conic-gradient(from 207deg at 97% 20%,transparent 0deg,#f2eee50c 8deg,#f2eee524 16deg,transparent 28deg);filter:blur(10px);transform-origin:97% 20%;animation:projecteur 14s ease-in-out infinite alternate}
+.en-tete{display:flex;justify-content:space-between;gap:1rem;font:500 .75rem var(--font-label);letter-spacing:.16em;text-transform:uppercase;border-bottom:1px solid #f2eee530;padding-bottom:1rem}.en-tete p{margin:0}.en-tete>span{color:#f2eee599}
+.composition{display:grid;grid-template-columns:1.05fr 1fr;align-items:center;gap:2rem;min-height:clamp(36rem,47vw,48rem);padding-block:3rem}.identite{position:relative;z-index:2;min-width:0}.avant-titre{display:flex;gap:.65rem;align-items:center;font:500 .75rem var(--font-label);letter-spacing:.16em;text-transform:uppercase;color:var(--creme);margin:0 0 2rem}.avant-titre>span{width:1.2rem;height:2px;background:var(--rose)}h1{margin:0;font:700 clamp(5rem,10vw,11.5rem)/.79 var(--font-titre);letter-spacing:-.065em}h1>span{display:block}.nom{position:relative;margin-top:.08em;text-shadow:-3px 1px #3155ff,3px 3px #ff2d8d}.point{color:var(--rose);text-shadow:none}.intention{font-size:clamp(1.15rem,1.6vw,1.5rem);line-height:1.5;max-width:26rem;margin:2rem 0;color:#f2eee5c9}.actions{display:flex;flex-wrap:wrap;align-items:center;gap:1.4rem}.entrer{display:inline-flex;align-items:center;gap:1.8rem;background:var(--creme);color:var(--ebene);padding:1rem 1.25rem;text-decoration:none;font:700 .9rem var(--font-label);letter-spacing:.07em;text-transform:uppercase;box-shadow:4px 4px var(--rose);transition:transform .2s,box-shadow .2s}.entrer:hover{transform:translate(-2px,-2px);box-shadow:6px 6px var(--rose)}.contact{font:500 .85rem var(--font-label);text-underline-offset:.4rem;letter-spacing:.04em}
+.ecran{position:relative;min-width:0;height:34rem;perspective:1000px}.orbite{position:absolute;width:95%;aspect-ratio:1;top:2%;left:2%;border:1px solid #f2eee51c;border-radius:50%;box-shadow:0 0 0 2.5rem #3155ff06,0 0 0 5rem #3155ff04}.orbite::after{content:'';position:absolute;inset:8%;border:1px dashed #f2eee526;border-radius:50%;animation:bobine 75s linear infinite}.numero{position:absolute;right:1rem;top:0;font:.75rem var(--font-timecode);letter-spacing:.15em;color:#f2eee580}.cadrage{position:absolute;inset:2rem 0 3rem}.cadrage i{position:absolute;width:1.5rem;height:1.5rem;border:1px solid #f2eee555}.cadrage i:nth-child(1){top:0;left:0;border-right:0;border-bottom:0}.cadrage i:nth-child(2){top:0;right:0;border-left:0;border-bottom:0}.cadrage i:nth-child(3){bottom:0;left:0;border-top:0;border-right:0}.cadrage i:nth-child(4){bottom:0;right:0;border-top:0;border-left:0}
+.collage{position:absolute;inset:3rem 0}.creation{position:absolute;width:47%;filter:drop-shadow(0 1rem 1rem #0009);animation:flotter 9s ease-in-out infinite;--angle:-13deg;transform:rotate(var(--angle))}.creation-0{left:0;top:8%;--angle:-13deg;z-index:1}.creation-1{left:25%;top:0;--angle:2deg;z-index:2;animation-delay:-3s}.creation-2{left:51%;top:12%;--angle:14deg;z-index:3;animation-delay:-6s}.note{position:absolute;bottom:3.5rem;left:15%;z-index:4;background:var(--jaune);color:var(--ebene);padding:1rem 3rem 1rem 1.2rem;transform:rotate(-5deg);box-shadow:5px 6px #0008}.note>span:first-child{font:500 .65rem var(--font-label);letter-spacing:.15em;text-transform:uppercase}.note strong{display:block;font:700 clamp(1.5rem,2.5vw,2.5rem)/.95 var(--font-titre);letter-spacing:-.04em;margin-top:.4rem}.note .trait{position:absolute;right:.75rem;top:1rem;font:2rem var(--font-main)}.legende{position:absolute;bottom:0;left:0;right:0;text-align:center;font:.7rem var(--font-timecode);color:#f2eee580;text-transform:uppercase;letter-spacing:.08em}
+.bas{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;border-top:1px solid #f2eee530;padding:1.3rem 0}.bas p{display:flex;gap:.6rem;align-items:center;flex-wrap:wrap;margin:0;font:.75rem var(--font-label);letter-spacing:.04em;text-transform:uppercase}.bas p:first-child>span:last-child{color:#f2eee5a6}.voyant{width:.45rem;height:.45rem;border-radius:50%;background:var(--vert-acide);box-shadow:0 0 12px #c8ff0055}.bas>a{display:grid;place-items:center;flex-shrink:0;width:2.5rem;height:2.5rem;border:1px solid #f2eee54d;border-radius:50%;text-decoration:none}
+@keyframes projecteur{from{transform:rotate(-5deg);opacity:.6}to{transform:rotate(5deg);opacity:1}}@keyframes bobine{to{transform:rotate(360deg)}}@keyframes flotter{0%,100%{transform:translateY(0) rotate(var(--angle))}50%{transform:translateY(-12px) rotate(calc(var(--angle) + 2deg))}}
+@media(min-width:100rem){.composition{max-width:100rem;margin:auto}}@media(max-width:60rem){.composition{gap:1rem;min-height:32rem}h1{font-size:clamp(4rem,11vw,7rem)}.ecran{height:28rem}.en-tete>span{display:none}.bas{flex-wrap:wrap}.bas>a{margin-left:auto}}
+@media(max-width:42rem){.composition{grid-template-columns:1fr;padding-top:2.5rem;padding-bottom:1rem;gap:1rem}.avant-titre{font-size:.65rem;margin-bottom:1.5rem}h1{font-size:clamp(4.5rem,20vw,8rem)}.intention{margin-top:1.5rem}.ecran{height:clamp(20rem,80vw,29rem);max-width:29rem;width:100%;margin:auto}.creation{width:44%}.creation-0{left:4%}.creation-1{left:28%}.creation-2{left:52%}.note{bottom:2rem}.legende{font-size:.6rem;bottom:-.4rem}.bas{gap:1rem;padding-block:1.2rem}.bas p{font-size:.7rem}.bas p:first-child{max-width:80%}.bas p:nth-child(2){max-width:80%}.bas>a{position:absolute;right:1.25rem;bottom:1.5rem}.en-tete{font-size:.65rem;letter-spacing:.1em}.actions{gap:1.2rem}.entrer{font-size:.8rem}}
+@media(prefers-reduced-motion:reduce){.lumiere,.orbite::after,.creation{animation:none}}
+</style>
