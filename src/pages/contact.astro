@@ -2,6 +2,8 @@
 import Base from "../layouts/Base.astro";
 import Bandeau from "../components/Bandeau.astro";
 
+// Activer uniquement après configuration de Netlify Forms et de la notification email.
+const formulaireActif=import.meta.env.PUBLIC_CONTACT_ACTIF==='true';
 const types = ["Stage", "Projet", "Collaboration", "Autre"];
 const cartes = [
   { stub: "N° 01", couleur: "var(--rose)", texte: "var(--ebene)", genre: "Email", valeur: "noah.litzler@gmail.com", action: "Écrire", href: "mailto:noah.litzler@gmail.com" },
@@ -29,7 +31,7 @@ const fin = [
     <div class="colonnes">
       <div class="billet-form">
         <div class="souche" aria-hidden="true">Admission - N° 0001</div>
-        <form name="contact" method="POST" action="/merci" data-netlify="true" netlify-honeypot="bot-field">
+        <form data-contact-actif={String(formulaireActif)} name="contact" method="POST" action="/merci" data-netlify="true" netlify-honeypot="bot-field">
           <input type="hidden" name="form-name" value="contact" />
           <p hidden><label>Ne pas remplir <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
           <p class="cinema">Cinéma Noah Litzler - Guichet</p>
@@ -50,9 +52,10 @@ const fin = [
             </div>
           </fieldset>
           <label class="champ"><span>Message</span><textarea name="message" rows="5" placeholder="Raconte-moi ton idée en quelques lignes." required></textarea></label>
+          <p class="retour-envoi" role="status" aria-live="polite" data-retour-envoi hidden={formulaireActif}>{!formulaireActif && <>Le formulaire sera disponible après la mise en ligne. Tu peux déjà m’écrire directement par email. <a href="mailto:noah.litzler@gmail.com">noah.litzler@gmail.com</a></>}</p>
           <div class="envoi">
             <p class="note">Réponse personnelle, pas de robot au guichet. Ton nom et ton email servent uniquement à te répondre. <a href="/mentions-legales">Traitement des données</a>.</p>
-            <button type="submit"><span class="adm">Admission</span><span>Réserver une séance</span></button>
+            <button type="submit" disabled={!formulaireActif}><span class="adm">Admission</span><span>Réserver une séance</span></button>
           </div>
         </form>
       </div>
@@ -96,8 +99,36 @@ const fin = [
     </dl>
   </section>
 </Base>
+<script>
+const formulaire=document.querySelector<HTMLFormElement>('form[name="contact"]');
+if(formulaire){
+ const statut=formulaire.querySelector<HTMLElement>('[data-retour-envoi]')!;
+ const bouton=formulaire.querySelector<HTMLButtonElement>('button[type="submit"]')!;
+ const anglais=document.documentElement.lang==='en';
+ formulaire.addEventListener('submit',async evenement=>{
+  evenement.preventDefault();
+  statut.hidden=false;
+  if(formulaire.dataset.contactActif!=='true'){
+   statut.textContent=anglais?'The form will be available after publication. You can already email me directly.':'Le formulaire sera disponible après la mise en ligne. Tu peux déjà m’écrire directement par email.';
+   return;
+  }
+  bouton.disabled=true;formulaire.setAttribute('aria-busy','true');
+  statut.textContent=anglais?'Sending…':'Envoi en cours…';
+  const controle=new AbortController();const delai=setTimeout(()=>controle.abort(),15000);
+  try{
+   const donnees=new URLSearchParams();new FormData(formulaire).forEach((valeur,cle)=>donnees.append(cle,String(valeur)));
+   const reponse=await fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:donnees.toString(),signal:controle.signal});
+   if(!reponse.ok)throw new Error('Envoi refusé');
+   location.assign(formulaire.action);
+  }catch{
+   statut.textContent=anglais?'Your message could not be sent. It is still here; try again or email me directly.':'L’envoi n’a pas abouti. Ton message est conservé ici ; réessaie ou écris-moi directement par email.';
+  }finally{clearTimeout(delai);bouton.disabled=false;formulaire.removeAttribute('aria-busy')}
+ });
+}
+</script>
 
 <style>
+.retour-envoi{padding:1rem;border:1px solid currentColor;line-height:1.5}.retour-envoi[hidden]{display:none}button:disabled{opacity:.6;cursor:default}form[aria-busy=true] button{cursor:wait}
   .contact { padding: clamp(3rem, 6vw, 5rem) clamp(1rem, 4vw, 4rem) 0; }
   .tag {
     display: inline-block;
@@ -161,6 +192,7 @@ const fin = [
     text-transform: uppercase;
   }
   form {
+    min-width:0;
     display: grid;
     gap: 1.5rem;
     padding: 2rem clamp(1.25rem, 3vw, 2.5rem);
@@ -196,10 +228,10 @@ const fin = [
   }
   .champs {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0,1fr) minmax(0,1fr);
     gap: 1.5rem 2rem;
   }
-  .champ { display: flex; flex-direction: column; gap: 0.4rem; }
+  .champ { min-width:0; display: flex; flex-direction: column; gap: 0.4rem; }
   .champ > span, legend {
     font-family: var(--font-label);
     font-weight: 700;
@@ -208,6 +240,7 @@ const fin = [
     text-transform: uppercase;
   }
   .champ input, .champ textarea {
+    min-width:0;width:100%;
     padding: 0.6rem 0;
     border: 0;
     border-bottom: 2px solid var(--ebene);
@@ -228,7 +261,7 @@ const fin = [
     outline: 3px solid var(--rose);
     outline-offset: 2px;
   }
-  fieldset { margin: 0; padding: 0; border: 0; }
+  fieldset { min-width:0; margin: 0; padding: 0; border: 0; }
   legend { padding: 0; margin-bottom: 0.75rem; }
   .puces { display: flex; flex-wrap: wrap; gap: 0.75rem; }
   .puce { position: relative; }
@@ -388,7 +421,7 @@ const fin = [
     .colonnes { grid-template-columns: 1fr; }
   }
   @media (max-width: 40rem) {
-    .billet-form { grid-template-columns: 1fr; transform: none; }
+    .billet-form { grid-template-columns: minmax(0,1fr); transform: none; }.envoi button{max-width:100%;font-size:.95rem;padding-inline:.65rem;gap:.5rem}.souche{letter-spacing:.15em}
     .souche {
       writing-mode: horizontal-tb;
       transform: none;

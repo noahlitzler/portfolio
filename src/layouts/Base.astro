@@ -11,11 +11,15 @@ import Visionneuse from "../components/Visionneuse.astro";
 import Entete from "../components/Entete.astro";
 import PiedDePage from "../components/PiedDePage.astro";
 
+const langue = /^\/en(?:\/|$)/.test(Astro.url.pathname) ? 'en' : 'fr';
+const francais = Astro.url.pathname.replace(/^\/en(?=\/|$)/,'') || '/';
+const anglais = francais==='/404.html'?'/en/404':'/en'+(francais==='/'?'/':francais);
+const cheminFR=francais==='/404'?'/404.html':francais;
 const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : undefined;
 const { noindex = false, titre, description, timecode = "00:00:00:00", progression = 0, precedent, suivant } = Astro.props;
 ---
 <!doctype html>
-<html lang="fr">
+<html lang={langue}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -23,8 +27,9 @@ const { noindex = false, titre, description, timecode = "00:00:00:00", progressi
     <meta name="description" content={description} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     {canonical && <link rel="canonical" href={canonical} />}
+    {Astro.site && <><link rel="alternate" hreflang="fr" href={new URL(cheminFR,Astro.site).href} /><link rel="alternate" hreflang="en" href={new URL(anglais,Astro.site).href} /><link rel="alternate" hreflang="x-default" href={new URL(francais,Astro.site).href} /></>}
     <meta property="og:type" content="website" />
-    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:locale" content={langue==='en'?'en_GB':'fr_FR'} />
     <meta property="og:site_name" content="Noah Litzler - Portfolio" />
     <meta property="og:title" content={titre + ' - Noah Litzler'} />
     <meta property="og:description" content={description} />

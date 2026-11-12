@@ -1,12 +1,16 @@
 ---
-const chemin=Astro.url.pathname.replace(/\/$/,'')||'/';
+const langue=/^\/en(?:\/|$)/.test(Astro.url.pathname)?'en':'fr';
+const chemin=Astro.url.pathname.replace(/^\/en(?=\/|$)/,'').replace(/\/$/,'')||'/';
+const cheminFR=chemin==='/404'?'/404.html':chemin;
+const cheminEN=chemin==='/404.html'?'/en/404':'/en'+(chemin==='/'?'/':chemin);
 const liens=[{href:'/',nom:'Le début du film',n:'01'},{href:'/projets',nom:'Les séances',n:'02'},{href:'/a-propos',nom:'Hors-champ',n:'03'},{href:'/contact',nom:'Le guichet',n:'04'}];
 const actif=(href)=>href==='/'?chemin==='/':chemin.startsWith(href);
 ---
 <header class="masthead">
  <a class="signature" href="/">Noah Litzler<span>Portfolio / 2026</span></a>
  <span class="localisation"><span class="disponible">Stage · 29 mars — 4 juin 2027</span></span>
- <button class="ouvrir-chapitres" type="button" aria-haspopup="dialog" aria-controls="menu-chapitres">Chapitres <span aria-hidden="true">＋</span></button>
+ <div class="navigation-outils"><nav class="langues" aria-label="Langue"><a data-langue href={cheminFR} lang="fr" hreflang="fr" aria-current={langue==='fr'?'page':undefined} aria-label="Version française">FR</a><span aria-hidden="true">/</span><a data-langue href={cheminEN} lang="en" hreflang="en" aria-current={langue==='en'?'page':undefined} aria-label="English version">EN</a></nav>
+ <button class="ouvrir-chapitres" type="button" aria-haspopup="dialog" aria-controls="menu-chapitres">Chapitres <span aria-hidden="true">＋</span></button></div>
  <span class="progression-film" aria-hidden="true"></span>
 </header>
 <dialog id="menu-chapitres" class="menu-dvd" aria-labelledby="titre-chapitres">
@@ -34,6 +38,7 @@ new ResizeObserver(progression).observe(document.body);
 progression();
 </script>
 <style>
+.navigation-outils{display:flex;align-items:center;gap:clamp(.8rem,2vw,2rem)}.langues{display:flex;align-items:center;gap:.45rem;font:500 .8rem var(--font-label);letter-spacing:.05em}.langues a{display:grid;place-items:center;min-height:44px;min-width:30px;text-decoration:none;color:#f2eee599}.langues a[aria-current]{color:var(--creme);text-decoration:underline;text-decoration-color:var(--rose);text-underline-offset:.35rem}.langues span{color:#f2eee54d}@media(max-width:24rem){.masthead{padding-inline:1rem!important;gap:.5rem}.signature{font-size:1rem!important}.signature span{font-size:.6rem!important}.navigation-outils{gap:.6rem}.ouvrir-chapitres{font-size:.7rem!important;gap:.3rem!important}.langues{gap:.1rem;font-size:.75rem}.langues a{min-width:25px}}
  .masthead{position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;gap:1rem;height:82px;padding:0 clamp(1rem,4.4vw,5rem);background:#0e0b0af5;backdrop-filter:blur(12px);border-bottom:1px solid #f2eee526;color:var(--creme)}
  .signature{color:inherit;text-decoration:none;font:700 1.2rem/1.1 var(--font-titre);letter-spacing:-.04em}
  .signature span{display:block;font:500 .625rem var(--font-label);text-transform:uppercase;letter-spacing:.2em;opacity:.55;margin-top:.3rem}

@@ -1,0 +1,18 @@
+---
+import Accueil from '../index.astro';
+import Projets from '../projets.astro';
+import Apropos from '../a-propos.astro';
+import Contact from '../contact.astro';
+import Mentions from '../mentions-legales.astro';
+import Merci from '../merci.astro';
+import Introuvable from '../404.astro';
+import Projet from '../projets/[slug].astro';
+import {projets} from '../../data/projets.js';
+export function getStaticPaths(){
+  const pages=[undefined,'projets','a-propos','contact','mentions-legales','merci','404'];
+  return [...pages.map(page=>({params:{page}})),...projets.map((p,i)=>({params:{page:'projets/'+p.slug},props:{projet:p,prochain:projets[(i+1)%projets.length]}}))];
+}
+const pages={'':Accueil,projets:Projets,'a-propos':Apropos,contact:Contact,'mentions-legales':Mentions,merci:Merci,'404':Introuvable};
+const Page=Astro.props.projet?Projet:pages[Astro.params.page||''];
+---
+<Page {...Astro.props} />

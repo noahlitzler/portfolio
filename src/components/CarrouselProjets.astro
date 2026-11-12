@@ -42,7 +42,7 @@ if (racine) {
     racine!.querySelector('[data-legende-titre]')!.textContent = projet.titre!;
     racine!.querySelector('[data-legende-categorie]')!.textContent = projet.categorie!;
     reperes.forEach((bouton, i) => bouton.setAttribute('aria-pressed', String(i === index)));
-    if (annoncer) racine!.querySelector('[data-annonce]')!.textContent = `Projet ${index + 1} sur ${cartes.length} : ${projet.titre}`;
+    if (annoncer) racine!.querySelector('[data-annonce]')!.textContent = document.documentElement.lang==='en' ? `Project ${index + 1} of ${cartes.length}: ${projet.titre}` : `Projet ${index + 1} sur ${cartes.length} : ${projet.titre}`;
   }
   function choisir(prochain: number) { afficher(prochain, true); minuterie(); }
   racine.dataset.initialise = 'true';
