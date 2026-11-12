@@ -38,9 +38,9 @@ const ratioDe = (f) => (f.includes("mockups") ? "16 / 9" : f.includes("banniere"
         <p class="contexte">{p.cadre} · {p.date}</p>
         <h1 class="titre">{p.titre}</h1>
         <p class="resume">{p.resume}</p>
-        <p class="credits">
-          {p.credits.map(([r, v]) => (<><span>{r}</span> <strong>{v}</strong>{" "}</>))}
-        </p>
+        <dl class="credits">
+          {p.credits.map(([r, v]) => (<div><dt>{r}</dt><dd>{v}</dd></div>))}
+        </dl>
         <p class="statut">{p.statut}</p>
         {p.url && <a class="entrer" href={p.url} target="_blank" rel="noopener noreferrer">{p.action ?? "Explorer le site"} ↗</a>}
       </div>
@@ -170,9 +170,9 @@ const ratioDe = (f) => (f.includes("mockups") ? "16 / 9" : f.includes("banniere"
   .contexte {margin:0;font:.8rem var(--font-label);text-transform:uppercase;letter-spacing:.08em;color:#f2eee5a6}.sources {display:flex;flex-wrap:wrap;gap:1rem 2rem;margin-top:2rem}.sources a {font:500 .9rem var(--font-label);text-underline-offset:.4rem;max-width:100%;overflow-wrap:anywhere}
 
   .details-techniques {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2rem;margin:3rem 0 0}.details-techniques dt {font:700 1.1rem var(--font-label);text-transform:uppercase;letter-spacing:.08em;margin-bottom:1rem}.details-techniques dd {margin:0;line-height:1.7;color:color-mix(in srgb,var(--creme) 85%,transparent)}@media(max-width:48rem){.details-techniques{grid-template-columns:1fr}}
-  .plan-texte { padding:clamp(2rem,5vw,5rem); min-height:18rem; }
+  .plan-texte { padding:clamp(1.5rem,3vw,3rem); min-height:0; }
   .plan-texte h3 {font:700 clamp(2rem,5vw,5rem) var(--font-titre);margin:0 0 1rem;color:var(--accent-texte)}
-  .plan-texte p {max-width:45rem;font-size:1.25rem;line-height:1.7}
+  .plan-texte p {max-width:45rem;font-size:1.125rem;line-height:1.65}
   .projet-preview {width:min(100%,25rem);display:block;transform:rotate(3deg);box-shadow:0 2rem 4rem #0008}
   .lien-projet {margin-top:2rem}
   .page { --accent-texte: color-mix(in srgb, var(--accent) 60%, var(--creme)); }
@@ -258,7 +258,7 @@ const ratioDe = (f) => (f.includes("mockups") ? "16 / 9" : f.includes("banniere"
     text-transform: uppercase;
     color: color-mix(in srgb, var(--creme) 70%, transparent);
   }
-  .credits strong { font-size: 1rem; color: var(--creme); }
+  .credits{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem 1.5rem;width:100%;padding-block:1.1rem;border-block:1px solid #f2eee526;line-height:1.5}.credits dt{color:#f2eee5a6;font-size:.8rem}.credits dd{margin:.3rem 0 0;font-size:1rem;color:var(--creme);text-transform:none;letter-spacing:0}.credits>div{min-width:0;overflow-wrap:anywhere}@media(max-width:26rem){.credits{grid-template-columns:1fr}}
   .statut {
     margin: 0;
     font-family: var(--font-label);
@@ -278,7 +278,7 @@ const ratioDe = (f) => (f.includes("mockups") ? "16 / 9" : f.includes("banniere"
   .vis:nth-child(odd) { transform: rotate(2deg); }
   .vis:nth-child(even) { transform: rotate(-1.5deg); }
 
-  .chapitre { padding: clamp(3rem, 6vw, 5rem) var(--gouttiere) 0; }
+  .chapitre { padding: clamp(2.5rem, 4.5vw, 4rem) var(--gouttiere) 0; }
   .label {
     display: flex;
     align-items: center;
@@ -309,7 +309,7 @@ const ratioDe = (f) => (f.includes("mockups") ? "16 / 9" : f.includes("banniere"
   }
   .deux p { margin: 0; line-height: 1.7; color: color-mix(in srgb, var(--creme) 80%, transparent); }
 
-  .plans { display: grid; gap: 3rem; margin: 2rem 0 0; padding: 0; list-style: none; }
+  .plans { display: grid; gap: 2rem; margin: 1.5rem 0 0; padding: 0; list-style: none; }
   .plan-tete {
     display: flex;
     justify-content: space-between;

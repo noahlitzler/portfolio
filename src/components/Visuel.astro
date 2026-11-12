@@ -1,12 +1,16 @@
 ---
-import { Image } from "astro:assets";
+import { Image, getImage } from "astro:assets";
 
-const { fichier, alt, widths = [480, 960, 1440], sizes = "(max-width: 62rem) 92vw, 60vw", ratio } = Astro.props;
+const { fichier, alt, widths = [480, 960, 1440], sizes = "(max-width: 62rem) 92vw, 60vw", ratio, agrandissable = true } = Astro.props;
 const images = import.meta.glob("/src/assets/projets/*.{png,jpg,jpeg,webp}", { eager: true, import: "default" });
 const src = images["/src/assets/projets/" + fichier];
 const svg = fichier === "cimade-logo.svg";
 if (!src && !svg) throw new Error("Visuel manquant : " + fichier);
+const grand = agrandissable && src ? await getImage({src, width: Math.min(1800,src.width), format:'webp', quality:88}) : null;
+const lien = svg ? '/figma/fb8ae.svg' : grand?.src;
+const Tag = agrandissable ? 'a' : 'span';
 ---
+<Tag class:list={['visuel', {'sans-zoom': !agrandissable}]} href={agrandissable ? lien : undefined} data-agrandir={agrandissable ? '' : undefined} data-legende={alt} aria-label={agrandissable ? 'Agrandir : '+alt : undefined}>
 {svg ? (<img src="/figma/fb8ae.svg" alt={alt} loading="lazy" class="logo-cimade" width="492" height="202" />) : src ? (
   <Image src={src} alt={alt} widths={widths} sizes={sizes} format="webp" quality={80} />
 ) : (
@@ -15,7 +19,9 @@ if (!src && !svg) throw new Error("Visuel manquant : " + fichier);
   </div>
 )}
 
+</Tag>
 <style>
+.visuel{display:block;position:relative;color:inherit}.visuel[data-agrandir]{cursor:zoom-in}.visuel[data-agrandir]::after{content:"↗";position:absolute;right:.6rem;bottom:.6rem;display:grid;place-items:center;width:2.3rem;height:2.3rem;background:#0e0b0ae8;color:#f2eee5;border:1px solid #f2eee555;font:1.2rem var(--font-label);opacity:0;transition:opacity .2s;pointer-events:none}.visuel:hover::after,.visuel:focus-visible::after{opacity:1}@media(hover:none){.visuel[data-agrandir]::after{opacity:1}}
   .logo-cimade { padding: 3rem 1rem; background: white; height:auto; object-fit: contain; }
   img { display: block; width: 100%; height: auto; }
   .vide {

@@ -1,0 +1,54 @@
+<dialog class="visionneuse" aria-labelledby="titre-visuel" data-visionneuse>
+  <div class="vision-contenu">
+    <div class="vision-barre">
+      <p id="titre-visuel">Vue en détail <span data-position></span></p>
+      <div class="vision-commandes">
+        <button type="button" data-image-precedente aria-label="Image précédente">←</button>
+        <button type="button" data-image-suivante aria-label="Image suivante">→</button>
+        <button type="button" data-taille aria-pressed="false">Taille réelle</button>
+        <button type="button" data-fermer autofocus>Fermer <span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+    <div class="vision-image"><img data-grand-visuel alt="" /></div>
+    <p data-legende-visuel></p>
+    <p data-erreur-visuel hidden>Le visuel ne se charge pas. <a data-source-visuel>Ouvrir l’image directement</a>.</p>
+  </div>
+</dialog>
+<script>
+const dialogue=document.querySelector<HTMLDialogElement>('[data-visionneuse]');
+const liens=[...document.querySelectorAll<HTMLAnchorElement>('[data-agrandir]')];
+if(dialogue && liens.length){
+  const image=dialogue.querySelector<HTMLImageElement>('[data-grand-visuel]')!;
+  const taille=dialogue.querySelector<HTMLButtonElement>('[data-taille]')!;
+  const erreur=dialogue.querySelector<HTMLElement>('[data-erreur-visuel]')!;
+  let index=0;
+  let retour:HTMLElement|null=null;
+  function afficher(i:number){
+    index=(i+liens.length)%liens.length;
+    const lien=liens[index];
+    erreur.hidden=true;
+    dialogue!.dataset.zoom='false';taille.setAttribute('aria-pressed','false');
+    image.alt=lien.dataset.legende||'';
+    image.src=lien.href;
+    dialogue!.querySelector('[data-legende-visuel]')!.textContent=image.alt;
+    dialogue!.querySelector('[data-position]')!.textContent=`${index+1} / ${liens.length}`;
+    dialogue!.querySelector<HTMLAnchorElement>('[data-source-visuel]')!.href=lien.href;
+    dialogue!.querySelector('.vision-image')!.scrollTo(0,0);
+  }
+  liens.forEach((lien,i)=>lien.addEventListener('click',event=>{
+    if(event.ctrlKey||event.metaKey||event.shiftKey||event.altKey)return;
+    event.preventDefault();retour=lien;afficher(i);dialogue.showModal();
+  }));
+  dialogue.querySelector('[data-fermer]')!.addEventListener('click',()=>dialogue.close());
+  dialogue.querySelector('[data-image-precedente]')!.addEventListener('click',()=>afficher(index-1));
+  dialogue.querySelector('[data-image-suivante]')!.addEventListener('click',()=>afficher(index+1));
+  taille.addEventListener('click',()=>{const zoom=dialogue.dataset.zoom!=='true';dialogue.dataset.zoom=String(zoom);taille.setAttribute('aria-pressed',String(zoom))});
+  dialogue.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){e.preventDefault();afficher(index+1)}if(e.key==='ArrowLeft'){e.preventDefault();afficher(index-1)}});
+  dialogue.addEventListener('click',e=>{if(e.target===dialogue)dialogue.close()});
+  dialogue.addEventListener('close',()=>{image.removeAttribute('src');retour?.focus({preventScroll:true})});
+  image.addEventListener('error',()=>erreur.hidden=false);
+}
+</script>
+<style>
+.visionneuse{width:calc(100% - 2rem);height:calc(100dvh - 2rem);max-width:100rem;max-height:none;margin:auto;padding:0;border:1px solid #f2eee533;background:#0e0b0a;color:var(--creme);overflow:auto}.visionneuse::backdrop{background:#000e;backdrop-filter:blur(8px)}.vision-contenu{display:flex;flex-direction:column;height:100%;min-height:0;padding:0 1rem 1rem}.vision-barre{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;padding:1rem 0;flex-shrink:0}.vision-barre p{margin:0;font:500 .85rem var(--font-label);letter-spacing:.04em}.vision-barre p span{margin-left:1rem;color:#f2eee599}.vision-commandes{display:flex;gap:.5rem;flex-wrap:wrap}.vision-commandes button{min-height:44px;min-width:44px;border:1px solid #f2eee54d;background:none;color:var(--creme);padding:.5rem .8rem;font:.85rem var(--font-label);cursor:pointer}.vision-commandes button:hover,.vision-commandes button[aria-pressed=true]{background:var(--creme);color:var(--ebene)}.vision-image{flex:1;min-height:0;overflow:auto;background:#17120f;display:grid;place-items:center}.vision-image img{display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}.visionneuse[data-zoom=true] .vision-image{display:block}.visionneuse[data-zoom=true] img{max-width:none;max-height:none;margin:auto}.visionneuse [data-legende-visuel]{flex-shrink:0;margin:1rem 0 0;font-size:.95rem;line-height:1.5;color:#f2eee5c9}.visionneuse [hidden]{display:none}.visionneuse [data-erreur-visuel]{color:var(--jaune)}:global(html:has(.visionneuse[open])){overflow:hidden}@media(max-width:40rem){.visionneuse{width:100%;height:100dvh;border:0}.vision-contenu{padding-inline:.75rem}.vision-barre{gap:.6rem}.vision-commandes{width:100%}.vision-commandes [data-fermer]{margin-left:auto}.visionneuse [data-legende-visuel]{font-size:.875rem}}
+</style>
