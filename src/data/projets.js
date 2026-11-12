@@ -468,8 +468,17 @@ export const projets = [
     },
     "resultat": {
       "titre": "Une expérience en ligne, quatre visualisations.",
-      "images": [],
-      "legende": "Le site complet est accessible via le lien ci-dessous, avec ses interactions et sa page méthode."
+      "images": [
+        {
+          "f": "prompt-comparaison.png",
+          "alt": "Capture de Derrière le prompt : comparaison des modèles par sphères proportionnelles et fiche d’estimation"
+        },
+        {
+          "f": "prompt-energie.png",
+          "alt": "Capture de Derrière le prompt : graphique des consommations par tâche avec choix de l’échelle"
+        }
+      ],
+      "legende": "Deux extraits du site : la constellation des modèles et les barres par tâche. Les interactions complètes et la page Méthode sont accessibles dans l’expérience en ligne. Les captures ont été réalisées le 12 novembre 2026."
     },
     "coupee": {
       "titre": "Ce que je retiens du projet.",

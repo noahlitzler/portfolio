@@ -1,67 +1,46 @@
-# Portfolio - Noah Litzler
+# Portfolio — Noah Litzler
 
-Portfolio de Noah Litzler, étudiant en BUT MMI (parcours création numérique) à l'IUT Nord Franche-Comté, Montbéliard.
-Direction artistique, UI/UX, création numérique. En recherche de stage.
+Portfolio scolaire de BUT MMI, parcours création numérique. Positionnement : design graphique et direction artistique. Stage recherché du 29 mars au 4 juin 2027, dans le Haut-Rhin, à Bâle, à Porrentruy et aux alentours.
 
-Concept : le portfolio est un film. L'accueil est une affiche, chaque projet est une séance avec sa fiche film (pitch, making-of, fiche technique, résultat), et la navigation se fait par chapitres, comme un menu de DVD.
+## Version actuelle — 12 novembre 2026
 
-## Projets présentés
+Le portfolio emprunte au cinéma son vocabulaire et sa présentation : ouverture, affiches, séances, making-of, storyboard et guichet. L’accueil comporte une composition animée de créations et un carrousel de cinq projets. Le storyboard À propos utilise le portrait et les travaux de Noah, sans affiches de films. Un seul menu Chapitres et une barre de progression au défilement assurent la navigation.
 
-1. Vivez l'essentiel - affiches tourisme pour le Pays de Montbéliard (production graphique)
-2. La Cimade - refonte du logo (branding)
-3. Derrière le prompt - datavisualisation interactive sur l’impact de l’IA, avec Clément Bertrand
+Les cinq études de cas sont conservées : Noah précise que l’enseignant a autorisé et encouragé davantage de projets en cours. Elles suivent le même gabarit : contexte, rôle, making-of, fiche technique, résultat et recul personnel.
 
-## Stack
+| Projet scolaire | Date | Réalisation |
+| --- | --- | --- |
+| Vivez l’essentiel | Mai 2026 | Noah, individuel |
+| La Cimade | Mars 2026 | Noah, individuel, refonte non officielle |
+| Derrière le prompt | Octobre 2026 | Noah et Clément Bertrand |
+| SULL | Septembre 2026 | Noah et Clément Bertrand |
+| Smooth | Octobre 2026 | Noah, individuel |
 
-- Astro - framework, contenus statiques
-- CSS natif + variables CSS
-- JavaScript natif pour les interactions (menu, timecode au scroll)
-- Bun - gestionnaire de paquets et scripts
-- Hébergement du portfolio : configuration existante à confirmer, aucune publication pendant cette intégration
+## Techniques et lancement
 
-Polices : Author (Fontshare), Oswald, Caveat, Courier Prime, auto-hébergées.
+Astro génère les pages statiques ; les contenus sont dans src/data/projets.js. CSS natif, variables et JavaScript/TypeScript du navigateur. Dépendances déclarées dans package.json : Astro et Fontsource. Aucune bibliothèque de carrousel ou d’animation ajoutée. Polices locales : Author, Oswald, Caveat, Courier Prime et Montserrat.
 
-## Lancer le projet
+Node 22.12 ou supérieur. Lancer npm install puis npm run dev ; compiler avec npm run build et contrôler le résultat avec npm run preview. Bun reste utilisable avec les scripts équivalents. Le package-lock.json existant de Noah est conservé sans inclusion dans les commits de cette intervention.
 
-```
-bun install
-bun run dev
-bun run build
-```
+## Comprendre les composants
 
-## Documents
+- HeroAccueil.astro : composition, lumière et mouvements en CSS ; commande de pause des effets.
+- CarrouselProjets.astro : cinq liens issus des données ; index circulaire, positions CSS, précédent/suivant, repères, clavier et balayage tactile. Rotation toutes les 6,5 secondes uniquement lorsque le carrousel est visible, sans survol et sans pause. Arrêt lors des interactions et en onglet masqué ; démarrage arrêté si le système demande une réduction des mouvements. Sans JavaScript, une liste horizontale reste utilisable.
+- Bandeau.astro : texte et rangées de perforations animés, avec lecture/pause. Les mouvements réduits sont respectés ; le visiteur peut explicitement lancer un bandeau.
+- Entete.astro : dialog natif, Échap et retour du focus ; progression calculée avec scrollY et la hauteur du document, actualisée par requestAnimationFrame.
+- projets/[slug].astro : getStaticPaths génère une page par projet et le lien suivant circule sur les cinq projets.
+- Affiche.astro et Visuel.astro : affiches partagées et images optimisées avec Astro Image.
 
-- JOURNAL.md - journal de bord semaine par semaine
-- IA.md - déclaration d'usage de l'IA
-- QUALITE.md - grille de contrôle qualité (à venir)
+## Domaine et publication
 
-Maquette : https://www.figma.com/design/jAvCe2R0eTMmsTBlGz5A2E/PORTFOLIO---NOAH-LITZLER
+Noah possède noahlitzler.fr chez Infomaniak, pour le nom de domaine uniquement. L’hébergement est à configurer. Le domaine est renseigné dans astro.config.mjs ; PORTFOLIO_SITE peut le remplacer. Le build génère les URL canoniques, robots.txt et le sitemap pour cette adresse. Cette configuration ne publie pas le site.
 
-## Comprendre le code avant la soutenance
+Le formulaire est encore préparé pour Netlify Forms. Le choix et la configuration de l’hébergement, la réception réelle des messages à noah.litzler@gmail.com et les informations de confidentialité restent à vérifier avant ouverture publique. Ne pas considérer l’envoi comme opérationnel sur un hébergement quelconque.
 
-- src/data/projets.js contient les trois études de cas. Un objet rassemble le titre, les crédits, les médias et les sections : modifier cet objet met à jour liste et fiche.
-- src/pages/projets/[slug].astro utilise getStaticPaths pour générer une page HTML par projet au build. Il n’y a pas de base de données ni de back-office.
-- Affiche.astro compose les trois affiches ; Visuel.astro passe les exports à Astro Image pour produire les formats et tailles adaptés.
-- Entete.astro utilise un dialog HTML natif. showModal ouvre le menu ; close le ferme ; le navigateur assure le confinement du focus et Échap. Le script rend le focus au bouton à la fermeture.
-- Les grilles CSS organisent les colonnes ; les media queries réorganisent le storyboard et le menu sur mobile. Les variables de tokens.css portent la palette, les polices et les gouttières.
-- Le formulaire utilise les contraintes HTML (required et type=email) et Netlify Forms. Le traitement et les notifications doivent être vérifiés dans Netlify après autorisation de publication.
-- Le niveau technique reste celui d’Astro statique avec composants et interactions ciblées. Aucune revendication de contenu dynamique relié à une base de données.
+## Documents et validation
 
-## Avant publication
+JOURNAL.md conserve les décisions successives ; IA.md déclare l’aide reçue et la relecture personnelle restant à effectuer ; QUALITE.md décrit les contrôles actuels. Les anciennes mesures qualité sont archivées dans docs/archives/QUALITE-2026-11-10.md.
 
-1. Relire le code et les contenus ; préciser le rôle individuel dans le binôme SAÉ 303.
-2. Finaliser les mentions et les droits des médias, puis retirer leur statut provisoire.
-3. Configurer PORTFOLIO_SITE avec le domaine réel (https://…). Recompiler et vérifier le sitemap.
-4. Valider les profils LinkedIn/Instagram et actualiser leur contenu personnellement.
-5. Autoriser explicitement le push et le déploiement, puis tester réception du formulaire, HTTPS et nom de domaine.
-6. Compléter les mesures de QUALITE.md et la relecture personnelle de IA.md.
+Avant publication : relecture personnelle du code et des textes, crédits et licences des ressources à confirmer, tests qualité restants, configuration de l’hébergement et du formulaire, mise à jour des réseaux. Le compte Instagram de créations sera ajouté plus tard par Noah. Préparation de soutenance envisagée autour de La Cimade ou Smooth ; le code n’a pas encore été relu personnellement par Noah.
 
-Les commits du 7 novembre sont locaux. Ne pas pousser avant validation de Noah.
-
-
-
-## Version actuelle
-
-Le 10 novembre 2026, retour à la présentation proche de la maquette (base 3509daa), avec le menu Chapitres conservé et le filet de progression au défilement. Les fonctionnalités de refonte éditoriale sont archivées dans les sauvegardes. Aucun push ni déploiement n’a été effectué.
-
-À la demande de Noah, les cinq projets sont désormais réunis dans une seule programmation : Vivez l’essentiel, La Cimade, Derrière le prompt, SULL et Smooth. Le fichier src/data/projets.js alimente les cartes, les cinq études de cas, la suite de visite et le sitemap. Chaque étude suit les mêmes rubriques : pitch et rôle, making-of, fiche technique, résultat et scène coupée. La séparation « Autres séances » est supprimée. Smooth est présenté comme maquette Figma et non comme boutique en production.
+Sauvegardes ZIP et bundle avant chaque refonte. Commits locaux uniquement. Aucun push ni déploiement sans validation de Noah.

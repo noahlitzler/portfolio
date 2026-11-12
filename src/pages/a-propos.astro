@@ -2,14 +2,14 @@
 import Base from '../layouts/Base.astro';
 import Bandeau from '../components/Bandeau.astro';
 import Visuel from '../components/Visuel.astro';
-import {Image} from 'astro:assets';
-import portrait from '../assets/accueil/portrait-halftone.png';
+
+
 ---
 <Base titre="À propos" description="Je suis Noah Litzler, étudiant en création numérique. Mon univers, mes inspirations et ma recherche de stage en design graphique et direction artistique.">
   <article class="hors-champ">
     <header class="intro"><div><p class="tag">Hors-champ / Le storyboard</p><h1>Derrière<br/>les images<span>.</span></h1></div><p>Moi, c’est Noah. J’imagine des univers visuels, puis je cherche la forme qui leur donne du caractère.</p></header>
     <div class="storyboard">
-      <section class="plan portrait"><p class="repere">01 / Plan large</p><Image src={portrait} alt="Portrait de Noah Litzler en demi-teinte bleue et rose" widths={[480,720,960]} sizes="(max-width: 48rem) 90vw, 35vw" format="webp" /><div class="cartouche"><h2>Noah Litzler</h2><p>BUT MMI · Création numérique<br/>Montbéliard, 2026</p></div></section>
+      <section class="plan portrait"><p class="repere">01 / Plan large</p><img src="/portrait-noah.webp" alt="Portrait de Noah Litzler en demi-teinte bleue et rose" width="720" height="900" loading="eager" /><div class="cartouche"><h2>Noah Litzler</h2><p>BUT MMI · Création numérique<br/>Montbéliard, 2026</p></div></section>
       <section class="plan intention"><p class="repere">02 / Note d’intention</p><h2>Une imagination<br/>qui prend forme.</h2><p>Ce qui m’anime, c’est de partir d’une idée et de lui donner une identité. Je m’intéresse surtout au design graphique et à la direction artistique : les couleurs, les lettres, la composition et ce qu’une image raconte.</p><p>J’aime chercher une proposition personnelle et pousser un concept jusqu’à construire un univers cohérent.</p><div class="qualites"><span>Imagination</span><span>Créativité</span><span>Originalité</span></div></section>
       <section class="plan influences"><p class="repere">03 / Ce qui nourrit mon regard</p><h2>Le sens du cadre.<br/>Le goût du rythme.</h2><dl><div><dt>Cinéma</dt><dd>Le cadrage, la lumière et la force d’une image.</dd></div><div><dt>Michael Jackson</dt><dd>Un univers reconnaissable, de la musique à la mise en scène.</dd></div><div><dt>Comics</dt><dd>La composition des planches et le mouvement dans une image fixe.</dd></div></dl></section>
       <section class="plan creations"><p class="repere">04 / Du concept à l’affiche</p><a href="/projets/vivez-l-essentiel" aria-label="Découvrir mes affiches Vivez l’essentiel"><Visuel fichier="vivez-affiche-2.png" alt="Mon illustration de l’Hôtel Peugeot pour Vivez l’essentiel" widths={[360,600,960]} sizes="(max-width:48rem) 40vw, 20vw" /></a><div><h2>Mon terrain<br/>d’expression.</h2><p>Des affiches, des identités et des expériences numériques. Chaque projet me permet d’explorer une autre manière de raconter.</p><a class="lien" href="/projets">Voir mes cinq projets ↗</a></div></section>

@@ -127,3 +127,17 @@ SULL ajouté comme travail complémentaire, avec accès au site fourni. Les troi
 ### 10 novembre — une programmation de cinq études de cas
 
 Nouvelle consigne de Noah : retirer la limite « trois projets », réunir tous les travaux et les détailler de la même manière. Cette consigne remplace le regroupement précédent. Smooth (R303, Figma) rejoint SULL et les trois premiers projets. Même ordre sur l’accueil et la programmation, même structure de détail, navigation suivante circulaire sur cinq projets. Sauvegarde préalable : portfolio-avant-cinq-projets.zip et .bundle. Publication réservée à la validation de Noah.
+
+
+## 12 novembre 2026 — ajustements après relecture du sujet
+
+- Clarification de la consigne : l’enseignant a indiqué en cours que davantage de projets étaient bienvenus ; les cinq études détaillées sont conservées.
+- Positionnement précisé : design graphique et direction artistique. Stage du 29 mars au 4 juin 2027, Haut-Rhin, Bâle, Porrentruy et alentours.
+- Cadre scolaire, dates et contributions renseignés à partir des réponses de Noah.
+- Recul personnel précisé : ombres pour les affiches, affiches Cimade plus personnelles, identité Smooth davantage rétro et Michael Jackson ; satisfaction exprimée pour SULL et Derrière le prompt.
+- Retours visuels : accueil jugé trop fade, souhait d’un carrousel, bandeaux entièrement défilants, storyboard trop volumineux et affiches de films à retirer.
+- Réalisation assistée : composition d’ouverture avec créations, lumière et mouvement ; carrousel natif de cinq affiches avec contrôles ; texte et points animés ; storyboard resserré autour du portrait et des créations.
+- Documents complémentaires : persona issu du dossier SULL ; captures réelles des graphiques de Derrière le prompt ; liens vers le dossier, le notebook et la réutilisation data.gouv.fr.
+- Crédits Smooth corrigés : SVG de l’enseignante puis adaptation avec ChatGPT.
+- Domaine confirmé : noahlitzler.fr, nom de domaine uniquement chez Infomaniak ; hébergement à configurer, aucune mise en ligne.
+- Sauvegarde ZIP et bundle, commits locaux, contrôles dans QUALITE.md. Réseaux professionnels et préparation orale restent à poursuivre personnellement.
