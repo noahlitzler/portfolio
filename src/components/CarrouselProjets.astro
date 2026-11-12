@@ -6,7 +6,7 @@ import {projets} from '../data/projets.js';
   <div class="entete"><div><p class="etiquette">À l’affiche / 5 projets</p><h2 id="titre-programmation">Choisis ta séance<span>.</span></h2><p class="intro">Cinq projets, cinq histoires. Entre dans les coulisses de chaque création.</p></div><a class="tout" href="/projets">Toute la programmation ↗</a></div>
   <div class="carrousel" data-carrousel>
     <ol class="piste" aria-label="Les cinq projets">{projets.map((p,i)=><li class="diapositive" data-titre={p.titre} data-categorie={p.categorie} data-numero={p.numero}><a class="affiche" href={'/projets/'+p.slug} aria-label={'Découvrir '+p.titre}><Affiche projet={p} simple /><span class="ouvrir">Entrer dans la salle ↗</span></a><span class="titre-secours">{p.titre}</span></li>)}</ol>
-    <div class="lecture" hidden><div class="legende"><p class="compteur"><span data-compteur>01</span> / 05</p><h3 data-legende-titre>{projets[0].titre}</h3><p data-legende-categorie>{projets[0].categorie}</p></div><div class="commandes"><button type="button" data-precedent aria-label="Projet précédent">←</button><button type="button" data-lecture>Pause</button><button type="button" data-suivant aria-label="Projet suivant">→</button></div></div>
+    <div class="lecture" hidden><div class="legende"><p class="compteur"><span data-compteur>01</span> / 05</p><h3 data-legende-titre>{projets[0].titre}</h3><p data-legende-categorie>{projets[0].categorie}</p></div><div class="commandes"><button type="button" data-precedent aria-label="Projet précédent">←</button><button type="button" data-suivant aria-label="Projet suivant">→</button></div></div>
     <div class="reperes" hidden aria-label="Choisir un projet">{projets.map((p,i)=><button type="button" data-index={i} aria-label={'Afficher '+p.titre} aria-pressed={i===0}><span>{p.numero}</span></button>)}</div>
     <p class="sr-only" aria-live="polite" data-annonce></p>
   </div>
@@ -16,19 +16,15 @@ const racine = document.querySelector<HTMLElement>('[data-carrousel]');
 if (racine) {
   const cartes = [...racine.querySelectorAll<HTMLElement>('.diapositive')];
   const reperes = [...racine.querySelectorAll<HTMLButtonElement>('[data-index]')];
-  const lecture = racine.querySelector<HTMLButtonElement>('[data-lecture]')!;
-  const mouvementReduit = matchMedia('(prefers-reduced-motion: reduce)');
   let index = 0;
-  let pause = mouvementReduit.matches;
+  let focus = false;
   let survole = false;
   let visible = false;
   let minuteur: ReturnType<typeof setInterval> | undefined;
 
   function minuterie() {
     clearInterval(minuteur);
-    if (!pause && !survole && visible && !document.hidden) minuteur = setInterval(() => afficher(index + 1), 6500);
-    lecture.textContent = pause ? 'Lecture auto' : 'Pause';
-    lecture.setAttribute('aria-label', pause ? 'Démarrer la rotation automatique des projets' : 'Mettre en pause la rotation des projets');
+    if (!focus && !survole && visible && !document.hidden) minuteur = setInterval(() => afficher(index + 1), 6500);
   }
   function afficher(prochain: number, annoncer = false) {
     index = (prochain + cartes.length) % cartes.length;
@@ -48,12 +44,11 @@ if (racine) {
     reperes.forEach((bouton, i) => bouton.setAttribute('aria-pressed', String(i === index)));
     if (annoncer) racine!.querySelector('[data-annonce]')!.textContent = `Projet ${index + 1} sur ${cartes.length} : ${projet.titre}`;
   }
-  function choisir(prochain: number) { pause = true; afficher(prochain, true); minuterie(); }
+  function choisir(prochain: number) { afficher(prochain, true); minuterie(); }
   racine.dataset.initialise = 'true';
   racine.querySelectorAll<HTMLElement>('[hidden]').forEach(element => element.hidden = false);
   racine.querySelector('[data-precedent]')!.addEventListener('click', () => choisir(index - 1));
   racine.querySelector('[data-suivant]')!.addEventListener('click', () => choisir(index + 1));
-  lecture.addEventListener('click', () => { pause = !pause; minuterie(); });
   reperes.forEach((bouton, i) => bouton.addEventListener('click', () => choisir(i)));
   cartes.forEach((carte, i) => carte.querySelector('a')!.addEventListener('click', evenement => {
     if (i !== index) { evenement.preventDefault(); choisir(i); }
@@ -64,9 +59,8 @@ if (racine) {
       if ((evenement.target as HTMLElement).closest('.affiche')) cartes[index].querySelector('a')!.focus({preventScroll:true});
     }
   });
-  racine.addEventListener('focusin', evenement => {
-    if (evenement.target !== lecture) { pause = true; minuterie(); }
-  });
+  racine.addEventListener('focusin', () => { focus = true; minuterie(); });
+  racine.addEventListener('focusout', evenement => { focus = racine.contains(evenement.relatedTarget as Node | null); minuterie(); });
   racine.addEventListener('pointerenter', evenement => { if (evenement.pointerType === 'mouse') { survole = true; minuterie(); } });
   racine.addEventListener('pointerleave', () => { survole = false; minuterie(); });
   let depart: number | undefined;
@@ -79,13 +73,12 @@ if (racine) {
   }, {passive:true});
   new IntersectionObserver(entrees => { visible = entrees[0].isIntersecting; minuterie(); }, {threshold:.25}).observe(racine);
   document.addEventListener('visibilitychange', minuterie);
-  mouvementReduit.addEventListener('change', () => { if (mouvementReduit.matches) pause = true; minuterie(); });
   afficher(0);
 }
 </script>
 <style>
-.programmation{padding:clamp(3.5rem,7vw,7rem) var(--gouttiere);overflow:hidden;background:radial-gradient(ellipse at 50% 58%,#3155ff10,transparent 65%),var(--brun-salle);scroll-margin-top:6rem}.entete{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem}.etiquette{font:700 .75rem var(--font-label);letter-spacing:.15em;text-transform:uppercase;color:var(--rose);margin:0}h2{font:700 clamp(2.5rem,5.5vw,6rem)/1 var(--font-titre);letter-spacing:-.045em;margin:1.3rem 0}h2>span{color:var(--rose)}.intro{max-width:35rem;margin:0;color:#f2eee5b3;line-height:1.6}.tout{flex-shrink:0;font:700 .8rem var(--font-label);letter-spacing:.06em;text-transform:uppercase;text-underline-offset:.5rem;margin-bottom:.4rem}.carrousel{position:relative;margin:3.5rem auto 0;max-width:95rem}.piste{list-style:none;padding:0 1rem;margin:0;display:flex;gap:1.5rem;overflow-x:auto;scroll-snap-type:x mandatory}.diapositive{flex:0 0 min(75vw,22rem);min-width:0;scroll-snap-align:center}.affiche{display:block;position:relative;text-decoration:none;box-shadow:0 1.5rem 3rem #0009}.ouvrir{position:absolute;inset:auto 0 0;padding:1rem;background:linear-gradient(transparent,#0e0b0af2);text-align:center;font:700 .8rem var(--font-label);text-transform:uppercase;letter-spacing:.08em;color:var(--creme)}.titre-secours{display:block;margin:1rem 0;font-weight:700}.carrousel[data-initialise] .piste{display:block;position:relative;overflow:visible;height:clamp(23rem,39vw,38rem);perspective:1200px;touch-action:pan-y}.carrousel[data-initialise] .diapositive{position:absolute;top:0;left:50%;width:clamp(14rem,25vw,23rem);z-index:calc(5 - var(--ecart));opacity:calc(1 - var(--ecart)*.26);transform:translateX(calc(-50% + var(--distance)*86%)) translateZ(calc(var(--ecart)*-80px)) rotateY(calc(var(--distance)*-18deg)) scale(calc(1 - var(--ecart)*.1));transform-origin:center;transition:transform .75s cubic-bezier(.2,.7,.2,1),opacity .75s;will-change:transform}.carrousel[data-initialise] .diapositive:not([data-active=true]) .affiche::after{content:'';position:absolute;inset:0;background:#0e0b0a35}.carrousel[data-initialise] .titre-secours{display:none}.carrousel[data-initialise] .diapositive:not([data-active=true]) .ouvrir{opacity:0}.affiche:focus-visible{outline:3px solid var(--rose);outline-offset:6px}.lecture:not([hidden]){display:flex;justify-content:space-between;align-items:center;gap:2rem;margin:1.5rem auto 0;padding-top:1.5rem;border-top:1px solid #f2eee533;max-width:55rem}.compteur{font:.75rem var(--font-timecode);color:#f2eee599;margin:0 0 .5rem}h3{font:700 clamp(1.8rem,3vw,3rem)/1 var(--font-titre);letter-spacing:-.04em;margin:0}.legende>p:last-child{margin:.6rem 0 0;color:#f2eee5b3;font-size:.9rem}.commandes{display:flex;gap:.7rem;align-items:center;flex-shrink:0}button{cursor:pointer;background:none;color:var(--creme);border:1px solid #f2eee54d;min-height:44px;min-width:44px;font:500 .8rem var(--font-label)}button:hover{background:var(--creme);color:var(--ebene)}[data-lecture]{padding:.65rem 1rem;text-transform:uppercase;letter-spacing:.08em}.reperes:not([hidden]){display:flex;justify-content:center;gap:.5rem;margin:2rem 0 0}.reperes button{border:0;border-bottom:2px solid #f2eee533;color:#f2eee599}.reperes button[aria-pressed=true]{color:var(--rose);border-color:var(--rose)}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.programmation{padding:clamp(3.5rem,7vw,7rem) var(--gouttiere);overflow:hidden;background:radial-gradient(ellipse at 50% 58%,#3155ff10,transparent 65%),var(--brun-salle);scroll-margin-top:6rem}.entete{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem}.etiquette{font:700 .75rem var(--font-label);letter-spacing:.15em;text-transform:uppercase;color:var(--rose);margin:0}h2{font:700 clamp(2.5rem,5.5vw,6rem)/1 var(--font-titre);letter-spacing:-.045em;margin:1.3rem 0}h2>span{color:var(--rose)}.intro{max-width:35rem;margin:0;color:#f2eee5b3;line-height:1.6}.tout{flex-shrink:0;font:700 .8rem var(--font-label);letter-spacing:.06em;text-transform:uppercase;text-underline-offset:.5rem;margin-bottom:.4rem}.carrousel{position:relative;margin:3.5rem auto 0;max-width:95rem}.piste{list-style:none;padding:0 1rem;margin:0;display:flex;gap:1.5rem;overflow-x:auto;scroll-snap-type:x mandatory}.diapositive{flex:0 0 min(75vw,22rem);min-width:0;scroll-snap-align:center}.affiche{display:block;position:relative;text-decoration:none;box-shadow:0 1.5rem 3rem #0009}.ouvrir{position:absolute;inset:auto 0 0;padding:1rem;background:linear-gradient(transparent,#0e0b0af2);text-align:center;font:700 .8rem var(--font-label);text-transform:uppercase;letter-spacing:.08em;color:var(--creme)}.titre-secours{display:block;margin:1rem 0;font-weight:700}.carrousel[data-initialise] .piste{display:block;position:relative;overflow:visible;height:clamp(23rem,39vw,38rem);perspective:1200px;touch-action:pan-y}.carrousel[data-initialise] .diapositive{position:absolute;top:0;left:50%;width:clamp(14rem,25vw,23rem);z-index:calc(5 - var(--ecart));opacity:calc(1 - var(--ecart)*.26);transform:translateX(calc(-50% + var(--distance)*86%)) translateZ(calc(var(--ecart)*-80px)) rotateY(calc(var(--distance)*-18deg)) scale(calc(1 - var(--ecart)*.1));transform-origin:center;transition:transform .75s cubic-bezier(.2,.7,.2,1),opacity .75s;transition-duration:.75s!important;will-change:transform}.carrousel[data-initialise] .diapositive:not([data-active=true]) .affiche::after{content:'';position:absolute;inset:0;background:#0e0b0a35}.carrousel[data-initialise] .titre-secours{display:none}.carrousel[data-initialise] .diapositive:not([data-active=true]) .ouvrir{opacity:0}.affiche:focus-visible{outline:3px solid var(--rose);outline-offset:6px}.lecture:not([hidden]){display:flex;justify-content:space-between;align-items:center;gap:2rem;margin:1.5rem auto 0;padding-top:1.5rem;border-top:1px solid #f2eee533;max-width:55rem}.compteur{font:.75rem var(--font-timecode);color:#f2eee599;margin:0 0 .5rem}h3{font:700 clamp(1.8rem,3vw,3rem)/1 var(--font-titre);letter-spacing:-.04em;margin:0}.legende>p:last-child{margin:.6rem 0 0;color:#f2eee5b3;font-size:.9rem}.commandes{display:flex;gap:.7rem;align-items:center;flex-shrink:0}button{cursor:pointer;background:none;color:var(--creme);border:1px solid #f2eee54d;min-height:44px;min-width:44px;font:500 .8rem var(--font-label)}button:hover{background:var(--creme);color:var(--ebene)}.reperes:not([hidden]){display:flex;justify-content:center;gap:.5rem;margin:2rem 0 0}.reperes button{border:0;border-bottom:2px solid #f2eee533;color:#f2eee599}.reperes button[aria-pressed=true]{color:var(--rose);border-color:var(--rose)}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 @media(max-width:48rem){.entete{display:block}.tout{display:inline-block;margin-top:1.5rem}.carrousel{margin-top:2.5rem}.carrousel[data-initialise] .piste{height:clamp(22rem,66vw,32rem)}.carrousel[data-initialise] .diapositive{width:clamp(13.5rem,48vw,20rem)}.lecture:not([hidden]){align-items:flex-start;gap:1rem}.commandes{gap:.4rem}.legende{min-width:0}h3{font-size:1.8rem}}
 @media(max-width:28rem){.lecture:not([hidden]){flex-direction:column}.commandes{align-self:flex-end;margin-top:.5rem}.reperes:not([hidden]){margin-top:1rem}.carrousel[data-initialise] .piste{height:22rem}}
-@media(prefers-reduced-motion:reduce){.carrousel[data-initialise] .diapositive{transition:none}}
+
 </style>
