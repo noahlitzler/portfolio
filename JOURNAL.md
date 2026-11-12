@@ -146,3 +146,5 @@ Nouvelle consigne de Noah : retirer la limite « trois projets », réunir tous 
 ### 12 novembre — affiner les mouvements après essai
 
 Noah apprécie la nouvelle composition et demande des points fixes, seuls les textes des bandes devant défiler. Il souhaite des animations automatiques sans bouton d’activation, et des effets plus travaillés sur le nom et les affiches. Décisions : supprimer les commandes, remplacer le décalage bleu/rose par une apparition et un balayage lumineux, ajouter relief et reflets aux créations. Le travail a repris après une interruption du contrôle automatique liée à une limite d’utilisation. Sauvegarde ZIP et bundle, compilation et contrôle ordinateur, commits locaux. Essai mobile interrompu par le navigateur ; contrôle à reprendre. Aucun push ni déploiement.
+
+12 novembre — finition de l’accueil : encart jaune « Une idée. Tout un univers. » retiré à la demande de Noah pour dégager les affiches.
