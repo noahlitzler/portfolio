@@ -148,3 +148,12 @@ Nouvelle consigne de Noah : retirer la limite « trois projets », réunir tous 
 Noah apprécie la nouvelle composition et demande des points fixes, seuls les textes des bandes devant défiler. Il souhaite des animations automatiques sans bouton d’activation, et des effets plus travaillés sur le nom et les affiches. Décisions : supprimer les commandes, remplacer le décalage bleu/rose par une apparition et un balayage lumineux, ajouter relief et reflets aux créations. Le travail a repris après une interruption du contrôle automatique liée à une limite d’utilisation. Sauvegarde ZIP et bundle, compilation et contrôle ordinateur, commits locaux. Essai mobile interrompu par le navigateur ; contrôle à reprendre. Aucun push ni déploiement.
 
 12 novembre — finition de l’accueil : encart jaune « Une idée. Tout un univers. » retiré à la demande de Noah pour dégager les affiches.
+
+
+### 12 novembre — finitions fonctionnelles et version bilingue
+
+Noah approuve les améliorations proposées et demande le choix français / anglais. Le carrousel est déplacé directement après l’accueil. Les images des études s’agrandissent, les crédits se lisent en grille, les blancs sont resserrés et les repères mobiles gagnent en lisibilité. Dates et zone du stage apparaissent tôt sur mobile. Le nom conserve son effet avec un contour plus présent ; les affiches partagent une durée de 12 s.
+
+Le sélecteur FR / EN conserve la page en cours. Les cinq études, textes de navigation, légendes et métadonnées possèdent une version anglaise statique. Les travaux et le CV restent dans leur langue d’origine. Aucun moteur de traduction externe. Configuration Netlify et gestion d’envoi préparées ; le formulaire reste fermé tant que le service n’est pas activé, avec email direct disponible. Publication et test de réception sont réservés à la validation de Noah.
+
+Contrôles : quatre tests de traduction, compilation de 25 sorties, 24 pages et 636 références locales sans erreur ; essais navigateur mobile/tablette/ordinateur, correction du formulaire anglais à 320 px. Sauvegarde portfolio-avant-finitions-et-langues-12nov.zip / .bundle ; commits locaux, aucun push. Les contrôles détaillés et limites sont consignés dans QUALITE.md.
