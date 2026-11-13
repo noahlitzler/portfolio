@@ -1,0 +1,17 @@
+[Unit]
+Description=Portfolio Noah Litzler - Astro et Bun
+After=network.target
+
+[Service]
+Type=simple
+User=etudiant
+WorkingDirectory=/var/www/portfolio
+EnvironmentFile=/var/www/portfolio/.env
+Environment=HOST=127.0.0.1
+Environment=PORT=3355
+ExecStart=/home/etudiant/.bun/bin/bun ./dist/server/entry.mjs
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

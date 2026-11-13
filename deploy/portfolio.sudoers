@@ -1,0 +1,3 @@
+# À installer avec visudo uniquement après validation de Noah.
+# Cette autorisation concerne uniquement le redémarrage du portfolio.
+etudiant ALL=(root) NOPASSWD: /usr/bin/systemctl restart portfolio.service

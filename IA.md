@@ -130,3 +130,10 @@ Retrait de l’encart jaune de l’ouverture demandé par Noah le 12 novembre : 
 Préparation Netlify sans publication : configuration, variable d’activation du formulaire, message d’indisponibilité par défaut, attente et erreur pour la version active. Aucune réception email fictivement attestée. Références techniques : documentation officielle Astro middleware et Netlify Forms. Quatre tests de traduction ajoutés ; compilation et contrôle de 24 pages sans références absentes. Essais navigateur à 320, 768 et 1280 px ; débordement anglais corrigé. Détails et limites dans QUALITE.md. Sauvegarde ZIP et bundle préalables ; commits locaux, aucun push ni déploiement. La relecture et la compréhension du code par Noah restent à effectuer.
 
 Codex / OpenAI — croquis La Cimade : rotation de présentation de 90 degrés via CSS, sans retouche du document original. Même orientation dans la visionneuse, adaptation des dimensions au zoom et à l’écran. Intervention limitée à la demande de Noah ; compilation et rendu vérifiés.
+
+
+## Codex / OpenAI — préparation VPS, 13 novembre 2026
+
+À la demande explicite de Noah, retour aux méthodes du document de cours de Hakim fourni : Bun, SSH, VPS, Apache, Certbot, systemd et GitHub Actions. Consultation du VPS en lecture seule : versions, services, ports et VirtualHost. DNS encore dirigés vers Netlify ; configuration racine du VPS vers TiK TaK repérée. Aucun serveur ni DNS modifié.
+
+Adaptation locale : adaptateur Astro Node standalone et route de réception SMTP ; pages de présentation précompilées conservées ; formulaire Gmail désactivé tant que ses identifiants et son traitement ne sont pas validés ; configuration privée ignorée par Git. Ajout de cinq tests du formulaire sans véritables emails, modèles Apache/systemd et workflow inspiré du cours. Correction d’une 404 anglaise et du passage des en-têtes de domaine HTTPS, sans désactiver le contrôle d’origine. Documentation de publication réécrite. Les textes et le code restent à relire et expliquer personnellement par Noah. Sauvegardes ZIP/bundle et commits locaux, aucun push.

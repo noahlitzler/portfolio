@@ -1,4 +1,4 @@
-# Qualité du portfolio — version du 12 novembre 2026
+# Qualité du portfolio — préparation VPS du 13 novembre 2026
 
 Ce fichier décrit la version actuelle, contrôlée localement. Les mesures des anciennes expériences cinéma sont conservées dans docs/archives/QUALITE-2026-11-10.md ; elles ne décrivent pas des fonctionnalités encore présentes.
 
@@ -81,3 +81,19 @@ Sauvegardes avant ajustements : portfolio-avant-ajustements-12-novembre.zip et .
 - Formulaire non ouvert : message d’indisponibilité et lien email visibles ; bouton désactivé par défaut. Configuration Netlify préparée, états attente/erreur codés pour la version active. Activation et véritable réception email non testées : elles dépendent de l’hébergement et d’une publication validée.
 - Limites toujours valables : pas d’essai tactile sur téléphone physique, lecteur d’écran et audit complet des contrastes à faire, performances sur l’hébergement final non mesurées. Le nouveau contrôle responsive remplace la limite de l’essai mobile interrompu de l’étape précédente.
 - Sauvegarde avant intervention : portfolio-avant-finitions-et-langues-12nov.zip et .bundle ; commits locaux uniquement. Aucune publication.
+
+
+## Préparation VPS du cours — 13 novembre 2026
+
+- Méthode demandée par Noah : Bun, adaptateur Astro Node standalone, Apache, Certbot, systemd et GitHub Actions. Aucun basculement réel du serveur.
+- Compilation avec bun run --bun build réussie. Les 24 pages de contenu FR / EN restent précompilées dans dist/client ; un endpoint de formulaire et un repli 404 sont servis à la demande.
+- Neuf tests réussis : cinq pour le formulaire et quatre pour la traduction. Les tests utilisent une fonction d’envoi factice ; aucun email réel transmis. Cas vérifiés : validation des champs et origine, champ leurre, service non configuré, confirmation selon la langue, panne SMTP, limitation des tentatives, message trop long et absence de réinjection de HTML saisi.
+- Analyse des 24 pages : 636 références locales (dont l’API dynamique autorisée), 130 images avec alt ; pas de référence locale absente, ancienne dépendance Netlify supprimée. Les noms de configuration SMTP privée et de clé VPS ne sont pas présents dans le HTML/JS/CSS du dossier client vérifié.
+- Serveur Bun démarré localement sur 127.0.0.1:4332. Vingt chemins HTTP vérifiés : pages FR / EN et cinq études dans chaque langue, puis chemins inconnus. Les chemins inconnus renvoient réellement 404 avec la langue correspondante.
+- Test de POST local avec domaine et en-têtes HTTPS correspondant au futur Apache : 503 attendu, puisque Gmail est non configuré. La protection d’origine Astro reste activée. X-Forwarded-Host doit être transmis, en plus du protocole ; ce besoin a été identifié et corrigé dans le modèle Apache.
+- Contrôle navigateur : contact anglais pointe vers /api/contact, aucune balise data-netlify, bouton désactivé ; page inconnue anglaise et accueil vérifiés sur le serveur Bun. Capture portfolio-preparation-vps-13nov.png dans outputs.
+- Poids de la compilation : 9762653 octets côté client, 583656 côté serveur (hors node_modules). Ces totaux ne mesurent ni le transfert initial ni la rapidité du site publié.
+- Fichiers Apache/systemd préparés localement, non activés ni validés par un configtest sur le VPS. Workflow YAML analysé avec Bun ; job conditionné à DEPLOIEMENT_ACTIF=true et non exécuté sur GitHub.
+- Le port 3355 était libre au relevé préparatoire. Le domaine pointait encore vers Netlify ; un conflit de VirtualHost avec le domaine racine TiK TaK a été repéré. Les derniers essais SSH du 13 novembre ont expiré, tandis que le site Clients répondait. Accès à rétablir avant installation.
+- À valider : push, installation, bascule Apache/DNS, certificat couvrant racine et www, informations d’hébergeur et traitement des messages, identifiants Gmail saisis uniquement par Noah, réception réelle. Autres domaines et services du VPS à vérifier pendant la publication.
+- Sauvegardes avant intervention : portfolio-avant-publication-vps.zip et .bundle. Commits locaux uniquement. Aucun push, déploiement, changement DNS ni email réel.

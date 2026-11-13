@@ -159,3 +159,12 @@ Le sélecteur FR / EN conserve la page en cours. Les cinq études, textes de nav
 Contrôles : quatre tests de traduction, compilation de 25 sorties, 24 pages et 636 références locales sans erreur ; essais navigateur mobile/tablette/ordinateur, correction du formulaire anglais à 320 px. Sauvegarde portfolio-avant-finitions-et-langues-12nov.zip / .bundle ; commits locaux, aucun push. Les contrôles détaillés et limites sont consignés dans QUALITE.md.
 
 12 novembre — croquis La Cimade : présentation paysage et orientation de lecture corrigées uniquement pour cette planche, dans la page et la visionneuse. Source originale conservée, sauvegarde des composants, build réussi et contrôle ordinateur/mobile à 320 px, sans dépassement. Commit local, aucun push.
+
+
+## 13 novembre 2026 — préparer la publication avec les méthodes du cours
+
+Noah souhaite la mise en ligne et rappelle d’utiliser la méthode de Hakim. Le document fourni a été retrouvé et relu. La proposition Netlify est remplacée par une installation séparée du portfolio sur le VPS existant : Bun, adaptateur Astro standalone, Apache, Certbot, systemd et GitHub Actions. Les lectures du serveur ont permis de réserver dans le plan un port distinct (3355), de repérer le domaine racine déjà utilisé dans les fichiers TiK TaK et d’identifier les sous-domaines à préserver. Noah confirme ne disposer que de Gmail ; envoi SMTP préparé, mot de passe d’application à créer et saisir par lui-même.
+
+Pages FR / EN et cinq études statiques conservées. Tests de validation du formulaire sans envoi réel, build Bun et essai HTTP local. Fichiers de publication et retour arrière documentés. Sauvegardes avant intervention et commits locaux. Push, installation, changements Apache/DNS, activation Gmail et réception réelle attendent la validation de Noah.
+
+Contrôle final du 13 novembre : neuf tests et vingt chemins HTTP locaux valides. Deux expirations de connexion SSH au port du cours ont interrompu la possibilité d’installer ; le site Clients répond toujours. Le workflow est gardé inactif par défaut jusqu’à configuration et validation.

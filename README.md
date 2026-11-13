@@ -2,7 +2,7 @@
 
 Portfolio scolaire de BUT MMI, parcours création numérique. Positionnement : design graphique et direction artistique. Stage recherché du 29 mars au 4 juin 2027, dans le Haut-Rhin, à Bâle, à Porrentruy et aux alentours.
 
-## Version actuelle — 12 novembre 2026, finitions et français / anglais
+## Version actuelle — 13 novembre 2026, préparation du VPS du cours
 
 Le portfolio emprunte au cinéma son vocabulaire et sa présentation : ouverture, affiches, séances, making-of, storyboard et guichet. L’accueil comporte une composition animée de créations, immédiatement suivie du carrousel de cinq projets. Le choix FR / EN conserve la page consultée ; les deux versions sont générées en HTML statique, y compris les cinq études. Les créations et le CV restent dans leur langue d’origine. Le storyboard À propos utilise le portrait et les travaux de Noah, sans affiches de films. Un seul menu Chapitres et une barre de progression au défilement assurent la navigation.
 
@@ -18,15 +18,16 @@ Les cinq études de cas sont conservées : Noah précise que l’enseignant a au
 
 ## Techniques et lancement
 
-Astro génère les pages statiques ; les contenus sont dans src/data/projets.js. CSS natif, variables et JavaScript/TypeScript du navigateur. Dépendances déclarées dans package.json : Astro et Fontsource. Aucune bibliothèque de carrousel ou d’animation ajoutée. Polices locales : Author, Oswald, Caveat, Courier Prime et Montserrat.
+Astro génère les pages de présentation statiques ; les contenus sont dans src/data/projets.js. L’adaptateur Node standalone permet au formulaire de recevoir les messages côté serveur, avec Bun et systemd comme dans le cours de Hakim. CSS natif, variables et JavaScript/TypeScript du navigateur. Dépendances déclarées dans package.json : Astro, Fontsource, adaptateur Node officiel et Nodemailer pour le SMTP. Aucune bibliothèque de carrousel ou d’animation ajoutée. Polices locales : Author, Oswald, Caveat, Courier Prime et Montserrat.
 
-Node 22.12 ou supérieur. Lancer npm install puis npm run dev ; compiler avec npm run build et contrôler le résultat avec npm run preview. Bun reste utilisable avec les scripts équivalents. Le package-lock.json existant de Noah est conservé sans inclusion dans les commits de cette intervention.
+Node 22.12 ou supérieur et Bun (1.4.2 lors du contrôle). Utiliser bun install --frozen-lockfile, bun run dev, bun run test, puis bun run --bun build. Après build, bun run start lance le serveur standalone ; le service définit HOST=127.0.0.1 et PORT=3355. Les pages publiques sont dans dist/client, l’entrée serveur dans dist/server/entry.mjs. Le package-lock.json existant de Noah est conservé sans inclusion dans les commits de cette intervention.
 
 ## Comprendre les composants
 
 - HeroAccueil.astro : apparition du nom, balayage de lumière, reflets sur les affiches et mouvement de profondeur. Un léger parallaxe suit le pointeur avec requestAnimationFrame. Les effets démarrent automatiquement, sans bouton d’activation.
 - CarrouselProjets.astro : cinq liens issus des données ; index circulaire, positions CSS, précédent/suivant, repères, clavier et balayage tactile. Rotation automatique toutes les 6,5 secondes lorsque le carrousel est visible. Suspension pendant le survol, le focus clavier ou quand l’onglet est masqué, puis reprise automatique. Flèches et repères conservés ; aucune commande Lecture/Pause. Sans JavaScript, une liste horizontale reste utilisable.
 - Bandeau.astro : seul le texte défile en continu ; les deux rangées de points restent fixes. Animation CSS commune à toutes les pages qui utilisent ce composant, sans JavaScript ni bouton.
+- src/pages/api/contact.ts et src/lib/contact.js : réception, validation et envoi SMTP ; identifiants privés chargés sur le serveur. Les tests remplacent l’envoi par un transport local factice.
 - Entete.astro : dialog natif, Échap et retour du focus ; progression calculée avec scrollY et la hauteur du document, actualisée par requestAnimationFrame.
 - projets/[slug].astro : getStaticPaths génère une page par projet et le lien suivant circule sur les cinq projets.
 - Affiche.astro et Visuel.astro : affiches partagées et images optimisées avec Astro Image. Les visuels des études sont des liens directs utilisables sans JavaScript.
@@ -36,9 +37,11 @@ Node 22.12 ou supérieur. Lancer npm install puis npm run dev ; compiler avec np
 
 ## Domaine et publication
 
-Noah possède noahlitzler.fr chez Infomaniak, pour le nom de domaine uniquement. L’hébergement est à configurer. Le domaine est renseigné dans astro.config.mjs ; PORTFOLIO_SITE peut le remplacer. Le build génère les URL canoniques, robots.txt et le sitemap pour cette adresse. Cette configuration ne publie pas le site.
+Noah possède noahlitzler.fr chez Infomaniak, pour le nom de domaine uniquement. L’installation dédiée du portfolio sur le VPS est à effectuer après validation. Le domaine est renseigné dans astro.config.mjs ; PORTFOLIO_SITE peut le remplacer. Le build génère les URL canoniques, robots.txt et le sitemap pour cette adresse. Cette configuration ne publie pas le site.
 
-Le formulaire est préparé pour Netlify Forms, avec netlify.toml et .env.example. Par défaut, son bouton d’envoi reste désactivé et un message renvoie à l’email direct : aucune réception n’est simulée. PUBLIC_CONTACT_ACTIF=true est réservé à la version dont le service aura réellement été activé. La version active prévoit un état d’envoi, un délai maximal et une erreur qui préserve les champs. Voir docs/PUBLICATION.md. Le choix et la configuration de l’hébergement, la réception réelle des messages à noah.litzler@gmail.com et les informations de confidentialité restent à vérifier avant ouverture publique. Ne pas considérer l’envoi comme opérationnel sur un hébergement quelconque.
+La piste Netlify a été remplacée, à la demande de Noah, par la méthode du cours : VPS, Apache, Certbot, Bun, systemd et GitHub Actions. Le VPS est accessible et ses services ont été lus sans modification ; le domaine public pointait encore vers Netlify lors du relevé. Un conflit de VirtualHost racine avec TiK TaK a été repéré ; les modèles prévoient un service et un port distincts. Les fichiers et la procédure détaillée sont dans deploy/ et docs/PUBLICATION.md.
+
+Le formulaire est préparé pour SMTP Gmail vers noah.litzler@gmail.com. Par défaut il reste désactivé, avec un lien email direct. Noah doit créer et saisir lui-même son mot de passe d’application dans le fichier privé du VPS, compléter les modalités de traitement et valider le test réel avant activation. Aucun secret n’est présent dans le dépôt et aucun email réel n’a été envoyé.
 
 ## Documents et validation
 
@@ -46,4 +49,4 @@ JOURNAL.md conserve les décisions successives ; IA.md déclare l’aide reçue 
 
 Avant publication : relecture personnelle du code et des textes, crédits et licences des ressources à confirmer, tests qualité restants, configuration de l’hébergement et du formulaire, mise à jour des réseaux. Le compte Instagram de créations sera ajouté plus tard par Noah. Préparation de soutenance envisagée autour de La Cimade ou Smooth ; le code n’a pas encore été relu personnellement par Noah.
 
-Sauvegardes ZIP et bundle avant chaque refonte. Commits locaux uniquement. Aucun push ni déploiement sans validation de Noah.
+Sauvegardes ZIP et bundle avant chaque refonte. Commits locaux uniquement. Aucun push ni déploiement sans validation de Noah. Le workflow attend en plus DEPLOIEMENT_ACTIF=true ; il reste désactivé pendant la préparation.
