@@ -1,9 +1,11 @@
 ---
+export const prerender=true;
 import Base from "../layouts/Base.astro";
 import Bandeau from "../components/Bandeau.astro";
 
-// Activer uniquement après configuration de Netlify Forms et de la notification email.
+// Activer après configuration du SMTP privé sur le VPS et essai de réception.
 const formulaireActif=import.meta.env.PUBLIC_CONTACT_ACTIF==='true';
+const langue=Astro.url.pathname.startsWith('/en/')?'en':'fr';
 const types = ["Stage", "Projet", "Collaboration", "Autre"];
 const cartes = [
   { stub: "N° 01", couleur: "var(--rose)", texte: "var(--ebene)", genre: "Email", valeur: "noah.litzler@gmail.com", action: "Écrire", href: "mailto:noah.litzler@gmail.com" },
@@ -31,8 +33,8 @@ const fin = [
     <div class="colonnes">
       <div class="billet-form">
         <div class="souche" aria-hidden="true">Admission - N° 0001</div>
-        <form data-contact-actif={String(formulaireActif)} name="contact" method="POST" action="/merci" data-netlify="true" netlify-honeypot="bot-field">
-          <input type="hidden" name="form-name" value="contact" />
+        <form data-contact-actif={String(formulaireActif)} name="contact" method="POST" action="/api/contact">
+          <input type="hidden" name="langue" value={langue} />
           <p hidden><label>Ne pas remplir <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
           <p class="cinema">Cinéma Noah Litzler - Guichet</p>
           <div class="titre-ligne">
@@ -40,8 +42,8 @@ const fin = [
             <span class="annee">Séance 2026</span>
           </div>
           <div class="champs">
-            <label class="champ"><span>Nom du spectateur</span><input type="text" name="nom" placeholder="Ton nom" autocomplete="name" required /></label>
-            <label class="champ"><span>Email</span><input type="email" name="email" placeholder="ton@email.com" autocomplete="email" required /></label>
+            <label class="champ"><span>Nom du spectateur</span><input type="text" name="nom" placeholder="Ton nom" autocomplete="name" minlength="2" maxlength="100" required /></label>
+            <label class="champ"><span>Email</span><input type="email" name="email" placeholder="ton@email.com" autocomplete="email" maxlength="254" required /></label>
           </div>
           <fieldset>
             <legend>Type de séance</legend>
@@ -51,8 +53,8 @@ const fin = [
               ))}
             </div>
           </fieldset>
-          <label class="champ"><span>Message</span><textarea name="message" rows="5" placeholder="Raconte-moi ton idée en quelques lignes." required></textarea></label>
-          <p class="retour-envoi" role="status" aria-live="polite" data-retour-envoi hidden={formulaireActif}>{!formulaireActif && <>Le formulaire sera disponible après la mise en ligne. Tu peux déjà m’écrire directement par email. <a href="mailto:noah.litzler@gmail.com">noah.litzler@gmail.com</a></>}</p>
+          <label class="champ"><span>Message</span><textarea name="message" rows="5" minlength="10" maxlength="4000" placeholder="Raconte-moi ton idée en quelques lignes." required></textarea></label>
+          <p class="retour-envoi" role="status" aria-live="polite" data-retour-envoi hidden={formulaireActif}>{!formulaireActif && <>Le formulaire est momentanément indisponible. Tu peux déjà m’écrire directement par email. <a href="mailto:noah.litzler@gmail.com">noah.litzler@gmail.com</a></>}</p>
           <div class="envoi">
             <p class="note">Réponse personnelle, pas de robot au guichet. Ton nom et ton email servent uniquement à te répondre. <a href="/mentions-legales">Traitement des données</a>.</p>
             <button type="submit" disabled={!formulaireActif}><span class="adm">Admission</span><span>Réserver une séance</span></button>
@@ -109,17 +111,21 @@ if(formulaire){
   evenement.preventDefault();
   statut.hidden=false;
   if(formulaire.dataset.contactActif!=='true'){
-   statut.textContent=anglais?'The form will be available after publication. You can already email me directly.':'Le formulaire sera disponible après la mise en ligne. Tu peux déjà m’écrire directement par email.';
+   statut.textContent=anglais?'The form will be available after publication. You can already email me directly.':'Le formulaire est momentanément indisponible. Tu peux déjà m’écrire directement par email.';
    return;
   }
   bouton.disabled=true;formulaire.setAttribute('aria-busy','true');
   statut.textContent=anglais?'Sending…':'Envoi en cours…';
-  const controle=new AbortController();const delai=setTimeout(()=>controle.abort(),15000);
+  const controle=new AbortController();const delai=setTimeout(()=>controle.abort(),25000);
   try{
    const donnees=new URLSearchParams();new FormData(formulaire).forEach((valeur,cle)=>donnees.append(cle,String(valeur)));
-   const reponse=await fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:donnees.toString(),signal:controle.signal});
-   if(!reponse.ok)throw new Error('Envoi refusé');
-   location.assign(formulaire.action);
+   const reponse=await fetch(formulaire.action,{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded',Accept:'application/json'},body:donnees.toString(),signal:controle.signal});
+   const resultat=await reponse.json();
+   if(!reponse.ok||!resultat.ok){
+    statut.textContent=resultat.message||(anglais?'Your message could not be sent. Please try again.':'L’envoi a échoué. Réessaie dans un instant.');
+    return;
+   }
+   location.assign(resultat.redirect);
   }catch{
    statut.textContent=anglais?'Your message could not be sent. It is still here; try again or email me directly.':'L’envoi n’a pas abouti. Ton message est conservé ici ; réessaie ou écris-moi directement par email.';
   }finally{clearTimeout(delai);bouton.disabled=false;formulaire.removeAttribute('aria-busy')}

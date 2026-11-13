@@ -1,3 +1,4 @@
+export const prerender=true;
 import type { APIRoute } from 'astro';
 import {projets} from '../data/projets.js';
 export const GET: APIRoute = ({site}) => {
