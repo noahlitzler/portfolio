@@ -195,7 +195,6 @@ export const anglais = {
   "et confidentialité": "and privacy",
   "Édition": "Publisher",
   "Ce portfolio est conçu et édité par Noah Litzler, étudiant en BUT Métiers du Multimédia et de l’Internet à Montbéliard. Contact :": "This portfolio is designed and published by Noah Litzler, a Multimedia and Internet Technologies student in Montbéliard. Contact:",
-  "Version locale en cours de validation : les coordonnées légales de l’hébergeur et les informations d’identification complémentaires seront renseignées avant publication.": "Local version under review: the hosting provider’s legal details and additional identification information will be added before publication.",
   "Créations et références": "Creations and references",
   "Les études de cas présentent des travaux pédagogiques. La refonte de La Cimade est un exercice de design ; elle ne constitue pas l’identité officielle de l’association. Les marques et les affiches de films citées à titre de références restent la propriété de leurs ayants droit.": "These case studies present coursework. The La Cimade redesign is a design exercise, not the organisation’s official identity. Brands and film posters mentioned as references remain the property of their respective rights holders.",
   "Les illustrations « Vivez l’essentiel » et la proposition d’identité La Cimade sont de Noah Litzler. Les photos des bannières La Cimade ont été générées avec ChatGPT. « Derrière le prompt » est un projet réalisé avec Clément Bertrand.": "The Vivez l’essentiel illustrations and the proposed La Cimade identity are by Noah Litzler. The La Cimade banner photographs were generated with ChatGPT. Derrière le prompt was created with Clément Bertrand.",
@@ -475,5 +474,6 @@ export const anglais = {
   "Des aplats": "Flat colours",
   "davantage de relief par les ombres": "more depth through shadows",
   "Je pousserais encore le travail graphique avec des jeux d’ombres. L’objectif serait de donner plus de profondeur aux bâtiments et de renforcer le relief des illustrations tout en conservant la cohérence de la série.": "I would develop the graphic work further by exploring shadows. The aim would be to give the buildings more depth and strengthen the illustrations’ dimensionality while keeping the series coherent.",
-  "Séance 02 - Branding. La refonte du logo et de l’identité de La Cimade.": "Screening 02 - Branding. A logo and identity redesign for La Cimade."
+  "Séance 02 - Branding. La refonte du logo et de l’identité de La Cimade.": "Screening 02 - Branding. A logo and identity redesign for La Cimade.",
+  "Ce portfolio est publié dans le cadre d’un projet de BUT MMI. Il est hébergé sur le VPS pédagogique utilisé pour les cours de déploiement. Les coordonnées juridiques de l’opérateur d’hébergement restent à compléter.": "This portfolio is published as part of a BUT MMI course project. It is hosted on the educational VPS used for deployment classes. The hosting operator’s legal details still need to be completed."
 };
