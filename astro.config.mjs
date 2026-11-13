@@ -2,7 +2,7 @@
 import {defineConfig} from 'astro/config';
 import node from '@astrojs/node';
 export default defineConfig({
-  site:process.env.PORTFOLIO_SITE||'https://noahlitzler.fr',
+  site:process.env.PORTFOLIO_SITE||'https://www.noahlitzler.fr',
   output:'server',
   adapter:node({mode:'standalone',bodySizeLimit:16384}),
   session:false,
