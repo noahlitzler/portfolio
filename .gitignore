@@ -23,6 +23,9 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 
-# Variantes privées de configuration
+# Variantes privÃ©es de configuration
 .env.*
 !.env.example
+
+# Netlify local metadata and functions
+.netlify/

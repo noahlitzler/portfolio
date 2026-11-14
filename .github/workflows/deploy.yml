@@ -14,7 +14,7 @@ concurrency:
 
 jobs:
   deploy:
-    if: vars.DEPLOIEMENT_ACTIF == 'true'
+    if: ${{ false }} # Retiré du VPS pédagogique à la demande de Noah
     runs-on: ubuntu-latest
     environment: production
     steps:
