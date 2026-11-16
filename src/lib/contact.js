@@ -65,7 +65,14 @@ export function creerFormulaire({env=process.env,envoyer=envoyerMessage,maintena
     const entree=tentatives.get(cle)||{debut:instant,nombre:0};
     if(entree.nombre>=3||tentatives.size>=2000&&!tentatives.has(cle))return repondre(429,'limite');
     entree.nombre++;tentatives.set(cle,entree);
-    try{await envoyer(message,env)}catch{return repondre(502,'echec')}
+    try{await envoyer(message,env)}catch(erreur){
+      // Codes techniques uniquement : jamais message SMTP, email ou identifiants.
+      const codes=new Set(['EAUTH','ECONNECTION','ETIMEDOUT','ESOCKET','EENVELOPE','EMESSAGE','EDNS']);
+      const code=codes.has(erreur?.code)?erreur.code:'SMTP_INCONNU';
+      const reponse=Number.isInteger(erreur?.responseCode)?erreur.responseCode:0;
+      console.error('CONTACT_SMTP',code,reponse);
+      return repondre(502,'echec');
+    }
     return repondre(200);
   };
 }
