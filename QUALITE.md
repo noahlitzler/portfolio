@@ -1,3 +1,22 @@
+## Contrôle des corrections — 16 novembre 2026
+
+- Neuf tests automatisés réussis, dont validation SMTP factice et traduction.
+- Compilation Netlify réussie après les corrections des mentions FR/EN.
+- Analyse des 25 sorties HTML : 130 images avec attribut alt, liens locaux contrôlés sans ressource absente, un h1 par page de contenu. Ce contrôle ne mesure pas la pertinence des textes alternatifs.
+- Domaine canonique configuré sans www, conformément à la redirection publique constatée le 16 novembre. Publication de cette correction à confirmer.
+- HTTPS, pages FR/EN et vraie erreur 404 vérifiés publiquement avant correction. Formulaire public désactivé constaté ; aucun envoi réel prétendu.
+- Restent à exercer : lecteur d’écran, contrastes, zoom, mesures de performance sur la version publiée et réception Gmail. Relecture personnelle prévue avec Noah.
+
+## État actuel — 16 novembre 2026
+
+Le portfolio est publié sur https://noahlitzler.fr via Netlify, domaine enregistré chez Infomaniak. Le domaine sans www est principal ; la configuration canonique est alignée dans cette correction. Le workflow de publication vers le VPS du cours est désactivé. Les sections datées antérieures décrivent les étapes historiques, pas l’état actuel.
+
+Noah confirme le 16 novembre les droits de publication des ressources des cinq projets et la mise à jour de LinkedIn et de son second réseau. Ces confirmations ne remplacent pas une copie des licences des ressources tierces.
+
+Le contact utilise l’API serveur et Gmail SMTP ; la configuration privée et le test de réception restent à effectuer avant ouverture. Le lien email direct reste disponible. Aucun secret dans Git, le chat ou le navigateur public.
+
+Le retour arrière Apache sur le VPS pédagogique reste bloqué par la fermeture SSH avant identification. DNS racine et www restaurés le 14 novembre ; aucune réparation de TiK TaK n’est prétendue.
+
 # Qualité du portfolio — préparation VPS du 13 novembre 2026
 
 Ce fichier décrit la version actuelle, contrôlée localement. Les mesures des anciennes expériences cinéma sont conservées dans docs/archives/QUALITE-2026-11-10.md ; elles ne décrivent pas des fonctionnalités encore présentes.

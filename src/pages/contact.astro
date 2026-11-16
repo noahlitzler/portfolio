@@ -3,7 +3,7 @@ export const prerender=true;
 import Base from "../layouts/Base.astro";
 import Bandeau from "../components/Bandeau.astro";
 
-// Activer après configuration du SMTP privé sur le VPS et essai de réception.
+// Activer après configuration du SMTP privé dans Netlify et essai de réception.
 const formulaireActif=import.meta.env.PUBLIC_CONTACT_ACTIF==='true';
 const langue=Astro.url.pathname.startsWith('/en/')?'en':'fr';
 const types = ["Stage", "Projet", "Collaboration", "Autre"];
@@ -111,7 +111,7 @@ if(formulaire){
   evenement.preventDefault();
   statut.hidden=false;
   if(formulaire.dataset.contactActif!=='true'){
-   statut.textContent=anglais?'The form will be available after publication. You can already email me directly.':'Le formulaire est momentanément indisponible. Tu peux déjà m’écrire directement par email.';
+   statut.textContent=anglais?'The form is temporarily unavailable. Please email me directly.':'Le formulaire est momentanément indisponible. Tu peux déjà m’écrire directement par email.';
    return;
   }
   bouton.disabled=true;formulaire.setAttribute('aria-busy','true');

@@ -137,3 +137,8 @@ Codex / OpenAI — croquis La Cimade : rotation de présentation de 90 degrés v
 À la demande explicite de Noah, retour aux méthodes du document de cours de Hakim fourni : Bun, SSH, VPS, Apache, Certbot, systemd et GitHub Actions. Consultation du VPS en lecture seule : versions, services, ports et VirtualHost. DNS encore dirigés vers Netlify ; configuration racine du VPS vers TiK TaK repérée. Aucun serveur ni DNS modifié.
 
 Adaptation locale : adaptateur Astro Node standalone et route de réception SMTP ; pages de présentation précompilées conservées ; formulaire Gmail désactivé tant que ses identifiants et son traitement ne sont pas validés ; configuration privée ignorée par Git. Ajout de cinq tests du formulaire sans véritables emails, modèles Apache/systemd et workflow inspiré du cours. Correction d’une 404 anglaise et du passage des en-têtes de domaine HTTPS, sans désactiver le contrôle d’origine. Documentation de publication réécrite. Les textes et le code restent à relire et expliquer personnellement par Noah. Sauvegardes ZIP/bundle et commits locaux, aucun push.
+
+
+## Codex — 16 novembre 2026
+
+Audit de publication et correction des mentions Netlify, du domaine canonique, de la documentation et du choix de source IP pour le formulaire. Noah conserve le SMTP Gmail, confirme les droits des ressources et ses réseaux à jour. Netlify Forms proposé puis écarté selon son choix. Relecture personnelle du site et du code prévue avec Noah, non présentée comme déjà faite. Configuration SMTP privée et réception réelle encore attendues.

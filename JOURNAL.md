@@ -168,3 +168,16 @@ Noah souhaite la mise en ligne et rappelle d’utiliser la méthode de Hakim. Le
 Pages FR / EN et cinq études statiques conservées. Tests de validation du formulaire sans envoi réel, build Bun et essai HTTP local. Fichiers de publication et retour arrière documentés. Sauvegardes avant intervention et commits locaux. Push, installation, changements Apache/DNS, activation Gmail et réception réelle attendent la validation de Noah.
 
 Contrôle final du 13 novembre : neuf tests et vingt chemins HTTP locaux valides. Deux expirations de connexion SSH au port du cours ont interrompu la possibilité d’installer ; le site Clients répond toujours. Le workflow est gardé inactif par défaut jusqu’à configuration et validation.
+
+
+## État actuel — 16 novembre 2026
+
+Le portfolio est publié sur https://noahlitzler.fr via Netlify, domaine enregistré chez Infomaniak. Le domaine sans www est principal ; la configuration canonique est alignée dans cette correction. Le workflow de publication vers le VPS du cours est désactivé. Les sections datées antérieures décrivent les étapes historiques, pas l’état actuel.
+
+Noah confirme le 16 novembre les droits de publication des ressources des cinq projets et la mise à jour de LinkedIn et de son second réseau. Ces confirmations ne remplacent pas une copie des licences des ressources tierces.
+
+Le contact utilise l’API serveur et Gmail SMTP ; la configuration privée et le test de réception restent à effectuer avant ouverture. Le lien email direct reste disponible. Aucun secret dans Git, le chat ou le navigateur public.
+
+Le retour arrière Apache sur le VPS pédagogique reste bloqué par la fermeture SSH avant identification. DNS racine et www restaurés le 14 novembre ; aucune réparation de TiK TaK n’est prétendue.
+
+Corrections : hébergeur Netlify dans les deux langues, domaine canonique sans www, adresse client fiable de l’adaptateur Netlify pour la limitation SMTP. Sauvegarde bundle avant correction. Relecture personnelle et ajustements visuels prévus avec Noah ; aucune maîtrise du code ou conformité globale inventée.

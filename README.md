@@ -1,3 +1,13 @@
+## État actuel — 16 novembre 2026
+
+Le portfolio est publié sur https://noahlitzler.fr via Netlify, domaine enregistré chez Infomaniak. Le domaine sans www est principal ; la configuration canonique est alignée dans cette correction. Le workflow de publication vers le VPS du cours est désactivé. Les sections datées antérieures décrivent les étapes historiques, pas l’état actuel.
+
+Noah confirme le 16 novembre les droits de publication des ressources des cinq projets et la mise à jour de LinkedIn et de son second réseau. Ces confirmations ne remplacent pas une copie des licences des ressources tierces.
+
+Le contact utilise l’API serveur et Gmail SMTP ; la configuration privée et le test de réception restent à effectuer avant ouverture. Le lien email direct reste disponible. Aucun secret dans Git, le chat ou le navigateur public.
+
+Le retour arrière Apache sur le VPS pédagogique reste bloqué par la fermeture SSH avant identification. DNS racine et www restaurés le 14 novembre ; aucune réparation de TiK TaK n’est prétendue.
+
 # Portfolio — Noah Litzler
 
 Portfolio scolaire de BUT MMI, parcours création numérique. Positionnement : design graphique et direction artistique. Stage recherché du 29 mars au 4 juin 2027, dans le Haut-Rhin, à Bâle, à Porrentruy et aux alentours.

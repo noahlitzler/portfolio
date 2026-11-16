@@ -6,7 +6,7 @@
   NODE_VERSION = "22"
   BUN_VERSION = "1.4.2"
   PUBLIC_CONTACT_ACTIF = "false"
-  PORTFOLIO_SITE = "https://www.noahlitzler.fr"
+  PORTFOLIO_SITE = "https://noahlitzler.fr"
 
 [[headers]]
   for = "/*"
