@@ -181,3 +181,6 @@ Le contact utilise l’API serveur et Gmail SMTP ; la configuration privée et l
 Le retour arrière Apache sur le VPS pédagogique reste bloqué par la fermeture SSH avant identification. DNS racine et www restaurés le 14 novembre ; aucune réparation de TiK TaK n’est prétendue.
 
 Corrections : hébergeur Netlify dans les deux langues, domaine canonique sans www, adresse client fiable de l’adaptateur Netlify pour la limitation SMTP. Sauvegarde bundle avant correction. Relecture personnelle et ajustements visuels prévus avec Noah ; aucune maîtrise du code ou conformité globale inventée.
+
+
+16 novembre — Noah confirme les quatre variables SMTP saisies en privé dans Netlify. Activation du formulaire pour essai réel ; réception Gmail encore non confirmée. Aucun secret lu ni enregistré par Codex.

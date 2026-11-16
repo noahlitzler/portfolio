@@ -116,3 +116,6 @@ Sauvegardes avant ajustements : portfolio-avant-ajustements-12-novembre.zip et .
 - Le port 3355 était libre au relevé préparatoire. Le domaine pointait encore vers Netlify ; un conflit de VirtualHost avec le domaine racine TiK TaK a été repéré. Les derniers essais SSH du 13 novembre ont expiré, tandis que le site Clients répondait. Accès à rétablir avant installation.
 - À valider : push, installation, bascule Apache/DNS, certificat couvrant racine et www, informations d’hébergeur et traitement des messages, identifiants Gmail saisis uniquement par Noah, réception réelle. Autres domaines et services du VPS à vérifier pendant la publication.
 - Sauvegardes avant intervention : portfolio-avant-publication-vps.zip et .bundle. Commits locaux uniquement. Aucun push, déploiement, changement DNS ni email réel.
+
+
+16 novembre — Noah confirme les quatre variables SMTP saisies en privé dans Netlify. Activation du formulaire pour essai réel ; réception Gmail encore non confirmée. Aucun secret lu ni enregistré par Codex.
