@@ -21,7 +21,7 @@ const experiences = [
 ];
 const outils = [
   { nom: "Figma", usage: "Maquettes & UI", couleur: "linear-gradient(var(--rose), var(--vert-acide), var(--bleu))", texte: "var(--ebene)" },
-  { nom: "VS Code", usage: "Intégration", couleur: "#0078D4", texte: "var(--creme)" },
+  { nom: "VS Code", usage: "Intégration", couleur: "#0064B0", texte: "var(--creme)" },
   { nom: "Affinity", usage: "Print & illustration", couleur: "var(--vert-acide)", texte: "var(--ebene)" },
   { nom: "Blender", usage: "3D", couleur: "var(--orange)", texte: "var(--ebene)" },
   { nom: "Framer", usage: "Prototypes web", couleur: "var(--bleu)", texte: "var(--creme)" },
@@ -34,7 +34,6 @@ const competences = [
 ---
 <Base titre="Design graphique et direction artistique" description="Noah Litzler, étudiant en BUT MMI à Montbéliard. Design graphique et direction artistique. Stage du 29 mars au 4 juin 2027 : Haut-Rhin, Bâle et Porrentruy." timecode="00:00:00:00" progression={6} suivant="affiche">
   <HeroAccueil />
-  <CarrouselProjets />
   <Bandeau />
   <section class="presentation" aria-labelledby="titre-presentation">
     <div class="texte">
@@ -47,6 +46,8 @@ const competences = [
       <figcaption><span>Dans le rôle du directeur artistique</span><strong>Noah Litzler</strong></figcaption>
     </figure>
   </section>
+
+  <CarrouselProjets />
 
   <div class="clap">
     <div class="bande" aria-hidden="true"></div>

@@ -5,7 +5,9 @@ export function traduire(texte){
   if(Object.hasOwn(anglais,texte))return anglais[texte];
   if(identiques.has(texte)||/^[\d\s/:×.…↗＋✕←→↓↘#A-Fa-f-]+$/.test(texte)||/^N° \d+$/.test(texte))return texte;
   if(texte.endsWith(' - Noah Litzler'))return traduire(texte.slice(0,-15))+' - Noah Litzler';
-  const prefixes=[['Agrandir : ','Enlarge: '],['Découvrir ','Explore '],['Afficher ','Show '],['Voir la séance ','View the screening: '],['Entrer dans la salle : ','Enter the screening: '],['Documents du projet ','Project documents: ']];
+  const repere=texte.match(/^(\d{2}) - Afficher (.+)$/);
+  if(repere)return repere[1]+' - Show '+traduire(repere[2]);
+  const prefixes=[['Entrer dans la salle ↗ - ','Enter the screening ↗ - '],['Agrandir : ','Enlarge: '],['Découvrir ','Explore '],['Afficher ','Show '],['Voir la séance ','View the screening: '],['Entrer dans la salle : ','Enter the screening: '],['Documents du projet ','Project documents: ']];
   for(const [fr,en] of prefixes)if(texte.startsWith(fr))return en+traduire(texte.slice(fr.length));
   const ouvrir=texte.match(/^Ouvrir (.+) \(nouvel onglet\)$/);
   if(ouvrir)return 'Open '+traduire(ouvrir[1])+' (new tab)';

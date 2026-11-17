@@ -142,3 +142,8 @@ Adaptation locale : adaptateur Astro Node standalone et route de réception SMTP
 ## Codex — 16 novembre 2026
 
 Audit de publication et correction des mentions Netlify, du domaine canonique, de la documentation et du choix de source IP pour le formulaire. Noah conserve le SMTP Gmail, confirme les droits des ressources et ses réseaux à jour. Netlify Forms proposé puis écarté selon son choix. Relecture personnelle du site et du code prévue avec Noah, non présentée comme déjà faite. Configuration SMTP privée et réception réelle encore attendues.
+
+
+## Codex — 17 novembre 2026
+
+À la demande de Noah : retour du carrousel sous la présentation, correction du prénom tronqué et audit. Corrections des noms accessibles, contraste VS Code et marge des affiches inclinées. Contrôles locaux et Lighthouse public consignés dans QUALITE.md ; limites conservées, aucun score global de conformité revendiqué.

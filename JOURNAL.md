@@ -184,3 +184,19 @@ Corrections : hébergeur Netlify dans les deux langues, domaine canonique sans w
 
 
 16 novembre — Noah confirme les quatre variables SMTP saisies en privé dans Netlify. Activation du formulaire pour essai réel ; réception Gmail encore non confirmée. Aucun secret lu ni enregistré par Codex.
+
+
+17 novembre — À la demande de Noah, le carrousel des projets retrouve sa place après la présentation personnelle. Les boîtes du titre animé sont agrandies pour éviter la découpe des lettres de Noah. Sauvegarde bundle avant modification ; relecture visuelle personnelle encore attendue.
+
+
+## 17 novembre 2026 — accueil et audit
+
+- Demande de Noah : remettre le carrousel après la présentation et corriger la lettre h coupée du prénom. Espacement vertical et débordement du titre ajustés ; rendu local ordinateur et 320 px inspecté.
+- Sauvegarde avant changement : portfolio-avant-accueil-17nov.bundle.
+- Navigation locale : menu ouvert puis Échap, focus rendu à Chapitres ; carrousel suivant vers La Cimade ; visionneuse des croquis ouverte avec rotation 90°, Échap et retour du focus ; sélecteur EN conserve l’étude Smooth. Aucune erreur console relevée sur le parcours.
+- Petit écran : accueil, liste, à propos, contact et cinq études exercés à 320 px. Léger débordement initial des images inclinées corrigé par marge intérieure ; des arrondis de 1 px restent observés sur certaines études. Pas de test physique tactile ou de lecteur d’écran prétendu.
+- Analyse compilation : 25 pages, 130 images avec attribut alt ; aucune référence locale absente. Neuf tests automatisés et build Netlify réussis.
+- Contrôle public avant publication de ces changements : 23 URL FR/EN, CV, robots et sitemap répondent 200. Le formulaire SMTP fonctionne selon la confirmation de Noah du 16 novembre ; aucun nouvel email envoyé lors de cet audit.
+- Lighthouse mobile sur accueil public avant corrections, une exécution : performance 64, accessibilité automatique 96, bonnes pratiques 100, SEO 100 ; LCP 2,8 s, CLS 0, transfert 614 KiB. Mesure synthétique variable, pas une conformité globale. Rapport conservé dans outputs/lighthouse-accueil-17nov.json.
+- Anomalies automatiques corrigées : contraste du billet VS Code ; nom accessible comprenant les libellés visibles FR/EN, Entrer dans la salle et numéros des repères. Performances à réévaluer sur le déploiement corrigé.
+- Restent à valider par Noah : durée de conservation des messages et respect de prefers-reduced-motion. Animations permanentes conservées conformément à son choix antérieur en attendant sa réponse.

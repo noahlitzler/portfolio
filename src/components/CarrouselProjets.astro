@@ -5,9 +5,9 @@ import {projets} from '../data/projets.js';
 <section id="programmation" class="programmation" aria-labelledby="titre-programmation" aria-roledescription="carrousel">
   <div class="entete"><div><p class="etiquette">À l’affiche / 5 projets</p><h2 id="titre-programmation">Choisis ta séance<span>.</span></h2><p class="intro">Cinq projets, cinq histoires. Entre dans les coulisses de chaque création.</p></div><a class="tout" href="/projets">Toute la programmation ↗</a></div>
   <div class="carrousel" data-carrousel>
-    <ol class="piste" aria-label="Les cinq projets">{projets.map((p,i)=><li class="diapositive" data-titre={p.titre} data-categorie={p.categorie} data-numero={p.numero}><a class="affiche" href={'/projets/'+p.slug} aria-label={'Découvrir '+p.titre}><Affiche projet={p} simple /><span class="ouvrir">Entrer dans la salle ↗</span></a><span class="titre-secours">{p.titre}</span></li>)}</ol>
+    <ol class="piste" aria-label="Les cinq projets">{projets.map((p,i)=><li class="diapositive" data-titre={p.titre} data-categorie={p.categorie} data-numero={p.numero}><a class="affiche" href={'/projets/'+p.slug} aria-label={'Entrer dans la salle ↗ - '+p.titre}><Affiche projet={p} simple /><span class="ouvrir">Entrer dans la salle ↗</span></a><span class="titre-secours">{p.titre}</span></li>)}</ol>
     <div class="lecture" hidden><div class="legende"><p class="compteur"><span data-compteur>01</span> / 05</p><h3 data-legende-titre>{projets[0].titre}</h3><p data-legende-categorie>{projets[0].categorie}</p></div><div class="commandes"><button type="button" data-precedent aria-label="Projet précédent">←</button><button type="button" data-suivant aria-label="Projet suivant">→</button></div></div>
-    <div class="reperes" hidden aria-label="Choisir un projet">{projets.map((p,i)=><button type="button" data-index={i} aria-label={'Afficher '+p.titre} aria-pressed={i===0}><span>{p.numero}</span></button>)}</div>
+    <div class="reperes" hidden aria-label="Choisir un projet">{projets.map((p,i)=><button type="button" data-index={i} aria-label={p.numero+' - Afficher '+p.titre} aria-pressed={i===0}><span>{p.numero}</span></button>)}</div>
     <p class="sr-only" aria-live="polite" data-annonce></p>
   </div>
 </section>
