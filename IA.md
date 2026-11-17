@@ -1,68 +1,70 @@
-# Mon utilisation de l’IA pour le portfolio
+# Déclaration d’utilisation de l’IA — Portfolio
 
-J’ai utilisé Claude, ChatGPT et Codex pendant ce projet. Je m’en suis servi pour débloquer des problèmes et avancer dans mon travail. J’ai construit l’essentiel de la maquette moi-même, choisi principalement seul les couleurs et les polices dans Figma, et codé une partie de la structure, des styles et de petites interactions JavaScript.
+J’ai utilisé Claude, ChatGPT et Codex à plusieurs étapes du portfolio : pour explorer des solutions, obtenir des explications, débloquer le code et mettre en place certaines fonctionnalités. Je présente ici leur rôle et les choix que j’ai faits à partir des propositions reçues.
 
-Mon idée était de faire découvrir mes projets comme des films, avec leurs affiches et leurs coulisses. Cette idée venait de moi, puis je l’ai développée avec l’IA. Je vérifiais surtout les propositions dans le navigateur et je faisais mes retours. Quand je ne comprenais pas une correction, je demandais des explications avant de continuer.
+Mon travail personnel porte d’abord sur le concept cinéma et la direction graphique. J’ai conçu les écrans desktop dans Figma et défini principalement moi-même les couleurs, les typographies et les compositions. Pendant l’intégration, j’ai notamment modifié les tailles, les couleurs, les marges et le responsive en CSS. J’ai aussi saisi ou modifié les informations des projets dans le fichier de données. L’adaptation mobile et plusieurs développements ont été réalisés avec de l’aide.
 
-## Claude — travailler la maquette et préparer la première soutenance
+## 1. Conception : développer mon idée et comparer des pistes
 
-**Quand et pour quoi faire**
+**Outil utilisé : Claude.**
 
-J’ai surtout utilisé Claude pendant la conception de la maquette et la préparation de la première soutenance. Il m’a aidé à explorer des présentations, améliorer certains écrans et structurer la façon de présenter le projet. Au démarrage de l’intégration, il m’a aussi accompagné sur le projet Astro et les premières pages, comme décrit dans les premières étapes du journal.
+Mon point de départ était de faire découvrir les projets comme des films, avec une affiche et des coulisses. J’ai utilisé Claude pour développer cette idée, comparer des présentations et améliorer certains écrans. Il m’a aussi aidé à structurer la première soutenance. Mes écrans desktop et mes recherches graphiques servaient de base aux échanges.
 
-**Ce que j’ai choisi, corrigé ou rejeté**
+Je n’ai pas retenu les présentations de projets trop génériques : elles ne correspondaient pas au reste de la maquette. Une organisation en scénario était trop longue et rendait l’information moins facile à trouver. J’ai choisi une fiche de film avec un pitch, un making-of, une fiche technique, un résultat et une scène coupée. Cette structure permet de montrer ma démarche tout en restant dans l’univers cinéma.
 
-Je n’ai pas gardé les présentations des projets qui me semblaient trop génériques ou trop éloignées de mon univers. Une version organisée comme un scénario était trop longue et peu claire. J’ai préféré une fiche de film avec un pitch, un making-of, une fiche technique, le résultat et une scène coupée.
+Le choix des couleurs et des polices a été surtout fait par moi dans Figma. J’ai gardé une base sombre et crème, accompagnée d’accents colorés, et les polices Author, Oswald et Caveat. L’IA m’a aidé à faire évoluer les propositions, mais les décisions visuelles venaient de ce que je voulais montrer de mon travail.
 
-Après les retours des professeurs, j’ai repris la navigation, mis mon nom davantage en avant et revu les textes trop petits. Le besoin d’un vrai menu a été le retour qui a le plus changé mon approche : le concept visuel devait aussi permettre de se repérer facilement.
+Après la soutenance maquette, j’ai repris la navigation et la hiérarchie des textes en tenant compte des retours des professeurs. L’ajout d’un vrai menu a été un changement important. J’ai retenu l’idée des « Chapitres » pour répondre à ce besoin sans sortir de ma direction artistique.
 
-## ChatGPT — comprendre et résoudre des problèmes de code
+## 2. Développement : intégrer la maquette et résoudre les blocages
 
-**Quand et pour quoi faire**
+**Outils utilisés : Claude au démarrage, ChatGPT pour les explications et le dépannage, puis Codex pour l’intégration et les évolutions.**
 
-En dehors de Codex, j’ai utilisé ChatGPT pour obtenir des explications et résoudre des problèmes de code. Les interactions JavaScript qui ne fonctionnaient pas comme prévu étaient les blocages qui me gênaient le plus. L’aide me servait à comprendre une correction et à pouvoir continuer sur le projet.
+L’aide de Claude a accompagné le démarrage du projet Astro et les premières pages. ChatGPT m’a surtout servi à obtenir des explications sur le code et à résoudre des problèmes, notamment lorsque les interactions JavaScript ne réagissaient pas comme prévu. Quand une correction n’était pas claire, je demandais des précisions avant de continuer et je vérifiais le résultat dans le navigateur.
 
-**Comment je vérifiais les réponses**
+Codex a fourni du code et des corrections pour les composants Astro, les pages de projets et les interactions : menu, carrousel, progression au défilement, animations et visionneuse. L’aide a également porté sur le responsive et la version anglaise. Les principales parties concernées sont HeroAccueil.astro, CarrouselProjets.astro, Entete.astro, Bandeau.astro, Visionneuse.astro, le gabarit projets/[slug].astro et le dossier src/i18n avec le middleware de traduction.
 
-Je regardais le résultat dans le navigateur pour voir si le comportement correspondait à ce que je voulais. Si une explication ou une correction n’était pas claire, je demandais des précisions. Je ne peux pas attribuer précisément chaque ancienne ligne de code à un échange ChatGPT : les usages que je déclare ici correspondent à mon accompagnement sur les blocages, sans lui attribuer artificiellement des fichiers entiers.
+De mon côté, j’ai travaillé sur les réglages CSS et les contenus. J’ai modifié les tailles, couleurs, marges et adaptations aux écrans pour retrouver les proportions voulues. J’ai saisi ou corrigé les informations des cinq projets dans src/data/projets.js : contexte, dates, rôle, processus et recul personnel. Cette organisation m’a permis de comprendre comment un même composant peut afficher des contenus différents tout en gardant une présentation cohérente.
 
-## Codex — intégrer, améliorer et vérifier le site
+J’ai régulièrement fait reprendre les propositions après les avoir parcourues dans le navigateur. Plusieurs décisions ont réellement changé le résultat :
 
-**Quand et pour quoi faire**
+- **Une seule navigation :** la présence de repères en haut et en bas donnait l’impression de deux menus. J’ai demandé de garder un menu Chapitres et la barre de progression.
+- **Retour à la maquette :** une refonte poussait le concept cinéma, mais s’éloignait de mon intention visuelle. J’ai choisi de revenir à une version plus proche de mes écrans, en conservant les améliorations utiles.
+- **Accueil et affiches :** j’ai fait revoir plusieurs fois le nom, les proportions et la position des créations pour obtenir une entrée plus personnelle et lisible.
+- **Carrousel :** j’ai préféré une présentation tournante des cinq projets, puis placé cette sélection après ma présentation pour clarifier le parcours.
+- **Bandeaux :** j’ai précisé que les points lumineux devaient rester fixes et que seul le texte devait défiler.
+- **Storyboard :** j’ai fait retirer les affiches de films et recentré cette partie sur ma personnalité, mes influences et mes créations.
 
-J’ai utilisé Codex pendant l’intégration et les nombreuses reprises du site en novembre. L’aide a porté sur les composants Astro, les études de cas, le menu, le carrousel, les animations, la visionneuse, les versions mobile et anglaise, les métadonnées et le formulaire. Codex a aussi aidé à préparer la publication, réaliser des contrôles et mettre à jour les documents.
+Ces retours faisaient partie de mon travail de conception : une proposition pouvait fonctionner techniquement sans correspondre au résultat que je cherchais.
 
-Les principales parties concernées sont les composants HeroAccueil, CarrouselProjets, Entete, Bandeau et Visionneuse, les données dans src/data/projets.js, le gabarit des études dans src/pages/projets/[slug].astro, la traduction dans src/i18n et le middleware, ainsi que la route /api/contact et src/lib/contact.js. Cette aide comprenait de la production de code et des corrections, pas seulement des conseils.
+## 3. Publication et contrôles : rendre le site accessible en ligne
 
-**Ce que j’ai fait reprendre**
+**Outil utilisé : Codex.**
 
-- J’ai refusé des présentations de projets trop génériques ou peu personnelles.
-- J’ai signalé que certaines premières améliorations ne faisaient pas assez ressentir le cinéma.
-- J’ai demandé de revoir la double navigation, puis de revenir à une version plus proche de ma maquette, en conservant le menu et la progression.
-- J’ai fait reprendre plusieurs fois l’accueil, mon nom et les affiches, jusqu’à obtenir quelque chose qui me ressemble davantage.
-- J’ai demandé un carrousel pour les projets, puis son retour sous ma présentation personnelle.
-- J’ai précisé que les points lumineux devaient rester fixes et que seuls les textes des bandeaux devaient défiler.
-- J’ai demandé de retirer les affiches de films du storyboard et d’y remettre mes propres contenus.
-- J’ai fourni les dates, les rôles dans les projets et mes remarques personnelles sur ce que je pourrais améliorer.
-- J’ai choisi Gmail SMTP plutôt que Netlify Forms et saisi moi-même les identifiants en privé. J’ai ensuite confirmé la réception d’un message.
+J’ai utilisé Codex pour préparer la mise en ligne, comprendre les problèmes rencontrés et adapter le projet à l’hébergement. La méthode du VPS du cours a d’abord été travaillée ; les difficultés d’accès SSH ont ensuite conduit au choix de Netlify pour le portfolio, avec le nom de domaine enregistré chez Infomaniak.
 
-**Figma et documents de rendu**
+Pour le contact, j’ai choisi Gmail SMTP plutôt que Netlify Forms. Codex a aidé à développer la route serveur /api/contact et la logique d’envoi dans src/lib/contact.js, avec Nodemailer. J’ai saisi les identifiants en privé et testé le formulaire ; j’ai confirmé la réception d’un message dans Gmail. Le fonctionnement serveur du contact et la publication sont les points que je souhaite particulièrement approfondir pour l’oral.
 
-J’ai demandé à Codex de rapprocher la maquette du site final, en gardant une sauvegarde. Les anciennes pages desktop et mobile sont archivées. Author n’étant pas disponible pour l’édition par le connecteur, j’ai accepté Inter provisoirement dans les copies actualisées et prévu de remettre Author moi-même. Le site garde Author.
+L’IA a également aidé à effectuer des contrôles de compilation, de liens, d’images, de responsive et de métadonnées, ainsi qu’à préparer les tests automatisés. J’ai moi-même parcouru les pages, testé les interactions et signalé les défauts visuels, dont la découpe du prénom et la place des projets. Les résultats datés et les essais restants sont consignés dans QUALITE.md.
 
-Codex a proposé une première version du journal et de cette déclaration, mais je les trouvais trop impersonnels. J’ai demandé de les reprendre à partir de mes réponses à des questions sur mon travail, mes difficultés et mes décisions. La rédaction de ces deux fichiers est donc elle aussi assistée par l’IA ; mon expérience et mes réponses en sont la base.
+## 4. Finalisation de la maquette et des documents
 
-## IA dans les projets présentés
+**Outil utilisé : Codex, avec le connecteur Figma pour la maquette.**
 
-Ces usages concernent les créations montrées dans le portfolio, et pas uniquement le développement du site.
+J’ai fait rapprocher la maquette desktop et mobile du site final, en conservant les modèles précédents en archive. L’aide a porté notamment sur les affiches, les états du carrousel et les études de cas. Author n’étant pas disponible pour l’édition par le connecteur, j’ai accepté Inter provisoirement dans les copies actualisées ; je prévois de remettre Author moi-même. Le site conserve Author.
 
-- **La Cimade :** j’ai utilisé ChatGPT pour générer les photos des bannières. J’ai dirigé le type d’image, le nombre de personnes et leur disposition, puis sélectionné les propositions. Avec le recul, je voudrais aussi pousser des affiches avec une identité moins réalisée avec l’IA et plus personnelle.
-- **Smooth :** les fichiers SVG des lunettes étaient fournis par l’enseignante, puis retravaillés avec ChatGPT. Je ne présente pas ces visuels comme des modèles 3D que j’aurais créés moi-même. Les crédits du portfolio précisent cette origine.
+Codex a aussi servi à structurer et reformuler le README, le journal, cette déclaration et la checklist qualité. Les contenus personnels sont basés sur les informations que j’ai fournies : mon organisation, les difficultés rencontrées, mes interventions et mes choix. J’ai également retenu un favicon proposé dans la continuité de mon univers : initiale, point rose et perforations de pellicule.
 
-## Ce que je comprends et ce que je dois encore préparer
+## 5. Usage de l’IA dans les créations présentées
 
-Aujourd’hui, les données des projets et leur affichage dans les composants Astro sont les parties que je me sens le plus capable d’expliquer et de modifier seul. Je dois encore préparer davantage le formulaire côté serveur, Gmail SMTP et la publication pour la soutenance. Je ne considère pas qu’un code qui fonctionne prouve automatiquement que j’en maîtrise toutes les parties.
+Ces usages concernent les projets montrés dans le portfolio, en complément de l’aide au développement du site.
 
-Les tests automatisés et contrôles réalisés avec Codex sont détaillés dans QUALITE.md. Ils ne remplacent ni mes essais dans le navigateur ni ma compréhension du code. Certains essais restent ouverts, notamment sur téléphone physique et avec un lecteur d’écran.
+**La Cimade — ChatGPT :** génération des photos utilisées dans les bannières. J’ai dirigé le type d’image, le nombre de personnes et leur disposition, puis sélectionné les propositions. Dans le recul sur ce projet, je souhaite pousser davantage le caractère personnel de l’identité et des affiches.
 
-Ce projet m’a surtout appris à mieux exprimer mes attentes et à juger les propositions de l’IA. J’ai travaillé régulièrement pour obtenir un résultat personnel, avec beaucoup de retours sur les détails visuels. Sur un prochain projet, je cadrerais mieux mes demandes dès le départ pour limiter les allers-retours.
+**Smooth — ChatGPT :** adaptation des visuels de lunettes à partir des fichiers SVG fournis par l’enseignante. L’origine est indiquée dans les crédits ; ces rendus ne sont pas des modèles 3D entièrement créés par moi. Le travail présenté comprend mon identité de marque, mon parcours et ma proposition graphique pour le projet.
+
+## Ce que cette utilisation m’a apporté
+
+Le principal apprentissage a été de mieux formuler mes attentes et de juger les propositions. J’ai appris à distinguer une solution qui fonctionne d’une solution qui correspond à ma direction graphique et au parcours que je veux proposer. Les échanges m’ont aidé à avancer, mais le résultat a demandé des choix réguliers et de nombreuses reprises.
+
+Aujourd’hui, les données des projets et leur affichage dans les composants Astro sont les parties que je me sens le plus à l’aise pour expliquer et modifier. Je prépare davantage le fonctionnement du formulaire serveur, du SMTP et de la publication. Pour un prochain projet, je cadrerais les demandes plus précisément dès le départ afin de limiter les allers-retours et de garder plus facilement une continuité entre conception et développement.
