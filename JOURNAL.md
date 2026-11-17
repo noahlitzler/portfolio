@@ -1,3 +1,7 @@
+# Lecture du journal
+
+Journal chronologique : les descriptions de versions abandonnées et les tâches « à faire » anciennes restent datées. L’état actuel est présenté dans README.md et QUALITE.md ; la dernière entrée ci-dessous consigne la clôture documentaire.
+
 # Journal de bord - Portfolio S3
 
 Une entrée par semaine : ce que j'ai fait, ce qui a coincé, ce que j'ai décidé.
@@ -81,13 +85,13 @@ Une entrée par semaine : ce que j'ai fait, ce qui a coincé, ce que j'ai décid
 - Limites : domaine du portfolio non fourni ; réception Netlify non testée ; informations légales et répartition du travail en binôme à confirmer.
 - À faire par Noah : relire et comprendre le code, valider les textes et visuels, puis autoriser le push et la publication.
 
-### Présence professionnelle - proposition à valider
+### Présence professionnelle — justification du choix des réseaux
 
 LinkedIn sert à présenter mon profil, mon stage recherché et mes études de cas aux agences et studios.
 Instagram est adapté à mon parcours création numérique : il permet de montrer affiches, identités et recherches visuelles.
 Les deux profils sont liés depuis le contact et le menu mobile.
-Je dois harmoniser leur bio, leur portrait et leurs liens avec le portfolio, puis publier des extraits des trois projets.
-Ces mises à jour n’ont pas été effectuées par Codex ; cette justification est une proposition à relire, pas une attestation d’action.
+Je recherche une cohérence de présentation entre les bios, le portrait, les liens et mes créations, pour que mon positionnement reste identifiable.
+Noah a confirmé le 16 novembre la mise à jour des deux réseaux. Codex n’a pas modifié les comptes ; le contenu des profils n’a pas été audité pendant la finalisation documentaire.
 
 
 ## 8 novembre 2026 - expérience cinéma
@@ -203,3 +207,21 @@ Corrections : hébergeur Netlify dans les deux langues, domaine canonique sans w
 
 
 17 novembre — Noah valide la conservation des messages au maximum 12 mois après le dernier échange, sauf relation professionnelle en cours ou obligation de conservation. Politique ajoutée aux mentions FR/EN ; suppression à assurer personnellement dans Gmail, aucune automatisation annoncée. Noah maintient les animations permanentes, y compris en présence de la préférence système de réduction des animations. Cette limite d’accessibilité reste déclarée.
+
+
+## 17 novembre 2026 — synchronisation de la maquette et clôture documentaire
+
+- J’ai demandé de rapprocher la maquette du site actuel avant de remplacer les modèles desktop et mobile de référence.
+- Codex a actualisé les pages dans Figma : affiches, carrousel centré, cinq études et introductions desktop en deux colonnes.
+- Les versions précédentes restent dans des pages Archive ; elles ne sont pas supprimées.
+- La police Author étant indisponible au connecteur pour l’édition, j’ai accepté Inter provisoirement dans la maquette ; je prévois de remettre Author moi-même. Le site conserve sa police.
+- Le contrôle visuel a conduit à corriger les positions du carrousel et les hauteurs des introductions de projets.
+- La consigne écrite a été relue intégralement et comparée au site, aux documents et aux livrables Figma.
+- Le domaine, le contact et les mentions ont répondu HTTP 200 ; le dépôt GitHub a été confirmé public par l’API. Ces lectures n’ont pas envoyé de message.
+- J’ai confirmé auparavant le fonctionnement Gmail ; les passages « réception attendue » décrivent donc les étapes historiques, pas le fonctionnement actuel.
+- J’ai demandé la finalisation des documents : README et Netlify actualisés, bilan qualité synthétisé, preuves historiques conservées et déclaration IA complétée pour le travail assisté.
+- Les premières semaines courtes du journal ne sont pas artificiellement rallongées : les activités ou durées non connues ne sont pas inventées pour atteindre dix lignes.
+- Mon positionnement final reste le design graphique et la direction artistique ; les cinq études sont conservées selon la précision orale de l’enseignant, malgré la limite de trois dans le sujet écrit.
+- Je conserve les animations permanentes ; leur limite d’accessibilité est documentée, sans revendication de conformité complète.
+- Restent à effectuer : relecture personnelle du code et de l’anglais, essais qualité encore ouverts, choix du projet détaillé et répétition de l’oral de huit minutes.
+- Aucun push pendant la finalisation : un seul dernier push sera effectué après ma validation, puis la version publiée sera recontrôlée.

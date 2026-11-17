@@ -1,3 +1,11 @@
+# Procédure historique — VPS du cours
+
+**Cette procédure n’est pas celle de la publication actuelle.** Depuis le retour à Netlify, suivre [NETLIFY.md](NETLIFY.md). Le workflow VPS est désactivé. Les étapes ci-dessous sont conservées comme trace de préparation ; elles ne doivent pas être exécutées pour publier la version finale sur Netlify.
+
+Des opérations VPS ont été réalisées après la préparation du 13 novembre, puis un retour arrière demandé par Noah est resté bloqué par la fermeture de SSH avant identification. Les formulations « aucune modification » ci-dessous décrivent uniquement la séance préparatoire ; elles ne constituent pas un bilan de toutes les interventions ultérieures. Aucune réparation de TiK TaK n’est attestée.
+
+---
+
 # Publication du portfolio — méthode du cours de Hakim
 
 Préparation locale du 13 novembre 2026. Aucune publication, aucun push et aucune modification du VPS ou du DNS effectués pendant la préparation. Une sauvegarde ZIP et un bundle Git précèdent les changements.

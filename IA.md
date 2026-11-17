@@ -1,3 +1,11 @@
+# État de la déclaration au 17 novembre 2026
+
+Les entrées ci-dessous décrivent chronologiquement les usages et décisions ; certaines fonctionnalités et pistes ont ensuite été abandonnées. L’architecture publiée actuelle est résumée dans README.md. La réception Gmail a été confirmée par Noah le 16 novembre : les mentions antérieures « réception attendue » restent des observations datées.
+
+Noah a personnellement choisi le concept cinéma, les cinq projets, les contenus de parcours et les rôles déclarés. Il a rejeté la double navigation et la refonte trop éloignée de la maquette ; demandé le retour des projets après la présentation, les points fixes et le retrait des boutons d’animation ; choisi Gmail SMTP plutôt que Netlify Forms ; accepté Inter provisoirement dans Figma. Ces arbitrages sont établis par ses retours. Ils ne prouvent pas à eux seuls la compréhension du code produit.
+
+La relecture du code et des traductions ainsi que la capacité à les modifier devant le jury restent à démontrer personnellement par Noah. Aucune compréhension de code n’est déclarée à sa place.
+
 # Déclaration d'usage de l'IA
 
 Pour chaque outil : à quelle étape, pour quoi faire, et ce que j'ai modifié, corrigé ou rejeté.
@@ -16,12 +24,12 @@ Pour chaque outil : à quelle étape, pour quoi faire, et ce que j'ai modifié, 
   - les tirets longs, remplacés partout par "-" ;
   - le logo de la Cimade, trop déformé, refait jusqu'à rester fidèle à l'original.
 - **Ce qui vient de moi :** le concept "portfolio = film", le choix des projets, la note de positionnement, le moodboard, l'arbitrage final sur chaque écran.
-- **Ce que j'ai refait moi-même dans Figma :** Modification de la naviguation demandée par le prof, mise en place de mon Nom et Prénom au lieu de Portfolio à l'accueil, passage en revue des nombreux textes qui étaient trop petits ou peu visible directement. Ajout du troisième projet étant donné qu'il a été terminer après la soutenance maquette.
+- **Ce que j'ai refait moi-même dans Figma :** Modification de la navigation demandée par le prof, mise en place de mon Nom et Prénom au lieu de Portfolio à l'accueil, passage en revue des nombreux textes qui étaient trop petits ou peu visibles directement. Ajout du troisième projet étant donné qu'il a été terminé après la soutenance maquette.
 
 ### Soutenance maquette
 
 - **Pour quoi faire :** structurer le diaporama, préparer une trame d'oral et des questions probables du jury.
-- **Ce que j'ai modifié :** [à compléter]
+- **Corrections personnelles de cette trame :** non renseignées à ce jour ; aucune modification ni répétition personnelle de l’oral n’est attestée par cette déclaration.
 
 ### Réalisation - mise en place du projet
 
@@ -47,7 +55,7 @@ Pour chaque outil : à quelle étape, pour quoi faire, et ce que j'ai modifié, 
 
 - **Étape :** projet La Cimade, bannières.
 - **Pour quoi faire :** générer les photos utilisées dans les bannières.
-- **Ce que j'ai modifié :** La séléction du typ d'affiche, le sens que je veux voulais donné à l'affiche ainsi que le nombre de personnes et la disposition.
+- **Ce que j'ai modifié :** La sélection du type d'affiche, le sens que je voulais donner à l'affiche ainsi que le nombre de personnes et la disposition.
 
 Règle : je dois pouvoir expliquer chaque ligne du code du site. Quand une IA m'aide sur du code, je le note ici avec le fichier concerné.
 
@@ -147,3 +155,14 @@ Audit de publication et correction des mentions Netlify, du domaine canonique, d
 ## Codex — 17 novembre 2026
 
 À la demande de Noah : retour du carrousel sous la présentation, correction du prénom tronqué et audit. Corrections des noms accessibles, contraste VS Code et marge des affiches inclinées. Contrôles locaux et Lighthouse public consignés dans QUALITE.md ; limites conservées, aucun score global de conformité revendiqué.
+
+
+## Codex / OpenAI — synchronisation Figma et finalisation documentaire, 17 novembre 2026
+
+- Étape : préparation du dossier final, avec le connecteur Figma utilisé par Codex ; il ne s’agit pas d’une génération par Figma AI.
+- Travail produit : copies actualisées desktop/mobile, cinq études, menu et états du carrousel ; reprise des vrais visuels et logos du site en calques éditables ; affiches, carrousel centré et introductions de projets rapprochés du site. Les modèles précédents sont conservés dans les pages Archive.
+- Choix de Noah : conserver le style du site et remplacer les modèles de référence après amélioration. Author indisponible pour l’édition par le connecteur : Inter provisoire accepté par Noah, qui prévoit de remettre Author lui-même. Le site conserve Author.
+- Corrections de l’outil : centrage des différentes positions du carrousel et hauteur des introductions desktop après contrôle visuel. Le menu mobile partagé a été isolé pour les nouvelles pages ; sa présentation sur l’ancienne page a été restaurée. La maquette ne reproduit pas intégralement les effets et animations du navigateur.
+- Vérifications : captures de l’accueil desktop/mobile et de Smooth, calques éditables et absence de police manquante sur les deux pages actuelles. Aucun push lié à cette intervention.
+- Documents : README et procédure Netlify alignés sur l’hébergement réel ; QUALITE synthétisé avec résultats datés et limites ; ancienne checklist archivée ; journal, déclaration et tableau de remise actualisés. Aucun test, score, répétition orale ou action personnelle inventé pour remplir le dossier.
+- Relecture personnelle restante : textes FR/EN, architecture Astro, génération des pages, logique du carrousel, traduction et route SMTP. Ces éléments devront être expliqués et modifiés par Noah lors de la préparation de soutenance.

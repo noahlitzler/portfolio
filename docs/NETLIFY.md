@@ -1,19 +1,35 @@
-## État actuel — 16 novembre 2026
+# Publication actuelle : Netlify
 
-Le portfolio est publié sur https://noahlitzler.fr via Netlify, domaine enregistré chez Infomaniak. Le domaine sans www est principal ; la configuration canonique est alignée dans cette correction. Le workflow de publication vers le VPS du cours est désactivé. Les sections datées antérieures décrivent les étapes historiques, pas l’état actuel.
+État documentaire au 17 novembre 2026. Le site est publié sur https://noahlitzler.fr/ ; le domaine est enregistré chez Infomaniak. Le dépôt GitHub public est noahlitzler/portfolio, branche main. La publication de nouveaux commits reste soumise à la validation de Noah.
 
-Noah confirme le 16 novembre les droits de publication des ressources des cinq projets et la mise à jour de LinkedIn et de son second réseau. Ces confirmations ne remplacent pas une copie des licences des ressources tierces.
+## Construction
 
-Le contact utilise l’API serveur et Gmail SMTP ; la configuration privée et le test de réception restent à effectuer avant ouverture. Le lien email direct reste disponible. Aucun secret dans Git, le chat ou le navigateur public.
+- netlify.toml : commande bun run build, dossier déclaré dist, Node 22, Bun 1.4.2.
+- astro.config.mjs : adaptateur @astrojs/netlify par défaut ; l’adaptateur gère les sorties et la fonction serveur. Ne pas remplacer arbitrairement le dossier par dist/client, propre à la piste Node.
+- PORTFOLIO_SITE : https://noahlitzler.fr, pour les URL canoniques et le sitemap.
+- PUBLIC_CONTACT_ACTIF=true est actuellement déclaré dans netlify.toml. Un changement des variables utilisées pendant le build nécessite une reconstruction.
+- Le domaine principal est sans www ; HTTPS et redirection www ont été vérifiés lors des contrôles de publication précédents.
+- Le workflow GitHub Actions du VPS contient une condition false : il ne publie pas le portfolio sur le serveur pédagogique.
 
-Le retour arrière Apache sur le VPS pédagogique reste bloqué par la fermeture SSH avant identification. DNS racine et www restaurés le 14 novembre ; aucune réparation de TiK TaK n’est prétendue.
+## Contact Gmail SMTP
 
-## Configuration du contact
+Le formulaire envoie vers /api/contact ; ce n’est pas Netlify Forms. La fonction utilise Nodemailer et les variables SMTP_HOST, SMTP_PORT, SMTP_USER et SMTP_PASS. Pour Gmail : hôte smtp.gmail.com, port 465 avec connexion sécurisée. SMTP_PASS est un mot de passe d’application Google, jamais le mot de passe Gmail habituel. Noah a saisi les valeurs en privé et confirmé une réception le 16 novembre.
 
-Dans Netlify, Project configuration → Environment variables : SMTP_HOST=smtp.gmail.com, SMTP_PORT=465, SMTP_USER=noah.litzler@gmail.com, SMTP_PASS=mot de passe d’application saisi par Noah uniquement. Portée Functions pour les secrets ; ne pas exposer SMTP_PASS aux builds ni aux Deploy Previews. Si le compte ne propose pas les portées, saisir les variables sans les afficher et ne jamais les inclure dans les logs.
+Les secrets doivent être disponibles à la fonction en production, jamais préfixés PUBLIC_, copiés dans le dépôt ou affichés dans les logs. Les portées et contextes proposés dépendent du compte Netlify ; ne pas activer les envois SMTP sur des aperçus publics sans besoin. Ne pas consulter ou recopier les valeurs pour documenter le projet.
 
-PUBLIC_CONTACT_ACTIF reste false dans netlify.toml jusqu’au test privé. Pour l’essai initial, activer seulement l’API via une variable runtime, puis effectuer un POST de test réel autorisé, vérifier Gmail et Répondre. Après réussite, passer PUBLIC_CONTACT_ACTIF=true pour le build et la fonction puis reconstruire. Ne pas annoncer la réception réelle sur la seule base des tests factices.
+La route valide les champs, l’origine, la taille de requête et le champ leurre. Une limitation de tentatives existe en mémoire : elle n’est pas distribuée entre instances et se réinitialise au redémarrage d’une fonction. Les tests utilisent un transport factice. Le lien email direct reste disponible en cas d’échec.
 
-## Avant soutenance
+## Contrôle après le dernier déploiement
 
-Relecture personnelle de toutes les pages et textes ; essais sur téléphone et clavier/zoom ; compléter QUALITE.md avec les mesures réellement obtenues. La préférence de Noah pour les animations permanentes reste en place et la limite d’accessibilité est déclarée. Ne pas revendiquer une conformité WCAG complète.
+1. Vérifier le succès du build et la version publiée.
+2. Ouvrir le domaine et www en HTTPS ; vérifier la destination finale.
+3. Parcourir accueil, projets, contact, mentions, CV, sitemap, robots et une URL inconnue.
+4. Vérifier le changement FR / EN sur une étude, le menu et la visionneuse.
+5. Faire un envoi réel autorisé depuis le formulaire et confirmer sa réception et l’adresse de réponse.
+6. Refaire les mesures de performance et dater les résultats dans QUALITE.md.
+
+Les étapes ci-dessus sont une procédure à exécuter, pas une attestation d’exécution de cette finalisation documentaire. La réception déjà confirmée ne remplace pas ce contrôle après publication.
+
+## Piste VPS conservée
+
+docs/PUBLICATION.md et deploy/ décrivent la méthode du cours expérimentée auparavant. Le retour arrière Apache reste bloqué par la fermeture SSH avant identification ; aucune réparation de TiK TaK n’est affirmée. Cette difficulté ne conditionne pas le fonctionnement du portfolio actuellement hébergé sur Netlify.

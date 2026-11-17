@@ -1,62 +1,80 @@
-## État actuel — 16 novembre 2026
-
-Le portfolio est publié sur https://noahlitzler.fr via Netlify, domaine enregistré chez Infomaniak. Le domaine sans www est principal ; la configuration canonique est alignée dans cette correction. Le workflow de publication vers le VPS du cours est désactivé. Les sections datées antérieures décrivent les étapes historiques, pas l’état actuel.
-
-Noah confirme le 16 novembre les droits de publication des ressources des cinq projets et la mise à jour de LinkedIn et de son second réseau. Ces confirmations ne remplacent pas une copie des licences des ressources tierces.
-
-Le contact utilise l’API serveur et Gmail SMTP ; la configuration privée et le test de réception restent à effectuer avant ouverture. Le lien email direct reste disponible. Aucun secret dans Git, le chat ou le navigateur public.
-
-Le retour arrière Apache sur le VPS pédagogique reste bloqué par la fermeture SSH avant identification. DNS racine et www restaurés le 14 novembre ; aucune réparation de TiK TaK n’est prétendue.
-
 # Portfolio — Noah Litzler
 
-Portfolio scolaire de BUT MMI, parcours création numérique. Positionnement : design graphique et direction artistique. Stage recherché du 29 mars au 4 juin 2027, dans le Haut-Rhin, à Bâle, à Porrentruy et aux alentours.
+Portfolio individuel de BUT MMI, parcours création numérique. Positionnement : design graphique et direction artistique. Stage recherché du 29 mars au 4 juin 2027 dans le Haut-Rhin, à Bâle, à Porrentruy et aux alentours.
 
-## Version actuelle — 13 novembre 2026, préparation du VPS du cours
+- Site : https://noahlitzler.fr/
+- Dépôt public : https://github.com/noahlitzler/portfolio
+- Maquette : https://www.figma.com/design/jAvCe2R0eTMmsTBlGz5A2E/PORTFOLIO---NOAH-LITZLER
 
-Le portfolio emprunte au cinéma son vocabulaire et sa présentation : ouverture, affiches, séances, making-of, storyboard et guichet. L’accueil comporte une composition animée de créations, immédiatement suivie du carrousel de cinq projets. Le choix FR / EN conserve la page consultée ; les deux versions sont générées en HTML statique, y compris les cinq études. Les créations et le CV restent dans leur langue d’origine. Le storyboard À propos utilise le portrait et les travaux de Noah, sans affiches de films. Un seul menu Chapitres et une barre de progression au défilement assurent la navigation.
+## État au 17 novembre 2026
 
-Les cinq études de cas sont conservées : Noah précise que l’enseignant a autorisé et encouragé davantage de projets en cours. Elles suivent le même gabarit : contexte, rôle, making-of, fiche technique, résultat et recul personnel.
+Le site est publié sur Netlify ; Infomaniak fournit le nom de domaine. Le domaine sans www est principal. L’accueil, le contact et les mentions légales ont répondu HTTP 200 lors du contrôle du 17 novembre. Noah a confirmé la réception d’un message du formulaire dans Gmail le 16 novembre. Cette confirmation est distincte des tests automatisés, qui n’envoient aucun email réel.
+
+L’accueil suit cet ordre : ouverture animée, présentation personnelle, carrousel de cinq projets, parcours et compétences. Le menu Chapitres et la barre de progression sont partagés. Les points des bandeaux restent fixes et seuls les textes défilent. Le sélecteur FR / EN conserve la page consultée ; les créations et le CV restent dans leur langue d’origine.
+
+Les pages Figma « 02 - Desktop · version actuelle » et « 03 - Mobile · version actuelle » remplacent les modèles de référence ; les précédentes sont archivées. La maquette reste une représentation des mises en page et états du site, sans reproduire toutes ses animations. Inter y remplace temporairement Author, avec l’accord de Noah ; le site conserve Author.
+
+## Projets
 
 | Projet scolaire | Date | Réalisation |
 | --- | --- | --- |
 | Vivez l’essentiel | Mai 2026 | Noah, individuel |
-| La Cimade | Mars 2026 | Noah, individuel, refonte non officielle |
+| La Cimade | Mars 2026 | Noah, individuel ; proposition non officielle |
 | Derrière le prompt | Octobre 2026 | Noah et Clément Bertrand |
 | SULL | Septembre 2026 | Noah et Clément Bertrand |
 | Smooth | Octobre 2026 | Noah, individuel |
 
-## Techniques et lancement
+Les cinq études suivent le même gabarit : contexte, rôle, processus, choix techniques, résultat et recul personnel. Le sujet écrit limite les études à trois ; Noah a indiqué que l’enseignant autorisait et encourageait davantage de projets en cours. Ce choix est consigné dans JOURNAL.md.
 
-Astro génère les pages de présentation statiques ; les contenus sont dans src/data/projets.js. L’adaptateur Node standalone permet au formulaire de recevoir les messages côté serveur, avec Bun et systemd comme dans le cours de Hakim. CSS natif, variables et JavaScript/TypeScript du navigateur. Dépendances déclarées dans package.json : Astro, Fontsource, adaptateur Node officiel et Nodemailer pour le SMTP. Aucune bibliothèque de carrousel ou d’animation ajoutée. Polices locales : Author, Oswald, Caveat, Courier Prime et Montserrat.
+## Technologies et raisons des choix
 
-Node 22.12 ou supérieur et Bun (1.4.2 lors du contrôle). Utiliser bun install --frozen-lockfile, bun run dev, bun run test, puis bun run --bun build. Après build, bun run start lance le serveur standalone ; le service définit HOST=127.0.0.1 et PORT=3355. Les pages publiques sont dans dist/client, l’entrée serveur dans dist/server/entry.mjs. Le package-lock.json existant de Noah est conservé sans inclusion dans les commits de cette intervention.
+| Technologie / dépendance | Usage et justification |
+| --- | --- |
+| Astro | Précompiler les pages de présentation et réutiliser les composants sans framework client complet. Les projets proviennent de src/data/projets.js. |
+| HTML, CSS natif et variables CSS | Structure sémantique, responsive et identité cinéma personnalisée ; aucun thème téléchargé. |
+| JavaScript / TypeScript du navigateur | Menu dialog, carrousel, progression, visionneuse et effets du pointeur. Aucune bibliothèque d’animation ou de carrousel. |
+| @astrojs/netlify | Adaptateur de publication actuel, notamment pour la route serveur du formulaire. |
+| Nodemailer | Envoyer le contact par Gmail SMTP côté serveur ; identifiants conservés dans les variables privées de Netlify. |
+| @astrojs/node | Alternative standalone préparée pour le VPS du cours ; sélectionnée uniquement avec PORTFOLIO_CIBLE=vps. Ce n’est pas l’hébergement actuel. |
+| Fontsource : Oswald, Caveat, Courier Prime, Montserrat | Polices disponibles localement dans les dépendances ; Author est auto-hébergée séparément. Les imports du site déterminent les polices réellement chargées. |
+| Bun, Node et Git | Installation, compilation, tests et suivi des versions. Netlify utilise Bun pour le build et Node pour l’exécution serveur. |
 
-## Comprendre les composants
+Les dépendances et versions sont déclarées dans package.json et les fichiers de verrouillage. Le framework et les polices servent une composition issue de la maquette personnelle ; aucun kit de composants générique n’est intégré.
 
-- HeroAccueil.astro : apparition du nom, balayage de lumière, reflets sur les affiches et mouvement de profondeur. Un léger parallaxe suit le pointeur avec requestAnimationFrame. Les effets démarrent automatiquement, sans bouton d’activation.
-- CarrouselProjets.astro : cinq liens issus des données ; index circulaire, positions CSS, précédent/suivant, repères, clavier et balayage tactile. Rotation automatique toutes les 6,5 secondes lorsque le carrousel est visible. Suspension pendant le survol, le focus clavier ou quand l’onglet est masqué, puis reprise automatique. Flèches et repères conservés ; aucune commande Lecture/Pause. Sans JavaScript, une liste horizontale reste utilisable.
-- Bandeau.astro : seul le texte défile en continu ; les deux rangées de points restent fixes. Animation CSS commune à toutes les pages qui utilisent ce composant, sans JavaScript ni bouton.
-- src/pages/api/contact.ts et src/lib/contact.js : réception, validation et envoi SMTP ; identifiants privés chargés sur le serveur. Les tests remplacent l’envoi par un transport local factice.
-- Entete.astro : dialog natif, Échap et retour du focus ; progression calculée avec scrollY et la hauteur du document, actualisée par requestAnimationFrame.
-- projets/[slug].astro : getStaticPaths génère une page par projet et le lien suivant circule sur les cinq projets.
-- Affiche.astro et Visuel.astro : affiches partagées et images optimisées avec Astro Image. Les visuels des études sont des liens directs utilisables sans JavaScript.
-- Visionneuse.astro : un dialogue partagé pour les images, précédent/suivant, taille réelle, Échap et retour du focus. Les visuels déjà dans un lien de projet ne sont pas imbriqués dans un second lien.
-- src/i18n : dictionnaire anglais, traduction des textes et attributs au rendu ; src/middleware.js applique ce traitement aux routes /en. Une traduction manquante fait échouer la compilation avec la phrase concernée. Voir docs/LANGUES.md.
-- tests/langues.test.mjs : quatre contrôles de la traduction, des liens et de la préservation des scripts/styles. Lancer npm test.
+## Lancer et vérifier
 
-## Domaine et publication
+Prérequis : Node >= 22.12 et Bun. La configuration Netlify fixe Node 22 et Bun 1.4.2.
 
-Noah possède noahlitzler.fr chez Infomaniak, pour le nom de domaine uniquement. L’installation dédiée du portfolio sur le VPS est à effectuer après validation. Le domaine est renseigné dans astro.config.mjs ; PORTFOLIO_SITE peut le remplacer. Le build génère les URL canoniques, robots.txt et le sitemap pour cette adresse. Cette configuration ne publie pas le site.
+```sh
+bun install --frozen-lockfile
+bun run dev
+bun run test
+bun run build
+```
 
-La piste Netlify a été remplacée, à la demande de Noah, par la méthode du cours : VPS, Apache, Certbot, Bun, systemd et GitHub Actions. Le VPS est accessible et ses services ont été lus sans modification ; le domaine public pointait encore vers Netlify lors du relevé. Un conflit de VirtualHost racine avec TiK TaK a été repéré ; les modèles prévoient un service et un port distincts. Les fichiers et la procédure détaillée sont dans deploy/ et docs/PUBLICATION.md.
+Le build cible Netlify par défaut. La configuration de publication et du contact est décrite dans [docs/NETLIFY.md](docs/NETLIFY.md). L’ancienne procédure VPS est conservée pour l’historique dans [docs/PUBLICATION.md](docs/PUBLICATION.md) ; son workflow GitHub Actions est désactivé.
 
-Le formulaire est préparé pour SMTP Gmail vers noah.litzler@gmail.com. Par défaut il reste désactivé, avec un lien email direct. Noah doit créer et saisir lui-même son mot de passe d’application dans le fichier privé du VPS, compléter les modalités de traitement et valider le test réel avant activation. Aucun secret n’est présent dans le dépôt et aucun email réel n’a été envoyé.
+## Repères dans le code
 
-## Documents et validation
+- src/components/HeroAccueil.astro : nom, affiches et effets d’ouverture.
+- src/components/CarrouselProjets.astro : index circulaire, flèches, repères, clavier et rotation automatique.
+- src/components/Bandeau.astro : texte animé et points fixes en CSS.
+- src/components/Entete.astro : menu dialog et progression au défilement.
+- src/components/Visuel.astro et Visionneuse.astro : images et agrandissement.
+- src/pages/projets/[slug].astro : génération des cinq études depuis les données.
+- src/pages/api/contact.ts et src/lib/contact.js : validation et envoi SMTP.
+- src/i18n et src/middleware.js : traduction anglaise au rendu ; voir [docs/LANGUES.md](docs/LANGUES.md).
+- tests/ : contrôles du contact avec transport factice et de la traduction.
 
-JOURNAL.md conserve les décisions successives ; IA.md déclare l’aide reçue et la relecture personnelle restant à effectuer ; QUALITE.md décrit les contrôles actuels. Les anciennes mesures qualité sont archivées dans docs/archives/QUALITE-2026-11-10.md.
+## Dossier de rendu
 
-Avant publication : relecture personnelle du code et des textes, crédits et licences des ressources à confirmer, tests qualité restants, configuration de l’hébergement et du formulaire, mise à jour des réseaux. Le compte Instagram de créations sera ajouté plus tard par Noah. Préparation de soutenance envisagée autour de La Cimade ou Smooth ; le code n’a pas encore été relu personnellement par Noah.
+- [JOURNAL.md](JOURNAL.md) : décisions et difficultés, avec justification des réseaux.
+- [IA.md](IA.md) : outils utilisés, productions, corrections et rejets ; maîtrise personnelle à démontrer à l’oral.
+- [QUALITE.md](QUALITE.md) : contrôles propres au site, résultats datés et limites.
+- [docs/REMISE.md](docs/REMISE.md) : correspondance avec les livrables et dernières actions.
 
-Sauvegardes ZIP et bundle avant chaque refonte. Commits locaux uniquement. Aucun push ni déploiement sans validation de Noah. Le workflow attend en plus DEPLOIEMENT_ACTIF=true ; il reste désactivé pendant la préparation.
+Noah a confirmé les droits de publication des ressources et la mise à jour de LinkedIn et Instagram. Les crédits restent présents et les licences tierces applicables. Les messages sont conservés au maximum 12 mois après le dernier échange, sous les exceptions précisées dans les mentions ; leur suppression dans Gmail est manuelle.
+
+Les animations permanentes restent un choix de Noah, y compris lorsque le système demande une réduction des mouvements. Cette limite est déclarée : aucune conformité complète d’accessibilité n’est revendiquée. La relecture personnelle du code, des textes français et anglais et les essais manuels restants ne sont pas présentés comme achevés.
+
+Les changements de cette finalisation sont locaux. Aucun nouveau push ni déploiement n’est effectué ; le dernier push sera réalisé après validation de Noah.
