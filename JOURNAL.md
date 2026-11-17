@@ -200,3 +200,6 @@ Corrections : hébergeur Netlify dans les deux langues, domaine canonique sans w
 - Lighthouse mobile sur accueil public avant corrections, une exécution : performance 64, accessibilité automatique 96, bonnes pratiques 100, SEO 100 ; LCP 2,8 s, CLS 0, transfert 614 KiB. Mesure synthétique variable, pas une conformité globale. Rapport conservé dans outputs/lighthouse-accueil-17nov.json.
 - Anomalies automatiques corrigées : contraste du billet VS Code ; nom accessible comprenant les libellés visibles FR/EN, Entrer dans la salle et numéros des repères. Performances à réévaluer sur le déploiement corrigé.
 - Restent à valider par Noah : durée de conservation des messages et respect de prefers-reduced-motion. Animations permanentes conservées conformément à son choix antérieur en attendant sa réponse.
+
+
+17 novembre — Noah valide la conservation des messages au maximum 12 mois après le dernier échange, sauf relation professionnelle en cours ou obligation de conservation. Politique ajoutée aux mentions FR/EN ; suppression à assurer personnellement dans Gmail, aucune automatisation annoncée. Noah maintient les animations permanentes, y compris en présence de la préférence système de réduction des animations. Cette limite d’accessibilité reste déclarée.
