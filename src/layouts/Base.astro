@@ -25,6 +25,7 @@ const { noindex = false, titre, description, timecode = "00:00:00:00", progressi
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     {noindex && <meta name="robots" content="noindex,follow" />}
     <meta name="description" content={description} />
+    <link rel="preload" as="image" href="/figma/6cfb6.png" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     {canonical && <link rel="canonical" href={canonical} />}
     {Astro.site && <><link rel="alternate" hreflang="fr" href={new URL(cheminFR,Astro.site).href} /><link rel="alternate" hreflang="en" href={new URL(anglais,Astro.site).href} /><link rel="alternate" hreflang="x-default" href={new URL(francais,Astro.site).href} /></>}

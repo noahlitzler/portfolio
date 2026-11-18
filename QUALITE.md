@@ -77,3 +77,12 @@ Retrait de 17 fichiers obsolètes (anciens fichiers VPS, documents redondants, e
 - Analyse de 25 pages HTML et 659 références locales : aucune ressource manquante.
 - Liens locaux des documents restants vérifiés sans destination absente.
 - Aucun push ni changement du serveur ou du domaine pendant ce nettoyage.
+
+## Vérification avant publication finale - 18 novembre 2026
+
+- Neuf tests automatisés réussis et compilation Netlify terminée sans erreur.
+- Vingt-cinq sorties HTML contrôlées, dont la redirection /sull ; 659 références locales vérifiées sans ressource absente.
+- Sur les pages de contenu : un h1, une langue FR/EN cohérente, un titre, une description, une URL canonique et le favicon personnalisé présents.
+- Livrables IA.md, JOURNAL.md, QUALITE.md et README.md présents ; verrouillage Bun et configuration Netlify conservés.
+- Dernière modification de Base.astro : préchargement de la texture commune déjà utilisée par les pages.
+- Ces contrôles ne constituent pas un nouvel essai tactile, lecteur d’écran ou visuel complet, ni un nouvel envoi réel du formulaire. Les limites précédentes restent applicables. La version publique sera contrôlée après le push.
