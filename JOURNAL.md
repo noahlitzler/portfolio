@@ -1,10 +1,10 @@
-# Journal de bord — Mon portfolio
+# Journal de bord - Mon portfolio
 
 Mon idée de départ était de faire découvrir mes projets comme des films, en montrant aussi leurs coulisses. Je voulais que le portfolio ait une vraie identité et qu’il me ressemble. J’ai conçu les écrans desktop et défini la direction visuelle dans Figma. L’adaptation mobile et certaines évolutions ont ensuite été réalisées avec de l’aide. Mon fil conducteur a été de garder le lien entre cet univers graphique, ma personnalité et les créations que je présente.
 
 J’ai travaillé assez régulièrement au fil des semaines, avec une pause pour les autres projets du semestre. Dans le code, j’ai notamment modifié le CSS pour ajuster les tailles, les couleurs, les marges et le responsive. J’ai aussi saisi ou modifié les informations des cinq projets dans le fichier de données. Je parcourais les pages dans le navigateur, testais les interactions et repérais les défauts visuels à reprendre. Ce journal reprend les étapes et les dates de mon travail ; les détails des tests sont dans QUALITE.md et mon utilisation de l’IA dans IA.md.
 
-## Semaine 1 — 7 au 11 septembre : trouver mon positionnement
+## Semaine 1 - 7 au 11 septembre : trouver mon positionnement
 
 **Ce que j’ai fait**
 
@@ -18,7 +18,7 @@ Il fallait trouver un point de départ qui me permette de présenter mes compét
 
 J’ai choisi de partir sur un univers cinéma. L’idée venait de moi, puis je l’ai développée avec l’IA : chaque projet pourrait être présenté comme une séance, avec son affiche et ses coulisses. Au départ, ma sélection comprenait les affiches Vivez l’essentiel, La Cimade et SULL.
 
-## Semaine 2 — 14 au 18 septembre : chercher une direction graphique
+## Semaine 2 - 14 au 18 septembre : chercher une direction graphique
 
 **Ce que j’ai fait**
 
@@ -32,7 +32,7 @@ La piste cyberpunk partait dans trop de directions, alors que la piste minimalis
 
 J’ai écarté ces deux pistes et gardé une base sombre et crème, avec des accents plus vifs. J’ai retenu Author, Oswald et Caveat pour donner des rôles différents aux textes : une présence forte pour l’identité, des repères de séance et des touches plus personnelles. La base sombre et crème donne une continuité au portfolio, tandis que les accents colorés différencient les contenus. Mon objectif était que les projets restent les éléments les plus importants de la page.
 
-## Semaine 3 — 21 au 25 septembre : construire la maquette
+## Semaine 3 - 21 au 25 septembre : construire la maquette
 
 **Ce que j’ai fait**
 
@@ -46,11 +46,11 @@ La présentation des projets a été l’un des points les plus difficiles. Cert
 
 J’ai choisi une structure de fiche de film : pitch, making-of, fiche technique, résultat et scène coupée. Le pitch situe la commande, le making-of montre les recherches et les arbitrages, puis le résultat permet de juger la réalisation. La scène coupée donne une place au recul personnel. Cette structure me permettait de montrer le chemin suivi, pas seulement une image finale. Pour la partie À propos, le storyboard devait faire le lien entre ma personnalité, mes influences et mes créations.
 
-## Semaine 4 — 28 septembre au 2 octobre : préparer la première soutenance
+## Semaine 4 - 28 septembre au 2 octobre : préparer la première soutenance
 
 **Ce que j’ai fait**
 
-J’ai vérifié les liens du prototype, les textes et les versions mobile. J’ai préparé ma présentation avec l’aide de Claude pour structurer la première soutenance. Elle a eu lieu le 1er octobre.
+J’ai vérifié les liens du prototype, les textes et les versions mobiles. J’ai préparé ma présentation avec l’aide de Claude pour structurer la première soutenance. Elle a eu lieu le 1er octobre.
 
 **Le point à résoudre**
 
@@ -60,7 +60,7 @@ Il fallait expliquer le concept et les choix techniques sans passer tout le temp
 
 J’ai prévu Astro, du CSS natif et du JavaScript, avec GitHub pour suivre le projet. Le niveau technique visé était le niveau 2. Je préférais une réalisation soignée que je pourrais défendre plutôt que d’ajouter de la complexité pour elle-même.
 
-## Semaine 5 — 5 au 9 octobre : tenir compte des retours et démarrer le code
+## Semaine 5 - 5 au 9 octobre : tenir compte des retours et démarrer le code
 
 **Ce que j’ai fait**
 
@@ -74,7 +74,7 @@ Le retour qui m’a le plus marqué concernait l’absence de vrai menu. Mon id�
 
 J’ai choisi un menu « Chapitres », en lien avec le cinéma, et une barre de progression. Le projet a été remis à la racine du dépôt. J’ai gardé Bun pour les commandes du projet et continué avec des composants Astro et des styles personnalisés.
 
-## Semaine 6 — 12 au 16 octobre : priorité aux autres projets
+## Semaine 6 - 12 au 16 octobre : priorité aux autres projets
 
 **Ce que j’ai fait**
 
@@ -88,7 +88,7 @@ Je ne pouvais pas avancer sur tous les projets au même rythme. Cette pause a d�
 
 J’ai prévu de reprendre la semaine suivante en m’occupant de la mise en ligne, puis du menu et des contenus. Je voulais pouvoir voir le site fonctionner au-delà de la maquette.
 
-## Semaine 7 — 19 au 23 octobre : reprendre et remettre les priorités dans l’ordre
+## Semaine 7 - 19 au 23 octobre : reprendre et remettre les priorités dans l’ordre
 
 **Ce que j’ai fait**
 
@@ -102,7 +102,7 @@ J’avais pris du retard sur mon calendrier de départ. Il fallait éviter de pa
 
 J’ai donné la priorité à la mise en ligne, puis au menu et aux contenus des projets. Le but restait d’obtenir un ensemble cohérent avant de pousser les finitions.
 
-## Semaine 8 — 26 au 30 octobre : intégrer les premières pages
+## Semaine 8 - 26 au 30 octobre : intégrer les premières pages
 
 **Ce que j’ai fait**
 
@@ -116,11 +116,11 @@ Les interactions JavaScript qui ne se comportaient pas comme prévu étaient ce 
 
 Je suis revenu aux écrans Figma comme référence pour l’intégration. J’ai commencé à consigner les contrôles dans QUALITE.md et à alléger les ressources, notamment les polices et le portrait. Quand une correction n’était pas claire pour moi, je demandais des explications avant de continuer.
 
-## Semaine 9 — 2 au 8 novembre : compléter le site et chercher le bon équilibre
+## Semaine 9 - 2 au 8 novembre : compléter le site et chercher le bon équilibre
 
 **Ce que j’ai fait**
 
-J’ai avancé sur les études de cas, le storyboard, le menu et les adaptations mobiles, avec l’aide de Codex pour l’intégration et les interactions. Je comparais les essais à mon intention de départ : arriver sur une séance, choisir une affiche, puis entrer dans les coulisses du projet. L’ouverture, les transitions et la navigation ont été retravaillées pour renforcer cette continuité. Le storyboard a gardé une place importante, car c’est l’une des parties dans lesquelles je me reconnais le plus.
+J’ai avancé sur les études de cas, le storyboard, le menu et les adaptations mobiles, avec l’aide de Codex pour l’intégration et les interactions. Je comparais les essais à mon intention de départ : assister à une séance, choisir une affiche, puis entrer dans les coulisses du projet. L’ouverture, les transitions et la navigation ont été retravaillées pour renforcer cette continuité. Le storyboard a gardé une place importante, car c’est l’une des parties dans lesquelles je me reconnais le plus.
 
 **Le point à résoudre**
 
@@ -130,7 +130,7 @@ La navigation semblait doublée, avec des éléments en haut et en bas. Cela com
 
 J’ai fait mes retours à partir du rendu dans le navigateur, plutôt que de valider les changements uniquement parce qu’ils fonctionnaient. J’ai demandé une seule navigation et des sauvegardes avant les grosses modifications. Je cherchais surtout une présentation personnelle et cohérente des projets.
 
-## Semaine 10 — 9 au 15 novembre : revenir à ma direction et compléter les contenus
+## Semaine 10 - 9 au 15 novembre : revenir à ma direction et compléter les contenus
 
 **Ce que j’ai fait**
 
@@ -144,7 +144,7 @@ L’accueil, mon nom et les affiches ont demandé beaucoup d’allers-retours : 
 
 J’ai gardé les cinq projets parce qu’ils me semblaient assez aboutis ; le professeur avait aussi indiqué en cours qu’on pouvait en montrer davantage. J’ai demandé que seuls les textes des bandeaux défilent, avec des points fixes. Pour le portfolio, je suis finalement passé par Netlify avec mon domaine Infomaniak. Le problème d’accès au VPS n’est pas pour autant présenté comme résolu.
 
-## Semaine 11 — 16 au 17 novembre : finaliser le parcours et les détails visuels
+## Semaine 11 - 16 au 17 novembre : finaliser le parcours et les détails visuels
 
 **Ce que j’ai fait**
 

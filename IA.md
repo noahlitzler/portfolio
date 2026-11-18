@@ -1,4 +1,4 @@
-# Déclaration d’utilisation de l’IA — Portfolio
+# Déclaration d’utilisation de l’IA - Portfolio
 
 J’ai utilisé Claude, ChatGPT et Codex à plusieurs étapes du portfolio : pour explorer des solutions, obtenir des explications, débloquer le code et mettre en place certaines fonctionnalités. Je présente ici leur rôle et les choix que j’ai faits à partir des propositions reçues.
 
@@ -45,7 +45,7 @@ J’ai utilisé Codex pour préparer la mise en ligne, comprendre les problèmes
 
 Pour le contact, j’ai choisi Gmail SMTP plutôt que Netlify Forms. Codex a aidé à développer la route serveur /api/contact et la logique d’envoi dans src/lib/contact.js, avec Nodemailer. J’ai saisi les identifiants en privé et testé le formulaire ; j’ai confirmé la réception d’un message dans Gmail. Le fonctionnement serveur du contact et la publication sont les points que je souhaite particulièrement approfondir pour l’oral.
 
-L’IA a également aidé à effectuer des contrôles de compilation, de liens, d’images, de responsive et de métadonnées, ainsi qu’à préparer les tests automatisés. J’ai moi-même parcouru les pages, testé les interactions et signalé les défauts visuels, dont la découpe du prénom et la place des projets. Les résultats datés et les essais restants sont consignés dans QUALITE.md.
+L’IA a également aidé à effectuer des contrôles de compilation, de liens, d’images, d’adaptation aux écrans et de métadonnées, ainsi qu’à préparer les tests automatisés. J’ai moi-même parcouru les pages, testé les interactions et signalé les défauts visuels, dont la découpe du prénom et la place des projets. Les résultats datés et les essais restants sont consignés dans QUALITE.md.
 
 ## 4. Finalisation de la maquette et des documents
 
@@ -59,12 +59,16 @@ Codex a aussi servi à structurer et reformuler le README, le journal, cette dé
 
 Ces usages concernent les projets montrés dans le portfolio, en complément de l’aide au développement du site.
 
-**La Cimade — ChatGPT :** génération des photos utilisées dans les bannières. J’ai dirigé le type d’image, le nombre de personnes et leur disposition, puis sélectionné les propositions. Dans le recul sur ce projet, je souhaite pousser davantage le caractère personnel de l’identité et des affiches.
+**La Cimade - ChatGPT :** génération des photos utilisées dans les bannières. J’ai dirigé le type d’image, le nombre de personnes et leur disposition, puis sélectionné les propositions. Dans le recul sur ce projet, je souhaite pousser davantage le caractère personnel de l’identité et des affiches.
 
-**Smooth — ChatGPT :** adaptation des visuels de lunettes à partir des fichiers SVG fournis par l’enseignante. L’origine est indiquée dans les crédits ; ces rendus ne sont pas des modèles 3D entièrement créés par moi. Le travail présenté comprend mon identité de marque, mon parcours et ma proposition graphique pour le projet.
+**Smooth - ChatGPT :** adaptation des visuels de lunettes à partir des fichiers SVG fournis par l’enseignante. L’origine est indiquée dans les crédits ; ces rendus ne sont pas des modèles 3D entièrement créés par moi. Le travail présenté comprend mon identité de marque, mon parcours utilisateur et ma proposition graphique pour le projet.
 
 ## Ce que cette utilisation m’a apporté
 
-Le principal apprentissage a été de mieux formuler mes attentes et de juger les propositions. J’ai appris à distinguer une solution qui fonctionne d’une solution qui correspond à ma direction graphique et au parcours que je veux proposer. Les échanges m’ont aidé à avancer, mais le résultat a demandé des choix réguliers et de nombreuses reprises.
+Le principal apprentissage a été de mieux formuler mes attentes et de juger les propositions. J’ai appris à distinguer une solution qui fonctionne d’une solution qui correspond à ma direction graphique et au parcours que je veux proposer. Les échanges m’ont aidé à avancer, mais le résultat a demandé des choix réguliers et de nombreuses reprises, notamment sur l’accueil, les affiches et la présentation des projets.
 
-Aujourd’hui, les données des projets et leur affichage dans les composants Astro sont les parties que je me sens le plus à l’aise pour expliquer et modifier. Je prépare davantage le fonctionnement du formulaire serveur, du SMTP et de la publication. Pour un prochain projet, je cadrerais les demandes plus précisément dès le départ afin de limiter les allers-retours et de garder plus facilement une continuité entre conception et développement.
+Au final, je pense avoir plutôt bien réussi à m’organiser dans le temps, entre les différentes SAÉ et les exercices de cours. L’utilisation de l’IA m’a permis de développer davantage mes idées et de les organiser de manière plus précise. Elle m’a aussi aidé à débloquer certaines difficultés techniques pour continuer à avancer, tout en gardant mon intention de départ comme référence.
+
+Ce projet m’a montré l’importance de vérifier les propositions dans leur contexte. Une mise en page ou une animation peut sembler intéressante au départ, puis ne pas convenir une fois intégrée au reste du site. Les essais dans le navigateur et les ajustements successifs m’ont permis d’affiner le résultat et de mieux relier mes choix graphiques à l’utilisation du portfolio.
+
+Pour un prochain projet, je cadrerais mes demandes plus précisément dès le départ, en expliquant mieux le résultat attendu et les contraintes à respecter. Cela limiterait les allers-retours et me laisserait davantage de temps pour approfondir les solutions retenues. Je retiens surtout que l’IA est utile pour explorer et avancer, mais que c’est à moi de choisir, de vérifier et de donner une cohérence à l’ensemble. C’est cette démarche qui m’a permis d’obtenir un portfolio dans lequel je me reconnais.
