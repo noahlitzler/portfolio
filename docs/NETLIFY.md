@@ -5,11 +5,11 @@
 ## Construction
 
 - netlify.toml : commande bun run build, dossier déclaré dist, Node 22, Bun 1.4.2.
-- astro.config.mjs : adaptateur @astrojs/netlify par défaut ; l’adaptateur gère les sorties et la fonction serveur. Ne pas remplacer arbitrairement le dossier par dist/client, propre à la piste Node.
+- astro.config.mjs : adaptateur @astrojs/netlify ; l’adaptateur gère les sorties et la fonction serveur.
 - PORTFOLIO_SITE : https://noahlitzler.fr, pour les URL canoniques et le sitemap.
 - PUBLIC_CONTACT_ACTIF=true est actuellement déclaré dans netlify.toml. Un changement des variables utilisées pendant le build nécessite une reconstruction.
 - Le domaine principal est sans www ; HTTPS et redirection www ont été vérifiés lors des contrôles de publication précédents.
-- Le workflow GitHub Actions du VPS contient une condition false : il ne publie pas le portfolio sur le serveur pédagogique.
+- Aucun workflow VPS : la publication passe par Netlify depuis le dépôt GitHub.
 
 ## Contact Gmail SMTP
 
@@ -30,6 +30,6 @@ La route valide les champs, l’origine, la taille de requête et le champ leurr
 
 Les étapes ci-dessus sont une procédure à exécuter, pas une attestation d’exécution de cette finalisation documentaire. La réception déjà confirmée ne remplace pas ce contrôle après publication.
 
-## Piste VPS conservée
+## Nettoyage du dépôt
 
-docs/PUBLICATION.md et deploy/ décrivent la méthode du cours expérimentée auparavant. Le retour arrière Apache reste bloqué par la fermeture SSH avant identification ; aucune réparation de TiK TaK n’est affirmée. Cette difficulté ne conditionne pas le fonctionnement du portfolio actuellement hébergé sur Netlify.
+Les anciennes procédures et configurations du VPS pédagogique ont été retirées du dépôt le 18 novembre, après sauvegarde externe. Elles ne sont plus nécessaires à la publication Netlify. Le journal conserve le récit du changement d’hébergement. Ce nettoyage local ne modifie aucun serveur distant.

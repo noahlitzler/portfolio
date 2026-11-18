@@ -1,13 +1,12 @@
 // @ts-check
 import {defineConfig} from 'astro/config';
-import node from '@astrojs/node';
 import netlify from '@astrojs/netlify';
 export default defineConfig({
   site:process.env.PORTFOLIO_SITE||'https://noahlitzler.fr',
   output:'server',
-  adapter:process.env.PORTFOLIO_CIBLE==='vps' ? node({mode:'standalone',bodySizeLimit:16384}) : netlify({imageCDN:false}),
+  adapter:netlify({imageCDN:false}),
   session:false,
-  // Apache conserve le domaine et signale HTTPS au serveur Astro.
+  // Domaines autorisés pour les requêtes du portfolio.
   security:{allowedDomains:[
     {hostname:'noahlitzler.fr',protocol:'https'},
     {hostname:'www.noahlitzler.fr',protocol:'https'},

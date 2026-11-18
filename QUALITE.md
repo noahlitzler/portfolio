@@ -2,7 +2,7 @@
 
 Périmètre : portfolio Astro FR / EN, cinq études de cas, menu Chapitres, carrousel automatique, visionneuse et formulaire Gmail SMTP. Domaine : https://noahlitzler.fr/. Ce bilan distingue les contrôles effectués, les confirmations de Noah et les essais restant à faire. Les mesures ne valent que pour la version et la date indiquées.
 
-Les relevés détaillés des étapes précédentes sont conservés dans [docs/archives/QUALITE-2026-11-17-historique.md](docs/archives/QUALITE-2026-11-17-historique.md) et QUALITE-2026-11-10.md dans le même dossier. Ils ne décrivent pas tous l’état final. Aucun nouvel audit navigateur complet, build ni envoi de message n’a été réalisé pendant la finalisation documentaire.
+Les anciens relevés détaillés ont été sauvegardés hors du dépôt lors du nettoyage du 18 novembre. Les résultats utiles sont synthétisés dans ce fichier. Aucun nouvel audit navigateur complet, build ni envoi de message n’a été réalisé pendant la finalisation documentaire.
 
 ## 1. Accessibilité et ergonomie
 
@@ -67,3 +67,13 @@ Cette partie consigne les informations et vérifications du projet ; elle ne con
 - [ ] Nouvelle mesure Lighthouse sur la version finale et transcription des résultats.
 
 Ne cocher ces lignes qu’après exécution. Les neuf tests et le build Netlify réussis du 17 sont des contrôles antérieurs consignés ; cette mise à jour de documents ne les relance pas et ne modifie pas le produit.
+
+## Contrôle après nettoyage du dépôt - 18 novembre 2026
+
+Retrait de 17 fichiers obsolètes (anciens fichiers VPS, documents redondants, exports sans référence et verrouillage npm en double) après sauvegarde externe. Configuration simplifiée pour Netlify ; adaptateur Node et commande de démarrage VPS retirés. Les tests, les notices utiles et les livrables demandés sont conservés.
+
+- Neuf tests automatisés réussis ; aucun email réel envoyé par ces tests.
+- Compilation Netlify réussie après retrait de la dépendance VPS.
+- Analyse de 25 pages HTML et 659 références locales : aucune ressource manquante.
+- Liens locaux des documents restants vérifiés sans destination absente.
+- Aucun push ni changement du serveur ou du domaine pendant ce nettoyage.

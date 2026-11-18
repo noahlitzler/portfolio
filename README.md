@@ -35,7 +35,6 @@ Les cinq études suivent le même gabarit : contexte, rôle, processus, choix te
 | JavaScript / TypeScript du navigateur | Menu dialog, carrousel, progression, visionneuse et effets du pointeur. Aucune bibliothèque d’animation ou de carrousel. |
 | @astrojs/netlify | Adaptateur de publication actuel, notamment pour la route serveur du formulaire. |
 | Nodemailer | Envoyer le contact par Gmail SMTP côté serveur ; identifiants conservés dans les variables privées de Netlify. |
-| @astrojs/node | Alternative standalone préparée pour le VPS du cours ; sélectionnée uniquement avec PORTFOLIO_CIBLE=vps. Ce n’est pas l’hébergement actuel. |
 | Fontsource : Oswald, Caveat, Courier Prime, Montserrat | Polices disponibles localement dans les dépendances ; Author est auto-hébergée séparément. Les imports du site déterminent les polices réellement chargées. |
 | Bun, Node et Git | Installation, compilation, tests et suivi des versions. Netlify utilise Bun pour le build et Node pour l’exécution serveur. |
 
@@ -52,7 +51,7 @@ bun run test
 bun run build
 ```
 
-Le build cible Netlify par défaut. La configuration de publication et du contact est décrite dans [docs/NETLIFY.md](docs/NETLIFY.md). L’ancienne procédure VPS est conservée pour l’historique dans [docs/PUBLICATION.md](docs/PUBLICATION.md) ; son workflow GitHub Actions est désactivé.
+Le build cible Netlify. La configuration de publication et du contact est décrite dans [docs/NETLIFY.md](docs/NETLIFY.md). Bun est le gestionnaire retenu ; bun.lock fixe les versions des dépendances. Les anciens fichiers de déploiement VPS et les documents redondants ont été retirés du dépôt, après sauvegarde externe.
 
 ## Repères dans le code
 
@@ -71,7 +70,6 @@ Le build cible Netlify par défaut. La configuration de publication et du contac
 - [JOURNAL.md](JOURNAL.md) : décisions et difficultés, avec justification des réseaux.
 - [IA.md](IA.md) : outils utilisés, productions, corrections et rejets ; maîtrise personnelle à démontrer à l’oral.
 - [QUALITE.md](QUALITE.md) : contrôles propres au site, résultats datés et limites.
-- [docs/REMISE.md](docs/REMISE.md) : correspondance avec les livrables et dernières actions.
 
 Noah a confirmé les droits de publication des ressources et la mise à jour de LinkedIn et Instagram. Les crédits restent présents et les licences tierces applicables. Les messages sont conservés au maximum 12 mois après le dernier échange, sous les exceptions précisées dans les mentions ; leur suppression dans Gmail est manuelle.
 
