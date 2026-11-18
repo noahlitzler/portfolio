@@ -86,3 +86,7 @@ Retrait de 17 fichiers obsolètes (anciens fichiers VPS, documents redondants, e
 - Livrables IA.md, JOURNAL.md, QUALITE.md et README.md présents ; verrouillage Bun et configuration Netlify conservés.
 - Dernière modification de Base.astro : préchargement de la texture commune déjà utilisée par les pages.
 - Ces contrôles ne constituent pas un nouvel essai tactile, lecteur d’écran ou visuel complet, ni un nouvel envoi réel du formulaire. Les limites précédentes restent applicables. La version publique sera contrôlée après le push.
+
+## Correction visuelle du titre et du favicon - 18 novembre 2026
+
+Le rognage du h de Noah a été reproduit dans Chrome : la boîte du texte en dégradé manquait de marge horizontale. Ajout de marges de sécurité au texte et contrôle visuel après chargement des polices à 1280 et 375 px, sans débordement horizontal. Favicon SVG versionné pour renouveler le cache ; ajout d’un ICO personnalisé de secours. Les neuf tests automatisés passent après ces changements.
