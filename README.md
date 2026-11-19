@@ -10,7 +10,7 @@ Portfolio individuel de BUT MMI, parcours création numérique. Positionnement :
 
 Le site est publié sur Netlify ; Infomaniak fournit le nom de domaine. Le domaine sans www est principal. L’accueil, le contact et les mentions légales ont répondu HTTP 200 lors du contrôle du 17 novembre. Noah a confirmé la réception d’un message du formulaire dans Gmail le 16 novembre. Cette confirmation est distincte des tests automatisés, qui n’envoient aucun email réel.
 
-L’accueil suit cet ordre : ouverture animée, présentation personnelle, carrousel de cinq projets, parcours et compétences. Le menu Chapitres et la barre de progression sont partagés. Les points des bandeaux restent fixes et seuls les textes défilent. Le sélecteur FR / EN conserve la page consultée ; les créations et le CV restent dans leur langue d’origine.
+L’accueil suit cet ordre : ouverture animée, présentation personnelle, parcours, expériences, outils et compétences, puis carrousel de cinq projets. Le menu Chapitres et la barre de progression sont partagés. Les points des bandeaux restent fixes et seuls les textes défilent. Le sélecteur FR / EN conserve la page consultée ; les créations et le CV restent dans leur langue d’origine.
 
 Les pages Figma « 02 - Desktop · version actuelle » et « 03 - Mobile · version actuelle » remplacent les modèles de référence ; les précédentes sont archivées. La maquette reste une représentation des mises en page et états du site, sans reproduire toutes ses animations. Inter y remplace temporairement Author, avec l’accord de Noah ; le site conserve Author.
 
