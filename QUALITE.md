@@ -1,4 +1,4 @@
-# Qualité du portfolio — bilan au 17 novembre 2026
+# Qualité du portfolio - bilan au 17 novembre 2026
 
 Périmètre : portfolio Astro FR / EN, cinq études de cas, menu Chapitres, carrousel automatique, visionneuse et formulaire Gmail SMTP. Domaine : https://noahlitzler.fr/. Ce bilan distingue les contrôles effectués, les confirmations de Noah et les essais restant à faire. Les mesures ne valent que pour la version et la date indiquées.
 

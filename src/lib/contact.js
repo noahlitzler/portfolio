@@ -20,7 +20,7 @@ async function envoyerMessage(message,env){
     from:{name:'Portfolio Noah Litzler',address:env.SMTP_USER},
     to:destinataire,
     replyTo:{name:message.nom,address:message.email},
-    subject:'Portfolio — '+message.type,
+    subject:'Portfolio - '+message.type,
     text:`Nom : ${message.nom}\nEmail : ${message.email}\nDemande : ${message.type}\n\n${message.message}`
   });
   if(!resultat.accepted?.includes(destinataire))throw new Error('Message non accepté');

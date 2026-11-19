@@ -1,4 +1,4 @@
-# Portfolio — Noah Litzler
+# Portfolio - Noah Litzler
 
 Portfolio individuel de BUT MMI, parcours création numérique. Positionnement : design graphique et direction artistique. Stage recherché du 29 mars au 4 juin 2027 dans le Haut-Rhin, à Bâle, à Porrentruy et aux alentours.
 

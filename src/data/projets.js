@@ -199,7 +199,7 @@ export const projets = [
       ],
       [
         "Pour",
-        "La Cimade — exercice non officiel"
+        "La Cimade - exercice non officiel"
       ],
       [
         "Audit",
